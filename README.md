@@ -9,11 +9,11 @@ showing details of the selected item.
 
 ### Description:
 
-The initial screen is the Home Screen which shows a list of Pokemon cards with an image 
-and brief information for each card. If internet is not connected the items will be 
-retrieved from the local storage (Room). Home screen also supports swipe to refresh. 
-The next screen is the Item Detail Screen which shows a larger image of the selected card 
-and more detailed information about it. 
+The initial screen is the Home Screen which shows a list of Breaking Bad characters
+with an image and brief information for each card. If internet is not connected the 
+items will be retrieved from the local storage (Room). Home screen also supports swipe 
+to refresh. The next screen is the Item Detail Screen which shows a larger image of the 
+selected card and more detailed information about it. 
 
 ### Tests:
 
