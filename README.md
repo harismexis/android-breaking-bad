@@ -21,9 +21,3 @@ The project contains Unit Tests and Instrumented Tests. Some utility classes hav
 for setting up the tests with Coroutines and LiveData. Also some mock network responses 
 from real JSON data have been used. The Tests share some common resources which exist under 
 the sharedTest folder.
-
-#### Home
-![Alt text](screenshots/home/home-poco-f1.png?raw=true "app screenshot")
-
-#### Picture of the day - photo
-![Alt text](screenshots/detail/item-detail-poco-f1.png?raw=true "app screenshot")
