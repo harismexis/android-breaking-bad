@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Pokemon</string>
+    <string name="activity_home_label">Home</string>
+    <string name="activity_item_detail_label">Card Details</string>
+
+    <!-- ViewHolder Card Item -->
+    <string name="cd_card_image">Image of a Pokemon Card</string>
+
+    <!-- Item Detail -->
+    <string name="label_name">Name:</string>
+    <string name="label_supertype">Supertype:</string>
+    <string name="label_subtype">Subtype:</string>
+    <string name="label_artist">Artist:</string>
+    <string name="label_rarity">Rarity:</string>
+    <string name="label_series">Series:</string>
+    <string name="label_set">Set:</string>
+    <string name="label_set_code">Set code:</string>
+    <string name="missing_value">[missing value]</string>
+    <string name="cd_item_detail_image">Image of selected Card</string>
+
+</resources>

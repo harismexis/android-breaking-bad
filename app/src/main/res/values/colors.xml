@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Palette -->
+
+    <color name="transparent">#00ffffff</color>
+
+    <color name="primary">#2196F3</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="blue_one">#0099F7</color>
+
+    <color name="black">#FF000000</color>
+    <color name="black_six">#222222</color>
+
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_one">#ffffff</color>
+
+    <color name="grey_one">#4d4d4d</color>
+    <color name="grey_three">#cccccc</color>
+    <color name="grey_four">#808080</color>
+    <color name="grey_nine">#80404040</color>
+
+    <color name="yellow_one">#ffc800</color>
+    <color name="yellow_two">#ffb200</color>
+
+    <!-- End Palette -->
+
+    <color name="default_background_color">@color/black_six</color>
+    <color name="default_text_color">@color/white</color>
+    <color name="txt_color_light">@color/white_one</color>
+    <color name="txt_color_warm">@color/grey_four</color>
+    <color name="txt_color_dark">@color/black</color>
+    <color name="txt_color_warm_dark">@color/grey_one</color>
+    <color name="txt_color_bright">@color/blue_one</color>
+    <color name="txt_color_light_grey">@color/grey_three</color>
+
+</resources>

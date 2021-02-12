@@ -1,0 +1,140 @@
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+ext {
+    kotlin = '1.4.21'
+    def androidx_test = '1.2.0'
+    def appcompat = '1.2.0'
+    def constraint_layout = '2.0.4'
+    def coroutines_android = '1.3.2'
+    def espresso = '3.2.0'
+    def gson = '2.8.6'
+    def androidx_junit = '1.1.2'
+    def lifecycle = '2.1.0'
+    def livedata = '2.2.0-rc02'
+    def material = '1.2.0'
+    def retrofit_gson = '2.6.2'
+    def retrofit = '2.9.0'
+    def room = '2.2.5'
+    def activity_ktx = '1.2.0-beta01'
+    def fragment_ktx = '1.3.0-beta01'
+    def work = '2.2.0'
+    def truth = '1.0'
+    def mockito_kotlin = '2.2.0'
+    def dagger_2 = '2.30.1'
+    def retrofit2_adapter_rxjava2 = '2.6.0'
+    def rxjava2 = '2.2.12'
+    def rxandroid = '2.1.1'
+    def cardview = '1.0.0'
+    def glide = '4.11.0'
+    def rx_relay = '2.1.1'
+    def mockito = '3.3.0'
+    def mockk = '1.9.3' //1.10.3-jdk8
+    def mockk_android = '1.9.3' // 1.10.3-jdk8
+    def swipe_refresh_layout = '1.1.0'
+    def google_truth = '0.42'
+
+    libraries = [
+            kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin",
+
+            coroutines         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_android",
+            coroutines_android : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android",
+
+            appCompat          : "androidx.appcompat:appcompat:$appcompat",
+            material           : "com.google.android.material:material:$material",
+            constraint_layout  : "androidx.constraintlayout:constraintlayout:$constraint_layout",
+            cardview           : "androidx.cardview:cardview:${cardview}",
+
+            extensions         : "androidx.lifecycle:lifecycle-extensions:$lifecycle",
+            livedata           : "androidx.lifecycle:lifecycle-livedata-ktx:$livedata",
+            viewmodel          : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle",
+
+            activity_ktx       : "androidx.activity:activity-ktx:$activity_ktx",
+            fragment_ktx       : "androidx.fragment:fragment-ktx:$fragment_ktx",
+
+            room               : "androidx.room:room-ktx:$room",
+
+            gson               : "com.google.code.gson:gson:$gson",
+            retrofit_gson      : "com.squareup.retrofit2:converter-gson:$retrofit_gson",
+            retrofit           : "com.squareup.retrofit2:retrofit:$retrofit",
+
+            swiperefreshlayout : "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout"
+    ]
+
+    librariesKapt = [
+            room: "androidx.room:room-compiler:$room"
+    ]
+
+    librariesDebug = [
+            truth: "com.google.truth:truth:$truth"
+    ]
+
+    mockkDependencies = [
+            mockk         : "io.mockk:mockk:$mockk",
+            mockk_android : "io.mockk:mockk-android:$mockk_android"
+    ]
+
+    testLibraries = [
+            junit           : "androidx.test.ext:junit:$androidx_junit",
+            coroutines_test : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_android",
+            mockito_kotlin  : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin",
+            core_testing    : "androidx.arch.core:core-testing:$lifecycle"
+    ]
+
+    androidTestLibraries = [
+            test_core       : "androidx.test:core:$androidx_test",
+
+            runner          : "androidx.test:runner:$androidx_test",
+            rules           : "androidx.test:rules:$androidx_test",
+            // orchestrator    : "androidx.test:orchestrator:$androidx_test",
+
+            junit           : "androidx.test.ext:junit:$androidx_junit",
+            truth           : "androidx.test.ext:truth:$androidx_test",
+            google_truth    : "com.google.truth:truth:$google_truth",
+
+            espresso_core               : "androidx.test.espresso:espresso-core:$espresso",
+            espresso_contrib            : "androidx.test.espresso:espresso-contrib:$espresso",
+            espresso_intents            : "androidx.test.espresso:espresso-intents:$espresso",
+            espresso_accessibility      : "androidx.test.espresso:espresso-accessibility:$espresso",
+            espresso_web                : "androidx.test.espresso:espresso-web:$espresso",
+            idling_concurrent           : "androidx.test.espresso.idling:idling-concurrent:$espresso",
+            espresso_idling_resource    : "androidx.test.espresso:espresso-idling-resource:$espresso",
+
+            arch_core       : "androidx.arch.core:core-testing:$lifecycle",
+            work_testing    : "androidx.work:work-testing:$work",
+            coroutines_test : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_android",
+
+            mockito_android : "org.mockito:mockito-android:$mockito",
+            mockito_core    : "org.mockito:mockito-core:$mockito",
+            mockk_android : "io.mockk:mockk-android:$mockk_android"
+    ]
+
+    daggerDependancies = [
+            dagger                : "com.google.dagger:dagger:$dagger_2",
+            dagger_android        : "com.google.dagger:dagger-android:$dagger_2",
+            dagger_android_support: "com.google.dagger:dagger-android-support:$dagger_2"
+    ]
+
+    annotationProcessorsDependencies = [
+            dagger_compiler         : "com.google.dagger:dagger-compiler:$dagger_2",
+            dagger_android_processor: "com.google.dagger:dagger-android-processor:$dagger_2",
+            glide_compiler          : "com.github.bumptech.glide:compiler:${glide}"
+    ]
+
+    rxJavaDependencies = [
+            retrofit_adapter: "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_adapter_rxjava2",
+            rxjava          : "io.reactivex.rxjava2:rxjava:$rxjava2",
+            rxandroid       : "io.reactivex.rxjava2:rxandroid:$rxandroid",
+            rxrelay         : "com.jakewharton.rxrelay2:rxrelay:${rx_relay}",
+    ]
+
+    glideDependencies = [
+            glide        : "com.github.bumptech.glide:glide:${glide}",
+            glide_okhttp : "com.github.bumptech.glide:okhttp3-integration:${glide}"
+    ]
+
+}

@@ -1,0 +1,82 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+def commonValues = rootProject.ext.common
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.jsonfeed"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "com.example.jsonfeed.runner.InstrumentedRunner"
+        buildConfigField "String", "FEED_BASE_URL", commonValues.FEED_BASE_URL
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/sharedTest/java"
+            resources.srcDirs += "src/sharedTest/resources"
+        }
+        test {
+            java.srcDirs += "src/sharedTest/java"
+            resources.srcDirs += "src/sharedTest/resources"
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(':core')
+
+    implementation libraries.values()
+    implementation rxJavaDependencies.values()
+    implementation daggerDependancies.values()
+
+    debugImplementation librariesDebug.values()
+
+    api glideDependencies.values()
+
+    kapt librariesKapt.values()
+    kapt annotationProcessorsDependencies.values()
+
+    testImplementation testLibraries.values()
+
+    androidTestImplementation androidTestLibraries.values()
+
+    kaptAndroidTest annotationProcessorsDependencies.dagger_compiler
+    kaptAndroidTest annotationProcessorsDependencies.dagger_android_processor
+
+}

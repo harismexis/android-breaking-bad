@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="loading_progress_size">50dp</dimen>
+
+    <!-- HOME -->
+    <dimen name="home_list_padding_vertical">10dp</dimen>
+    <dimen name="home_list_padding_horizontal">20dp</dimen>
+
+    <!-- TOOLBAR -->
+    <dimen name="toolbar_text_size">18sp</dimen>
+
+    <!-- ITEM VH -->
+    <dimen name="vh_item_title_text_size">19sp</dimen>
+    <dimen name="vh_item_meta_text_size">16sp</dimen>
+    <dimen name="vh_item_padding_vertical">8dp</dimen>
+    <dimen name="vh_item_padding_horizontal">16dp</dimen>
+    <dimen name="vh_item_img_width">80dp</dimen>
+    <dimen name="vh_item_img_height">100dp</dimen>
+    <dimen name="vh_item_txt_margin_start">12dp</dimen>
+    <dimen name="vh_item_txt_name_margin_top">20dp</dimen>
+    <dimen name="vh_item_txt_meta_margin_top">12dp</dimen>
+
+    <!-- ITEM DETAIL -->
+    <dimen name="item_detail_title_text_size">22sp</dimen>
+    <dimen name="item_detail_label_text_size">16sp</dimen>
+    <dimen name="item_detail_meta_text_size">18sp</dimen>
+    <dimen name="item_detail_img_margin_top">14dp</dimen>
+    <dimen name="item_detail_img_height">400dp</dimen>
+    <dimen name="item_detail_title_margin_top">40dp</dimen>
+    <dimen name="item_detail_txt_label_margin_top">32dp</dimen>
+    <dimen name="item_detail_txt_meta_margin_top">10dp</dimen>
+    <dimen name="item_detail_root_padding">16dp</dimen>
+    <dimen name="item_detail_margin_bottom">32dp</dimen>
+
+</resources>

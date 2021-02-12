@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_detail_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/default_background_color"
+    android:padding="@dimen/item_detail_root_padding">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/item_detail_img_height"
+        android:layout_marginTop="@dimen/item_detail_img_margin_top"
+        android:contentDescription="@string/cd_item_detail_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_name"
+        style="@style/ItemDetailTitle"
+        android:layout_marginTop="@dimen/item_detail_title_margin_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img"
+        tools:text="Title of item" />
+
+    <TextView
+        android:id="@+id/txt_supertype_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        android:text="@string/label_supertype"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_name"
+        tools:text="Supertype label" />
+
+    <TextView
+        android:id="@+id/txt_supertype"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_supertype_label"
+        tools:text="Supertype" />
+
+    <TextView
+        android:id="@+id/txt_subtype_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        android:text="@string/label_subtype"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_supertype"
+        tools:text="Subtype label" />
+
+    <TextView
+        android:id="@+id/txt_subtype"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_subtype_label"
+        tools:text="Subtype" />
+
+    <TextView
+        android:id="@+id/txt_artist_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        android:text="@string/label_artist"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_subtype"
+        tools:text="Artist label" />
+
+    <TextView
+        android:id="@+id/txt_artist"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_artist_label"
+        tools:text="Artist" />
+
+    <TextView
+        android:id="@+id/txt_rarity_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        android:text="@string/label_rarity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_artist"
+        tools:text="rarity label" />
+
+    <TextView
+        android:id="@+id/txt_rarity"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_rarity_label"
+        tools:text="rarity" />
+
+    <TextView
+        android:id="@+id/txt_series_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        android:text="@string/label_series"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_rarity"
+        tools:text="series label" />
+
+    <TextView
+        android:id="@+id/txt_series"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_series_label"
+        tools:text="series" />
+
+    <TextView
+        android:id="@+id/txt_set_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        android:text="@string/label_set"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_series"
+        tools:text="set label" />
+
+    <TextView
+        android:id="@+id/txt_set"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_set_label"
+        tools:text="set" />
+
+    <TextView
+        android:id="@+id/txt_set_code_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        android:text="@string/label_set_code"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_set"
+        tools:text="set code label" />
+
+    <TextView
+        android:id="@+id/txt_set_code"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_set_code_label"
+        tools:text="set code" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
