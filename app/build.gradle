@@ -16,7 +16,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "com.example.jsonfeed.runner.InstrumentedRunner"
+        testInstrumentationRunner "com.example.jsonfeed.instrumentedsetup.runner.InstrumentedRunner"
         buildConfigField "String", "FEED_BASE_URL", commonValues.FEED_BASE_URL
     }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Pokemon</string>
+    <string name="app_name">Breaking Bad</string>
     <string name="activity_home_label">Home</string>
-    <string name="activity_item_detail_label">Card Details</string>
+    <string name="activity_item_detail_label">Item Details</string>
 
-    <!-- ViewHolder Card Item -->
+    <!-- Item ViewHolder -->
     <string name="cd_card_image">Image of a Pokemon Card</string>
 
     <!-- Item Detail -->

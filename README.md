@@ -9,11 +9,11 @@ showing details of the selected item.
 
 ### Description:
 
-The initial screen is the Home Screen which shows a list of Breaking Bad characters
-with an image and brief information for each card. If internet is not connected the 
-items will be retrieved from the local storage (Room). Home screen also supports swipe 
-to refresh. The next screen is the Item Detail Screen which shows a larger image of the 
-selected card and more detailed information about it. 
+The initial screen is the Home Screen which shows a list of Breaking Bad characters with an image 
+and brief information for each character. If internet is not connected the items will be 
+retrieved from the local storage (Room). Home screen also supports swipe to refresh. 
+The next screen is the Item Detail Screen which shows a larger image of the selected character 
+and more detailed information about it. 
 
 ### Tests:
 
@@ -21,3 +21,4 @@ The project contains Unit Tests and Instrumented Tests. Some utility classes hav
 for setting up the tests with Coroutines and LiveData. Also some mock network responses 
 from real JSON data have been used. The Tests share some common resources which exist under 
 the sharedTest folder.
+

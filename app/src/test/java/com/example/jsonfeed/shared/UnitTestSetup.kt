@@ -1,7 +1,7 @@
 package com.example.jsonfeed.shared
 
 import com.example.jsonfeed.base.BaseTestSetup
-import com.example.jsonfeed.util.UnitTestMockParser
+import com.example.jsonfeed.unittestutil.UnitTestMockParser
 import org.mockito.MockitoAnnotations
 
 abstract class UnitTestSetup : BaseTestSetup() {
