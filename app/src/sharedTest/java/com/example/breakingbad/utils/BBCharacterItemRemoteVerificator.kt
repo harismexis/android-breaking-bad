@@ -1,20 +1,20 @@
 package com.example.breakingbad.utils
 
 import com.example.breakingbad.domain.BBCharacter
-import com.example.breakingbad.framework.datasource.network.model.BBCharacterRemoteItem
+import com.example.breakingbad.framework.datasource.network.model.BBCharacterRemote
 import org.junit.Assert
 
 class BBCharacterItemRemoteVerificator {
 
     fun verifyBBCharactersAgainstRemoteItems(
         actual: List<BBCharacter>,
-        expected: List<BBCharacterRemoteItem?>
+        expected: List<BBCharacterRemote?>
     ) {
         expected.forEachIndexed lit@{ _, remoteItem ->
             if (remoteItem == null) return@lit
             actual.forEachIndexed { _, item ->
-                remoteItem.id?.let {
-                    if (it == item.id) {
+                remoteItem.char_id?.let {
+                    if (it == item.char_id) {
                         verifyBBCharacterAgainstRemoteItem(item, remoteItem)
                         return@lit
                     }
@@ -25,17 +25,16 @@ class BBCharacterItemRemoteVerificator {
 
     private fun verifyBBCharacterAgainstRemoteItem(
         actual: BBCharacter,
-        expected: BBCharacterRemoteItem
+        expected: BBCharacterRemote
     ) {
-        Assert.assertEquals(expected.id, actual.id)
+        Assert.assertEquals(expected.char_id, actual.char_id)
         Assert.assertEquals(expected.name, actual.name)
-        Assert.assertEquals(expected.temperament, actual.temperament)
-        Assert.assertEquals(expected.origin, actual.origin)
-        Assert.assertEquals(expected.description, actual.description)
-        Assert.assertEquals(expected.lifeSpan, actual.lifeSpan)
-        Assert.assertEquals(expected.energyLevel, actual.energyLevel)
-        Assert.assertEquals(expected.wikipediaUrl, actual.wikipediaUrl)
-        Assert.assertEquals(expected.image?.url, actual.imageUrl)
+        Assert.assertEquals(expected.birthday, actual.birthday)
+        Assert.assertEquals(expected.img, actual.img)
+        Assert.assertEquals(expected.status, actual.status)
+        Assert.assertEquals(expected.nickname, actual.nickname)
+        Assert.assertEquals(expected.portrayed, actual.portrayed)
+        Assert.assertEquals(expected.category, actual.category)
     }
 
 }

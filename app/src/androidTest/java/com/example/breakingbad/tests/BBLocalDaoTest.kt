@@ -6,7 +6,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.breakingbad.framework.datasource.database.BBDatabase
 import com.example.breakingbad.framework.datasource.database.BBLocalDao
-import com.example.breakingbad.framework.datasource.database.BBCharacterLocalItem
+import com.example.breakingbad.framework.datasource.database.BBCharacterLocal
 import com.example.breakingbad.setup.base.InstrumentedTestSetup
 import com.example.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_ALL_IDS_VALID
 import com.example.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_NO_DATA
@@ -80,8 +80,8 @@ class BBLocalDaoTest: InstrumentedTestSetup() {
     }
 
     private fun verifyActualAgainstExpected(
-        actual: List<BBCharacterLocalItem?>,
-        expected: List<BBCharacterLocalItem>,
+        actual: List<BBCharacterLocal?>,
+        expected: List<BBCharacterLocal>,
         expectedNumberOfItems: Int
     ) {
         Assert.assertNotNull(actual)

@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [BBCharacterLocalItem::class], version = 1, exportSchema = false)
+@Database(entities = [BBCharacterLocal::class], version = 1, exportSchema = false)
 abstract class BBDatabase : RoomDatabase() {
 
     companion object {

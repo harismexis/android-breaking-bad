@@ -18,9 +18,9 @@ class BBCharacterViewHolder(
         item: BBCharacter,
         position: Int
     ) {
-        itemView.context.populateWithGlide(binding.imgView, item.imageUrl)
+        itemView.context.populateWithGlide(binding.imgView, item.img)
         binding.txtName.text = item.name
-        binding.txtMeta.text = item.origin
+        binding.txtMeta.text = item.nickname
         itemView.setOnClickListener {
             itemClick.onBBCharacterClick(item, position)
         }

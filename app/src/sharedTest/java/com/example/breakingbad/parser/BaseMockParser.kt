@@ -1,8 +1,8 @@
 package com.example.breakingbad.parser
 
 import com.example.breakingbad.domain.BBCharacter
-import com.example.breakingbad.framework.datasource.database.BBCharacterLocalItem
-import com.example.breakingbad.framework.datasource.network.model.BBCharacterRemoteItem
+import com.example.breakingbad.framework.datasource.database.BBCharacterLocal
+import com.example.breakingbad.framework.datasource.network.model.BBCharacterRemote
 import com.example.breakingbad.framework.extensions.toLocalItems
 import com.example.breakingbad.framework.extensions.toItems
 import com.google.gson.GsonBuilder
@@ -35,13 +35,13 @@ abstract class BaseMockParser {
     // local models
     fun getMockBBCharValid(): BBCharacter = getMockBBCharsFeedAllIdsValid().toItems()[0]
 
-    fun getMockBBCharsLocalFromFeedWithAllItemsValid(): List<BBCharacterLocalItem> =
+    fun getMockBBCharsLocalFromFeedWithAllItemsValid(): List<BBCharacterLocal> =
         getMockBBCharsFeedAllIdsValid().toItems().toLocalItems()
 
-    fun getMockBBCharsLocalFromFeedWithSomeIdsAbsent(): List<BBCharacterLocalItem> =
+    fun getMockBBCharsLocalFromFeedWithSomeIdsAbsent(): List<BBCharacterLocal> =
         getMockBBCharsFeedSomeIdsAbsent().toItems().toLocalItems()
 
-    fun getMockBBCharsLocalFromFeedWithAllIdsAbsent(): List<BBCharacterLocalItem> =
+    fun getMockBBCharsLocalFromFeedWithAllIdsAbsent(): List<BBCharacterLocal> =
         getMockBBCharsFeedAllIdsAbsent().toItems().toLocalItems()
 
     // base models
@@ -61,19 +61,19 @@ abstract class BaseMockParser {
         getMockBBCharsFeedEmptyJsonArray().toItems()
 
     // remote models
-    fun getMockBBCharsFeedAllIdsValid(): List<BBCharacterRemoteItem> =
+    fun getMockBBCharsFeedAllIdsValid(): List<BBCharacterRemote> =
         getMockBBCharactersFeed(getMockBBCharsDataAllIdsValid())
 
-    fun getMockBBCharsFeedSomeIdsAbsent(): List<BBCharacterRemoteItem> =
+    fun getMockBBCharsFeedSomeIdsAbsent(): List<BBCharacterRemote> =
         getMockBBCharactersFeed(getMockBBCharsDataSomeIdsAbsent())
 
-    fun getMockBBCharsFeedSomeItemsEmpty(): List<BBCharacterRemoteItem> =
+    fun getMockBBCharsFeedSomeItemsEmpty(): List<BBCharacterRemote> =
         getMockBBCharactersFeed(getMockBBCharsDataSomeItemsEmpty())
 
-    fun getMockBBCharsFeedAllIdsAbsent(): List<BBCharacterRemoteItem> =
+    fun getMockBBCharsFeedAllIdsAbsent(): List<BBCharacterRemote> =
         getMockBBCharactersFeed(getMockBBCharsDataAllIdsAbsent())
 
-    fun getMockBBCharsFeedEmptyJsonArray(): List<BBCharacterRemoteItem> =
+    fun getMockBBCharsFeedEmptyJsonArray(): List<BBCharacterRemote> =
         getMockBBCharactersFeed(getMockBBCharsDataEmptyJsonArray())
 
     // raw json string
@@ -95,13 +95,13 @@ abstract class BaseMockParser {
     // utils
     private fun getMockBBCharactersFeed(
         text: String
-    ): List<BBCharacterRemoteItem> {
+    ): List<BBCharacterRemote> {
         return convertToBBCharacters(text)
     }
 
-    private fun convertToBBCharacters(jsonFeed: String?): List<BBCharacterRemoteItem> {
+    private fun convertToBBCharacters(jsonFeed: String?): List<BBCharacterRemote> {
         val gson = GsonBuilder().setLenient().create()
-        val type: Type = object : TypeToken<ArrayList<BBCharacterRemoteItem>>() {}.type
+        val type: Type = object : TypeToken<ArrayList<BBCharacterRemote>>() {}.type
         return gson.fromJson(jsonFeed, type)
     }
 

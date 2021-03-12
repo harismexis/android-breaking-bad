@@ -5,5 +5,5 @@ import com.example.breakingbad.data.BBCharacterLocalRepository
 class InterGetLocalBBCharacter(
     private val repository: BBCharacterLocalRepository
 ) {
-    suspend operator fun invoke(itemId: String) = repository.getItem(itemId)
+    suspend operator fun invoke(itemId: Int) = repository.getItem(itemId)
 }

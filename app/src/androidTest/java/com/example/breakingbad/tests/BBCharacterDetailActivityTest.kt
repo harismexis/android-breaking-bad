@@ -48,30 +48,30 @@ class BBCharacterDetailActivityTest : InstrumentedTestSetup() {
         // then
         onView(withId(R.id.img)).check(matches(isDisplayed()))
 
-        onView(withId(R.id.txt_breed_name_label)).check(matches(withText(getString(R.string.label_name))))
+        onView(withId(R.id.txt_name_label)).check(matches(withText(getString(R.string.label_name))))
         onView(withId(R.id.txt_breed_name)).check(matches(withText(mockItem.name)))
 
-        onView(withId(R.id.txt_origin_label)).check(matches(withText(getString(R.string.label_origin))))
-        onView(withId(R.id.txt_origin)).check(matches(withText(mockItem.origin)))
+        onView(withId(R.id.txt_birthday_label)).check(matches(withText(getString(R.string.label_birthday))))
+        onView(withId(R.id.txt_birthday)).check(matches(withText(mockItem.origin)))
 
-        onView(withId(R.id.txt_description_label)).check(matches(withText(getString(R.string.label_description))))
-        onView(withId(R.id.txt_description)).check(matches(withText(mockItem.description)))
+        onView(withId(R.id.txt_status_label)).check(matches(withText(getString(R.string.label_status))))
+        onView(withId(R.id.txt_status)).check(matches(withText(mockItem.description)))
 
-        onView(withId(R.id.txt_temperament_label)).check(matches(withText(getString(R.string.label_temperament))))
-        onView(withId(R.id.txt_temperament)).check(matches(withText(mockItem.temperament)))
+        onView(withId(R.id.txt_nickname_label)).check(matches(withText(getString(R.string.label_nickname))))
+        onView(withId(R.id.txt_nickname)).check(matches(withText(mockItem.temperament)))
 
-        onView(withId(R.id.txt_life_span_label)).check(matches(withText(getString(R.string.label_life_span))))
-        onView(withId(R.id.txt_life_span)).check(matches(withText(mockItem.lifeSpan)))
+        onView(withId(R.id.txt_portrayed_label)).check(matches(withText(getString(R.string.label_portrayed))))
+        onView(withId(R.id.txt_portrayed)).check(matches(withText(mockItem.lifeSpan)))
 
-        onView(withId(R.id.txt_energy_level_label)).check(matches(withText(getString(R.string.label_energy_level))))
-        onView(withId(R.id.txt_energy_level)).check(matches(withText(mockItem.energyLevel.toString())))
+        onView(withId(R.id.txt_category_label)).check(matches(withText(getString(R.string.label_category))))
+        onView(withId(R.id.txt_category)).check(matches(withText(mockItem.energyLevel.toString())))
 
         onView(withId(R.id.txt_wikipedia_url)).check(
             matches(
                 withText(
                     mockItem.wikipediaSpanned(
-                        getString(R.string.missing_wiki_link),
-                        getString(R.string.wikipedia)
+                        getString(R.string.missing_img_url),
+                        getString(R.string.character_image)
                     )
                         .toString()
                 )

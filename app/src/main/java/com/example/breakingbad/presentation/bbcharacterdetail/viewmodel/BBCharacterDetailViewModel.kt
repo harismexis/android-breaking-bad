@@ -21,7 +21,7 @@ class BBCharacterDetailViewModel @Inject constructor(
     val model: LiveData<BBCharacter>
         get() = mModel
 
-    fun retrieveItemById(itemId: String) {
+    fun retrieveItemById(itemId: Int) {
         viewModelScope.launch {
             try {
                 val item = interactors.interGetLocalItem(itemId)

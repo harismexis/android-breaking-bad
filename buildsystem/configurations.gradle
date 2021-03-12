@@ -1,8 +1,7 @@
 ext {
 
     common = [
-            BREAKING_BAD_API_KEY : '\"' + "cc26ab09-3eda-491d-9e5c-103c3e95a604" + '\"',
-            BREAKING_BAD_API_BASE_URL : '\"' + "https://api.thecatapi.com/v1/" + '\"'
+            BREAKING_BAD_API_BASE_URL : '\"' + "https://www.breakingbadapi.com/api/" + '\"'
     ]
 
 }

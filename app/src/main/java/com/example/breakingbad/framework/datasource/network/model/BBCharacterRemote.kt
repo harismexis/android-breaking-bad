@@ -1,9 +1,7 @@
-package com.example.breakingbad.domain
+package com.example.breakingbad.framework.datasource.network.model
 
-import java.io.Serializable
-
-data class BBCharacter(
-    val char_id: Int,
+data class BBCharacterRemote(
+    val char_id: Int?,
     val name: String?,
     val birthday: String?, //"09-07-1958"
     val img: String?,
@@ -11,4 +9,4 @@ data class BBCharacter(
     val nickname: String?,
     val portrayed: String?,
     val category: String?,
-) : Serializable
+)

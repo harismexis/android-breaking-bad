@@ -1,9 +1,9 @@
 package com.example.breakingbad.framework.extensions
 
-import com.example.breakingbad.framework.datasource.database.BBCharacterLocalItem
+import com.example.breakingbad.framework.datasource.database.BBCharacterLocal
 import com.example.breakingbad.domain.BBCharacter
 
-fun List<BBCharacterLocalItem?>?.toItems(): List<BBCharacter> {
+fun List<BBCharacterLocal?>?.toItems(): List<BBCharacter> {
     val items = mutableListOf<BBCharacter>()
     if (this == null) return items.toList()
     val filteredList = this.filterNotNull()
@@ -13,22 +13,21 @@ fun List<BBCharacterLocalItem?>?.toItems(): List<BBCharacter> {
     return items.toList()
 }
 
-fun BBCharacterLocalItem.toItem(): BBCharacter {
+fun BBCharacterLocal.toItem(): BBCharacter {
     return BBCharacter(
-        this.id,
+        this.char_id,
         this.name,
-        this.temperament,
-        this.origin,
-        this.description,
-        this.lifeSpan,
-        this.energyLevel,
-        this.wikipediaUrl,
-        this.imageUrl
+        this.birthday,
+        this.img,
+        this.status,
+        this.nickname,
+        this.portrayed,
+        this.category
     )
 }
 
-fun List<BBCharacter?>?.toLocalItems(): List<BBCharacterLocalItem> {
-    val localItems = mutableListOf<BBCharacterLocalItem>()
+fun List<BBCharacter?>?.toLocalItems(): List<BBCharacterLocal> {
+    val localItems = mutableListOf<BBCharacterLocal>()
     if (this == null) return localItems.toList()
     val filteredList = this.filterNotNull()
     localItems.addAll(filteredList.map {
@@ -37,16 +36,15 @@ fun List<BBCharacter?>?.toLocalItems(): List<BBCharacterLocalItem> {
     return localItems.toList()
 }
 
-fun BBCharacter.toLocalItem(): BBCharacterLocalItem {
-    return BBCharacterLocalItem(
-        this.id,
+fun BBCharacter.toLocalItem(): BBCharacterLocal {
+    return BBCharacterLocal(
+        this.char_id!!,
         this.name,
-        this.temperament,
-        this.origin,
-        this.description,
-        this.lifeSpan,
-        this.energyLevel,
-        this.wikipediaUrl,
-        this.imageUrl
+        this.birthday,
+        this.img,
+        this.status,
+        this.nickname,
+        this.portrayed,
+        this.category
     )
 }

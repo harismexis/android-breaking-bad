@@ -43,7 +43,7 @@ class HomeActivity : BaseActivity(), BBCharacterViewHolder.BBCharacterClickListe
     }
 
     override fun onBBCharacterClick(item: BBCharacter, position: Int) {
-        startCatDetailActivity(item.id)
+        startCatDetailActivity(item.char_id)
     }
 
     override fun getToolbar(): Toolbar {

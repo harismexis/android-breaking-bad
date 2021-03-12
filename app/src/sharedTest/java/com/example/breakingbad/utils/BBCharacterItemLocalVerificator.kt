@@ -1,13 +1,13 @@
 package com.example.breakingbad.utils
 
-import com.example.breakingbad.framework.datasource.database.BBCharacterLocalItem
+import com.example.breakingbad.framework.datasource.database.BBCharacterLocal
 import com.example.breakingbad.domain.BBCharacter
 import org.junit.Assert
 
 class BBCharacterItemLocalVerificator {
 
     fun verifyLocalItemsAgainstBBCharacters(
-        actual: List<BBCharacterLocalItem>,
+        actual: List<BBCharacterLocal>,
         expected: List<BBCharacter>
     ) {
         verifyListsHaveSameSize(actual, expected)
@@ -19,7 +19,7 @@ class BBCharacterItemLocalVerificator {
 
     fun verifyBBCharactersAgainstLocalItems(
         actual: List<BBCharacter>,
-        expected: List<BBCharacterLocalItem>
+        expected: List<BBCharacterLocal>
     ) {
         verifyListsHaveSameSize(actual, expected)
         expected.forEachIndexed { index, localItem ->
@@ -30,32 +30,30 @@ class BBCharacterItemLocalVerificator {
 
     private fun verifyBBCharacterAgainstLocalItem(
         actual: BBCharacter,
-        expected: BBCharacterLocalItem
+        expected: BBCharacterLocal
     ) {
-        Assert.assertEquals(expected.id, actual.id)
+        Assert.assertEquals(expected.char_id, actual.char_id)
         Assert.assertEquals(expected.name, actual.name)
-        Assert.assertEquals(expected.temperament, actual.temperament)
-        Assert.assertEquals(expected.origin, actual.origin)
-        Assert.assertEquals(expected.description, actual.description)
-        Assert.assertEquals(expected.lifeSpan, actual.lifeSpan)
-        Assert.assertEquals(expected.energyLevel, actual.energyLevel)
-        Assert.assertEquals(expected.wikipediaUrl, actual.wikipediaUrl)
-        Assert.assertEquals(expected.imageUrl, actual.imageUrl)
+        Assert.assertEquals(expected.birthday, actual.birthday)
+        Assert.assertEquals(expected.img, actual.img)
+        Assert.assertEquals(expected.status, actual.status)
+        Assert.assertEquals(expected.nickname, actual.nickname)
+        Assert.assertEquals(expected.portrayed, actual.portrayed)
+        Assert.assertEquals(expected.category, actual.category)
     }
 
     private fun verifyLocalItemAgainstBBCharacter(
-        actual: BBCharacterLocalItem,
+        actual: BBCharacterLocal,
         expected: BBCharacter
     ) {
-        Assert.assertEquals(expected.id, actual.id)
+        Assert.assertEquals(expected.char_id, actual.char_id)
         Assert.assertEquals(expected.name, actual.name)
-        Assert.assertEquals(expected.temperament, actual.temperament)
-        Assert.assertEquals(expected.origin, actual.origin)
-        Assert.assertEquals(expected.description, actual.description)
-        Assert.assertEquals(expected.lifeSpan, actual.lifeSpan)
-        Assert.assertEquals(expected.energyLevel, actual.energyLevel)
-        Assert.assertEquals(expected.wikipediaUrl, actual.wikipediaUrl)
-        Assert.assertEquals(expected.imageUrl, actual.imageUrl)
+        Assert.assertEquals(expected.birthday, actual.birthday)
+        Assert.assertEquals(expected.img, actual.img)
+        Assert.assertEquals(expected.status, actual.status)
+        Assert.assertEquals(expected.nickname, actual.nickname)
+        Assert.assertEquals(expected.portrayed, actual.portrayed)
+        Assert.assertEquals(expected.category, actual.category)
     }
 
 }

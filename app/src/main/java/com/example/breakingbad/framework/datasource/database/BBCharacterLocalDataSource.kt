@@ -15,7 +15,7 @@ class BBCharacterLocalDataSource @Inject constructor(
         dao.insertItems(items.toLocalItems())
     }
 
-    override suspend fun getItem(itemId: String): BBCharacter? {
+    override suspend fun getItem(itemId: Int): BBCharacter? {
         val localItem = dao.getItemById(itemId)
         localItem?.let {
             return it.toItem()

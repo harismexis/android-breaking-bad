@@ -17,7 +17,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "com.example.breakingbad.setup.runner.InstrumentedRunner"
-        buildConfigField "String", "BREAKING_BAD_API_KEY", commonValues.BREAKING_BAD_API_KEY
         buildConfigField "String", "BREAKING_BAD_API_BASE_URL", commonValues.BREAKING_BAD_API_BASE_URL
     }
 

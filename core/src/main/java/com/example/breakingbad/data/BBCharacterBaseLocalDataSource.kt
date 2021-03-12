@@ -6,7 +6,7 @@ interface BBCharacterBaseLocalDataSource {
 
     suspend fun insert(items: List<BBCharacter>)
 
-    suspend fun getItem(itemId: String): BBCharacter?
+    suspend fun getItem(itemId: Int): BBCharacter?
 
     suspend fun getAll(): List<BBCharacter>
 }

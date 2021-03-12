@@ -7,7 +7,7 @@ class BBCharacterLocalRepository(
 ) {
     suspend fun insertItems(items: List<BBCharacter>) = dataSource.insert(items)
 
-    suspend fun getItem(itemId: String): BBCharacter? = dataSource.getItem(itemId)
+    suspend fun getItem(itemId: Int): BBCharacter? = dataSource.getItem(itemId)
 
     suspend fun getItems(): List<BBCharacter> = dataSource.getAll()
 }

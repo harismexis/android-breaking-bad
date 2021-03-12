@@ -9,11 +9,11 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.breakingbad.R
 import com.example.breakingbad.databinding.ActivityBbCharacterDetailBinding
 import com.example.breakingbad.databinding.BbCharacterDetailViewBinding
-import com.example.breakingbad.framework.base.BaseActivity
 import com.example.breakingbad.domain.BBCharacter
+import com.example.breakingbad.framework.base.BaseActivity
+import com.example.breakingbad.framework.extensions.linkSpanned
 import com.example.breakingbad.framework.extensions.populateWithGlide
 import com.example.breakingbad.framework.extensions.setTextOrUnknown
-import com.example.breakingbad.framework.extensions.wikipediaSpanned
 import com.example.breakingbad.presentation.bbcharacterdetail.viewmodel.BBCharacterDetailViewModel
 
 class BBCharacterDetailActivity : BaseActivity() {
@@ -25,16 +25,16 @@ class BBCharacterDetailActivity : BaseActivity() {
     companion object {
         private const val EXTRA_ITEM_ID = "item_id"
 
-        fun Context.startCatDetailActivity(value: String) {
-            this.startActivity(createIntent(this, value))
+        fun Context.startCatDetailActivity(itemId: Int) {
+            this.startActivity(createIntent(this, itemId))
         }
 
         private fun createIntent(
             context: Context,
-            value: String
+            itemId: Int
         ): Intent {
             return Intent(context, BBCharacterDetailActivity::class.java)
-                .apply { putExtra(EXTRA_ITEM_ID, value) }
+                .apply { putExtra(EXTRA_ITEM_ID, itemId) }
         }
     }
 
@@ -73,24 +73,27 @@ class BBCharacterDetailActivity : BaseActivity() {
     }
 
     private fun fetchLocalItem() {
-        val selectedItemId = intent.getStringExtra(EXTRA_ITEM_ID)
-        selectedItemId?.let {
-            viewModel.retrieveItemById(it)
+        if (intent.hasExtra(EXTRA_ITEM_ID)) {
+            val selectedItemId = intent.extras?.getInt(EXTRA_ITEM_ID)
+            selectedItemId?.let {
+                viewModel.retrieveItemById(it)
+            }
         }
     }
 
     private fun populate(item: BBCharacter) {
-        this.populateWithGlide(detailBinding.img, item.imageUrl)
-        detailBinding.txtBreedName.setTextOrUnknown(item.name)
-        detailBinding.txtOrigin.setTextOrUnknown(item.origin)
-        detailBinding.txtDescription.setTextOrUnknown(item.description)
-        detailBinding.txtTemperament.setTextOrUnknown(item.temperament)
-        detailBinding.txtLifeSpan.setTextOrUnknown(item.lifeSpan)
-        detailBinding.txtEnergyLevel.setTextOrUnknown(item.energyLevel.toString())
-        detailBinding.txtWikipediaUrl.movementMethod = LinkMovementMethod.getInstance()
-        detailBinding.txtWikipediaUrl.text = item.wikipediaSpanned(
-            getString(R.string.missing_wiki_link),
-            getString(R.string.wikipedia)
+        this.populateWithGlide(detailBinding.img, item.img)
+        detailBinding.txtName.setTextOrUnknown(item.name)
+        detailBinding.txtBirthday.setTextOrUnknown(item.birthday)
+        detailBinding.txtStatus.setTextOrUnknown(item.status)
+        detailBinding.txtNickname.setTextOrUnknown(item.nickname)
+        detailBinding.txtPortrayed.setTextOrUnknown(item.portrayed)
+        detailBinding.txtCategory.setTextOrUnknown(item.category.toString())
+        detailBinding.txtImgUrl.movementMethod = LinkMovementMethod.getInstance()
+        detailBinding.txtImgUrl.text = linkSpanned(
+            getString(R.string.missing_img_url),
+            getString(R.string.character_image),
+            item.img
         )
     }
 

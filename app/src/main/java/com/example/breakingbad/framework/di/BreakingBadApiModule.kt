@@ -1,7 +1,6 @@
 package com.example.breakingbad.framework.di
 
 import com.example.breakingbad.framework.datasource.network.api.BreakingBadApi
-import com.example.breakingbad.framework.datasource.network.interceptor.AuthHeaderInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -32,9 +31,7 @@ class BreakingBadApiModule {
 
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor(AuthHeaderInterceptor(com.example.breakingbad.BuildConfig.BREAKING_BAD_API_KEY))
-            .build()
+        return OkHttpClient.Builder().build()
     }
 
     @Provides
