@@ -11,13 +11,14 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.jsonfeed"
+        applicationId "com.example.breakingbad"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "com.example.jsonfeed.instrumentedsetup.runner.InstrumentedRunner"
-        buildConfigField "String", "FEED_BASE_URL", commonValues.FEED_BASE_URL
+        testInstrumentationRunner "com.example.breakingbad.setup.runner.InstrumentedRunner"
+        buildConfigField "String", "BREAKING_BAD_API_KEY", commonValues.BREAKING_BAD_API_KEY
+        buildConfigField "String", "BREAKING_BAD_API_BASE_URL", commonValues.BREAKING_BAD_API_BASE_URL
     }
 
     buildTypes {

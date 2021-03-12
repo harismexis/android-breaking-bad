@@ -30,9 +30,13 @@
     <color name="yellow_one">#ffc800</color>
     <color name="yellow_two">#ffb200</color>
 
+    <color name="green_four">#81C784</color>
+    <color name="green_five">#66BB6A</color>
+    <color name="green_six">#4CAF50</color>
+
     <!-- End Palette -->
 
-    <color name="default_background_color">@color/black_six</color>
+    <color name="default_background_color">@color/black</color>
     <color name="default_text_color">@color/white</color>
     <color name="txt_color_light">@color/white_one</color>
     <color name="txt_color_warm">@color/grey_four</color>

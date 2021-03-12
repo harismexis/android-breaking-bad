@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_detail_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bbcharacter_detail_img_height"
+        android:contentDescription="@string/cd_item_detail_image"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/txt_breed_name_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/bbcharacter_detail_title_margin_top"
+        android:text="@string/label_name"
+        tools:text="Breed name label" />
+
+    <TextView
+        android:id="@+id/txt_breed_name"
+        style="@style/ItemDetailTitle"
+        android:layout_marginTop="@dimen/bbcharacter_detail_txt_meta_margin_top"
+        tools:text="Breed name" />
+
+    <TextView
+        android:id="@+id/txt_origin_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/bbcharacter_detail_txt_label_margin_top"
+        android:text="@string/label_origin"
+        tools:text="Origin label" />
+
+    <TextView
+        android:id="@+id/txt_origin"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/bbcharacter_detail_txt_meta_margin_top"
+        tools:text="Origin" />
+
+    <TextView
+        android:id="@+id/txt_description_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/bbcharacter_detail_txt_label_margin_top"
+        android:text="@string/label_description"
+        tools:text="Description label" />
+
+    <TextView
+        android:id="@+id/txt_description"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/bbcharacter_detail_txt_meta_margin_top"
+        tools:text="Description" />
+
+    <TextView
+        android:id="@+id/txt_temperament_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/bbcharacter_detail_txt_label_margin_top"
+        android:text="@string/label_temperament"
+        tools:text="Temperament label" />
+
+    <TextView
+        android:id="@+id/txt_temperament"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/bbcharacter_detail_txt_meta_margin_top"
+        tools:text="Temperament" />
+
+    <TextView
+        android:id="@+id/txt_life_span_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/bbcharacter_detail_txt_label_margin_top"
+        android:text="@string/label_life_span"
+        tools:text="Life span label" />
+
+    <TextView
+        android:id="@+id/txt_life_span"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/bbcharacter_detail_txt_meta_margin_top"
+        tools:text="Life span" />
+
+    <TextView
+        android:id="@+id/txt_energy_level_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/bbcharacter_detail_txt_label_margin_top"
+        android:text="@string/label_energy_level"
+        tools:text="Energy level label" />
+
+    <TextView
+        android:id="@+id/txt_energy_level"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/bbcharacter_detail_txt_meta_margin_top"
+        tools:text="Energy level" />
+
+    <TextView
+        android:id="@+id/txt_wikipedia_url"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/bbcharacter_detail_txt_label_margin_top"
+        tools:text="Wikipedia url" />
+
+</LinearLayout>

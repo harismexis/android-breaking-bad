@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- TOOLBAR -->
+    <dimen name="toolbar_text_size">20sp</dimen>
+
+    <!-- VH CAT ITEM -->
+    <dimen name="vh_bbcharacter_img_width">300dp</dimen>
+    <dimen name="vh_bbcharacter_img_height">280dp</dimen>
+    <dimen name="vh_bbcharacter_title_text_size">28sp</dimen>
+    <dimen name="vh_bbcharacter_meta_text_size">24sp</dimen>
+    <dimen name="vh_bbcharacter_txt_margin_horizontal">30dp</dimen>
+
+    <!-- CAT DETAIL -->
+    <dimen name="bbcharacter_detail_img_height">800dp</dimen>
+    <dimen name="bbcharacter_detail_title_text_size">30sp</dimen>
+    <dimen name="bbcharacter_detail_label_text_size">24sp</dimen>
+    <dimen name="bbcharacter_detail_meta_text_size">24sp</dimen>
+
+</resources>
