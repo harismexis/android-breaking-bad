@@ -25,7 +25,7 @@ abstract class BBCharacterDetailViewModelTestSetup : UnitTestSetup() {
     lateinit var mockObserver: Observer<BBCharacter>
 
     lateinit var mockItem: BBCharacter
-    lateinit var mockId: String
+    var mockId: Int = 0
 
     protected lateinit var subject: BBCharacterDetailViewModel
 
@@ -36,7 +36,7 @@ abstract class BBCharacterDetailViewModelTestSetup : UnitTestSetup() {
 
     override fun initialiseClassUnderTest() {
         mockItem = mockParser.getMockBBCharValid()
-        mockId = mockItem.id
+        mockId = mockItem.char_id
         subject = BBCharacterDetailViewModel(mockInteractors)
     }
 
@@ -51,7 +51,7 @@ abstract class BBCharacterDetailViewModelTestSetup : UnitTestSetup() {
     }
 
     private fun mockLocalCall(
-        itemId: String,
+        itemId: Int,
         item: BBCharacter
     ) {
         runBlocking {

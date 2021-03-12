@@ -7,7 +7,7 @@
 
     <!-- ViewHolder Character Item -->
     <string name="content_description_character_image">Character Image</string>
-    
+
     <!-- Character Detail -->
     <string name="label_name">Name</string>
     <string name="label_nickname">Nickname</string>

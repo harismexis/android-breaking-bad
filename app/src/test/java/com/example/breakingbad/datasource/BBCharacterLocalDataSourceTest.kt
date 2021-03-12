@@ -50,7 +50,7 @@ class BBCharacterLocalDataSourceTest : UnitTestSetup() {
         runBlocking {
             // given
             val mockLocalItem = mockParser.getMockBBCharValid().toLocalItem()
-            val mockItemId = mockLocalItem.id
+            val mockItemId = mockLocalItem.char_id
             Mockito.`when`(mockDao.getItemById(mockItemId)).thenReturn(mockLocalItem)
 
             // when

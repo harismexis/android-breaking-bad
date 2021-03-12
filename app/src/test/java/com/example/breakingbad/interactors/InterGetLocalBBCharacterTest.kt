@@ -20,7 +20,7 @@ class InterGetLocalBBCharacterTest : UnitTestSetup() {
     private lateinit var mockRepository: BBCharacterLocalRepository
 
     private lateinit var mockItem: BBCharacter
-    private lateinit var mockItemId: String
+    private var mockItemId: Int = 0
     private lateinit var subject: InterGetLocalBBCharacter
 
     init {
@@ -34,7 +34,7 @@ class InterGetLocalBBCharacterTest : UnitTestSetup() {
 
     private fun setupMocks() {
         mockItem = mockParser.getMockBBCharValid()
-        mockItemId = mockItem.id
+        mockItemId = mockItem.char_id
         runBlocking {
             Mockito.`when`(mockRepository.getItem(mockItemId)).thenReturn(mockItem)
         }
@@ -48,7 +48,7 @@ class InterGetLocalBBCharacterTest : UnitTestSetup() {
 
             // then
             verify(mockRepository, times(1)).getItem(mockItemId)
-            Assert.assertEquals(mockItem.id, item!!.id)
+            Assert.assertEquals(mockItem.char_id, item!!.char_id)
         }
 
 }

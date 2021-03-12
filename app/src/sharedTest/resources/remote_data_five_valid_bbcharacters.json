@@ -1,239 +1,120 @@
-[
+[{
+  "char_id": 1,
+  "name": "Walter White",
+  "birthday": "09-07-1958",
+  "occupation": [
+    "High School Chemistry Teacher",
+    "Meth King Pin"
+  ],
+  "img": "https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg",
+  "status": "Presumed dead",
+  "nickname": "Heisenberg",
+  "appearance": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "portrayed": "Bryan Cranston",
+  "category": "Breaking Bad",
+  "better_call_saul_appearance": [
+
+  ]
+},
   {
-    "weight": {
-      "imperial": "7  -  10",
-      "metric": "3 - 5"
-    },
-    "id": "abys",
-    "name": "Abyssinian",
-    "cfa_url": "http://cfa.org/Breeds/BreedsAB/Abyssinian.aspx",
-    "vetstreet_url": "http://www.vetstreet.com/cats/abyssinian",
-    "vcahospitals_url": "https://vcahospitals.com/know-your-pet/cat-breeds/abyssinian",
-    "temperament": "Active, Energetic, Independent, Intelligent, Gentle",
-    "origin": "Egypt",
-    "country_codes": "EG",
-    "country_code": "EG",
-    "description": "The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals.",
-    "life_span": "14 - 15",
-    "indoor": 0,
-    "lap": 1,
-    "alt_names": "",
-    "adaptability": 5,
-    "affection_level": 5,
-    "child_friendly": 3,
-    "dog_friendly": 4,
-    "energy_level": 5,
-    "grooming": 1,
-    "health_issues": 2,
-    "intelligence": 5,
-    "shedding_level": 2,
-    "social_needs": 5,
-    "stranger_friendly": 5,
-    "vocalisation": 1,
-    "experimental": 0,
-    "hairless": 0,
-    "natural": 1,
-    "rare": 0,
-    "rex": 0,
-    "suppressed_tail": 0,
-    "short_legs": 0,
-    "wikipedia_url": "https://en.wikipedia.org/wiki/Abyssinian_(cat)",
-    "hypoallergenic": 0,
-    "reference_image_id": "0XYvRd7oD",
-    "image": {
-      "id": "0XYvRd7oD",
-      "width": 1204,
-      "height": 1445,
-      "url": "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg"
-    }
+    "char_id": 2,
+    "name": "Jesse Pinkman",
+    "birthday": "09-24-1984",
+    "occupation": [
+      "Meth Dealer"
+    ],
+    "img": "https://vignette.wikia.nocookie.net/breakingbad/images/9/95/JesseS5.jpg/revision/latest?cb=20120620012441",
+    "status": "Alive",
+    "nickname": "Cap n' Cook",
+    "appearance": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "portrayed": "Aaron Paul",
+    "category": "Breaking Bad",
+    "better_call_saul_appearance": [
+
+    ]
   },
   {
-    "weight": {
-      "imperial": "7 - 10",
-      "metric": "3 - 5"
-    },
-    "id": "aege",
-    "name": "Aegean",
-    "vetstreet_url": "http://www.vetstreet.com/cats/aegean-cat",
-    "temperament": "Affectionate, Social, Intelligent, Playful, Active",
-    "origin": "Greece",
-    "country_codes": "GR",
-    "country_code": "GR",
-    "description": "Native to the Greek islands known as the Cyclades in the Aegean Sea, these are natural cats, meaning they developed without humans getting involved in their breeding. As a breed, Aegean Cats are rare, although they are numerous on their home islands. They are generally friendly toward people and can be excellent cats for families with children.",
-    "life_span": "9 - 12",
-    "indoor": 0,
-    "alt_names": "",
-    "adaptability": 5,
-    "affection_level": 4,
-    "child_friendly": 4,
-    "dog_friendly": 4,
-    "energy_level": 3,
-    "grooming": 3,
-    "health_issues": 1,
-    "intelligence": 3,
-    "shedding_level": 3,
-    "social_needs": 4,
-    "stranger_friendly": 4,
-    "vocalisation": 3,
-    "experimental": 0,
-    "hairless": 0,
-    "natural": 0,
-    "rare": 0,
-    "rex": 0,
-    "suppressed_tail": 0,
-    "short_legs": 0,
-    "wikipedia_url": "https://en.wikipedia.org/wiki/Aegean_cat",
-    "hypoallergenic": 0,
-    "reference_image_id": "ozEvzdVM-",
-    "image": {
-      "id": "ozEvzdVM-",
-      "width": 1200,
-      "height": 800,
-      "url": "https://cdn2.thecatapi.com/images/ozEvzdVM-.jpg"
-    }
+    "char_id": 3,
+    "name": "Skyler White",
+    "birthday": "08-11-1970",
+    "occupation": [
+      "House wife",
+      "Book Keeper",
+      "Car Wash Manager",
+      "Taxi Dispatcher"
+    ],
+    "img": "https://s-i.huffpost.com/gen/1317262/images/o-ANNA-GUNN-facebook.jpg",
+    "status": "Alive",
+    "nickname": "Sky",
+    "appearance": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "portrayed": "Anna Gunn",
+    "category": "Breaking Bad",
+    "better_call_saul_appearance": [
+
+    ]
   },
   {
-    "weight": {
-      "imperial": "7 - 16",
-      "metric": "3 - 7"
-    },
-    "id": "abob",
-    "name": "American Bobtail",
-    "cfa_url": "http://cfa.org/Breeds/BreedsAB/AmericanBobtail.aspx",
-    "vetstreet_url": "http://www.vetstreet.com/cats/american-bobtail",
-    "vcahospitals_url": "https://vcahospitals.com/know-your-pet/cat-breeds/american-bobtail",
-    "temperament": "Intelligent, Interactive, Lively, Playful, Sensitive",
-    "origin": "United States",
-    "country_codes": "US",
-    "country_code": "US",
-    "description": "American Bobtails are loving and incredibly intelligent cats possessing a distinctive wild appearance. They are extremely interactive cats that bond with their human family with great devotion.",
-    "life_span": "11 - 15",
-    "indoor": 0,
-    "lap": 1,
-    "alt_names": "",
-    "adaptability": 5,
-    "affection_level": 5,
-    "child_friendly": 4,
-    "dog_friendly": 5,
-    "energy_level": 3,
-    "grooming": 1,
-    "health_issues": 1,
-    "intelligence": 5,
-    "shedding_level": 3,
-    "social_needs": 3,
-    "stranger_friendly": 3,
-    "vocalisation": 3,
-    "experimental": 0,
-    "hairless": 0,
-    "natural": 0,
-    "rare": 0,
-    "rex": 0,
-    "suppressed_tail": 1,
-    "short_legs": 0,
-    "wikipedia_url": "https://en.wikipedia.org/wiki/American_Bobtail",
-    "hypoallergenic": 0,
-    "reference_image_id": "hBXicehMA",
-    "image": {
-      "id": "hBXicehMA",
-      "width": 1600,
-      "height": 951,
-      "url": "https://cdn2.thecatapi.com/images/hBXicehMA.jpg"
-    }
+    "char_id": 4,
+    "name": "Walter White Jr.",
+    "birthday": "07-08-1993",
+    "occupation": [
+      "Teenager"
+    ],
+    "img": "https://media1.popsugar-assets.com/files/thumbor/WeLUSvbAMS_GL4iELYAUzu7Bpv0/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2018/01/12/910/n/1922283/fb758e62b5daf3c9_TCDBRBA_EC011/i/RJ-Mitte-Walter-White-Jr.jpg",
+    "status": "Alive",
+    "nickname": "Flynn",
+    "appearance": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "portrayed": "RJ Mitte",
+    "category": "Breaking Bad",
+    "better_call_saul_appearance": [
+
+    ]
   },
   {
-    "weight": {
-      "imperial": "5 - 10",
-      "metric": "2 - 5"
-    },
-    "id": "acur",
-    "name": "American Curl",
-    "cfa_url": "http://cfa.org/Breeds/BreedsAB/AmericanCurl.aspx",
-    "vetstreet_url": "http://www.vetstreet.com/cats/american-curl",
-    "vcahospitals_url": "https://vcahospitals.com/know-your-pet/cat-breeds/american-curl",
-    "temperament": "Affectionate, Curious, Intelligent, Interactive, Lively, Playful, Social",
-    "origin": "United States",
-    "country_codes": "US",
-    "country_code": "US",
-    "description": "Distinguished by truly unique ears that curl back in a graceful arc, offering an alert, perky, happily surprised expression, they cause people to break out into a big smile when viewing their first Curl. Curls are very people-oriented, faithful, affectionate soulmates, adjusting remarkably fast to other pets, children, and new situations.",
-    "life_span": "12 - 16",
-    "indoor": 0,
-    "lap": 1,
-    "alt_names": "",
-    "adaptability": 5,
-    "affection_level": 5,
-    "child_friendly": 4,
-    "dog_friendly": 5,
-    "energy_level": 3,
-    "grooming": 2,
-    "health_issues": 1,
-    "intelligence": 3,
-    "shedding_level": 3,
-    "social_needs": 3,
-    "stranger_friendly": 3,
-    "vocalisation": 3,
-    "experimental": 0,
-    "hairless": 0,
-    "natural": 0,
-    "rare": 0,
-    "rex": 0,
-    "suppressed_tail": 0,
-    "short_legs": 0,
-    "wikipedia_url": "https://en.wikipedia.org/wiki/American_Curl",
-    "hypoallergenic": 0,
-    "reference_image_id": "xnsqonbjW",
-    "image": {
-      "id": "xnsqonbjW",
-      "width": 1000,
-      "height": 964,
-      "url": "https://cdn2.thecatapi.com/images/xnsqonbjW.jpg"
-    }
-  },
-  {
-    "weight": {
-      "imperial": "8 - 15",
-      "metric": "4 - 7"
-    },
-    "id": "asho",
-    "name": "American Shorthair",
-    "cfa_url": "http://cfa.org/Breeds/BreedsAB/AmericanShorthair.aspx",
-    "vetstreet_url": "http://www.vetstreet.com/cats/american-shorthair",
-    "vcahospitals_url": "https://vcahospitals.com/know-your-pet/cat-breeds/american-shorthair",
-    "temperament": "Active, Curious, Easy Going, Playful, Calm",
-    "origin": "United States",
-    "country_codes": "US",
-    "country_code": "US",
-    "description": "The American Shorthair is known for its longevity, robust health, good looks, sweet personality, and amiability with children, dogs, and other pets.",
-    "life_span": "15 - 17",
-    "indoor": 0,
-    "lap": 1,
-    "alt_names": "Domestic Shorthair",
-    "adaptability": 5,
-    "affection_level": 5,
-    "child_friendly": 4,
-    "dog_friendly": 5,
-    "energy_level": 3,
-    "grooming": 1,
-    "health_issues": 3,
-    "intelligence": 3,
-    "shedding_level": 3,
-    "social_needs": 4,
-    "stranger_friendly": 3,
-    "vocalisation": 3,
-    "experimental": 0,
-    "hairless": 0,
-    "natural": 1,
-    "rare": 0,
-    "rex": 0,
-    "suppressed_tail": 0,
-    "short_legs": 0,
-    "wikipedia_url": "https://en.wikipedia.org/wiki/American_Shorthair",
-    "hypoallergenic": 0,
-    "reference_image_id": "JFPROfGtQ",
-    "image": {
-      "id": "JFPROfGtQ",
-      "width": 1600,
-      "height": 1200,
-      "url": "https://cdn2.thecatapi.com/images/JFPROfGtQ.jpg"
-    }
+    "char_id": 5,
+    "name": "Henry Schrader",
+    "birthday": "Unknown",
+    "occupation": [
+      "DEA Agent"
+    ],
+    "img": "https://vignette.wikia.nocookie.net/breakingbad/images/b/b7/HankS5.jpg/revision/latest/scale-to-width-down/700?cb=20120620014136",
+    "status": "Deceased",
+    "nickname": "Hank",
+    "appearance": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "portrayed": "Dean Norris",
+    "category": "Breaking Bad",
+    "better_call_saul_appearance": [
+
+    ]
   }
 ]

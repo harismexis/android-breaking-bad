@@ -161,7 +161,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
                 .check(matches(withText(uiModel.name)))
             // check meta text
             onView(withRecyclerView(R.id.home_list).atPositionOnView(index, R.id.txt_meta))
-                .check(matches(withText(uiModel.origin)))
+                .check(matches(withText(uiModel.nickname)))
         }
     }
 
