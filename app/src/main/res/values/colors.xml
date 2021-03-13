@@ -34,6 +34,9 @@
     <color name="green_five">#66BB6A</color>
     <color name="green_six">#4CAF50</color>
 
+    <color name="light_green_six">#8BC34A</color>
+    <color name="light_green_seven">#7CB342</color>
+
     <!-- End Palette -->
 
     <color name="default_background_color">@color/black</color>

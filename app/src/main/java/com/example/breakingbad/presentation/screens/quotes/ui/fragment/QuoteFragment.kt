@@ -42,6 +42,7 @@ class QuoteFragment : BaseFragment() {
     override fun getRootView() = binding?.root
 
     override fun initialiseView() {
+        setupToolbar()
         setupSwipeToRefresh()
         initialiseRecycler()
     }
@@ -50,6 +51,14 @@ class QuoteFragment : BaseFragment() {
         viewModel.models.observe(viewLifecycleOwner, {
             populate(it)
         })
+    }
+
+    private fun setupToolbar() {
+        binding?.let {
+            it.quoteToolbar.setNavigationOnClickListener {
+                requireActivity().finish()
+            }
+        }
     }
 
     private fun setupSwipeToRefresh() {

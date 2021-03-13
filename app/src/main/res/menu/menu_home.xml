@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/ic_search_white_24dp"
-        app:showAsAction="always"
-        android:title="Search"/>
+        android:id="@+id/action_open_quotes"
+        android:icon="@drawable/ic_article_white_24dp"
+        android:title="@string/home_menu_open_quotes"
+        app:showAsAction="always" />
 
 </menu>

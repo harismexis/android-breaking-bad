@@ -10,26 +10,34 @@
     <!-- toolbar -->
     <dimen name="toolbar_text_size">18sp</dimen>
 
+    <dimen name="vh_item_title_text_size">17sp</dimen>
+    <dimen name="vh_item_meta_text_size">16sp</dimen>
+    <dimen name="vh_item_txt_margin_horizontal">10dp</dimen>
+    <dimen name="vh_item_txt_meta_margin_top">10dp</dimen>
+
     <!-- vh actor item -->
-    <dimen name="vh_bbcharacter_img_width">140dp</dimen>
-    <dimen name="vh_bbcharacter_img_height">170dp</dimen>
-    <dimen name="vh_bbcharacter_title_text_size">17sp</dimen>
-    <dimen name="vh_bbcharacter_meta_text_size">16sp</dimen>
-    <dimen name="vh_bbcharacter_padding_vertical">8dp</dimen>
-    <dimen name="vh_bbcharacter_padding_horizontal">16dp</dimen>
-    <dimen name="vh_bbcharacter_txt_margin_horizontal">10dp</dimen>
-    <dimen name="vh_bbcharacter_txt_meta_margin_top">10dp</dimen>
+    <dimen name="vh_actor_img_width">140dp</dimen>
+    <dimen name="vh_actor_img_height">170dp</dimen>
+    <dimen name="vh_actor_padding_vertical">8dp</dimen>
+    <dimen name="vh_actor_padding_horizontal">16dp</dimen>
 
     <!-- actor detail -->
-    <dimen name="bbcharacter_detail_img_height">440dp</dimen>
-    <dimen name="bbcharacter_detail_title_text_size">20sp</dimen>
-    <dimen name="bbcharacter_detail_label_text_size">16sp</dimen>
-    <dimen name="bbcharacter_detail_meta_text_size">16sp</dimen>
-    <dimen name="bbcharacter_detail_title_margin_top">30dp</dimen>
-    <dimen name="bbcharacter_detail_txt_label_margin_top">32dp</dimen>
-    <dimen name="bbcharacter_detail_txt_meta_margin_top">10dp</dimen>
-    <dimen name="bbcharacter_detail_txtv_margin_horizontal">18dp</dimen>
-    <dimen name="bbcharacter_detail_root_padding">2dp</dimen>
-    <dimen name="bbcharacter_detail_padding_bottom">20dp</dimen>
+    <dimen name="actor_detail_img_height">440dp</dimen>
+    <dimen name="actor_detail_title_text_size">20sp</dimen>
+    <dimen name="actor_detail_label_text_size">16sp</dimen>
+    <dimen name="actor_detail_meta_text_size">16sp</dimen>
+    <dimen name="actor_detail_title_margin_top">30dp</dimen>
+    <dimen name="actor_detail_txt_label_margin_top">32dp</dimen>
+    <dimen name="actor_detail_txt_meta_margin_top">10dp</dimen>
+    <dimen name="actor_detail_txtv_margin_horizontal">18dp</dimen>
+    <dimen name="actor_detail_root_padding">2dp</dimen>
+    <dimen name="actor_detail_padding_bottom">20dp</dimen>
+
+    <!-- vh quote item -->
+    <dimen name="vh_quote_padding_vertical">20dp</dimen>
+    <dimen name="vh_quote_padding_horizontal">16dp</dimen>
+    <dimen name="vh_quote_txt_margin_horizontal">10dp</dimen>
+    <dimen name="vh_quote_txt_meta_margin_top">10dp</dimen>
+
 
 </resources>

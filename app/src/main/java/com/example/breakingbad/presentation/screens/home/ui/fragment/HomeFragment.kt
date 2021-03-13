@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.breakingbad.R
 import com.example.breakingbad.databinding.FragmentHomeBinding
 import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.framework.base.BaseFragment
@@ -23,6 +24,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
     private var uiModels: MutableList<Actor> = mutableListOf()
 
     override fun onViewCreated() {
+        setupToolbar()
         observeLiveData()
         viewModel.bind()
     }
@@ -30,6 +32,21 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
     override fun onDestroyView() {
         binding = null
         super.onDestroyView()
+    }
+
+    private fun setupToolbar() {
+        binding?.let { it ->
+            it.homeToolbar.inflateMenu(R.menu.menu_home)
+            it.homeToolbar.setOnMenuItemClickListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.action_open_quotes -> {
+                        requireContext().startQuoteActivity()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
     }
 
     override fun initialiseViewModel() {
@@ -63,7 +80,6 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
     ) {
         binding?.searchView?.clearFocus()
         requireContext().startActorActivity(item.char_id)
-        // requireContext().startQuoteActivity()
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -79,7 +95,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         binding?.homeSwipeRefresh?.setOnRefreshListener {
             binding?.homeSwipeRefresh?.isRefreshing = true
             viewModel.refresh { canRefresh ->
-                if (! canRefresh) {
+                if (!canRefresh) {
                     binding?.homeSwipeRefresh?.isRefreshing = false
                 }
             }
