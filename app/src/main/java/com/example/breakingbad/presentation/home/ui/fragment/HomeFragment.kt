@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.breakingbad.databinding.FragmentHomeBinding
 import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.framework.base.BaseFragment
+import com.example.breakingbad.presentation.actordetail.fragment.ActorActivity.Companion.startActorActivity
 import com.example.breakingbad.presentation.actordetail.ui.ActorDetailActivity.Companion.startActorDetailActivity
 import com.example.breakingbad.presentation.home.ui.adapter.ActorAdapter
 import com.example.breakingbad.presentation.home.ui.viewholder.ActorViewHolder
@@ -61,7 +62,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         position: Int
     ) {
         binding?.searchView?.clearFocus()
-        requireContext().startActorDetailActivity(item.char_id)
+        requireContext().startActorActivity(item.char_id)
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {

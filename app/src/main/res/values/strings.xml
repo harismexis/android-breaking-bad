@@ -3,12 +3,13 @@
 
     <string name="app_name">Breaking Bad</string>
     <string name="activity_home_label">Home</string>
-    <string name="activity_character_detail_label">Character</string>
+    <string name="activity_character_detail_label">Actor</string>
+    <string name="activity_actor">Actor</string>
 
-    <!-- ViewHolder Character Item -->
-    <string name="content_description_character_image">Character Image</string>
+    <!-- vh actor -->
+    <string name="content_description_character_image">Actor Image</string>
 
-    <!-- Character Detail -->
+    <!-- actor detail -->
     <string name="label_name">Name</string>
     <string name="label_nickname">Nickname</string>
     <string name="label_birthday">Birthday</string>

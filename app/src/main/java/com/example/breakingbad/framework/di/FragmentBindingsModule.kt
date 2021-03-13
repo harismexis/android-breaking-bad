@@ -1,6 +1,7 @@
 package com.example.breakingbad.framework.di
 
 import com.example.breakingbad.framework.base.BaseFragment
+import com.example.breakingbad.presentation.actordetail.fragment.ActorDetailFragment
 import com.example.breakingbad.presentation.home.ui.fragment.HomeFragment
 
 import dagger.Module
@@ -15,7 +16,7 @@ abstract class FragmentBindingsModule {
     @ContributesAndroidInjector
     abstract fun homeFragment(): HomeFragment
 
-//    @ContributesAndroidInjector
-//    abstract fun itemDetailFragment(): ItemDetailFragment
+    @ContributesAndroidInjector
+    abstract fun actorDetailFragment(): ActorDetailFragment
 
 }
