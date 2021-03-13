@@ -1,14 +1,14 @@
 package com.example.breakingbad.utils
 
-import com.example.breakingbad.domain.BBActor
-import com.example.breakingbad.framework.datasource.network.model.BBActorRemote
+import com.example.breakingbad.domain.Actor
+import com.example.breakingbad.framework.datasource.network.model.RemoteActor
 import org.junit.Assert
 
 class BBCharacterItemRemoteVerificator {
 
     fun verifyBBCharactersAgainstRemoteItems(
-        actual: List<BBActor>,
-        expected: List<BBActorRemote?>
+        actual: List<Actor>,
+        expected: List<RemoteActor?>
     ) {
         expected.forEachIndexed lit@{ _, remoteItem ->
             if (remoteItem == null) return@lit
@@ -24,8 +24,8 @@ class BBCharacterItemRemoteVerificator {
     }
 
     private fun verifyBBCharacterAgainstRemoteItem(
-        actual: BBActor,
-        expected: BBActorRemote
+        actual: Actor,
+        expected: RemoteActor
     ) {
         Assert.assertEquals(expected.char_id, actual.char_id)
         Assert.assertEquals(expected.name, actual.name)

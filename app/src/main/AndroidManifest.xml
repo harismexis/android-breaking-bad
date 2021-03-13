@@ -24,7 +24,7 @@
         </activity>
 
         <activity
-            android:name="com.example.breakingbad.presentation.bbcharacterdetail.ui.BBActorDetailActivity"
+            android:name="com.example.breakingbad.presentation.actordetail.ui.ActorDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
     </application>

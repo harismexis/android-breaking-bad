@@ -1,12 +1,12 @@
 package com.example.breakingbad.home.setup
 
 import androidx.lifecycle.Observer
-import com.example.breakingbad.domain.BBActor
+import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.presentation.interactors.HomeInteractors
 import com.example.breakingbad.framework.util.network.ConnectivityMonitorSimple
-import com.example.breakingbad.interactors.IrrGetLocalBBActors
-import com.example.breakingbad.interactors.IrrGetRemoteBBActors
-import com.example.breakingbad.interactors.IrrStoreBBActors
+import com.example.breakingbad.interactors.IrrGetLocalActors
+import com.example.breakingbad.interactors.IrrGetRemoteActors
+import com.example.breakingbad.interactors.IrrStoreActors
 import com.example.breakingbad.presentation.home.viewmodel.HomeViewModel
 import com.example.breakingbad.setup.UnitTestSetup
 import com.nhaarman.mockitokotlin2.any
@@ -19,13 +19,13 @@ import org.mockito.Mockito
 abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     @Mock
-    protected lateinit var mockIrrGetLocalItems: IrrGetLocalBBActors
+    protected lateinit var mockIrrGetLocalItems: IrrGetLocalActors
 
     @Mock
-    protected lateinit var mockIrrGetRemoteItems: IrrGetRemoteBBActors
+    protected lateinit var mockIrrGetRemoteItems: IrrGetRemoteActors
 
     @Mock
-    protected lateinit var mockIrrStoreItems: IrrStoreBBActors
+    protected lateinit var mockIrrStoreItems: IrrStoreActors
 
     @Mock
     protected lateinit var mockInteractors: HomeInteractors
@@ -34,7 +34,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected lateinit var mockConnectivity: ConnectivityMonitorSimple
 
     @Mock
-    lateinit var mockObserver: Observer<List<BBActor>>
+    lateinit var mockObserver: Observer<List<Actor>>
 
     private val mockItems = mockParser.getMockBBCharsFromFeedWithAllItemsValid()
     protected lateinit var subject: HomeViewModel
@@ -49,9 +49,9 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     }
 
     private fun initialiseMockInteractors() {
-        Mockito.`when`(mockInteractors.irrGetRemoteBBActors).thenReturn(mockIrrGetRemoteItems)
-        Mockito.`when`(mockInteractors.irrGetLocalBBActors).thenReturn(mockIrrGetLocalItems)
-        Mockito.`when`(mockInteractors.irrStoreBBActors).thenReturn(mockIrrStoreItems)
+        Mockito.`when`(mockInteractors.irrGetRemoteActors).thenReturn(mockIrrGetRemoteItems)
+        Mockito.`when`(mockInteractors.irrGetLocalActors).thenReturn(mockIrrGetLocalItems)
+        Mockito.`when`(mockInteractors.irrStoreActors).thenReturn(mockIrrStoreItems)
     }
 
     // Internet
@@ -78,7 +78,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
         mockRemoteCall(mockItems)
     }
 
-    private fun mockRemoteCall(items: List<BBActor>) {
+    private fun mockRemoteCall(items: List<Actor>) {
         runBlocking {
             Mockito.`when`(mockIrrGetRemoteItems.invoke()).thenReturn(items)
         }
@@ -109,7 +109,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
         mockLocalCall(mockItems)
     }
 
-    private fun mockLocalCall(items: List<BBActor>) {
+    private fun mockLocalCall(items: List<Actor>) {
         runBlocking {
             Mockito.`when`(mockIrrGetLocalItems.invoke()).thenReturn(items)
         }
@@ -144,7 +144,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
         verifyLiveDataChanged(mockItems)
     }
 
-    private fun verifyLiveDataChanged(items: List<BBActor>) {
+    private fun verifyLiveDataChanged(items: List<Actor>) {
         verify(mockObserver).onChanged(items)
     }
 
@@ -158,7 +158,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
         verifyDataStored(mockItems)
     }
 
-    private fun verifyDataStored(items: List<BBActor>) {
+    private fun verifyDataStored(items: List<Actor>) {
         runBlocking {
             verify(mockIrrStoreItems, Mockito.times(1)).invoke(items)
         }

@@ -14,13 +14,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.example.breakingbad.R
 import com.example.breakingbad.setup.base.InstrumentedTestSetup
-import com.example.breakingbad.domain.BBActor
-import com.example.breakingbad.setup.mockvm.MockHomeVmProvider
+import com.example.breakingbad.domain.Actor
+import com.example.breakingbad.setup.mockvm.MockHomeViewModel
 import com.example.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_ALL_IDS_VALID
 import com.example.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_NO_DATA
 import com.example.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_TWO_EMPTY
 import com.example.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_TWO_IDS_ABSENT
-import com.example.breakingbad.presentation.bbcharacterdetail.ui.BBActorDetailActivity
+import com.example.breakingbad.presentation.actordetail.ui.ActorDetailActivity
 import com.example.breakingbad.presentation.home.viewmodel.HomeViewModel
 import com.example.breakingbad.setup.testutil.RecyclerViewItemCountAssertion
 import com.example.breakingbad.presentation.home.ui.activity.HomeActivity
@@ -43,20 +43,20 @@ class HomeActivityTest : InstrumentedTestSetup() {
         )
 
     private lateinit var mockViewModel: HomeViewModel
-    private lateinit var mockItems: List<BBActor>
+    private lateinit var mockItems: List<Actor>
 
     @Before
     fun doBeforeTest() {
         Intents.init()
         mockItems = mockParser.getMockBBCharsFromFeedWithAllItemsValid()
-        mockViewModel = MockHomeVmProvider.provideMockHomeVm()
+        mockViewModel = MockHomeViewModel.getMockHomeViewModel()
         every { mockViewModel.bind() } returns Unit
     }
 
     @Test
     fun remoteFeedHasAllItemsValid_then_homeListHasExpectedItems() {
         // given
-        every { mockViewModel.models } returns MockHomeVmProvider.models
+        every { mockViewModel.models } returns MockHomeViewModel.models
         launchActivityAndMockLiveData()
 
         // then
@@ -72,7 +72,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     fun remoteFeedHasSomeIdsAbsent_homeListHasExpectedNumberOfItems() {
         // given
         mockItems = mockParser.getMockBBCharsFromFeedWithSomeIdsAbsent()
-        every { mockViewModel.models } returns MockHomeVmProvider.models
+        every { mockViewModel.models } returns MockHomeViewModel.models
         launchActivityAndMockLiveData()
 
         // then
@@ -88,7 +88,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     fun remoteFeedHasAllIdsAbsent_homeListHasNoItems() {
         // given
         mockItems = mockParser.getMockBBCharsFromFeedWithAllIdsAbsent()
-        every { mockViewModel.models } returns MockHomeVmProvider.models
+        every { mockViewModel.models } returns MockHomeViewModel.models
         launchActivityAndMockLiveData()
 
         // then
@@ -103,7 +103,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     fun remoteFeedHasSomeJsonItemsEmpty_homeListHasExpectedNumberOfItems() {
         // given
         mockItems = mockParser.getMockBBCharsFromFeedWithSomeItemsEmpty()
-        every { mockViewModel.models } returns MockHomeVmProvider.models
+        every { mockViewModel.models } returns MockHomeViewModel.models
         launchActivityAndMockLiveData()
 
         // then
@@ -119,7 +119,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     fun remoteFeedHasEmptyJsonArray_homeListHasNoItems() {
         // given
         mockItems = mockParser.getMockBBCharsFromFeedWithEmptyJsonArray()
-        every { mockViewModel.models } returns MockHomeVmProvider.models
+        every { mockViewModel.models } returns MockHomeViewModel.models
         launchActivityAndMockLiveData()
 
         // then
@@ -133,14 +133,14 @@ class HomeActivityTest : InstrumentedTestSetup() {
     @Test
     fun clickOnHomeListItem_opensDetailActivity() {
         // given
-        every { mockViewModel.models } returns MockHomeVmProvider.models
+        every { mockViewModel.models } returns MockHomeViewModel.models
         launchActivityAndMockLiveData()
 
         // when
         clickRecyclerAt(0)
 
         // then
-        intended(hasComponent(BBActorDetailActivity::class.java.name))
+        intended(hasComponent(ActorDetailActivity::class.java.name))
     }
 
     private fun clickRecyclerAt(position: Int) {
@@ -172,7 +172,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     private fun launchActivityAndMockLiveData() {
         testRule.launchActivity(null)
         testRule.activity.runOnUiThread {
-            MockHomeVmProvider.mModels.value = mockItems
+            MockHomeViewModel.mModels.value = mockItems
         }
     }
 

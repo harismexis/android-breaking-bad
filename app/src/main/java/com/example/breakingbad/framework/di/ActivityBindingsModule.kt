@@ -1,7 +1,7 @@
 package com.example.breakingbad.framework.di
 
 import com.example.breakingbad.framework.base.BaseActivity
-import com.example.breakingbad.presentation.bbcharacterdetail.ui.BBActorDetailActivity
+import com.example.breakingbad.presentation.actordetail.ui.ActorDetailActivity
 import com.example.breakingbad.presentation.home.ui.activity.HomeActivity
 
 import dagger.Module
@@ -17,6 +17,6 @@ abstract class ActivityBindingsModule {
     abstract fun homeActivity(): HomeActivity
 
     @ContributesAndroidInjector
-    abstract fun itemDetailActivity(): BBActorDetailActivity
+    abstract fun itemDetailActivity(): ActorDetailActivity
 
 }

@@ -1,18 +1,18 @@
 package com.example.breakingbad.framework.datasource.network.data
 
 import com.example.breakingbad.framework.datasource.network.api.BreakingBadApi
-import com.example.breakingbad.framework.datasource.network.model.BBActorRemote
+import com.example.breakingbad.framework.datasource.network.model.RemoteActor
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class BreakingBadRemoteDao @Inject constructor(private val api: BreakingBadApi) {
 
-    suspend fun getBreakingBadCharacters(): List<BBActorRemote?>? {
+    suspend fun getBreakingBadCharacters(): List<RemoteActor?>? {
         return api.getBreakingBadCharacters()
     }
 
-    suspend fun getBreakingBadCharactersByName(name: String?): List<BBActorRemote?>? {
+    suspend fun getBreakingBadCharactersByName(name: String?): List<RemoteActor?>? {
         return api.getBreakingBadCharactersByName(name)
     }
 

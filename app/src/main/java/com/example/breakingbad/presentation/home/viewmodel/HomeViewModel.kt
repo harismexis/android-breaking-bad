@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.breakingbad.domain.BBActor
+import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.presentation.interactors.HomeInteractors
 import com.example.breakingbad.framework.extensions.getErrorMessage
 import com.example.breakingbad.framework.util.functional.Action1
@@ -23,8 +23,8 @@ class HomeViewModel @Inject constructor(
 
     private var disposables: CompositeDisposable = CompositeDisposable()
 
-    private val mModels = MutableLiveData<List<BBActor>>()
-    val models: LiveData<List<BBActor>>
+    private val mModels = MutableLiveData<List<Actor>>()
+    val models: LiveData<List<Actor>>
         get() = mModels
 
     var searchQuery: String? = null
@@ -57,9 +57,9 @@ class HomeViewModel @Inject constructor(
     private fun fetchRemoteItems() {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteBBActors.invoke()
+                val items = interactors.irrGetRemoteActors.invoke()
                 mModels.value = items
-                interactors.irrStoreBBActors.invoke(items)
+                interactors.irrStoreActors.invoke(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
             }
@@ -69,9 +69,9 @@ class HomeViewModel @Inject constructor(
     private fun fetchRemoteItemsByName(name: String?) {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteBBActorsByName.invoke(name)
+                val items = interactors.irrGetRemoteActorsByName.invoke(name)
                 mModels.value = items
-                interactors.irrStoreBBActors.invoke(items)
+                interactors.irrStoreActors.invoke(items)
             } catch (e: Exception) {
                  Log.d(TAG, e.getErrorMessage())
             }
@@ -81,7 +81,7 @@ class HomeViewModel @Inject constructor(
     private fun fetchLocalItems() {
         viewModelScope.launch {
             try {
-                mModels.value = interactors.irrGetLocalBBActors.invoke()
+                mModels.value = interactors.irrGetLocalActors.invoke()
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
             }

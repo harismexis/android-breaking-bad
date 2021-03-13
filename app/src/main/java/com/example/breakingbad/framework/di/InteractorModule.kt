@@ -1,11 +1,11 @@
 package com.example.breakingbad.framework.di
 
-import com.example.breakingbad.framework.datasource.database.BBActorLocalDataSource
-import com.example.breakingbad.data.BBActorLocalRepository
-import com.example.breakingbad.data.BBActorRemoteRepository
-import com.example.breakingbad.presentation.interactors.BBActorDetailInteractors
+import com.example.breakingbad.framework.datasource.database.BreakingBadLocalDataSource
+import com.example.breakingbad.data.BreakingBadLocalRepository
+import com.example.breakingbad.data.BreakingBadRemoteRepository
+import com.example.breakingbad.presentation.interactors.ActorDetailInteractors
 import com.example.breakingbad.presentation.interactors.HomeInteractors
-import com.example.breakingbad.framework.datasource.network.data.BBActorRemoteDataSource
+import com.example.breakingbad.framework.datasource.network.data.BreakingBadRemoteDataSource
 import com.example.breakingbad.interactors.*
 import dagger.Module
 import dagger.Provides
@@ -15,59 +15,59 @@ class InteractorModule {
 
     @Provides
     fun provideHomeInteractors(
-        irrGetLocalBBActors: IrrGetLocalBBActors,
-        irrGetRemoteBBActors: IrrGetRemoteBBActors,
-        irrGetRemoteBBActorsByName: IrrGetRemoteBBActorsByName,
-        irrStoreBBActors: IrrStoreBBActors
+        irrGetLocalActors: IrrGetLocalActors,
+        irrGetRemoteActors: IrrGetRemoteActors,
+        irrGetRemoteActorsByName: IrrGetRemoteActorsByName,
+        irrStoreActors: IrrStoreActors
     ): HomeInteractors {
         return HomeInteractors(
-            irrGetLocalBBActors,
-            irrGetRemoteBBActors,
-            irrGetRemoteBBActorsByName,
-            irrStoreBBActors
+            irrGetLocalActors,
+            irrGetRemoteActors,
+            irrGetRemoteActorsByName,
+            irrStoreActors
         )
     }
 
     @Provides
     fun provideBBActorDetailInteractors(
-        irrGetLocalBBActor: IrrGetLocalBBActor
-    ): BBActorDetailInteractors {
-        return BBActorDetailInteractors(irrGetLocalBBActor)
+        irrGetLocalActor: IrrGetLocalActor
+    ): ActorDetailInteractors {
+        return ActorDetailInteractors(irrGetLocalActor)
     }
 
     @Provides
     fun provideIrrGetRemoteBBActors(
-        dataSource: BBActorRemoteDataSource
-    ): IrrGetRemoteBBActors {
-        return IrrGetRemoteBBActors(BBActorRemoteRepository(dataSource))
+        dataSource: BreakingBadRemoteDataSource
+    ): IrrGetRemoteActors {
+        return IrrGetRemoteActors(BreakingBadRemoteRepository(dataSource))
     }
 
     @Provides
     fun provideIrrGetRemoteBBActorsByName(
-        dataSource: BBActorRemoteDataSource
-    ): IrrGetRemoteBBActorsByName {
-        return IrrGetRemoteBBActorsByName(BBActorRemoteRepository(dataSource))
+        dataSource: BreakingBadRemoteDataSource
+    ): IrrGetRemoteActorsByName {
+        return IrrGetRemoteActorsByName(BreakingBadRemoteRepository(dataSource))
     }
 
     @Provides
     fun provideIrrGetLocalBBActors(
-        dataSource: BBActorLocalDataSource
-    ): IrrGetLocalBBActors {
-        return IrrGetLocalBBActors(BBActorLocalRepository(dataSource))
+        dataSource: BreakingBadLocalDataSource
+    ): IrrGetLocalActors {
+        return IrrGetLocalActors(BreakingBadLocalRepository(dataSource))
     }
 
     @Provides
     fun provideIrrGetLocalBBActor(
-        dataSource: BBActorLocalDataSource
-    ): IrrGetLocalBBActor {
-        return IrrGetLocalBBActor(BBActorLocalRepository(dataSource))
+        dataSource: BreakingBadLocalDataSource
+    ): IrrGetLocalActor {
+        return IrrGetLocalActor(BreakingBadLocalRepository(dataSource))
     }
 
     @Provides
     fun provideIrrInsertBBActors(
-        dataSource: BBActorLocalDataSource
-    ): IrrStoreBBActors {
-        return IrrStoreBBActors(BBActorLocalRepository(dataSource))
+        dataSource: BreakingBadLocalDataSource
+    ): IrrStoreActors {
+        return IrrStoreActors(BreakingBadLocalRepository(dataSource))
     }
 
 }

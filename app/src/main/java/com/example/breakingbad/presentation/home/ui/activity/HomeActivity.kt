@@ -9,19 +9,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.breakingbad.R
 import com.example.breakingbad.databinding.ActivityHomeBinding
 import com.example.breakingbad.framework.base.BaseActivity
-import com.example.breakingbad.presentation.bbcharacterdetail.ui.BBActorDetailActivity.Companion.startCatDetailActivity
-import com.example.breakingbad.domain.BBActor
-import com.example.breakingbad.presentation.home.ui.adapter.BBActorAdapter
-import com.example.breakingbad.presentation.home.ui.viewholder.BBActorViewHolder
+import com.example.breakingbad.presentation.actordetail.ui.ActorDetailActivity.Companion.startCatDetailActivity
+import com.example.breakingbad.domain.Actor
+import com.example.breakingbad.presentation.home.ui.adapter.ActorAdapter
+import com.example.breakingbad.presentation.home.ui.viewholder.ActorViewHolder
 import com.example.breakingbad.presentation.home.viewmodel.HomeViewModel
 
-class HomeActivity : BaseActivity(), BBActorViewHolder.BBCharacterClickListener,
+class HomeActivity : BaseActivity(), ActorViewHolder.ActorClickListener,
     android.widget.SearchView.OnQueryTextListener {
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var adapter: BBActorAdapter
-    private var uiModels: MutableList<BBActor> = mutableListOf()
+    private lateinit var adapter: ActorAdapter
+    private var uiModels: MutableList<Actor> = mutableListOf()
 
     override fun initialise() {
         super.initialise()
@@ -47,7 +47,7 @@ class HomeActivity : BaseActivity(), BBActorViewHolder.BBCharacterClickListener,
         return binding.root
     }
 
-    override fun onBBCharacterClick(item: BBActor, position: Int) {
+    override fun onActorClick(item: Actor, position: Int) {
         binding.searchView.clearFocus()
         startCatDetailActivity(item.char_id)
     }
@@ -62,7 +62,7 @@ class HomeActivity : BaseActivity(), BBActorViewHolder.BBCharacterClickListener,
         })
     }
 
-    private fun populate(models: List<BBActor>) {
+    private fun populate(models: List<Actor>) {
         binding.homeSwipeRefresh.isRefreshing = false
         binding.loadingProgressBar.visibility = View.GONE
         binding.homeList.visibility = View.VISIBLE
@@ -72,7 +72,7 @@ class HomeActivity : BaseActivity(), BBActorViewHolder.BBCharacterClickListener,
     }
 
     private fun initialiseRecycler() {
-        adapter = BBActorAdapter(uiModels, this)
+        adapter = ActorAdapter(uiModels, this)
         adapter.setHasStableIds(true)
         binding.homeList.layoutManager = LinearLayoutManager(this)
         binding.homeList.adapter = adapter
