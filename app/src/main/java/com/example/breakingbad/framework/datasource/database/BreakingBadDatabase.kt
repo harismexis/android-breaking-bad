@@ -5,7 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [LocalActor::class], version = 1, exportSchema = false)
+@Database(
+    entities = [LocalActor::class, LocalQuote::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class BreakingBadDatabase : RoomDatabase() {
 
     companion object {

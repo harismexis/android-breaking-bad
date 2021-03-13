@@ -16,7 +16,8 @@ import javax.inject.Singleton
         FragmentBindingsModule::class,
         ViewModelModule::class,
         ApplicationModule::class,
-        InteractorModule::class,
+        ActorInteractorModule::class,
+        QuoteInteractorModule::class,
         BreakingBadApiModule::class]
 )
 interface MainComponent : AndroidInjector<MainApplication> {

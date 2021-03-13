@@ -2,6 +2,7 @@ package com.example.breakingbad.interactors
 
 import com.example.breakingbad.data.BreakingBadRemoteRepository
 import com.example.breakingbad.domain.Actor
+import com.example.breakingbad.interactors.actor.IrrGetRemoteActors
 import com.example.breakingbad.setup.UnitTestSetup
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify

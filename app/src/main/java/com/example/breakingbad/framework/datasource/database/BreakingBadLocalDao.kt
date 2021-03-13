@@ -17,4 +17,13 @@ interface BreakingBadLocalDao {
     @Query("DELETE FROM breaking_bad_actor_table")
     suspend fun deleteAllActors()
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertQuotes(items: List<LocalQuote>)
+
+    @Query("SELECT * FROM quote_table")
+    suspend fun getAllQuotes(): List<LocalQuote?>?
+
+    @Query("DELETE FROM quote_table")
+    suspend fun deleteAllQuotes()
+
 }

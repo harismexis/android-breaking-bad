@@ -1,6 +1,6 @@
 package com.example.breakingbad.extensions
 
-import com.example.breakingbad.framework.extensions.toItems
+import com.example.breakingbad.framework.extensions.actor.toItems
 import com.example.breakingbad.utils.*
 import com.example.breakingbad.setup.UnitTestSetup
 import org.junit.Test
