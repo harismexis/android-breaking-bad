@@ -25,7 +25,7 @@ class ActorDetailActivity : BaseActivity() {
     companion object {
         private const val EXTRA_ITEM_ID = "item_id"
 
-        fun Context.startCatDetailActivity(itemId: Int) {
+        fun Context.startActorDetailActivity(itemId: Int) {
             this.startActivity(createIntent(this, itemId))
         }
 

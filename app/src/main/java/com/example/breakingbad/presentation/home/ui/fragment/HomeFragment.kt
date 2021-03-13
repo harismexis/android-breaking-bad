@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.breakingbad.databinding.FragmentHomeBinding
 import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.framework.base.BaseFragment
-import com.example.breakingbad.presentation.actordetail.ui.ActorDetailActivity.Companion.startCatDetailActivity
+import com.example.breakingbad.presentation.actordetail.ui.ActorDetailActivity.Companion.startActorDetailActivity
 import com.example.breakingbad.presentation.home.ui.adapter.ActorAdapter
 import com.example.breakingbad.presentation.home.ui.viewholder.ActorViewHolder
 import com.example.breakingbad.presentation.home.viewmodel.HomeViewModel
 
-class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener {
+class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
+    android.widget.SearchView.OnQueryTextListener {
 
     private lateinit var viewModel: HomeViewModel
     private var binding: FragmentHomeBinding? = null
@@ -47,37 +48,49 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener {
         super.onDestroyView()
     }
 
-    override fun initialise() {
-        super.initialise()
-        setupSwipeToRefresh()
-        viewModel.bind()
-    }
-
     override fun initialiseViewModel() {
         viewModel = ViewModelProviders.of(this, viewModelFactory)[HomeViewModel::class.java]
-    }
-
-    override fun initialiseViewBinding() {
-
     }
 
     override fun initialiseView() {
         setupSwipeToRefresh()
         initialiseRecycler()
+        initialiseSearchView()
     }
 
     override fun onActorClick(item: Actor, position: Int) {
-        context.startCatDetailActivity()
-    }
-
-    override fun getToolbar(): Toolbar? {
-        return binding?.homeToolbar
+        requireContext().startActorDetailActivity(item.char_id)
     }
 
     override fun observeLiveData() {
         viewModel.models.observe(viewLifecycleOwner, {
             populate(it)
         })
+    }
+
+    override fun getToolbar(): Toolbar? {
+        return null
+    }
+
+    override fun initialise() {
+
+    }
+
+    override fun initialiseViewBinding() {
+
+    }
+
+    private fun initialiseSearchView() {
+        binding?.searchView?.setOnQueryTextListener(this)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        viewModel.searchQuery = query
+        return false
+    }
+
+    override fun onQueryTextChange(query: String?): Boolean {
+        return false
     }
 
     private fun setupSwipeToRefresh() {
