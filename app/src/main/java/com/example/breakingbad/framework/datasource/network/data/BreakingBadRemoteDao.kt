@@ -8,11 +8,11 @@ import javax.inject.Singleton
 @Singleton
 class BreakingBadRemoteDao @Inject constructor(private val api: BreakingBadApi) {
 
-    suspend fun getBreakingBadCharacters(): List<RemoteActor?>? {
+    suspend fun getActors(): List<RemoteActor?>? {
         return api.getBreakingBadCharacters()
     }
 
-    suspend fun getBreakingBadCharactersByName(name: String?): List<RemoteActor?>? {
+    suspend fun getActorsByName(name: String?): List<RemoteActor?>? {
         return api.getBreakingBadCharactersByName(name)
     }
 

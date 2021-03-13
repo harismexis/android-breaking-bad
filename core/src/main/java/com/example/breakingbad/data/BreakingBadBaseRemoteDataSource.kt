@@ -4,8 +4,8 @@ import com.example.breakingbad.domain.Actor
 
 interface BreakingBadBaseRemoteDataSource {
 
-    suspend fun getItems(): List<Actor>
+    suspend fun getActors(): List<Actor>
 
-    suspend fun getItemsByName(name: String?): List<Actor>
+    suspend fun getActorsByName(name: String?): List<Actor>
 
 }

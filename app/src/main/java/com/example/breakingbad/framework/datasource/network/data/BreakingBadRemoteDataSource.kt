@@ -9,12 +9,12 @@ class BreakingBadRemoteDataSource @Inject constructor(
     private val dao: BreakingBadRemoteDao
 ) : BreakingBadBaseRemoteDataSource {
 
-    override suspend fun getItems(): List<Actor> {
-        return dao.getBreakingBadCharacters().toItems()
+    override suspend fun getActors(): List<Actor> {
+        return dao.getActors().toItems()
     }
 
-    override suspend fun getItemsByName(name: String?): List<Actor> {
-        return dao.getBreakingBadCharactersByName(name).toItems()
+    override suspend fun getActorsByName(name: String?): List<Actor> {
+        return dao.getActorsByName(name).toItems()
     }
 
 }

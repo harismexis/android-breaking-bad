@@ -36,7 +36,7 @@ class IrrGetLocalActorTest : UnitTestSetup() {
         mockItem = mockParser.getMockBBCharValid()
         mockItemId = mockItem.char_id
         runBlocking {
-            Mockito.`when`(mockRepository.getItem(mockItemId)).thenReturn(mockItem)
+            Mockito.`when`(mockRepository.getActor(mockItemId)).thenReturn(mockItem)
         }
     }
 
@@ -47,7 +47,7 @@ class IrrGetLocalActorTest : UnitTestSetup() {
             val item = subject.invoke(mockItemId)
 
             // then
-            verify(mockRepository, times(1)).getItem(mockItemId)
+            verify(mockRepository, times(1)).getActor(mockItemId)
             Assert.assertEquals(mockItem.char_id, item!!.char_id)
         }
 

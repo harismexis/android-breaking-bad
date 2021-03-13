@@ -40,7 +40,7 @@ class IrrStoreActorsTest : UnitTestSetup() {
             subject.invoke(mockItems)
 
             // then
-            verify(mockRepository, times(1)).insertItems(mockItems)
+            verify(mockRepository, times(1)).insertActors(mockItems)
         }
 
 }

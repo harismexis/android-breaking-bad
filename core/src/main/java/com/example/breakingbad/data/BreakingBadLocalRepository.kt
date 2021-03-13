@@ -5,9 +5,9 @@ import com.example.breakingbad.domain.Actor
 class BreakingBadLocalRepository(
     private val dataSource: BreakingBadBaseLocalDataSource
 ) {
-    suspend fun insertItems(items: List<Actor>) = dataSource.insert(items)
+    suspend fun insertActors(items: List<Actor>) = dataSource.insertActors(items)
 
-    suspend fun getItem(itemId: Int): Actor? = dataSource.getItem(itemId)
+    suspend fun getActor(itemId: Int): Actor? = dataSource.getActor(itemId)
 
-    suspend fun getItems(): List<Actor> = dataSource.getAll()
+    suspend fun getActors(): List<Actor> = dataSource.getAllActors()
 }

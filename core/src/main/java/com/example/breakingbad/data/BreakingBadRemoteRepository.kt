@@ -5,7 +5,7 @@ import com.example.breakingbad.domain.Actor
 data class BreakingBadRemoteRepository(
     private val dataSource: BreakingBadBaseRemoteDataSource
 ) {
-    suspend fun getItems(): List<Actor> = dataSource.getItems()
+    suspend fun getActors(): List<Actor> = dataSource.getActors()
 
-    suspend fun getItemsByName(name: String?): List<Actor> = dataSource.getItemsByName(name)
+    suspend fun getActorsByName(name: String?): List<Actor> = dataSource.getActorsByName(name)
 }

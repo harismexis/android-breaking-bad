@@ -37,13 +37,13 @@ class BreakingBadRemoteDataSourceTest : UnitTestSetup() {
         runBlocking {
             // given
             val mockFeed = mockParser.getMockBBCharsFeedAllIdsValid()
-            Mockito.`when`(mockDao.getBreakingBadCharacters()).thenReturn(mockFeed)
+            Mockito.`when`(mockDao.getActors()).thenReturn(mockFeed)
 
             // when
-            val items = subject.getItems()
+            val items = subject.getActors()
 
             // then
-            verify(mockDao, times(1)).getBreakingBadCharacters()
+            verify(mockDao, times(1)).getActors()
             verificator.verifyBBCharactersAgainstRemoteItems(items, mockFeed)
         }
     }

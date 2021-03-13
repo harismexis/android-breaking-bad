@@ -11,20 +11,20 @@ class BreakingBadLocalDataSource @Inject constructor(
     private val dao: BreakingBadLocalDao
 ) : BreakingBadBaseLocalDataSource {
 
-    override suspend fun insert(items: List<Actor>) {
-        dao.insertItems(items.toLocalItems())
+    override suspend fun insertActors(items: List<Actor>) {
+        dao.insertActors(items.toLocalItems())
     }
 
-    override suspend fun getItem(itemId: Int): Actor? {
-        val localItem = dao.getItemById(itemId)
+    override suspend fun getActor(itemId: Int): Actor? {
+        val localItem = dao.getActorById(itemId)
         localItem?.let {
             return it.toItem()
         }
         return null
     }
 
-    override suspend fun getAll(): List<Actor> {
-        return dao.getAllItems().toItems()
+    override suspend fun getAllActors(): List<Actor> {
+        return dao.getAllActors().toItems()
     }
 
 }

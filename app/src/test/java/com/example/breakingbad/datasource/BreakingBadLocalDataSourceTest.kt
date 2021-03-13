@@ -38,10 +38,10 @@ class BreakingBadLocalDataSourceTest : UnitTestSetup() {
             val mockLocalItems = mockItems.toLocalItems()
 
             // when
-            subject.insert(mockItems)
+            subject.insertActors(mockItems)
 
             // then
-            verify(mockDao, times(1)).insertItems(mockLocalItems)
+            verify(mockDao, times(1)).insertActors(mockLocalItems)
         }
     }
 
@@ -51,13 +51,13 @@ class BreakingBadLocalDataSourceTest : UnitTestSetup() {
             // given
             val mockLocalItem = mockParser.getMockBBCharValid().toLocalItem()
             val mockItemId = mockLocalItem.char_id
-            Mockito.`when`(mockDao.getItemById(mockItemId)).thenReturn(mockLocalItem)
+            Mockito.`when`(mockDao.getActorById(mockItemId)).thenReturn(mockLocalItem)
 
             // when
-            val item = subject.getItem(mockItemId)
+            val item = subject.getActor(mockItemId)
 
             // then
-            verify(mockDao, times(1)).getItemById(mockItemId)
+            verify(mockDao, times(1)).getActorById(mockItemId)
         }
     }
 
@@ -66,13 +66,13 @@ class BreakingBadLocalDataSourceTest : UnitTestSetup() {
         runBlocking {
             // given
             val mockLocalItems = mockParser.getMockBBCharsLocalFromFeedWithAllItemsValid()
-            Mockito.`when`(mockDao.getAllItems()).thenReturn(mockLocalItems)
+            Mockito.`when`(mockDao.getAllActors()).thenReturn(mockLocalItems)
 
             // when
-            val items = subject.getAll()
+            val items = subject.getAllActors()
 
             // then
-            verify(mockDao, times(1)).getAllItems()
+            verify(mockDao, times(1)).getAllActors()
         }
     }
 

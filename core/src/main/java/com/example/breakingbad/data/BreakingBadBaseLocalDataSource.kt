@@ -4,9 +4,9 @@ import com.example.breakingbad.domain.Actor
 
 interface BreakingBadBaseLocalDataSource {
 
-    suspend fun insert(items: List<Actor>)
+    suspend fun insertActors(items: List<Actor>)
 
-    suspend fun getItem(itemId: Int): Actor?
+    suspend fun getActor(itemId: Int): Actor?
 
-    suspend fun getAll(): List<Actor>
+    suspend fun getAllActors(): List<Actor>
 }

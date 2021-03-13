@@ -36,7 +36,7 @@ class IrrGetRemoteActorsTest : UnitTestSetup() {
     private fun setupMocks() {
         mockItems = mockParser.getMockBBCharsFromFeedWithAllItemsValid()
         runBlocking {
-            Mockito.`when`(mockRepository.getItems()).thenReturn(mockItems)
+            Mockito.`when`(mockRepository.getActors()).thenReturn(mockItems)
         }
     }
 
@@ -47,7 +47,7 @@ class IrrGetRemoteActorsTest : UnitTestSetup() {
             val items = subject.invoke()
 
             // then
-            verify(mockRepository, times(1)).getItems()
+            verify(mockRepository, times(1)).getActors()
             Assert.assertEquals(mockItems.size, items.size)
         }
 

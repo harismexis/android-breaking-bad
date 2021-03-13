@@ -5,5 +5,5 @@ import com.example.breakingbad.data.BreakingBadRemoteRepository
 class IrrGetRemoteActors(
     private val repository: BreakingBadRemoteRepository
 ) {
-    suspend operator fun invoke() = repository.getItems()
+    suspend operator fun invoke() = repository.getActors()
 }

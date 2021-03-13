@@ -44,8 +44,8 @@ class BreakingBadLocalDaoTest: InstrumentedTestSetup() {
         val localItems = mockParser.getMockBBCharsLocalFromFeedWithAllItemsValid()
 
         // when
-        dao.insertItems(localItems)
-        val retrievedLocalItems = dao.getAllItems()
+        dao.insertActors(localItems)
+        val retrievedLocalItems = dao.getAllActors()
 
         // then
         verifyActualAgainstExpected(retrievedLocalItems!!, localItems, EXPECTED_NUM_BBCHARS_WHEN_ALL_IDS_VALID)
@@ -58,8 +58,8 @@ class BreakingBadLocalDaoTest: InstrumentedTestSetup() {
         val localItems = mockParser.getMockBBCharsLocalFromFeedWithSomeIdsAbsent()
 
         // when
-        dao.insertItems(localItems)
-        val retrievedLocalItems = dao.getAllItems()
+        dao.insertActors(localItems)
+        val retrievedLocalItems = dao.getAllActors()
 
         // then
         verifyActualAgainstExpected(retrievedLocalItems!!, localItems, EXPECTED_NUM_BBCHARS_WHEN_TWO_IDS_ABSENT)
@@ -72,8 +72,8 @@ class BreakingBadLocalDaoTest: InstrumentedTestSetup() {
         val localItems = mockParser.getMockBBCharsLocalFromFeedWithAllIdsAbsent()
 
         // when
-        dao.insertItems(localItems)
-        val retrievedLocalItems = dao.getAllItems()
+        dao.insertActors(localItems)
+        val retrievedLocalItems = dao.getAllActors()
 
         // then
         verifyActualAgainstExpected(retrievedLocalItems!!, localItems, EXPECTED_NUM_BBCHARS_WHEN_NO_DATA)

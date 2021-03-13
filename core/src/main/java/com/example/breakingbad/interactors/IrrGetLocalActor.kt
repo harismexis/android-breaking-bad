@@ -5,5 +5,5 @@ import com.example.breakingbad.data.BreakingBadLocalRepository
 class IrrGetLocalActor(
     private val repository: BreakingBadLocalRepository
 ) {
-    suspend operator fun invoke(itemId: Int) = repository.getItem(itemId)
+    suspend operator fun invoke(itemId: Int) = repository.getActor(itemId)
 }
