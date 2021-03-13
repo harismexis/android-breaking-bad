@@ -13,4 +13,8 @@ class BBCharacterRemoteDataSource @Inject constructor(
         return dao.getBreakingBadCharacters().toItems()
     }
 
+    override suspend fun getItemsByName(name: String?): List<BBCharacter> {
+        return dao.getBreakingBadCharactersByName(name).toItems()
+    }
+
 }

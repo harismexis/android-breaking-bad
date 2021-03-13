@@ -3,7 +3,7 @@ package com.example.breakingbad.home.setup
 import androidx.lifecycle.Observer
 import com.example.breakingbad.domain.BBCharacter
 import com.example.breakingbad.presentation.interactors.HomeInteractors
-import com.example.breakingbad.framework.util.network.ConnectivityMonitor
+import com.example.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.example.breakingbad.interactors.InterGetLocalBBCharacters
 import com.example.breakingbad.interactors.InterGetRemoteBBCharacters
 import com.example.breakingbad.interactors.InterStoreBBCharacters
@@ -31,7 +31,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected lateinit var mockInteractors: HomeInteractors
 
     @Mock
-    protected lateinit var mockConnectivity: ConnectivityMonitor
+    protected lateinit var mockConnectivity: ConnectivityMonitorSimple
 
     @Mock
     lateinit var mockObserver: Observer<List<BBCharacter>>
@@ -49,9 +49,9 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     }
 
     private fun initialiseMockInteractors() {
-        Mockito.`when`(mockInteractors.interGetRemoteBBCharacters).thenReturn(mockInterGetRemoteItems)
-        Mockito.`when`(mockInteractors.interGetLocalBBCharacters).thenReturn(mockInterGetLocalItems)
-        Mockito.`when`(mockInteractors.interStoreBBCharacters).thenReturn(mockInterStoreItems)
+        Mockito.`when`(mockInteractors.irrGetRemoteBBCharacters).thenReturn(mockInterGetRemoteItems)
+        Mockito.`when`(mockInteractors.irrGetLocalBBCharacters).thenReturn(mockInterGetLocalItems)
+        Mockito.`when`(mockInteractors.irrStoreBBCharacters).thenReturn(mockInterStoreItems)
     }
 
     // Internet

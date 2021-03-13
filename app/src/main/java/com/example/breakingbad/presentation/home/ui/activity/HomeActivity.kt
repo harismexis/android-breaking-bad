@@ -1,9 +1,12 @@
 package com.example.breakingbad.presentation.home.ui.activity
 
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.breakingbad.R
 import com.example.breakingbad.databinding.ActivityHomeBinding
 import com.example.breakingbad.framework.base.BaseActivity
 import com.example.breakingbad.presentation.bbcharacterdetail.ui.BBCharacterDetailActivity.Companion.startCatDetailActivity
@@ -12,7 +15,8 @@ import com.example.breakingbad.presentation.home.ui.adapter.BBCharacterAdapter
 import com.example.breakingbad.presentation.home.ui.viewholder.BBCharacterViewHolder
 import com.example.breakingbad.presentation.home.viewmodel.HomeViewModel
 
-class HomeActivity : BaseActivity(), BBCharacterViewHolder.BBCharacterClickListener {
+class HomeActivity : BaseActivity(), BBCharacterViewHolder.BBCharacterClickListener,
+    android.widget.SearchView.OnQueryTextListener {
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: ActivityHomeBinding
@@ -35,6 +39,7 @@ class HomeActivity : BaseActivity(), BBCharacterViewHolder.BBCharacterClickListe
 
     override fun initialiseView() {
         super.initialiseView()
+        initialiseSearchView()
         initialiseRecycler()
     }
 
@@ -80,6 +85,34 @@ class HomeActivity : BaseActivity(), BBCharacterViewHolder.BBCharacterClickListe
                     binding.homeSwipeRefresh.isRefreshing = false
                 }
             }
+        }
+    }
+
+    private fun initialiseSearchView() {
+        binding.searchView.setOnQueryTextListener(this)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        viewModel.searchQuery = query
+        return false
+    }
+
+    override fun onQueryTextChange(query: String?): Boolean {
+        return false
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_home, menu)
+        return false
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_search -> {
+
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

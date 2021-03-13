@@ -12,4 +12,8 @@ class BreakingBadRemoteDao @Inject constructor(private val api: BreakingBadApi) 
         return api.getBreakingBadCharacters()
     }
 
+    suspend fun getBreakingBadCharactersByName(name: String?): List<BBCharacterRemote?>? {
+        return api.getBreakingBadCharactersByName(name)
+    }
+
 }
