@@ -6,15 +6,15 @@ import androidx.room.*
 interface BBLocalDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertItems(items: List<BBCharacterLocal>)
+    suspend fun insertItems(items: List<BBActorLocal>)
 
-    @Query("SELECT * FROM breaking_bad_character_table WHERE char_id = :itemId")
-    suspend fun getItemById(itemId: Int): BBCharacterLocal?
+    @Query("SELECT * FROM breaking_bad_actor_table WHERE char_id = :itemId")
+    suspend fun getItemById(itemId: Int): BBActorLocal?
 
-    @Query("SELECT * FROM breaking_bad_character_table")
-    suspend fun getAllItems(): List<BBCharacterLocal?>?
+    @Query("SELECT * FROM breaking_bad_actor_table")
+    suspend fun getAllItems(): List<BBActorLocal?>?
 
-    @Query("DELETE FROM breaking_bad_character_table")
+    @Query("DELETE FROM breaking_bad_actor_table")
     suspend fun deleteAll()
 
 }

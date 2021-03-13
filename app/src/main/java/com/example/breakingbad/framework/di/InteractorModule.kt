@@ -1,11 +1,11 @@
 package com.example.breakingbad.framework.di
 
-import com.example.breakingbad.framework.datasource.database.BBCharacterLocalDataSource
-import com.example.breakingbad.data.BBCharacterLocalRepository
-import com.example.breakingbad.data.BBCharacterRemoteRepository
-import com.example.breakingbad.presentation.interactors.BBCharacterDetailInteractors
+import com.example.breakingbad.framework.datasource.database.BBActorLocalDataSource
+import com.example.breakingbad.data.BBActorLocalRepository
+import com.example.breakingbad.data.BBActorRemoteRepository
+import com.example.breakingbad.presentation.interactors.BBActorDetailInteractors
 import com.example.breakingbad.presentation.interactors.HomeInteractors
-import com.example.breakingbad.framework.datasource.network.data.BBCharacterRemoteDataSource
+import com.example.breakingbad.framework.datasource.network.data.BBActorRemoteDataSource
 import com.example.breakingbad.interactors.*
 import dagger.Module
 import dagger.Provides
@@ -15,59 +15,59 @@ class InteractorModule {
 
     @Provides
     fun provideHomeInteractors(
-        irrGetLocalBBCharacters: InterGetLocalBBCharacters,
-        irrGetRemoteBBCharacters: InterGetRemoteBBCharacters,
-        irrGetRemoteBBCharactersByName: InterGetRemoteBBCharactersByName,
-        irrStoreBBCharacters: InterStoreBBCharacters
+        irrGetLocalBBActors: IrrGetLocalBBActors,
+        irrGetRemoteBBActors: IrrGetRemoteBBActors,
+        irrGetRemoteBBActorsByName: IrrGetRemoteBBActorsByName,
+        irrStoreBBActors: IrrStoreBBActors
     ): HomeInteractors {
         return HomeInteractors(
-            irrGetLocalBBCharacters,
-            irrGetRemoteBBCharacters,
-            irrGetRemoteBBCharactersByName,
-            irrStoreBBCharacters
+            irrGetLocalBBActors,
+            irrGetRemoteBBActors,
+            irrGetRemoteBBActorsByName,
+            irrStoreBBActors
         )
     }
 
     @Provides
-    fun provideBBCharacterDetailInteractors(
-        interGetLocalBBCharacter: InterGetLocalBBCharacter
-    ): BBCharacterDetailInteractors {
-        return BBCharacterDetailInteractors(interGetLocalBBCharacter)
+    fun provideBBActorDetailInteractors(
+        irrGetLocalBBActor: IrrGetLocalBBActor
+    ): BBActorDetailInteractors {
+        return BBActorDetailInteractors(irrGetLocalBBActor)
     }
 
     @Provides
-    fun provideIRRGetRemoteItems(
-        dataSource: BBCharacterRemoteDataSource
-    ): InterGetRemoteBBCharacters {
-        return InterGetRemoteBBCharacters(BBCharacterRemoteRepository(dataSource))
+    fun provideIrrGetRemoteBBActors(
+        dataSource: BBActorRemoteDataSource
+    ): IrrGetRemoteBBActors {
+        return IrrGetRemoteBBActors(BBActorRemoteRepository(dataSource))
     }
 
     @Provides
-    fun provideIRRGetRemoteItemsByName(
-        dataSource: BBCharacterRemoteDataSource
-    ): InterGetRemoteBBCharactersByName {
-        return InterGetRemoteBBCharactersByName(BBCharacterRemoteRepository(dataSource))
+    fun provideIrrGetRemoteBBActorsByName(
+        dataSource: BBActorRemoteDataSource
+    ): IrrGetRemoteBBActorsByName {
+        return IrrGetRemoteBBActorsByName(BBActorRemoteRepository(dataSource))
     }
 
     @Provides
-    fun provideIRRGetLocalBBCharacters(
-        dataSource: BBCharacterLocalDataSource
-    ): InterGetLocalBBCharacters {
-        return InterGetLocalBBCharacters(BBCharacterLocalRepository(dataSource))
+    fun provideIrrGetLocalBBActors(
+        dataSource: BBActorLocalDataSource
+    ): IrrGetLocalBBActors {
+        return IrrGetLocalBBActors(BBActorLocalRepository(dataSource))
     }
 
     @Provides
-    fun provideIRRGetLocalBBCharacter(
-        dataSource: BBCharacterLocalDataSource
-    ): InterGetLocalBBCharacter {
-        return InterGetLocalBBCharacter(BBCharacterLocalRepository(dataSource))
+    fun provideIrrGetLocalBBActor(
+        dataSource: BBActorLocalDataSource
+    ): IrrGetLocalBBActor {
+        return IrrGetLocalBBActor(BBActorLocalRepository(dataSource))
     }
 
     @Provides
-    fun provideIRRInsertBBCharacters(
-        dataSource: BBCharacterLocalDataSource
-    ): InterStoreBBCharacters {
-        return InterStoreBBCharacters(BBCharacterLocalRepository(dataSource))
+    fun provideIrrInsertBBActors(
+        dataSource: BBActorLocalDataSource
+    ): IrrStoreBBActors {
+        return IrrStoreBBActors(BBActorLocalRepository(dataSource))
     }
 
 }

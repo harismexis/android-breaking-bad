@@ -14,13 +14,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.example.breakingbad.R
 import com.example.breakingbad.setup.base.InstrumentedTestSetup
-import com.example.breakingbad.domain.BBCharacter
+import com.example.breakingbad.domain.BBActor
 import com.example.breakingbad.setup.mockvm.MockHomeVmProvider
 import com.example.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_ALL_IDS_VALID
 import com.example.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_NO_DATA
 import com.example.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_TWO_EMPTY
 import com.example.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_TWO_IDS_ABSENT
-import com.example.breakingbad.presentation.bbcharacterdetail.ui.BBCharacterDetailActivity
+import com.example.breakingbad.presentation.bbcharacterdetail.ui.BBActorDetailActivity
 import com.example.breakingbad.presentation.home.viewmodel.HomeViewModel
 import com.example.breakingbad.setup.testutil.RecyclerViewItemCountAssertion
 import com.example.breakingbad.presentation.home.ui.activity.HomeActivity
@@ -43,7 +43,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
         )
 
     private lateinit var mockViewModel: HomeViewModel
-    private lateinit var mockItems: List<BBCharacter>
+    private lateinit var mockItems: List<BBActor>
 
     @Before
     fun doBeforeTest() {
@@ -140,7 +140,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
         clickRecyclerAt(0)
 
         // then
-        intended(hasComponent(BBCharacterDetailActivity::class.java.name))
+        intended(hasComponent(BBActorDetailActivity::class.java.name))
     }
 
     private fun clickRecyclerAt(position: Int) {

@@ -9,19 +9,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.breakingbad.R
 import com.example.breakingbad.databinding.ActivityHomeBinding
 import com.example.breakingbad.framework.base.BaseActivity
-import com.example.breakingbad.presentation.bbcharacterdetail.ui.BBCharacterDetailActivity.Companion.startCatDetailActivity
-import com.example.breakingbad.domain.BBCharacter
-import com.example.breakingbad.presentation.home.ui.adapter.BBCharacterAdapter
-import com.example.breakingbad.presentation.home.ui.viewholder.BBCharacterViewHolder
+import com.example.breakingbad.presentation.bbcharacterdetail.ui.BBActorDetailActivity.Companion.startCatDetailActivity
+import com.example.breakingbad.domain.BBActor
+import com.example.breakingbad.presentation.home.ui.adapter.BBActorAdapter
+import com.example.breakingbad.presentation.home.ui.viewholder.BBActorViewHolder
 import com.example.breakingbad.presentation.home.viewmodel.HomeViewModel
 
-class HomeActivity : BaseActivity(), BBCharacterViewHolder.BBCharacterClickListener,
+class HomeActivity : BaseActivity(), BBActorViewHolder.BBCharacterClickListener,
     android.widget.SearchView.OnQueryTextListener {
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var adapter: BBCharacterAdapter
-    private var uiModels: MutableList<BBCharacter> = mutableListOf()
+    private lateinit var adapter: BBActorAdapter
+    private var uiModels: MutableList<BBActor> = mutableListOf()
 
     override fun initialise() {
         super.initialise()
@@ -47,7 +47,7 @@ class HomeActivity : BaseActivity(), BBCharacterViewHolder.BBCharacterClickListe
         return binding.root
     }
 
-    override fun onBBCharacterClick(item: BBCharacter, position: Int) {
+    override fun onBBCharacterClick(item: BBActor, position: Int) {
         startCatDetailActivity(item.char_id)
     }
 
@@ -61,7 +61,7 @@ class HomeActivity : BaseActivity(), BBCharacterViewHolder.BBCharacterClickListe
         })
     }
 
-    private fun populate(models: List<BBCharacter>) {
+    private fun populate(models: List<BBActor>) {
         binding.homeSwipeRefresh.isRefreshing = false
         binding.loadingProgressBar.visibility = View.GONE
         binding.homeList.visibility = View.VISIBLE
@@ -71,7 +71,7 @@ class HomeActivity : BaseActivity(), BBCharacterViewHolder.BBCharacterClickListe
     }
 
     private fun initialiseRecycler() {
-        adapter = BBCharacterAdapter(uiModels, this)
+        adapter = BBActorAdapter(uiModels, this)
         adapter.setHasStableIds(true)
         binding.homeList.layoutManager = LinearLayoutManager(this)
         binding.homeList.adapter = adapter
@@ -94,7 +94,7 @@ class HomeActivity : BaseActivity(), BBCharacterViewHolder.BBCharacterClickListe
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         viewModel.searchQuery = query
-        return false
+        return true
     }
 
     override fun onQueryTextChange(query: String?): Boolean {

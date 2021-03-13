@@ -1,14 +1,14 @@
 package com.example.breakingbad.utils
 
-import com.example.breakingbad.framework.datasource.database.BBCharacterLocal
-import com.example.breakingbad.domain.BBCharacter
+import com.example.breakingbad.framework.datasource.database.BBActorLocal
+import com.example.breakingbad.domain.BBActor
 import org.junit.Assert
 
 class BBCharacterItemLocalVerificator {
 
     fun verifyLocalItemsAgainstBBCharacters(
-        actual: List<BBCharacterLocal>,
-        expected: List<BBCharacter>
+        actual: List<BBActorLocal>,
+        expected: List<BBActor>
     ) {
         verifyListsHaveSameSize(actual, expected)
         expected.forEachIndexed { index, item ->
@@ -18,8 +18,8 @@ class BBCharacterItemLocalVerificator {
     }
 
     fun verifyBBCharactersAgainstLocalItems(
-        actual: List<BBCharacter>,
-        expected: List<BBCharacterLocal>
+        actual: List<BBActor>,
+        expected: List<BBActorLocal>
     ) {
         verifyListsHaveSameSize(actual, expected)
         expected.forEachIndexed { index, localItem ->
@@ -29,8 +29,8 @@ class BBCharacterItemLocalVerificator {
     }
 
     private fun verifyBBCharacterAgainstLocalItem(
-        actual: BBCharacter,
-        expected: BBCharacterLocal
+        actual: BBActor,
+        expected: BBActorLocal
     ) {
         Assert.assertEquals(expected.char_id, actual.char_id)
         Assert.assertEquals(expected.name, actual.name)
@@ -43,8 +43,8 @@ class BBCharacterItemLocalVerificator {
     }
 
     private fun verifyLocalItemAgainstBBCharacter(
-        actual: BBCharacterLocal,
-        expected: BBCharacter
+        actual: BBActorLocal,
+        expected: BBActor
     ) {
         Assert.assertEquals(expected.char_id, actual.char_id)
         Assert.assertEquals(expected.name, actual.name)

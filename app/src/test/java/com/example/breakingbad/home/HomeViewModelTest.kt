@@ -72,8 +72,8 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
 
         // then
         verifyInternetChecked()
-        verifyZeroInteractions(mockInterGetRemoteItems)
-        verifyZeroInteractions(mockInterGetLocalItems)
+        verifyZeroInteractions(mockIrrGetRemoteItems)
+        verifyZeroInteractions(mockIrrGetLocalItems)
         verifyLiveDataNotChanged()
     }
 

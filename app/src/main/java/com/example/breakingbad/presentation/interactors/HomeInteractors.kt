@@ -1,13 +1,13 @@
 package com.example.breakingbad.presentation.interactors
 
-import com.example.breakingbad.interactors.InterGetLocalBBCharacters
-import com.example.breakingbad.interactors.InterGetRemoteBBCharacters
-import com.example.breakingbad.interactors.InterGetRemoteBBCharactersByName
-import com.example.breakingbad.interactors.InterStoreBBCharacters
+import com.example.breakingbad.interactors.IrrGetLocalBBActors
+import com.example.breakingbad.interactors.IrrGetRemoteBBActors
+import com.example.breakingbad.interactors.IrrGetRemoteBBActorsByName
+import com.example.breakingbad.interactors.IrrStoreBBActors
 
 data class HomeInteractors(
-    val irrGetLocalBBCharacters: InterGetLocalBBCharacters,
-    val irrGetRemoteBBCharacters: InterGetRemoteBBCharacters,
-    val irrGetRemoteBBCharactersByName: InterGetRemoteBBCharactersByName,
-    val irrStoreBBCharacters: InterStoreBBCharacters
+    val irrGetLocalBBActors: IrrGetLocalBBActors,
+    val irrGetRemoteBBActors: IrrGetRemoteBBActors,
+    val irrGetRemoteBBActorsByName: IrrGetRemoteBBActorsByName,
+    val irrStoreBBActors: IrrStoreBBActors
 )

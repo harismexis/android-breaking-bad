@@ -2,7 +2,7 @@ package com.example.breakingbad.framework.viewmodel.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.breakingbad.presentation.bbcharacterdetail.viewmodel.BBCharacterDetailViewModel
+import com.example.breakingbad.presentation.bbcharacterdetail.viewmodel.BBActorDetailViewModel
 import com.example.breakingbad.presentation.home.viewmodel.HomeViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -43,6 +43,6 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(BBCharacterDetailViewModel::class)
-    internal abstract fun itemDetailVm(viewModel: BBCharacterDetailViewModel): ViewModel
+    @ViewModelKey(BBActorDetailViewModel::class)
+    internal abstract fun itemDetailVm(viewModel: BBActorDetailViewModel): ViewModel
 }
