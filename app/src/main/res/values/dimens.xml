@@ -3,16 +3,16 @@
 
     <dimen name="loading_progress_size">50dp</dimen>
 
-    <!-- HOME -->
+    <!-- home -->
     <dimen name="home_list_padding_vertical">10dp</dimen>
     <dimen name="home_list_padding_horizontal">20dp</dimen>
 
-    <!-- TOOLBAR -->
+    <!-- toolbar -->
     <dimen name="toolbar_text_size">18sp</dimen>
 
-    <!-- VH BREAKING BAD CHARACTER -->
+    <!-- vh actor item -->
     <dimen name="vh_bbcharacter_img_width">140dp</dimen>
-    <dimen name="vh_bbcharacter_img_height">120dp</dimen>
+    <dimen name="vh_bbcharacter_img_height">170dp</dimen>
     <dimen name="vh_bbcharacter_title_text_size">17sp</dimen>
     <dimen name="vh_bbcharacter_meta_text_size">16sp</dimen>
     <dimen name="vh_bbcharacter_padding_vertical">8dp</dimen>
@@ -20,8 +20,8 @@
     <dimen name="vh_bbcharacter_txt_margin_horizontal">10dp</dimen>
     <dimen name="vh_bbcharacter_txt_meta_margin_top">10dp</dimen>
 
-    <!-- BREAKING BAD CHARACTER DETAIL -->
-    <dimen name="bbcharacter_detail_img_height">420dp</dimen>
+    <!-- actor detail -->
+    <dimen name="bbcharacter_detail_img_height">440dp</dimen>
     <dimen name="bbcharacter_detail_title_text_size">20sp</dimen>
     <dimen name="bbcharacter_detail_label_text_size">16sp</dimen>
     <dimen name="bbcharacter_detail_meta_text_size">16sp</dimen>
