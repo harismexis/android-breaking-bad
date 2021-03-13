@@ -33,6 +33,7 @@
                 android:id="@+id/searchView"
                 style="@style/SearchViewIconStyle"
                 app:theme="@style/SearchViewTextStyle"
+                android:imeOptions="flagNoExtractUi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:iconifiedByDefault="false"

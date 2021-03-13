@@ -48,6 +48,7 @@ class HomeActivity : BaseActivity(), BBActorViewHolder.BBCharacterClickListener,
     }
 
     override fun onBBCharacterClick(item: BBActor, position: Int) {
+        binding.searchView.clearFocus()
         startCatDetailActivity(item.char_id)
     }
 
