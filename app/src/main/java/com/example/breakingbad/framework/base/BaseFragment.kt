@@ -2,16 +2,12 @@ package com.example.breakingbad.framework.base
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-
-import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
-
 import javax.inject.Inject
 
 abstract class BaseFragment : Fragment() {
@@ -24,26 +20,42 @@ abstract class BaseFragment : Fragment() {
         super.onAttach(context)
     }
 
-    open fun initialise() {
-        initialiseViewBinding()
-        initialiseView()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         initialiseViewModel()
-        observeLiveData()
     }
 
-    abstract fun initialiseViewBinding()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        initialiseViewBinding(inflater, container)
+        initialiseView()
+        return getRootView()
+    }
 
-    //abstract fun getRootView(): View
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
+        super.onViewCreated(view, savedInstanceState)
+        onViewCreated()
+    }
+
+    abstract fun initialiseViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    )
+
+    abstract fun getRootView(): View?
+
+    abstract fun onViewCreated()
 
     abstract fun initialiseViewModel()
 
-    abstract fun getToolbar(): Toolbar?
-
     abstract fun observeLiveData()
 
-    open fun initialiseView() {
-
-    }
-
+    abstract fun initialiseView()
 
 }

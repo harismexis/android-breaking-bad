@@ -1,10 +1,8 @@
 package com.example.breakingbad.presentation.home.ui.fragment
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.breakingbad.databinding.FragmentHomeBinding
@@ -23,22 +21,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
     private lateinit var adapter: ActorAdapter
     private var uiModels: MutableList<Actor> = mutableListOf()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initialiseViewModel()
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
-        initialiseView()
-        return binding?.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onViewCreated() {
         observeLiveData()
         viewModel.bind()
     }
@@ -52,14 +35,19 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         viewModel = ViewModelProviders.of(this, viewModelFactory)[HomeViewModel::class.java]
     }
 
+    override fun initialiseViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+    }
+
+    override fun getRootView() = binding?.root
+
     override fun initialiseView() {
         setupSwipeToRefresh()
         initialiseRecycler()
         initialiseSearchView()
-    }
-
-    override fun onActorClick(item: Actor, position: Int) {
-        requireContext().startActorDetailActivity(item.char_id)
     }
 
     override fun observeLiveData() {
@@ -68,20 +56,12 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         })
     }
 
-    override fun getToolbar(): Toolbar? {
-        return null
-    }
-
-    override fun initialise() {
-
-    }
-
-    override fun initialiseViewBinding() {
-
-    }
-
-    private fun initialiseSearchView() {
-        binding?.searchView?.setOnQueryTextListener(this)
+    override fun onActorClick(
+        item: Actor,
+        position: Int
+    ) {
+        binding?.searchView?.clearFocus()
+        requireContext().startActorDetailActivity(item.char_id)
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -109,6 +89,10 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         adapter.setHasStableIds(true)
         binding?.homeList?.layoutManager = LinearLayoutManager(this.context)
         binding?.homeList?.adapter = adapter
+    }
+
+    private fun initialiseSearchView() {
+        binding?.searchView?.setOnQueryTextListener(this)
     }
 
     private fun populate(models: List<Actor>) {
