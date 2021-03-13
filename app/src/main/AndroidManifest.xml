@@ -14,8 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidBreakingBad">
 
+<!--        <activity-->
+<!--            android:name="com.example.breakingbad.presentation.home.ui.activity.HomeActivity"-->
+<!--            android:theme="@style/Theme.AppCompat.Light.NoActionBar">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
         <activity
-            android:name="com.example.breakingbad.presentation.home.ui.activity.HomeActivity"
+            android:name="com.example.breakingbad.presentation.home.ui.fragment.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
