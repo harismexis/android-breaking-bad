@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.breakingbad.R
 import com.example.breakingbad.databinding.ActivityHomeBinding
 import com.example.breakingbad.framework.base.BaseActivity
-import com.example.breakingbad.presentation.actordetail.ui.ActorDetailActivity.Companion.startCatDetailActivity
+import com.example.breakingbad.presentation.actordetail.ui.ActorDetailActivity.Companion.startActorDetailActivity
 import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.presentation.home.ui.adapter.ActorAdapter
 import com.example.breakingbad.presentation.home.ui.viewholder.ActorViewHolder
@@ -49,7 +49,7 @@ class HomeActivity : BaseActivity(), ActorViewHolder.ActorClickListener,
 
     override fun onActorClick(item: Actor, position: Int) {
         binding.searchView.clearFocus()
-        startCatDetailActivity(item.char_id)
+        startActorDetailActivity(item.char_id)
     }
 
     override fun getToolbar(): Toolbar {
