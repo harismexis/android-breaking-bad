@@ -7,7 +7,7 @@
     android:background="@color/default_background_color"
     android:paddingHorizontal="@dimen/bbcharacter_detail_root_padding"
     android:paddingBottom="@dimen/bbcharacter_detail_padding_bottom"
-    tools:context=".presentation.actordetail.ui.ActorDetailActivity">
+    tools:context=".presentation.screens.actordetail.ui.activity.ActorDetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_container"
@@ -28,7 +28,7 @@
             <TextView
                 style="@style/ToolbarText"
                 android:layout_gravity="start"
-                android:text="@string/activity_character_detail_label"
+                android:text="@string/screen_actor_detail_label"
                 tools:text="Toolbar title" />
 
         </androidx.appcompat.widget.Toolbar>

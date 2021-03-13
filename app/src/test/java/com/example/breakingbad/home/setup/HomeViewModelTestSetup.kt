@@ -2,12 +2,12 @@ package com.example.breakingbad.home.setup
 
 import androidx.lifecycle.Observer
 import com.example.breakingbad.domain.Actor
-import com.example.breakingbad.presentation.interactors.HomeInteractors
+import com.example.breakingbad.presentation.screens.home.interactors.HomeInteractors
 import com.example.breakingbad.framework.util.network.ConnectivityMonitorSimple
-import com.example.breakingbad.interactors.IrrGetLocalActors
-import com.example.breakingbad.interactors.IrrGetRemoteActors
-import com.example.breakingbad.interactors.IrrStoreActors
-import com.example.breakingbad.presentation.home.viewmodel.HomeViewModel
+import com.example.breakingbad.interactors.actor.IrrGetLocalActors
+import com.example.breakingbad.interactors.actor.IrrGetRemoteActors
+import com.example.breakingbad.interactors.actor.IrrStoreActors
+import com.example.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 import com.example.breakingbad.setup.UnitTestSetup
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify

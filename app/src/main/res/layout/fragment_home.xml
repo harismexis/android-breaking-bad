@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/default_background_color"
-    tools:context="com.example.breakingbad.presentation.home.ui.fragment.HomeFragment">
+    tools:context="com.example.breakingbad.presentation.screens.home.ui.fragment.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             <TextView
                 style="@style/ToolbarText"
                 android:layout_gravity="start"
-                android:text="@string/activity_home_label"
+                android:text="@string/screen_home_label"
                 tools:text="Toolbar title" />
 
             <com.example.breakingbad.presentation.widget.CustomSearchView

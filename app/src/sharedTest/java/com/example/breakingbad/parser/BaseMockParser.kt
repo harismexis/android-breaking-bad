@@ -3,8 +3,8 @@ package com.example.breakingbad.parser
 import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.framework.datasource.database.LocalActor
 import com.example.breakingbad.framework.datasource.network.model.RemoteActor
-import com.example.breakingbad.framework.extensions.toLocalItems
-import com.example.breakingbad.framework.extensions.toItems
+import com.example.breakingbad.framework.extensions.actor.toItems
+import com.example.breakingbad.framework.extensions.actor.toLocalItems
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type

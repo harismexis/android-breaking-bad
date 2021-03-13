@@ -1,8 +1,8 @@
 package com.example.breakingbad.setup.mockvm
 
 import androidx.lifecycle.ViewModel
-import com.example.breakingbad.presentation.actordetail.viewmodel.ActorDetailViewModel
-import com.example.breakingbad.presentation.home.viewmodel.HomeViewModel
+import com.example.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
+import com.example.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 
 import javax.inject.Provider
 

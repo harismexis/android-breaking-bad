@@ -2,9 +2,9 @@ package com.example.breakingbad.actordetail.setup
 
 import androidx.lifecycle.Observer
 import com.example.breakingbad.domain.Actor
-import com.example.breakingbad.presentation.interactors.ActorDetailInteractors
-import com.example.breakingbad.interactors.IrrGetLocalActor
-import com.example.breakingbad.presentation.actordetail.viewmodel.ActorDetailViewModel
+import com.example.breakingbad.presentation.screens.actordetail.interactors.ActorDetailInteractors
+import com.example.breakingbad.interactors.actor.IrrGetLocalActor
+import com.example.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 import com.example.breakingbad.setup.UnitTestSetup
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify

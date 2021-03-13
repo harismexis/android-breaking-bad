@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 import com.example.breakingbad.domain.Actor
-import com.example.breakingbad.presentation.home.viewmodel.HomeViewModel
+import com.example.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 
 import io.mockk.mockk
 

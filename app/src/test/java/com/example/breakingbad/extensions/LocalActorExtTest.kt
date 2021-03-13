@@ -1,7 +1,7 @@
 package com.example.breakingbad.extensions
 
-import com.example.breakingbad.framework.extensions.toItems
-import com.example.breakingbad.framework.extensions.toLocalItems
+import com.example.breakingbad.framework.extensions.actor.toItems
+import com.example.breakingbad.framework.extensions.actor.toLocalItems
 import com.example.breakingbad.setup.UnitTestSetup
 import com.example.breakingbad.utils.BBCharacterItemLocalVerificator
 import com.example.breakingbad.utils.verifyListSizeWhenAllIdsValid
