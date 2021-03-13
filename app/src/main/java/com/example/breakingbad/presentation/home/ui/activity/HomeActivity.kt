@@ -81,7 +81,7 @@ class HomeActivity : BaseActivity(), BBActorViewHolder.BBCharacterClickListener,
         binding.homeSwipeRefresh.setOnRefreshListener {
             binding.homeSwipeRefresh.isRefreshing = true
             viewModel.refresh { canRefresh ->
-                if (!canRefresh) {
+                if (! canRefresh) {
                     binding.homeSwipeRefresh.isRefreshing = false
                 }
             }
