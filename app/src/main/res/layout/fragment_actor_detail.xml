@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/default_background_color"
-    android:paddingHorizontal="@dimen/bbcharacter_detail_root_padding"
-    android:paddingBottom="@dimen/bbcharacter_detail_padding_bottom"
+    android:paddingHorizontal="@dimen/actor_detail_root_padding"
+    android:paddingBottom="@dimen/actor_detail_padding_bottom"
     tools:context="com.example.breakingbad.presentation.screens.actordetail.ui.fragment.ActorDetailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout

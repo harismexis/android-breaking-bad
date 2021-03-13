@@ -6,6 +6,9 @@
     <string name="screen_actor_detail_label">Actor</string>
     <string name="screen_quotes_label">Quotes</string>
 
+    <!-- -->
+    <string name="home_menu_open_quotes">Quotes</string>
+
     <!-- vh actor -->
     <string name="content_description_character_image">Actor Image</string>
 

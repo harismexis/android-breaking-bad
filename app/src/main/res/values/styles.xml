@@ -22,36 +22,36 @@
     <style name="VhItemTxtv" parent="BaseTxtv">
         <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
-        <item name="android:layout_marginStart">@dimen/vh_bbcharacter_txt_margin_horizontal</item>
-        <item name="android:layout_marginEnd">@dimen/vh_bbcharacter_txt_margin_horizontal</item>
+        <item name="android:layout_marginStart">@dimen/vh_item_txt_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/vh_item_txt_margin_horizontal</item>
     </style>
 
     <style name="VhItemTitle" parent="VhItemTxtv">
-        <item name="android:textSize">@dimen/vh_bbcharacter_title_text_size</item>
+        <item name="android:textSize">@dimen/vh_item_title_text_size</item>
         <item name="android:fontFamily">@font/ubuntu_bold</item>
     </style>
 
     <style name="VhItemMeta" parent="VhItemTxtv">
-        <item name="android:textSize">@dimen/vh_bbcharacter_meta_text_size</item>
+        <item name="android:textSize">@dimen/vh_item_meta_text_size</item>
     </style>
 
     <style name="DetailTxtv" parent="BaseTxtv">
-        <item name="android:layout_marginStart">@dimen/bbcharacter_detail_txtv_margin_horizontal</item>
-        <item name="android:layout_marginEnd">@dimen/bbcharacter_detail_txtv_margin_horizontal</item>
+        <item name="android:layout_marginStart">@dimen/actor_detail_txtv_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/actor_detail_txtv_margin_horizontal</item>
     </style>
 
     <style name="ItemDetailTitle" parent="DetailTxtv">
-        <item name="android:textSize">@dimen/bbcharacter_detail_title_text_size</item>
+        <item name="android:textSize">@dimen/actor_detail_title_text_size</item>
         <item name="android:fontFamily">@font/ubuntu_bold</item>
     </style>
 
     <style name="ItemDetailLabel" parent="DetailTxtv">
-        <item name="android:textSize">@dimen/bbcharacter_detail_label_text_size</item>
-        <item name="android:textColor">@color/green_five</item>
+        <item name="android:textSize">@dimen/actor_detail_label_text_size</item>
+        <item name="android:textColor">@color/green_six</item>
     </style>
 
     <style name="ItemDetailMeta" parent="DetailTxtv">
-        <item name="android:textSize">@dimen/bbcharacter_detail_meta_text_size</item>
+        <item name="android:textSize">@dimen/actor_detail_meta_text_size</item>
     </style>
 
     <style name="SearchViewIconStyle">
