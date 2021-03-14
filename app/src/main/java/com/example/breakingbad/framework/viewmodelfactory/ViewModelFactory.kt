@@ -1,4 +1,4 @@
-package com.example.breakingbad.framework.viewmodel.factory
+package com.example.breakingbad.framework.viewmodelfactory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

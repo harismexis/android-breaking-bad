@@ -1,7 +1,7 @@
 package com.example.breakingbad.framework.di
 
 import com.example.breakingbad.framework.application.MainApplication
-import com.example.breakingbad.framework.viewmodel.factory.ViewModelModule
+import com.example.breakingbad.framework.viewmodelfactory.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
