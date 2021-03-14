@@ -17,6 +17,8 @@ The project is ongoing so more things will be added in the future.
 The project contains some Unit Tests and Instrumented Tests. 
 More Tests will be added. 
 
+### Screenshots:
+
 #### Home
 ![Alt text](screenshots/home_all.png?raw=true "app screenshot")
 
