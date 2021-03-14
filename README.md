@@ -17,9 +17,9 @@ The project contains some Unit Tests and Instrumented Tests.
 More Tests will be added. 
 
 #### Home
-![Alt text](screenshots/home_1.png?raw=true "app screenshot")
+![Alt text](screenshots/home_all.png?raw=true "app screenshot")
 
-![Alt text](screenshots/home_2.png?raw=true "app screenshot")
+![Alt text](screenshots/home_filter_by_name.png?raw=true "app screenshot")
 
 #### Actor Detail
 ![Alt text](screenshots/actor_detail_1.png?raw=true "app screenshot")
