@@ -6,6 +6,7 @@ import com.example.breakingbad.presentation.screens.home.interactors.HomeInterac
 import com.example.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.example.breakingbad.interactors.actor.IrrGetLocalActors
 import com.example.breakingbad.interactors.actor.IrrGetRemoteActors
+import com.example.breakingbad.interactors.actor.IrrGetRemoteActorsByName
 import com.example.breakingbad.interactors.actor.IrrStoreActors
 import com.example.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 import com.example.breakingbad.setup.UnitTestSetup
@@ -23,6 +24,9 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     @Mock
     protected lateinit var mockIrrGetRemoteItems: IrrGetRemoteActors
+    // TODO: Probably use only the get actors by name
+//    @Mock
+//    protected lateinit var mockIrrGetRemoteItemsByName: IrrGetRemoteActorsByName
 
     @Mock
     protected lateinit var mockIrrStoreItems: IrrStoreActors

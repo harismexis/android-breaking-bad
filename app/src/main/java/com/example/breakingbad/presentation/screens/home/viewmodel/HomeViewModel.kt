@@ -21,8 +21,6 @@ class HomeViewModel @Inject constructor(
 
     private val TAG = HomeViewModel::class.qualifiedName
 
-    private var disposables: CompositeDisposable = CompositeDisposable()
-
     private val mModels = MutableLiveData<List<Actor>>()
     val models: LiveData<List<Actor>>
         get() = mModels
@@ -30,17 +28,14 @@ class HomeViewModel @Inject constructor(
     var searchQuery: String? = null
         set(value) {
             field = value
-            if (value.isNullOrBlank()) {
-                fetchRemoteItems()
-                // fetchRemoteItemsByName(null)
-            } else {
-                fetchRemoteItemsByName(value)
-            }
+            fetchRemoteItemsByName(value)
         }
 
     fun bind() {
         if (connectivity.isOnline()) {
             fetchRemoteItems()
+            // TODO: probably use the following only
+            // fetchRemoteItemsByName(searchQuery)
         } else {
             fetchLocalItems()
         }
@@ -49,9 +44,7 @@ class HomeViewModel @Inject constructor(
     fun refresh(callback: Action1<Boolean>) {
         val canRefresh = connectivity.isOnline()
         callback.call(canRefresh)
-        if (canRefresh) {
-            fetchRemoteItems()
-        }
+        if (canRefresh) fetchRemoteItemsByName(searchQuery)
     }
 
     private fun fetchRemoteItems() {
@@ -73,7 +66,7 @@ class HomeViewModel @Inject constructor(
                 mModels.value = items
                 interactors.irrStoreActors.invoke(items)
             } catch (e: Exception) {
-                 Log.d(TAG, e.getErrorMessage())
+                Log.d(TAG, e.getErrorMessage())
             }
         }
     }

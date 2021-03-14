@@ -19,5 +19,13 @@ More Tests will be added.
 #### Home
 ![Alt text](screenshots/home_1.png?raw=true "app screenshot")
 
-#### Item Detail
+![Alt text](screenshots/home_2.png?raw=true "app screenshot")
+
+#### Actor Detail
 ![Alt text](screenshots/actor_detail_1.png?raw=true "app screenshot")
+
+#### Quotes
+![Alt text](screenshots/quotes_1.png?raw=true "app screenshot")
+
+#### Player
+![Alt text](screenshots/player_1.png?raw=true "app screenshot")
