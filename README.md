@@ -1,20 +1,20 @@
 ### Overview:
 
-The project is written in Kotlin with Clean Architecture. 
-It uses JetPack i.e. Coroutines, LiveData, Room, ViewModel and 
-Retrofit, Glide, Dagger, Mockito-kotlin, Mockk etc.
+The project is written in Kotlin with Clean Architecture + MVVM and uses JetPack components 
+i.e. Navigation, Coroutines, LiveData, Room, ViewModel. Also popular libraries have been used
+i.e. Retrofit, Glide, Dagger, Mockito-kotlin, Mockk etc.
 
 ### Description:
 
-The initial screen is the Home Screen which shows a list of Breaking Bad Actors with 
-image and brief information for each item. If internet is not connected the items will 
-be retrieved from the local storage (Room). Home screen also supports searching actors
-by name. The next screen is the Item Detail Screen which shows a larger image of the 
-selected actor and more detailed information.  
+The Home Screen shows a list of Breaking Bad Actors with image and brief information for each one. 
+If internet is not available the actors will be retrieved from local storage (Room). Home screen 
+also supports searching actors by name. There is a BottomNavigationView which navigates to Quotes, 
+Deaths and Episodes screens.  
 
 ### Tests:
 
-The project contains Unit Tests and Instrumented Tests.
+The project contains some Unit Tests and Instrumented Tests. 
+More Tests will be added. 
 
 #### Home
 ![Alt text](screenshots/home_1.png?raw=true "app screenshot")
