@@ -2,6 +2,7 @@ package com.example.breakingbad.framework.datasource.network.data
 
 import com.example.breakingbad.framework.datasource.network.api.BreakingBadApi
 import com.example.breakingbad.framework.datasource.network.model.RemoteActor
+import com.example.breakingbad.framework.datasource.network.model.RemoteDeath
 import com.example.breakingbad.framework.datasource.network.model.RemoteQuote
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -10,15 +11,19 @@ import javax.inject.Singleton
 class BreakingBadRemoteDao @Inject constructor(private val api: BreakingBadApi) {
 
     suspend fun getActors(): List<RemoteActor?>? {
-        return api.getBreakingBadCharacters()
+        return api.getCharacters()
     }
 
     suspend fun getActorsByName(name: String?): List<RemoteActor?>? {
-        return api.getBreakingBadCharactersByName(name)
+        return api.getCharactersByName(name)
     }
 
     suspend fun getQuotes(): List<RemoteQuote?>? {
-        return api.getBreakingBadQuotes()
+        return api.getQuotes()
+    }
+
+    suspend fun getDeaths(): List<RemoteDeath?>? {
+        return api.getDeaths()
     }
 
 }

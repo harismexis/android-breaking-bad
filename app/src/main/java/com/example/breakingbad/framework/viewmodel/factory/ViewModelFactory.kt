@@ -3,6 +3,7 @@ package com.example.breakingbad.framework.viewmodel.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
+import com.example.breakingbad.presentation.screens.deaths.viewmodel.DeathViewModel
 import com.example.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 import com.example.breakingbad.presentation.screens.quotes.viewmodel.QuoteViewModel
 import dagger.Binds
@@ -51,4 +52,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(QuoteViewModel::class)
     internal abstract fun quoteViewModel(viewModel: QuoteViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DeathViewModel::class)
+    internal abstract fun deathViewModel(viewModel: DeathViewModel): ViewModel
 }

@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [LocalActor::class, LocalQuote::class],
+    entities = [LocalActor::class, LocalQuote::class, LocalDeath::class],
     version = 1,
     exportSchema = false
 )

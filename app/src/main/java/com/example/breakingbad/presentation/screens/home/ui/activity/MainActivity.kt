@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.quotes_dest)
                 }
                 R.id.deaths_dest -> {
-
+                    navController.navigate(R.id.deaths_dest)
                 }
                 R.id.episodes_dest -> {
 

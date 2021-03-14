@@ -2,10 +2,13 @@ package com.example.breakingbad.framework.datasource.database
 
 import com.example.breakingbad.data.BreakingBadBaseLocalDataSource
 import com.example.breakingbad.domain.Actor
+import com.example.breakingbad.domain.Death
 import com.example.breakingbad.domain.Quote
 import com.example.breakingbad.framework.extensions.actor.toItem
 import com.example.breakingbad.framework.extensions.actor.toItems
 import com.example.breakingbad.framework.extensions.actor.toLocalItems
+import com.example.breakingbad.framework.extensions.death.toItems
+import com.example.breakingbad.framework.extensions.death.toLocalItems
 import com.example.breakingbad.framework.extensions.quote.toItems
 import com.example.breakingbad.framework.extensions.quote.toLocalItems
 import javax.inject.Inject
@@ -26,16 +29,27 @@ class BreakingBadLocalDataSource @Inject constructor(
         return null
     }
 
-    override suspend fun getAllActors(): List<Actor> {
+    override suspend fun getActors(): List<Actor> {
         return dao.getAllActors().toItems()
+    }
+
+
+    override suspend fun insertQuotes(items: List<Quote>) {
+        dao.insertQuotes(items.toLocalItems())
     }
 
     override suspend fun getQuotes(): List<Quote> {
         return dao.getAllQuotes().toItems()
     }
 
-    override suspend fun insertQuotes(items: List<Quote>) {
-        dao.insertQuotes(items.toLocalItems())
+
+    override suspend fun insertDeaths(items: List<Death>) {
+        dao.insertDeaths(items.toLocalItems())
     }
+
+    override suspend fun getDeaths(): List<Death> {
+        return dao.getAllDeaths().toItems()
+    }
+
 
 }

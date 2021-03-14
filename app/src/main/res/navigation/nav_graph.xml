@@ -31,9 +31,11 @@
     <fragment
         android:id="@+id/quotes_dest"
         android:name="com.example.breakingbad.presentation.screens.quotes.ui.fragment.QuoteFragment"
-        tools:layout="@layout/fragment_quote">
+        tools:layout="@layout/fragment_quote"/>
 
-    </fragment>
-
+    <fragment
+        android:id="@+id/deaths_dest"
+        android:name="com.example.breakingbad.presentation.screens.deaths.ui.fragment.DeathFragment"
+        tools:layout="@layout/fragment_deaths"/>
 
 </navigation>

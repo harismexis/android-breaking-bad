@@ -1,27 +1,27 @@
-package com.example.breakingbad.presentation.screens.quotes.viewmodel
+package com.example.breakingbad.presentation.screens.deaths.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.breakingbad.domain.Quote
+import com.example.breakingbad.domain.Death
 import com.example.breakingbad.framework.extensions.getErrorMessage
 import com.example.breakingbad.framework.util.functional.Action1
 import com.example.breakingbad.framework.util.network.ConnectivityMonitorSimple
-import com.example.breakingbad.presentation.screens.quotes.interactors.QuoteInteractors
+import com.example.breakingbad.presentation.screens.deaths.interactors.DeathInteractors
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class QuoteViewModel @Inject constructor(
-    private val interactors: QuoteInteractors,
+class DeathViewModel @Inject constructor(
+    private val interactors: DeathInteractors,
     private val connectivity: ConnectivityMonitorSimple,
 ) : ViewModel() {
 
-    private val TAG = QuoteViewModel::class.qualifiedName
+    private val TAG = DeathViewModel::class.qualifiedName
 
-    private val mModels = MutableLiveData<List<Quote>>()
-    val models: LiveData<List<Quote>>
+    private val mModels = MutableLiveData<List<Death>>()
+    val models: LiveData<List<Death>>
         get() = mModels
 
     fun bind() {
@@ -43,9 +43,9 @@ class QuoteViewModel @Inject constructor(
     private fun fetchRemoteItems() {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteQuotes.invoke()
+                val items = interactors.irrGetRemoteDeaths.invoke()
                 mModels.value = items
-                interactors.irrStoreQuotes.invoke(items)
+                interactors.irrStoreDeaths.invoke(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
             }
@@ -55,7 +55,7 @@ class QuoteViewModel @Inject constructor(
     private fun fetchLocalItems() {
         viewModelScope.launch {
             try {
-                mModels.value = interactors.irrGetLocalQuotes.invoke()
+                mModels.value = interactors.irrGetLocalDeaths.invoke()
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
             }

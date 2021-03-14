@@ -1,6 +1,7 @@
 package com.example.breakingbad.data
 
 import com.example.breakingbad.domain.Actor
+import com.example.breakingbad.domain.Death
 import com.example.breakingbad.domain.Quote
 
 data class BreakingBadRemoteRepository(
@@ -11,4 +12,6 @@ data class BreakingBadRemoteRepository(
     suspend fun getActorsByName(name: String?): List<Actor> = dataSource.getActorsByName(name)
 
     suspend fun getQuotes(): List<Quote> = dataSource.getQuotes()
+
+    suspend fun getDeaths(): List<Death> = dataSource.getDeaths()
 }

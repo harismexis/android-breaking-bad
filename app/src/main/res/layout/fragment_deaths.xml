@@ -5,7 +5,8 @@
     android:id="@+id/swipe_refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_background_color">
+    android:background="@color/default_background_color"
+    tools:context="com.example.breakingbad.presentation.screens.deaths.ui.fragment.DeathFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -24,7 +25,7 @@
             <TextView
                 style="@style/ToolbarText"
                 android:layout_gravity="start"
-                android:text="@string/screen_quotes_label"
+                android:text="@string/screen_deaths_label"
                 tools:text="Toolbar title" />
 
         </androidx.appcompat.widget.Toolbar>

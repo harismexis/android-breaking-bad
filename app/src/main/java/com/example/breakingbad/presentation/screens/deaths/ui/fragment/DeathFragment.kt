@@ -1,4 +1,4 @@
-package com.example.breakingbad.presentation.screens.quotes.ui.fragment
+package com.example.breakingbad.presentation.screens.deaths.ui.fragment
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,18 +9,20 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.breakingbad.R
+import com.example.breakingbad.databinding.FragmentDeathsBinding
 import com.example.breakingbad.databinding.FragmentQuoteBinding
-import com.example.breakingbad.domain.Quote
+import com.example.breakingbad.domain.Death
 import com.example.breakingbad.framework.base.BaseFragment
+import com.example.breakingbad.presentation.screens.deaths.ui.adapter.DeathAdapter
+import com.example.breakingbad.presentation.screens.deaths.viewmodel.DeathViewModel
 import com.example.breakingbad.presentation.screens.quotes.ui.adapter.QuoteAdapter
-import com.example.breakingbad.presentation.screens.quotes.viewmodel.QuoteViewModel
 
-class QuoteFragment : BaseFragment() {
+class DeathFragment : BaseFragment() {
 
-    private lateinit var viewModel: QuoteViewModel
-    private var binding: FragmentQuoteBinding? = null
-    private lateinit var adapter: QuoteAdapter
-    private var uiModels: MutableList<Quote> = mutableListOf()
+    private lateinit var viewModel: DeathViewModel
+    private var binding: FragmentDeathsBinding? = null
+    private lateinit var adapter: DeathAdapter
+    private var uiModels: MutableList<Death> = mutableListOf()
 
     override fun onViewCreated() {
         observeLiveData()
@@ -33,14 +35,14 @@ class QuoteFragment : BaseFragment() {
     }
 
     override fun initialiseViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[QuoteViewModel::class.java]
+        viewModel = ViewModelProviders.of(this, viewModelFactory)[DeathViewModel::class.java]
     }
 
     override fun initialiseViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
     ) {
-        binding = FragmentQuoteBinding.inflate(inflater, container, false)
+        binding = FragmentDeathsBinding.inflate(inflater, container, false)
     }
 
     override fun getRootView() = binding?.root
@@ -78,7 +80,7 @@ class QuoteFragment : BaseFragment() {
     }
 
     private fun initialiseRecycler() {
-        adapter = QuoteAdapter(uiModels)
+        adapter = DeathAdapter(uiModels)
         adapter.setHasStableIds(true)
         binding?.let {
             it.list.layoutManager = LinearLayoutManager(this.context)
@@ -86,7 +88,7 @@ class QuoteFragment : BaseFragment() {
         }
     }
 
-    private fun populate(models: List<Quote>) {
+    private fun populate(models: List<Death>) {
         binding?.let {
             it.swipeRefresh.isRefreshing = false
             it.progressBar.visibility = View.GONE
