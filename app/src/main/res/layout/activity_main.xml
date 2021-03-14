@@ -9,11 +9,21 @@
     tools:context=".presentation.screens.home.ui.activity.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/my_nav_host_fragment"
+        android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_view"
+        android:layout_width="match_parent"
+        app:itemIconTint="@color/white_one"
+        app:itemTextColor="@color/white_one"
+        app:labelVisibilityMode="labeled"
+        android:layout_height="wrap_content"
+        app:menu="@menu/menu_bottom_nav" />
 
 </LinearLayout>

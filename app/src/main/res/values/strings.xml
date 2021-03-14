@@ -7,7 +7,9 @@
     <string name="screen_quotes_label">Quotes</string>
 
     <!-- -->
-    <string name="home_menu_open_quotes">Quotes</string>
+    <string name="quotes">Quotes</string>
+    <string name="deaths">Deaths</string>
+    <string name="episodes">Episodes</string>
 
     <!-- vh actor -->
     <string name="content_description_character_image">Actor Image</string>
