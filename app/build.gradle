@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 def commonValues = rootProject.ext.common
@@ -64,6 +65,7 @@ dependencies {
     implementation libraries.values()
     implementation rxJavaDependencies.values()
     implementation daggerDependancies.values()
+    implementation navigationDependencies.values()
 
     debugImplementation librariesDebug.values()
 

@@ -4,16 +4,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.breakingbad.R
 import com.example.breakingbad.databinding.FragmentHomeBinding
 import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.framework.base.BaseFragment
-import com.example.breakingbad.presentation.screens.actordetail.ui.activity.ActorActivity.Companion.startActorActivity
 import com.example.breakingbad.presentation.screens.home.ui.adapter.ActorAdapter
 import com.example.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 import com.example.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
-import com.example.breakingbad.presentation.screens.quotes.ui.fragment.QuoteActivity.Companion.startQuoteActivity
 
 class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
     android.widget.SearchView.OnQueryTextListener {
@@ -35,12 +37,15 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
     }
 
     private fun setupToolbar() {
+        val navController = findNavController()
+        val appBarConf = AppBarConfiguration(navController.graph)
         binding?.let { it ->
-            it.homeToolbar.inflateMenu(R.menu.menu_home)
-            it.homeToolbar.setOnMenuItemClickListener { menuItem ->
-                when (menuItem.itemId) {
-                    R.id.action_open_quotes -> {
-                        requireContext().startQuoteActivity()
+            it.toolbar.setupWithNavController(navController, appBarConf)
+            it.toolbar.inflateMenu(R.menu.menu_home)
+            it.toolbar.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.quotes_dest -> {
+                        navController.navigate(R.id.quotes_dest)
                         true
                     }
                     else -> false
@@ -79,7 +84,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         position: Int
     ) {
         binding?.searchView?.clearFocus()
-        requireContext().startActorActivity(item.char_id)
+        //requireContext().startActorActivity(item.char_id)
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {

@@ -7,6 +7,7 @@ allprojects {
 
 ext {
     kotlin = '1.4.21'
+    nav_version = '2.3.4'
     def androidx_test = '1.2.0'
     def appcompat = '1.2.0'
     def constraint_layout = '2.0.4'
@@ -110,7 +111,8 @@ ext {
 
             mockito_android : "org.mockito:mockito-android:$mockito",
             mockito_core    : "org.mockito:mockito-core:$mockito",
-            mockk_android : "io.mockk:mockk-android:$mockk_android"
+            mockk_android : "io.mockk:mockk-android:$mockk_android",
+            nav_testing     : "androidx.navigation:navigation-testing:$nav_version"
     ]
 
     daggerDependancies = [
@@ -135,6 +137,15 @@ ext {
     glideDependencies = [
             glide        : "com.github.bumptech.glide:glide:${glide}",
             glide_okhttp : "com.github.bumptech.glide:okhttp3-integration:${glide}"
+    ]
+
+    navigationDependencies = [
+            nav_fragment : "androidx.navigation:navigation-fragment:$nav_version",
+            nav_ui : "androidx.navigation:navigation-ui:$nav_version",
+            nav_fragment_ktx : "androidx.navigation:navigation-fragment-ktx:$nav_version",
+            nav_ui_ktx : "androidx.navigation:navigation-ui-ktx:$nav_version",
+            nav_dynamic_features_fragment : "androidx.navigation:navigation-dynamic-features-fragment:$nav_version",
+            nav_compose : "androidx.navigation:navigation-compose:1.0.0-alpha09"
     ]
 
 }

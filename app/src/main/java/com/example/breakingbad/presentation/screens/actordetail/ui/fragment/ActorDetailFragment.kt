@@ -5,6 +5,9 @@ import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.breakingbad.R
 import com.example.breakingbad.databinding.ActorDetailViewBinding
 import com.example.breakingbad.databinding.FragmentActorDetailBinding
@@ -34,8 +37,15 @@ class ActorDetailFragment : BaseFragment() {
     }
 
     override fun onViewCreated() {
+        setupToolbar()
         observeLiveData()
         fetchLocalItem()
+    }
+
+    private fun setupToolbar() {
+        val navController = findNavController()
+        val appBarConf = AppBarConfiguration(navController.graph)
+        binding?.toolbar?.setupWithNavController(navController, appBarConf)
     }
 
     override fun onDestroyView() {
@@ -58,19 +68,13 @@ class ActorDetailFragment : BaseFragment() {
 
     override fun getRootView() = binding?.root
 
-    override fun initialiseView() {
-        binding?.let {
-            it.actorDetailToolbar.setNavigationOnClickListener {
-                requireActivity().finish()
-            }
-        }
-    }
-
     override fun observeLiveData() {
         viewModel.model.observe(viewLifecycleOwner, {
             populate(it)
         })
     }
+
+    override fun initialiseView() {}
 
     private fun fetchLocalItem() {
         val actorId = arguments?.getInt(ARG_ACTOR_ID)

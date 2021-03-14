@@ -4,7 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.breakingbad.R
 import com.example.breakingbad.databinding.FragmentQuoteBinding
 import com.example.breakingbad.domain.Quote
 import com.example.breakingbad.framework.base.BaseFragment
@@ -54,10 +58,11 @@ class QuoteFragment : BaseFragment() {
     }
 
     private fun setupToolbar() {
+        val navController = findNavController()
+        val appBarConf = AppBarConfiguration(navController.graph)
         binding?.let {
-            it.quoteToolbar.setNavigationOnClickListener {
-                requireActivity().finish()
-            }
+            it.toolbar.setupWithNavController(navController, appBarConf)
+            it.toolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
         }
     }
 
@@ -75,14 +80,18 @@ class QuoteFragment : BaseFragment() {
     private fun initialiseRecycler() {
         adapter = QuoteAdapter(uiModels)
         adapter.setHasStableIds(true)
-        binding?.quoteList?.layoutManager = LinearLayoutManager(this.context)
-        binding?.quoteList?.adapter = adapter
+        binding?.let {
+            it.quoteList.layoutManager = LinearLayoutManager(this.context)
+            it.quoteList.adapter = adapter
+        }
     }
 
     private fun populate(models: List<Quote>) {
-        binding?.homeSwipeRefresh?.isRefreshing = false
-        binding?.loadingProgressBar?.visibility = View.GONE
-        binding?.quoteList?.visibility = View.VISIBLE
+        binding?.let {
+            it.homeSwipeRefresh.isRefreshing = false
+            it.loadingProgressBar.visibility = View.GONE
+            it.quoteList.visibility = View.VISIBLE
+        }
         uiModels.clear()
         uiModels.addAll(models)
         adapter.notifyDataSetChanged()

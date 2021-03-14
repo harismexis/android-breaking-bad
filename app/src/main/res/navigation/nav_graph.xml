@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/home_dest">
+
+    <fragment
+        android:id="@+id/home_dest"
+        android:name="com.example.breakingbad.presentation.screens.home.ui.fragment.HomeFragment"
+        android:label="@string/screen_home_label"
+        app:defaultNavHost="true"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_home_dest_to_actor_detail_dest"
+            app:destination="@id/actor_detail_dest" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/actor_detail_dest"
+        android:name="com.example.breakingbad.presentation.screens.actordetail.ui.fragment.ActorDetailFragment"
+        android:label="@string/screen_actor_detail_label"
+        tools:layout="@layout/fragment_actor_detail">
+
+        <argument
+            android:name="actorId"
+            app:argType="integer" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/quotes_dest"
+        android:name="com.example.breakingbad.presentation.screens.quotes.ui.fragment.QuoteFragment"
+        tools:layout="@layout/fragment_quote">
+
+    </fragment>
+
+
+</navigation>

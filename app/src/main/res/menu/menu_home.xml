@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_open_quotes"
+        android:id="@+id/quotes_dest"
         android:icon="@drawable/ic_article_white_24dp"
         android:title="@string/home_menu_open_quotes"
         app:showAsAction="always" />

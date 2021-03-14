@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Breaking Bad</string>
-    <string name="screen_home_label">Home</string>
+    <string name="screen_home_label">Cast</string>
     <string name="screen_actor_detail_label">Actor</string>
     <string name="screen_quotes_label">Quotes</string>
 

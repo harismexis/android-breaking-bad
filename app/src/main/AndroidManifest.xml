@@ -14,22 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidBreakingBad">
 
-        <activity
-            android:name=".presentation.screens.home.ui.activity.MainActivity"
+        <activity android:name=".presentation.screens.home.ui.activity.HomeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".presentation.screens.actordetail.ui.activity.ActorActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
-        <activity
-            android:name=".presentation.screens.quotes.ui.fragment.QuoteActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
     </application>
 
