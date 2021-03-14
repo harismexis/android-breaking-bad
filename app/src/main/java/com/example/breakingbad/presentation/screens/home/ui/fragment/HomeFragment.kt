@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.breakingbad.R
@@ -84,7 +83,8 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         position: Int
     ) {
         binding?.searchView?.clearFocus()
-        //requireContext().startActorActivity(item.char_id)
+        val action = HomeFragmentDirections.actionHomeDestToActorDetailDest(item.char_id)
+        findNavController().navigate(action)
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {

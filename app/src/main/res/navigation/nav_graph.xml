@@ -20,7 +20,6 @@
     <fragment
         android:id="@+id/actor_detail_dest"
         android:name="com.example.breakingbad.presentation.screens.actordetail.ui.fragment.ActorDetailFragment"
-        android:label="@string/screen_actor_detail_label"
         tools:layout="@layout/fragment_actor_detail">
 
         <argument

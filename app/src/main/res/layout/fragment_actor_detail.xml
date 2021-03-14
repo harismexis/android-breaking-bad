@@ -22,11 +22,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_arrow_left_white_rounded_24dp"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <TextView
-                android:id="@+id/actor_toolbar_title"
+                android:id="@+id/toolbar_title"
                 style="@style/ToolbarText"
                 android:layout_gravity="start"
                 android:text="@string/screen_actor_detail_label"

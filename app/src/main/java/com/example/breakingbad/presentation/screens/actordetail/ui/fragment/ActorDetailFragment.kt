@@ -25,7 +25,7 @@ class ActorDetailFragment : BaseFragment() {
     private lateinit var viewModel: ActorDetailViewModel
 
     companion object {
-        private const val ARG_ACTOR_ID = "actor_id"
+        private const val ARG_ACTOR_ID = "actorId"
 
         fun newInstance(actorId: Int): ActorDetailFragment {
             val args = Bundle()
@@ -85,7 +85,8 @@ class ActorDetailFragment : BaseFragment() {
 
     private fun populate(item: Actor) {
         binding?.let {
-            it.actorToolbarTitle.text = item.name
+            it.toolbarTitle.text = item.name
+            it.toolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
         }
         detailBinding?.let {
             requireContext().populateWithGlide(it.img, item.img)
