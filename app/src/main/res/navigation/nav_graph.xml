@@ -30,8 +30,8 @@
 
     <fragment
         android:id="@+id/quotes_dest"
-        android:name="com.example.breakingbad.presentation.screens.quotes.ui.fragment.QuoteFragment"
-        tools:layout="@layout/fragment_quote" />
+        android:name="com.example.breakingbad.presentation.screens.quotes.ui.fragment.QuotesFragment"
+        tools:layout="@layout/fragment_quotes" />
 
     <fragment
         android:id="@+id/deaths_dest"
@@ -40,7 +40,7 @@
 
     <fragment
         android:id="@+id/episodes_dest"
-        android:name="com.example.breakingbad.presentation.screens.episodes.ui.fragment.EpisodeFragment"
+        android:name="com.example.breakingbad.presentation.screens.episodes.ui.fragment.EpisodesFragment"
         tools:layout="@layout/fragment_episodes" />
 
 

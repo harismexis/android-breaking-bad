@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 import com.example.breakingbad.presentation.screens.deaths.viewmodel.DeathsViewModel
-import com.example.breakingbad.presentation.screens.episodes.viewmodel.EpisodeViewModel
+import com.example.breakingbad.presentation.screens.episodes.viewmodel.EpisodesViewModel
 import com.example.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
-import com.example.breakingbad.presentation.screens.quotes.viewmodel.QuoteViewModel
+import com.example.breakingbad.presentation.screens.quotes.viewmodel.QuotesViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -51,8 +51,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(QuoteViewModel::class)
-    internal abstract fun quoteViewModel(viewModel: QuoteViewModel): ViewModel
+    @ViewModelKey(QuotesViewModel::class)
+    internal abstract fun quoteViewModel(viewModel: QuotesViewModel): ViewModel
 
     @Binds
     @IntoMap
@@ -61,6 +61,6 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(EpisodeViewModel::class)
-    internal abstract fun episodesViewModel(viewModel: EpisodeViewModel): ViewModel
+    @ViewModelKey(EpisodesViewModel::class)
+    internal abstract fun episodesViewModel(viewModel: EpisodesViewModel): ViewModel
 }

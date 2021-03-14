@@ -1,30 +1,27 @@
-package com.example.breakingbad.presentation.screens.episodes.viewmodel
+package com.example.breakingbad.presentation.screens.quotes.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.breakingbad.domain.Episode
 import com.example.breakingbad.domain.Quote
 import com.example.breakingbad.framework.extensions.getErrorMessage
 import com.example.breakingbad.framework.util.functional.Action1
 import com.example.breakingbad.framework.util.network.ConnectivityMonitorSimple
-import com.example.breakingbad.presentation.screens.episodes.interactors.EpisodeInteractors
 import com.example.breakingbad.presentation.screens.quotes.interactors.QuoteInteractors
-import com.example.breakingbad.presentation.screens.quotes.viewmodel.QuoteViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class EpisodeViewModel @Inject constructor(
-    private val interactors: EpisodeInteractors,
+class QuotesViewModel @Inject constructor(
+    private val interactors: QuoteInteractors,
     private val connectivity: ConnectivityMonitorSimple,
 ) : ViewModel() {
 
-    private val TAG = EpisodeViewModel::class.qualifiedName
+    private val TAG = QuotesViewModel::class.qualifiedName
 
-    private val mModels = MutableLiveData<List<Episode>>()
-    val models: LiveData<List<Episode>>
+    private val mModels = MutableLiveData<List<Quote>>()
+    val models: LiveData<List<Quote>>
         get() = mModels
 
     fun bind() {
@@ -46,9 +43,9 @@ class EpisodeViewModel @Inject constructor(
     private fun fetchRemoteItems() {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteEpisodes.invoke()
+                val items = interactors.irrGetRemoteQuotes.invoke()
                 mModels.value = items
-                interactors.irrStoreEpisodes.invoke(items)
+                interactors.irrStoreQuotes.invoke(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
             }
@@ -58,7 +55,7 @@ class EpisodeViewModel @Inject constructor(
     private fun fetchLocalItems() {
         viewModelScope.launch {
             try {
-                mModels.value = interactors.irrGetLocalEpisodes.invoke()
+                mModels.value = interactors.irrGetLocalQuotes.invoke()
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
             }

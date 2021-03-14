@@ -13,11 +13,11 @@ import com.example.breakingbad.databinding.FragmentEpisodesBinding
 import com.example.breakingbad.domain.Episode
 import com.example.breakingbad.framework.base.BaseFragment
 import com.example.breakingbad.presentation.screens.episodes.ui.adapter.EpisodeAdapter
-import com.example.breakingbad.presentation.screens.episodes.viewmodel.EpisodeViewModel
+import com.example.breakingbad.presentation.screens.episodes.viewmodel.EpisodesViewModel
 
-class EpisodeFragment : BaseFragment() {
+class EpisodesFragment : BaseFragment() {
 
-    private lateinit var viewModel: EpisodeViewModel
+    private lateinit var viewModel: EpisodesViewModel
     private var binding: FragmentEpisodesBinding? = null
     private lateinit var adapter: EpisodeAdapter
     private var uiModels: MutableList<Episode> = mutableListOf()
@@ -33,7 +33,7 @@ class EpisodeFragment : BaseFragment() {
     }
 
     override fun initialiseViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[EpisodeViewModel::class.java]
+        viewModel = ViewModelProviders.of(this, viewModelFactory)[EpisodesViewModel::class.java]
     }
 
     override fun initialiseViewBinding(

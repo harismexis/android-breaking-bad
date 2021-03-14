@@ -9,16 +9,16 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.breakingbad.R
-import com.example.breakingbad.databinding.FragmentQuoteBinding
+import com.example.breakingbad.databinding.FragmentQuotesBinding
 import com.example.breakingbad.domain.Quote
 import com.example.breakingbad.framework.base.BaseFragment
 import com.example.breakingbad.presentation.screens.quotes.ui.adapter.QuoteAdapter
-import com.example.breakingbad.presentation.screens.quotes.viewmodel.QuoteViewModel
+import com.example.breakingbad.presentation.screens.quotes.viewmodel.QuotesViewModel
 
-class QuoteFragment : BaseFragment() {
+class QuotesFragment : BaseFragment() {
 
-    private lateinit var viewModel: QuoteViewModel
-    private var binding: FragmentQuoteBinding? = null
+    private lateinit var viewModel: QuotesViewModel
+    private var binding: FragmentQuotesBinding? = null
     private lateinit var adapter: QuoteAdapter
     private var uiModels: MutableList<Quote> = mutableListOf()
 
@@ -33,14 +33,14 @@ class QuoteFragment : BaseFragment() {
     }
 
     override fun initialiseViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[QuoteViewModel::class.java]
+        viewModel = ViewModelProviders.of(this, viewModelFactory)[QuotesViewModel::class.java]
     }
 
     override fun initialiseViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
     ) {
-        binding = FragmentQuoteBinding.inflate(inflater, container, false)
+        binding = FragmentQuotesBinding.inflate(inflater, container, false)
     }
 
     override fun getRootView() = binding?.root
