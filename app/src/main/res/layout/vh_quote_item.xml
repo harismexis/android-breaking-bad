@@ -13,19 +13,18 @@
     <TextView
         android:id="@+id/txt_quote"
         style="@style/VhQuoteItemTitle"
+        android:textColor="@color/light_green_six"
         tools:text="Quote" />
 
     <TextView
         android:id="@+id/txt_author"
         style="@style/VhItemMeta"
-        android:textColor="@color/light_green_six"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         tools:text="Author" />
 
     <TextView
         android:id="@+id/txt_series"
         style="@style/VhItemMeta"
-        android:textColor="@color/light_green_six"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         tools:text="Series" />
 

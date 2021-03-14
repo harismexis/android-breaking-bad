@@ -5,6 +5,7 @@ import com.example.breakingbad.presentation.screens.actordetail.ui.fragment.Acto
 import com.example.breakingbad.presentation.screens.deaths.ui.fragment.DeathsFragment
 import com.example.breakingbad.presentation.screens.episodes.ui.fragment.EpisodesFragment
 import com.example.breakingbad.presentation.screens.home.ui.fragment.HomeFragment
+import com.example.breakingbad.presentation.screens.player.PlayerFragment
 import com.example.breakingbad.presentation.screens.quotes.ui.fragment.QuotesFragment
 
 import dagger.Module
@@ -30,5 +31,8 @@ abstract class FragmentBindingsModule {
 
     @ContributesAndroidInjector
     abstract fun episodesFragment(): EpisodesFragment
+
+    @ContributesAndroidInjector
+    abstract fun playerFragment(): PlayerFragment
 
 }

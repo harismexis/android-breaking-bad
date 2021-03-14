@@ -38,6 +38,7 @@ ext {
     def mockk_android = '1.9.3' // 1.10.3-jdk8
     def swipe_refresh_layout = '1.1.0'
     def google_truth = '0.42'
+    def soffritti_youtube_player = '10.0.5'
 
     libraries = [
             kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin",
@@ -146,6 +147,10 @@ ext {
             nav_ui_ktx : "androidx.navigation:navigation-ui-ktx:$nav_version",
             nav_dynamic_features_fragment : "androidx.navigation:navigation-dynamic-features-fragment:$nav_version",
             nav_compose : "androidx.navigation:navigation-compose:1.0.0-alpha09"
+    ]
+
+    soffrittiYouTubePlayer = [
+            player       : "com.pierfrancescosoffritti.androidyoutubeplayer:core:${soffritti_youtube_player}"
     ]
 
 }

@@ -44,7 +44,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
             it.toolbar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.quotes_dest -> {
-                        navController.navigate(R.id.quotes_dest)
+                        navController.navigate(R.id.player_dest)
                         true
                     }
                     else -> false
