@@ -9,7 +9,7 @@ i.e. Retrofit, Glide, Dagger, Mockito-kotlin, Mockk etc.
 The Home Screen shows a list of Breaking Bad Actors with image and brief information for each one. 
 If internet is not available the actors will be retrieved from local storage (Room). Home screen 
 also supports searching actors by name. There is a BottomNavigationView which navigates to Quotes, 
-Deaths and Episodes screens.  
+Deaths and Episodes screens. The project is ongoing so more things will be added in the future.  
 
 ### Tests:
 

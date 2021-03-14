@@ -52,12 +52,12 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(QuotesViewModel::class)
-    internal abstract fun quoteViewModel(viewModel: QuotesViewModel): ViewModel
+    internal abstract fun quotesViewModel(viewModel: QuotesViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(DeathsViewModel::class)
-    internal abstract fun deathViewModel(viewModel: DeathsViewModel): ViewModel
+    internal abstract fun deathsViewModel(viewModel: DeathsViewModel): ViewModel
 
     @Binds
     @IntoMap
