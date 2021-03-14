@@ -1,6 +1,10 @@
-package com.example.breakingbad.framework.datasource.database
+package com.example.breakingbad.framework.datasource.database.data
 
 import androidx.room.*
+import com.example.breakingbad.framework.datasource.database.table.LocalActor
+import com.example.breakingbad.framework.datasource.database.table.LocalDeath
+import com.example.breakingbad.framework.datasource.database.table.LocalEpisode
+import com.example.breakingbad.framework.datasource.database.table.LocalQuote
 
 @Dao
 interface BreakingBadLocalDao {

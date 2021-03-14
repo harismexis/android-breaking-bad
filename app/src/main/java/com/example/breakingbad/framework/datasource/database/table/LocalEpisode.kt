@@ -1,4 +1,4 @@
-package com.example.breakingbad.framework.datasource.database
+package com.example.breakingbad.framework.datasource.database.table
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -10,7 +10,7 @@ data class LocalEpisode(
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "season") val season: String?,
     @ColumnInfo(name = "air_date") val air_date: String?,
-    //@ColumnInfo(name = "characters") val characters: List<String>?,
+    @ColumnInfo(name = "characters") val characters: List<String>?,
     @ColumnInfo(name = "episode") val episode: String?,
     @ColumnInfo(name = "series") val series: String?
 )

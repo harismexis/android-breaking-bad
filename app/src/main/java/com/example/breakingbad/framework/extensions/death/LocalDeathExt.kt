@@ -1,9 +1,7 @@
 package com.example.breakingbad.framework.extensions.death
 
 import com.example.breakingbad.domain.Death
-import com.example.breakingbad.domain.Quote
-import com.example.breakingbad.framework.datasource.database.LocalDeath
-import com.example.breakingbad.framework.datasource.database.LocalQuote
+import com.example.breakingbad.framework.datasource.database.table.LocalDeath
 
 fun List<LocalDeath?>?.toItems(): List<Death> {
     val items = mutableListOf<Death>()

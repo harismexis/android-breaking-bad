@@ -1,9 +1,7 @@
 package com.example.breakingbad.framework.extensions.episode
 
 import com.example.breakingbad.domain.Episode
-import com.example.breakingbad.domain.Quote
-import com.example.breakingbad.framework.datasource.database.LocalEpisode
-import com.example.breakingbad.framework.datasource.database.LocalQuote
+import com.example.breakingbad.framework.datasource.database.table.LocalEpisode
 
 fun List<LocalEpisode?>?.toItems(): List<Episode> {
     val items = mutableListOf<Episode>()
@@ -21,7 +19,7 @@ fun LocalEpisode.toItem(): Episode {
         this.title,
         this.season,
         this.air_date,
-        null, //this.characters,
+        this.characters,
         this.episode,
         this.series
     )
@@ -43,7 +41,7 @@ fun Episode.toLocalItem(): LocalEpisode {
         this.title,
         this.season,
         this.air_date,
-        // this.characters,
+        this.characters,
         this.episode,
         this.series
     )

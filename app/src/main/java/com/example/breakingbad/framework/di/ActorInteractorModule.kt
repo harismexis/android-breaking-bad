@@ -1,6 +1,6 @@
 package com.example.breakingbad.framework.di
 
-import com.example.breakingbad.framework.datasource.database.BreakingBadLocalDataSource
+import com.example.breakingbad.framework.datasource.database.data.BreakingBadLocalDataSource
 import com.example.breakingbad.data.BreakingBadLocalRepository
 import com.example.breakingbad.data.BreakingBadRemoteRepository
 import com.example.breakingbad.presentation.screens.actordetail.interactors.ActorDetailInteractors

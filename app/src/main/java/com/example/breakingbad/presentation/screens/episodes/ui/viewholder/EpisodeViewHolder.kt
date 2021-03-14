@@ -2,9 +2,7 @@ package com.example.breakingbad.presentation.screens.episodes.ui.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.breakingbad.databinding.VhEpisodeItemBinding
-import com.example.breakingbad.databinding.VhQuoteItemBinding
 import com.example.breakingbad.domain.Episode
-import com.example.breakingbad.domain.Quote
 
 class EpisodeViewHolder(
     private val binding: VhEpisodeItemBinding
@@ -17,6 +15,7 @@ class EpisodeViewHolder(
         binding.txtTitle.text = item.title
         binding.txtSeason.text = item.season
         binding.txtAirDate.text = item.air_date
+        binding.txtActors.text = item.characters?.joinToString(",")
         binding.txtSeries.text = item.series
     }
 

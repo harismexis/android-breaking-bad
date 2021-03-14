@@ -5,8 +5,8 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.breakingbad.framework.datasource.database.BreakingBadDatabase
-import com.example.breakingbad.framework.datasource.database.BreakingBadLocalDao
-import com.example.breakingbad.framework.datasource.database.LocalActor
+import com.example.breakingbad.framework.datasource.database.data.BreakingBadLocalDao
+import com.example.breakingbad.framework.datasource.database.table.LocalActor
 import com.example.breakingbad.setup.base.InstrumentedTestSetup
 import com.example.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_ALL_IDS_VALID
 import com.example.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_NO_DATA

@@ -4,12 +4,25 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.breakingbad.framework.datasource.database.converter.Converter
+import com.example.breakingbad.framework.datasource.database.data.BreakingBadLocalDao
+import com.example.breakingbad.framework.datasource.database.table.LocalActor
+import com.example.breakingbad.framework.datasource.database.table.LocalDeath
+import com.example.breakingbad.framework.datasource.database.table.LocalEpisode
+import com.example.breakingbad.framework.datasource.database.table.LocalQuote
 
 @Database(
-    entities = [LocalActor::class, LocalQuote::class, LocalDeath::class, LocalEpisode::class],
+    entities = [
+        LocalActor::class,
+        LocalQuote::class,
+        LocalDeath::class,
+        LocalEpisode::class
+    ],
     version = 1,
     exportSchema = false
 )
+@TypeConverters(Converter::class)
 abstract class BreakingBadDatabase : RoomDatabase() {
 
     companion object {

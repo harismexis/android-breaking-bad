@@ -1,7 +1,7 @@
 package com.example.breakingbad.datasource
 
-import com.example.breakingbad.framework.datasource.database.BreakingBadLocalDao
-import com.example.breakingbad.framework.datasource.database.BreakingBadLocalDataSource
+import com.example.breakingbad.framework.datasource.database.data.BreakingBadLocalDao
+import com.example.breakingbad.framework.datasource.database.data.BreakingBadLocalDataSource
 import com.example.breakingbad.framework.extensions.actor.toLocalItems
 import com.example.breakingbad.framework.extensions.actor.toLocalItem
 import com.example.breakingbad.setup.UnitTestSetup

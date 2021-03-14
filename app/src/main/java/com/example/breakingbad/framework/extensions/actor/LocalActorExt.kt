@@ -1,6 +1,6 @@
 package com.example.breakingbad.framework.extensions.actor
 
-import com.example.breakingbad.framework.datasource.database.LocalActor
+import com.example.breakingbad.framework.datasource.database.table.LocalActor
 import com.example.breakingbad.domain.Actor
 
 fun List<LocalActor?>?.toItems(): List<Actor> {

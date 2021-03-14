@@ -3,7 +3,7 @@ package com.example.breakingbad.framework.di
 import android.content.Context
 import com.example.breakingbad.framework.application.MainApplication
 import com.example.breakingbad.framework.datasource.database.BreakingBadDatabase
-import com.example.breakingbad.framework.datasource.database.BreakingBadLocalDao
+import com.example.breakingbad.framework.datasource.database.data.BreakingBadLocalDao
 import dagger.Module
 import dagger.Provides
 

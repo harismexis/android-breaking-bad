@@ -1,7 +1,7 @@
 package com.example.breakingbad.parser
 
 import com.example.breakingbad.domain.Actor
-import com.example.breakingbad.framework.datasource.database.LocalActor
+import com.example.breakingbad.framework.datasource.database.table.LocalActor
 import com.example.breakingbad.framework.datasource.network.model.RemoteActor
 import com.example.breakingbad.framework.extensions.actor.toItems
 import com.example.breakingbad.framework.extensions.actor.toLocalItems

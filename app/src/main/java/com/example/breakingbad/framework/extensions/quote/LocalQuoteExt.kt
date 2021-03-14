@@ -1,7 +1,7 @@
 package com.example.breakingbad.framework.extensions.quote
 
 import com.example.breakingbad.domain.Quote
-import com.example.breakingbad.framework.datasource.database.LocalQuote
+import com.example.breakingbad.framework.datasource.database.table.LocalQuote
 
 fun List<LocalQuote?>?.toItems(): List<Quote> {
     val items = mutableListOf<Quote>()

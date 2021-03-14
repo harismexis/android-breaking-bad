@@ -2,7 +2,7 @@ package com.example.breakingbad.framework.di
 
 import com.example.breakingbad.data.BreakingBadLocalRepository
 import com.example.breakingbad.data.BreakingBadRemoteRepository
-import com.example.breakingbad.framework.datasource.database.BreakingBadLocalDataSource
+import com.example.breakingbad.framework.datasource.database.data.BreakingBadLocalDataSource
 import com.example.breakingbad.framework.datasource.network.data.BreakingBadRemoteDataSource
 import com.example.breakingbad.interactors.death.IrrGetLocalDeaths
 import com.example.breakingbad.interactors.death.IrrGetRemoteDeaths

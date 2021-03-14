@@ -1,4 +1,4 @@
-package com.example.breakingbad.framework.datasource.database
+package com.example.breakingbad.framework.datasource.database.data
 
 import com.example.breakingbad.data.BreakingBadBaseLocalDataSource
 import com.example.breakingbad.domain.Actor

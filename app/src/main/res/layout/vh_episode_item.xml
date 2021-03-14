@@ -18,21 +18,24 @@
     <TextView
         android:id="@+id/txt_season"
         style="@style/VhItemMeta"
-        android:textColor="@color/light_green_six"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         tools:text="Season" />
 
     <TextView
         android:id="@+id/txt_air_date"
         style="@style/VhItemMeta"
-        android:textColor="@color/light_green_six"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         tools:text="Air Date" />
 
     <TextView
+        android:id="@+id/txt_actors"
+        style="@style/VhEpisodeItemMeta"
+        android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
+        tools:text="Actors" />
+
+    <TextView
         android:id="@+id/txt_series"
         style="@style/VhItemMeta"
-        android:textColor="@color/light_green_six"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         tools:text="Series" />
 

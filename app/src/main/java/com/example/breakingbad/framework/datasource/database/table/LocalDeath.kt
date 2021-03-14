@@ -1,4 +1,4 @@
-package com.example.breakingbad.framework.datasource.database
+package com.example.breakingbad.framework.datasource.database.table
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

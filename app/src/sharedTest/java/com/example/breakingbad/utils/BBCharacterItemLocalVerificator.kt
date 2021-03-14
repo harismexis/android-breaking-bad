@@ -1,6 +1,6 @@
 package com.example.breakingbad.utils
 
-import com.example.breakingbad.framework.datasource.database.LocalActor
+import com.example.breakingbad.framework.datasource.database.table.LocalActor
 import com.example.breakingbad.domain.Actor
 import org.junit.Assert
 
