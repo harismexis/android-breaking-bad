@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/deaths_dest"
-        android:name="com.example.breakingbad.presentation.screens.deaths.ui.fragment.DeathFragment"
+        android:name="com.example.breakingbad.presentation.screens.deaths.ui.fragment.DeathsFragment"
         tools:layout="@layout/fragment_deaths" />
 
     <fragment

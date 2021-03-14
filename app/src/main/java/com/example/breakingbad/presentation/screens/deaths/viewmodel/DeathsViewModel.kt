@@ -13,12 +13,12 @@ import com.example.breakingbad.presentation.screens.deaths.interactors.DeathInte
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class DeathViewModel @Inject constructor(
+class DeathsViewModel @Inject constructor(
     private val interactors: DeathInteractors,
     private val connectivity: ConnectivityMonitorSimple,
 ) : ViewModel() {
 
-    private val TAG = DeathViewModel::class.qualifiedName
+    private val TAG = DeathsViewModel::class.qualifiedName
 
     private val mModels = MutableLiveData<List<Death>>()
     val models: LiveData<List<Death>>

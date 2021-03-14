@@ -13,11 +13,11 @@ import com.example.breakingbad.databinding.FragmentDeathsBinding
 import com.example.breakingbad.domain.Death
 import com.example.breakingbad.framework.base.BaseFragment
 import com.example.breakingbad.presentation.screens.deaths.ui.adapter.DeathAdapter
-import com.example.breakingbad.presentation.screens.deaths.viewmodel.DeathViewModel
+import com.example.breakingbad.presentation.screens.deaths.viewmodel.DeathsViewModel
 
-class DeathFragment : BaseFragment() {
+class DeathsFragment : BaseFragment() {
 
-    private lateinit var viewModel: DeathViewModel
+    private lateinit var viewModel: DeathsViewModel
     private var binding: FragmentDeathsBinding? = null
     private lateinit var adapter: DeathAdapter
     private var uiModels: MutableList<Death> = mutableListOf()
@@ -33,7 +33,7 @@ class DeathFragment : BaseFragment() {
     }
 
     override fun initialiseViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[DeathViewModel::class.java]
+        viewModel = ViewModelProviders.of(this, viewModelFactory)[DeathsViewModel::class.java]
     }
 
     override fun initialiseViewBinding(
