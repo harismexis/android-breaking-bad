@@ -2,6 +2,7 @@ package com.example.breakingbad.framework.datasource.network.api
 
 import com.example.breakingbad.framework.datasource.network.model.RemoteActor
 import com.example.breakingbad.framework.datasource.network.model.RemoteDeath
+import com.example.breakingbad.framework.datasource.network.model.RemoteEpisode
 import com.example.breakingbad.framework.datasource.network.model.RemoteQuote
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -21,5 +22,8 @@ interface BreakingBadApi {
 
     @GET("deaths")
     suspend fun getDeaths(): List<RemoteDeath?>?
+
+    @GET("episodes")
+    suspend fun getEpisodes(): List<RemoteEpisode?>?
 
 }

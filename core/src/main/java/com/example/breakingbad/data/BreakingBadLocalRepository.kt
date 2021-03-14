@@ -2,6 +2,7 @@ package com.example.breakingbad.data
 
 import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.domain.Death
+import com.example.breakingbad.domain.Episode
 import com.example.breakingbad.domain.Quote
 
 class BreakingBadLocalRepository(
@@ -13,13 +14,15 @@ class BreakingBadLocalRepository(
 
     suspend fun getActors(): List<Actor> = dataSource.getActors()
 
-
     suspend fun getQuotes(): List<Quote> = dataSource.getQuotes()
 
     suspend fun insertQuotes(items: List<Quote>) = dataSource.insertQuotes(items)
 
-
     suspend fun getDeaths(): List<Death> = dataSource.getDeaths()
 
     suspend fun insertDeaths(items: List<Death>) = dataSource.insertDeaths(items)
+
+    suspend fun getEpisodes(): List<Episode> = dataSource.getEpisodes()
+
+    suspend fun insertEpisodes(items: List<Episode>) = dataSource.insertEpisodes(items)
 }

@@ -2,6 +2,7 @@ package com.example.breakingbad.data
 
 import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.domain.Death
+import com.example.breakingbad.domain.Episode
 import com.example.breakingbad.domain.Quote
 
 interface BreakingBadBaseLocalDataSource {
@@ -21,5 +22,10 @@ interface BreakingBadBaseLocalDataSource {
     suspend fun getDeaths(): List<Death>
 
     suspend fun insertDeaths(items: List<Death>)
+
+
+    suspend fun getEpisodes(): List<Episode>
+
+    suspend fun insertEpisodes(items: List<Episode>)
 
 }

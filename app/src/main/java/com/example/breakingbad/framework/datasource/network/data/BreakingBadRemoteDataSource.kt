@@ -3,9 +3,11 @@ package com.example.breakingbad.framework.datasource.network.data
 import com.example.breakingbad.data.BreakingBadBaseRemoteDataSource
 import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.domain.Death
+import com.example.breakingbad.domain.Episode
 import com.example.breakingbad.domain.Quote
 import com.example.breakingbad.framework.extensions.actor.toItems
 import com.example.breakingbad.framework.extensions.death.toItems
+import com.example.breakingbad.framework.extensions.episode.toItems
 import com.example.breakingbad.framework.extensions.quote.toItems
 import javax.inject.Inject
 
@@ -29,4 +31,7 @@ class BreakingBadRemoteDataSource @Inject constructor(
         return dao.getDeaths().toItems()
     }
 
+    override suspend fun getEpisodes(): List<Episode> {
+        return dao.getEpisodes().toItems()
+    }
 }

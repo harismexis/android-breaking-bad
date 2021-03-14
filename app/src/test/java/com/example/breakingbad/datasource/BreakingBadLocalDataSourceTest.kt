@@ -69,7 +69,7 @@ class BreakingBadLocalDataSourceTest : UnitTestSetup() {
             Mockito.`when`(mockDao.getAllActors()).thenReturn(mockLocalItems)
 
             // when
-            val items = subject.getAllActors()
+            val items = subject.getActors()
 
             // then
             verify(mockDao, times(1)).getAllActors()

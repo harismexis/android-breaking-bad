@@ -19,7 +19,9 @@ import javax.inject.Singleton
         BreakingBadApiModule::class,
         ActorInteractorModule::class,
         QuoteInteractorModule::class,
-        DeathInteractorModule::class]
+        DeathInteractorModule::class,
+        EpisodeInteractorModule::class,
+    ]
 )
 interface MainComponent : AndroidInjector<MainApplication> {
 
