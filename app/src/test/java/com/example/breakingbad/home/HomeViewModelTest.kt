@@ -49,8 +49,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         verifyLiveDataChangedAsExpected()
     }
 
-    // TODO: Update Test, probably will use only get actors by name
-    // @Test
+    @Test
     fun internetOn_when_viewModelRefreshes_then_dataRefreshed() {
         // given
         mockInternetOn()
@@ -73,7 +72,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
 
         // then
         verifyInternetChecked()
-        verifyZeroInteractions(mockIrrGetRemoteItems)
+        verifyZeroInteractions(mockIrrGetRemoteItemsByName)
         verifyZeroInteractions(mockIrrGetLocalItems)
         verifyLiveDataNotChanged()
     }
@@ -82,14 +81,14 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
     fun remoteCallThrowsError_when_viewModelBinds_nothingHappens() {
         // given
         mockInternetOn()
-        mockRemoteCallThrowsError()
+        mockRemoteCallThrowsError(null)
 
         // when
         subject.bind()
 
         // then
         verifyInternetChecked()
-        verifyRemoteCallDone()
+        verifyRemoteCallDone(null)
         verifyLocalCallNotDone()
         verifyLiveDataNotChanged()
     }
@@ -112,7 +111,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
 
     private fun verify_remoteFeedCallDone_dataStored_liveDataUpdated() {
         verifyInternetChecked()
-        verifyRemoteCallDone()
+        verifyRemoteCallDone(null)
         verifyLocalCallNotDone()
         verifyLiveDataChangedAsExpected()
         verifyDataStored()

@@ -10,7 +10,6 @@ import com.example.breakingbad.presentation.screens.home.interactors.HomeInterac
 import com.example.breakingbad.framework.extensions.getErrorMessage
 import com.example.breakingbad.framework.util.functional.Action1
 import com.example.breakingbad.framework.util.network.ConnectivityMonitorSimple
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -33,9 +32,7 @@ class HomeViewModel @Inject constructor(
 
     fun bind() {
         if (connectivity.isOnline()) {
-            fetchRemoteItems()
-            // TODO: probably use the following only
-            // fetchRemoteItemsByName(searchQuery)
+            fetchRemoteItemsByName(searchQuery)
         } else {
             fetchLocalItems()
         }
@@ -45,18 +42,6 @@ class HomeViewModel @Inject constructor(
         val canRefresh = connectivity.isOnline()
         callback.call(canRefresh)
         if (canRefresh) fetchRemoteItemsByName(searchQuery)
-    }
-
-    private fun fetchRemoteItems() {
-        viewModelScope.launch {
-            try {
-                val items = interactors.irrGetRemoteActors.invoke()
-                mModels.value = items
-                interactors.irrStoreActors.invoke(items)
-            } catch (e: Exception) {
-                Log.d(TAG, e.getErrorMessage())
-            }
-        }
     }
 
     private fun fetchRemoteItemsByName(name: String?) {

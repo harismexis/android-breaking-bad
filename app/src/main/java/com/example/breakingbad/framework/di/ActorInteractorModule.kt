@@ -20,13 +20,11 @@ class ActorInteractorModule {
     @Provides
     fun provideHomeInteractors(
         irrGetLocalActors: IrrGetLocalActors,
-        irrGetRemoteActors: IrrGetRemoteActors,
         irrGetRemoteActorsByName: IrrGetRemoteActorsByName,
         irrStoreActors: IrrStoreActors
     ): HomeInteractors {
         return HomeInteractors(
             irrGetLocalActors,
-            irrGetRemoteActors,
             irrGetRemoteActorsByName,
             irrStoreActors
         )

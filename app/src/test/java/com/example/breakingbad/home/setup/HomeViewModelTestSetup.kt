@@ -5,7 +5,6 @@ import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.presentation.screens.home.interactors.HomeInteractors
 import com.example.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.example.breakingbad.interactors.actor.IrrGetLocalActors
-import com.example.breakingbad.interactors.actor.IrrGetRemoteActors
 import com.example.breakingbad.interactors.actor.IrrGetRemoteActorsByName
 import com.example.breakingbad.interactors.actor.IrrStoreActors
 import com.example.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
@@ -23,10 +22,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected lateinit var mockIrrGetLocalItems: IrrGetLocalActors
 
     @Mock
-    protected lateinit var mockIrrGetRemoteItems: IrrGetRemoteActors
-    // TODO: Probably use only the get actors by name
-//    @Mock
-//    protected lateinit var mockIrrGetRemoteItemsByName: IrrGetRemoteActorsByName
+    protected lateinit var mockIrrGetRemoteItemsByName: IrrGetRemoteActorsByName
 
     @Mock
     protected lateinit var mockIrrStoreItems: IrrStoreActors
@@ -53,7 +49,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     }
 
     private fun initialiseMockInteractors() {
-        Mockito.`when`(mockInteractors.irrGetRemoteActors).thenReturn(mockIrrGetRemoteItems)
+        Mockito.`when`(mockInteractors.irrGetRemoteActorsByName).thenReturn(mockIrrGetRemoteItemsByName)
         Mockito.`when`(mockInteractors.irrGetLocalActors).thenReturn(mockIrrGetLocalItems)
         Mockito.`when`(mockInteractors.irrStoreActors).thenReturn(mockIrrStoreItems)
     }
@@ -79,31 +75,34 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     // Remote Call
 
     protected fun mockRemoteCallReturnsAllItemsValid() {
-        mockRemoteCall(mockItems)
+        mockRemoteCall(mockItems, null)
     }
 
-    private fun mockRemoteCall(items: List<Actor>) {
+    private fun mockRemoteCall(
+        items: List<Actor>,
+        actorName: String?
+    ) {
         runBlocking {
-            Mockito.`when`(mockIrrGetRemoteItems.invoke()).thenReturn(items)
+            Mockito.`when`(mockIrrGetRemoteItemsByName.invoke(actorName)).thenReturn(items)
         }
     }
 
-    protected fun mockRemoteCallThrowsError() {
+    protected fun mockRemoteCallThrowsError(actorName: String?) {
         runBlocking {
-            Mockito.`when`(mockIrrGetRemoteItems.invoke())
+            Mockito.`when`(mockIrrGetRemoteItemsByName.invoke(actorName))
                 .thenThrow(IllegalStateException("Error"))
         }
     }
 
-    protected fun verifyRemoteCallDone() {
+    protected fun verifyRemoteCallDone(name: String?) {
         runBlocking {
-            verify(mockIrrGetRemoteItems, Mockito.times(1)).invoke()
+            verify(mockIrrGetRemoteItemsByName, Mockito.times(1)).invoke(name)
         }
     }
 
     protected fun verifyRemoteCallNotDone() {
         runBlocking {
-            verify(mockIrrGetRemoteItems, Mockito.never()).invoke()
+            verify(mockIrrGetRemoteItemsByName, Mockito.never()).invoke(any())
         }
     }
 
