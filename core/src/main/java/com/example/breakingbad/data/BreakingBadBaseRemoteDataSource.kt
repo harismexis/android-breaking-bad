@@ -7,8 +7,6 @@ import com.example.breakingbad.domain.Quote
 
 interface BreakingBadBaseRemoteDataSource {
 
-    suspend fun getActors(): List<Actor>
-
     suspend fun getActors(name: String? = null): List<Actor>
 
     suspend fun getQuotes(): List<Quote>
