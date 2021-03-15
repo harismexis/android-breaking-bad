@@ -27,27 +27,27 @@ class HomeViewModel @Inject constructor(
     var searchQuery: String? = null
         set(value) {
             field = value
-            fetchRemoteItemsByName(value)
+            fetchRemoteActors(value)
         }
 
     fun bind() {
         if (connectivity.isOnline()) {
-            fetchRemoteItemsByName(searchQuery)
+            fetchRemoteActors(searchQuery)
         } else {
-            fetchLocalItems()
+            fetchLocalActors()
         }
     }
 
     fun refresh(callback: Action1<Boolean>) {
         val canRefresh = connectivity.isOnline()
         callback.call(canRefresh)
-        if (canRefresh) fetchRemoteItemsByName(searchQuery)
+        if (canRefresh) fetchRemoteActors(searchQuery)
     }
 
-    private fun fetchRemoteItemsByName(name: String?) {
+    private fun fetchRemoteActors(name: String?) {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteActorsByName.invoke(name)
+                val items = interactors.irrGetRemoteActors.invoke(name)
                 mModels.value = items
                 interactors.irrStoreActors.invoke(items)
             } catch (e: Exception) {
@@ -56,7 +56,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun fetchLocalItems() {
+    private fun fetchLocalActors() {
         viewModelScope.launch {
             try {
                 mModels.value = interactors.irrGetLocalActors.invoke()

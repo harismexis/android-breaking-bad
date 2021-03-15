@@ -10,11 +10,8 @@ import retrofit2.http.Query
 interface BreakingBadApi {
 
     @GET("characters")
-    suspend fun getCharacters(): List<RemoteActor?>?
-
-    @GET("characters")
     suspend fun getCharactersByName(
-        @Query("name") name: String?
+        @Query("name") name: String? = null
     ): List<RemoteActor?>?
 
     @GET("quotes")

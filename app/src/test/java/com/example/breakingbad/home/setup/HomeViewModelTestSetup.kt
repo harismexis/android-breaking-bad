@@ -5,7 +5,7 @@ import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.presentation.screens.home.interactors.HomeInteractors
 import com.example.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.example.breakingbad.interactors.actor.IrrGetLocalActors
-import com.example.breakingbad.interactors.actor.IrrGetRemoteActorsByName
+import com.example.breakingbad.interactors.actor.IrrGetRemoteActors
 import com.example.breakingbad.interactors.actor.IrrStoreActors
 import com.example.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 import com.example.breakingbad.setup.UnitTestSetup
@@ -19,10 +19,10 @@ import org.mockito.Mockito
 abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     @Mock
-    protected lateinit var mockIrrGetLocalItems: IrrGetLocalActors
+    protected lateinit var mockIrrGetLocalActors: IrrGetLocalActors
 
     @Mock
-    protected lateinit var mockIrrGetRemoteItemsByName: IrrGetRemoteActorsByName
+    protected lateinit var mockIrrGetRemoteActors: IrrGetRemoteActors
 
     @Mock
     protected lateinit var mockIrrStoreItems: IrrStoreActors
@@ -49,8 +49,8 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     }
 
     private fun initialiseMockInteractors() {
-        Mockito.`when`(mockInteractors.irrGetRemoteActorsByName).thenReturn(mockIrrGetRemoteItemsByName)
-        Mockito.`when`(mockInteractors.irrGetLocalActors).thenReturn(mockIrrGetLocalItems)
+        Mockito.`when`(mockInteractors.irrGetRemoteActors).thenReturn(mockIrrGetRemoteActors)
+        Mockito.`when`(mockInteractors.irrGetLocalActors).thenReturn(mockIrrGetLocalActors)
         Mockito.`when`(mockInteractors.irrStoreActors).thenReturn(mockIrrStoreItems)
     }
 
@@ -83,26 +83,26 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
         actorName: String?
     ) {
         runBlocking {
-            Mockito.`when`(mockIrrGetRemoteItemsByName.invoke(actorName)).thenReturn(items)
+            Mockito.`when`(mockIrrGetRemoteActors.invoke(actorName)).thenReturn(items)
         }
     }
 
     protected fun mockRemoteCallThrowsError(actorName: String?) {
         runBlocking {
-            Mockito.`when`(mockIrrGetRemoteItemsByName.invoke(actorName))
+            Mockito.`when`(mockIrrGetRemoteActors.invoke(actorName))
                 .thenThrow(IllegalStateException("Error"))
         }
     }
 
     protected fun verifyRemoteCallDone(name: String?) {
         runBlocking {
-            verify(mockIrrGetRemoteItemsByName, Mockito.times(1)).invoke(name)
+            verify(mockIrrGetRemoteActors, Mockito.times(1)).invoke(name)
         }
     }
 
     protected fun verifyRemoteCallNotDone() {
         runBlocking {
-            verify(mockIrrGetRemoteItemsByName, Mockito.never()).invoke(any())
+            verify(mockIrrGetRemoteActors, Mockito.never()).invoke(any())
         }
     }
 
@@ -114,26 +114,26 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     private fun mockLocalCall(items: List<Actor>) {
         runBlocking {
-            Mockito.`when`(mockIrrGetLocalItems.invoke()).thenReturn(items)
+            Mockito.`when`(mockIrrGetLocalActors.invoke()).thenReturn(items)
         }
     }
 
     protected fun mockLocalCallThrowsError() {
         runBlocking {
-            Mockito.`when`(mockIrrGetLocalItems.invoke())
+            Mockito.`when`(mockIrrGetLocalActors.invoke())
                 .thenThrow(IllegalStateException("Error"))
         }
     }
 
     protected fun verifyLocalCallDone() {
         runBlocking {
-            verify(mockIrrGetLocalItems, Mockito.times(1)).invoke()
+            verify(mockIrrGetLocalActors, Mockito.times(1)).invoke()
         }
     }
 
     protected fun verifyLocalCallNotDone() {
         runBlocking {
-            verify(mockIrrGetLocalItems, Mockito.never()).invoke()
+            verify(mockIrrGetLocalActors, Mockito.never()).invoke()
         }
     }
 

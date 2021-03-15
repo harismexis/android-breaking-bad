@@ -11,11 +11,7 @@ import javax.inject.Singleton
 @Singleton
 class BreakingBadRemoteDao @Inject constructor(private val api: BreakingBadApi) {
 
-    suspend fun getActors(): List<RemoteActor?>? {
-        return api.getCharacters()
-    }
-
-    suspend fun getActorsByName(name: String?): List<RemoteActor?>? {
+    suspend fun getActors(name: String? = null): List<RemoteActor?>? {
         return api.getCharactersByName(name)
     }
 
