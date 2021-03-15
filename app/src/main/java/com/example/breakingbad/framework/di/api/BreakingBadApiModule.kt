@@ -1,4 +1,4 @@
-package com.example.breakingbad.framework.di
+package com.example.breakingbad.framework.di.api
 
 import com.example.breakingbad.framework.datasource.network.api.BreakingBadApi
 import com.google.gson.Gson

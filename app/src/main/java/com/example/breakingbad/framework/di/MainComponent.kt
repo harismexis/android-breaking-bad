@@ -1,6 +1,11 @@
 package com.example.breakingbad.framework.di
 
 import com.example.breakingbad.framework.application.MainApplication
+import com.example.breakingbad.framework.di.api.BreakingBadApiModule
+import com.example.breakingbad.framework.di.application.ApplicationModule
+import com.example.breakingbad.framework.di.interactor.*
+import com.example.breakingbad.framework.di.ui.ActivityBindingsModule
+import com.example.breakingbad.framework.di.ui.FragmentBindingsModule
 import com.example.breakingbad.framework.viewmodelfactory.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
@@ -18,6 +23,8 @@ import javax.inject.Singleton
         ApplicationModule::class,
         BreakingBadApiModule::class,
         ActorInteractorModule::class,
+        HomeInteractorModule::class,
+        ActorDetailInteractorModule::class,
         QuoteInteractorModule::class,
         DeathInteractorModule::class,
         EpisodeInteractorModule::class,

@@ -1,4 +1,4 @@
-package com.example.breakingbad.framework.di
+package com.example.breakingbad.framework.di.ui
 
 import com.example.breakingbad.framework.base.BaseActivity
 import dagger.Module

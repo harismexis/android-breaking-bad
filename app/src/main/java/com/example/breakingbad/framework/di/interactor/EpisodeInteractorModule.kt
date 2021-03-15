@@ -1,4 +1,4 @@
-package com.example.breakingbad.framework.di
+package com.example.breakingbad.framework.di.interactor
 
 import com.example.breakingbad.data.BreakingBadLocalRepository
 import com.example.breakingbad.data.BreakingBadRemoteRepository

@@ -1,4 +1,4 @@
-package com.example.breakingbad.framework.di
+package com.example.breakingbad.framework.di.ui
 
 import com.example.breakingbad.framework.base.BaseFragment
 import com.example.breakingbad.presentation.screens.actordetail.ui.fragment.ActorDetailFragment

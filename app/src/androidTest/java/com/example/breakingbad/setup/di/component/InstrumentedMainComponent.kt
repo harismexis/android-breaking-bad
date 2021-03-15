@@ -3,7 +3,7 @@ package com.example.breakingbad.setup.di.component
 import com.example.breakingbad.setup.application.InstrumentedMainApplication
 import com.example.breakingbad.setup.di.module.InstrumentedApplicationModule
 import com.example.breakingbad.setup.factory.InstrumentedViewModelModule
-import com.example.breakingbad.framework.di.ActivityBindingsModule
+import com.example.breakingbad.framework.di.ui.ActivityBindingsModule
 
 import dagger.BindsInstance
 import dagger.Component

@@ -1,10 +1,8 @@
-package com.example.breakingbad.framework.di
+package com.example.breakingbad.framework.di.interactor
 
-import com.example.breakingbad.framework.datasource.database.data.BreakingBadLocalDataSource
 import com.example.breakingbad.data.BreakingBadLocalRepository
 import com.example.breakingbad.data.BreakingBadRemoteRepository
-import com.example.breakingbad.presentation.screens.actordetail.interactors.ActorDetailInteractors
-import com.example.breakingbad.presentation.screens.home.interactors.HomeInteractors
+import com.example.breakingbad.framework.datasource.database.data.BreakingBadLocalDataSource
 import com.example.breakingbad.framework.datasource.network.data.BreakingBadRemoteDataSource
 import com.example.breakingbad.interactors.actor.IrrGetLocalActor
 import com.example.breakingbad.interactors.actor.IrrGetLocalActors
@@ -15,26 +13,6 @@ import dagger.Provides
 
 @Module
 class ActorInteractorModule {
-
-    @Provides
-    fun provideHomeInteractors(
-        irrGetLocalActors: IrrGetLocalActors,
-        irrGetRemoteActors: IrrGetRemoteActors,
-        irrStoreActors: IrrStoreActors
-    ): HomeInteractors {
-        return HomeInteractors(
-            irrGetLocalActors,
-            irrGetRemoteActors,
-            irrStoreActors
-        )
-    }
-
-    @Provides
-    fun provideActorDetailInteractors(
-        irrGetLocalActor: IrrGetLocalActor
-    ): ActorDetailInteractors {
-        return ActorDetailInteractors(irrGetLocalActor)
-    }
 
     @Provides
     fun provideIrrGetRemoteActors(

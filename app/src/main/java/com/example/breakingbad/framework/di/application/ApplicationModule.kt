@@ -1,4 +1,4 @@
-package com.example.breakingbad.framework.di
+package com.example.breakingbad.framework.di.application
 
 import android.content.Context
 import com.example.breakingbad.framework.application.MainApplication
