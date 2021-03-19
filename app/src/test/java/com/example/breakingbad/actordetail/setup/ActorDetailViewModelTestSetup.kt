@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.presentation.screens.actordetail.interactors.ActorDetailInteractors
 import com.example.breakingbad.interactors.actor.IrrGetLocalActor
+import com.example.breakingbad.presentation.result.ActorResult
 import com.example.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 import com.example.breakingbad.setup.UnitTestSetup
 import com.nhaarman.mockitokotlin2.any
@@ -22,12 +23,19 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
     protected lateinit var mockInteractors: ActorDetailInteractors
 
     @Mock
-    lateinit var mockObserver: Observer<Actor>
+    lateinit var mockObserver: Observer<ActorResult>
 
     lateinit var mockItem: Actor
     var mockId: Int = 0
 
+    private lateinit var mockActorResultSuccess: ActorResult
+    private lateinit var mockActorResultError: ActorResult
+
     protected lateinit var subject: ActorDetailViewModel
+
+    companion object {
+        const val ERROR_MESSAGE = "error"
+    }
 
     override fun initialise() {
         super.initialise()
@@ -38,6 +46,8 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
         mockItem = mockParser.getMockBBCharValid()
         mockId = mockItem.char_id
         subject = ActorDetailViewModel(mockInteractors)
+        mockActorResultSuccess = ActorResult.ActorSuccess(mockItem)
+        mockActorResultError = ActorResult.ActorError(ERROR_MESSAGE)
     }
 
     private fun initialiseMockInteractors() {
@@ -62,7 +72,7 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
     protected fun mockLocalCallThrowsError() {
         runBlocking {
             Mockito.`when`(mockIrrGetLocalItem.invoke(any()))
-                .thenThrow(IllegalStateException("Error"))
+                .thenThrow(IllegalStateException(ERROR_MESSAGE))
         }
     }
 
@@ -74,16 +84,16 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
 
     // LiveData
 
-    protected fun verifyLiveDataChanged() {
-        verifyLiveDataChanged(mockItem)
+    protected fun verifyLiveDataChangedWithSuccess() {
+        verifyLiveDataChanged(mockActorResultSuccess)
     }
 
-    private fun verifyLiveDataChanged(item: Actor) {
-        verify(mockObserver).onChanged(item)
+    protected fun verifyLiveDataChangedWithError() {
+        verifyLiveDataChanged(mockActorResultError)
     }
 
-    protected fun verifyLiveDataNotChanged() {
-        verifyZeroInteractions(mockObserver)
+    private fun verifyLiveDataChanged(result: ActorResult) {
+        verify(mockObserver).onChanged(result)
     }
 
     protected fun initialiseLiveData() {

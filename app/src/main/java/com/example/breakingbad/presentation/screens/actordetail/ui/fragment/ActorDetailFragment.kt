@@ -2,8 +2,11 @@ package com.example.breakingbad.presentation.screens.actordetail.ui.fragment
 
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
+import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -16,6 +19,9 @@ import com.example.breakingbad.framework.base.BaseFragment
 import com.example.breakingbad.framework.extensions.getLinkSpanned
 import com.example.breakingbad.framework.extensions.populateWithGlide
 import com.example.breakingbad.framework.extensions.setTextOrUnknown
+import com.example.breakingbad.framework.extensions.showToast
+import com.example.breakingbad.presentation.result.ActorResult
+import com.example.breakingbad.presentation.result.ActorsResult
 import com.example.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 
 class ActorDetailFragment : BaseFragment() {
@@ -70,8 +76,15 @@ class ActorDetailFragment : BaseFragment() {
 
     override fun observeLiveData() {
         viewModel.model.observe(viewLifecycleOwner, {
-            populate(it)
+            when (it) {
+                is ActorResult.ActorSuccess -> populate(it.item)
+                is ActorResult.ActorError -> populateError(it.error)
+            }
         })
+    }
+
+    private fun populateError(error: String) {
+        requireContext().showToast(error)
     }
 
     override fun initialiseView() {}

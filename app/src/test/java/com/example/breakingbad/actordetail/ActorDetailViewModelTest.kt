@@ -28,7 +28,7 @@ class ActorDetailViewModelTest : ActorDetailViewModelTestSetup() {
 
         // then
         verifyLocalCallDone()
-        verifyLiveDataChanged()
+        verifyLiveDataChangedWithSuccess()
     }
 
     @Test
@@ -41,7 +41,7 @@ class ActorDetailViewModelTest : ActorDetailViewModelTestSetup() {
 
         // then
         verifyLocalCallDone()
-        verifyLiveDataNotChanged()
+        verifyLiveDataChangedWithError()
     }
 
 }

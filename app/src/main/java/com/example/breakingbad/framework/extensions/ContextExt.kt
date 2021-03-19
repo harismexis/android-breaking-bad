@@ -3,7 +3,9 @@ package com.example.breakingbad.framework.extensions
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
+import android.view.Gravity
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -36,4 +38,10 @@ fun Context.populateWithGlide(
         .placeholder(R.drawable.loading_animation)
         .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
         .into(imageView)
+}
+
+fun Context.showToast(msg: String) {
+    val toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT)
+    toast.setGravity(Gravity.CENTER, 0, 0)
+    toast.show()
 }

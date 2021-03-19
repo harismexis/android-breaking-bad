@@ -15,6 +15,7 @@ import com.example.breakingbad.databinding.FragmentHomeBinding
 import com.example.breakingbad.domain.Actor
 import com.example.breakingbad.presentation.result.ActorsResult
 import com.example.breakingbad.framework.base.BaseFragment
+import com.example.breakingbad.framework.extensions.showToast
 import com.example.breakingbad.presentation.screens.home.ui.adapter.ActorAdapter
 import com.example.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 import com.example.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
@@ -87,7 +88,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
     private fun populateError(error: String) {
         binding?.homeSwipeRefresh?.isRefreshing = false
         binding?.loadingProgressBar?.visibility = View.GONE
-        showToast(error)
+        requireContext().showToast(error)
     }
 
     override fun onActorClick(
@@ -138,12 +139,5 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         uiModels.addAll(models)
         adapter.notifyDataSetChanged()
     }
-
-    private fun showToast(msg: String) {
-        val toast = Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT)
-        toast.setGravity(Gravity.CENTER, 0, 0)
-        toast.show()
-    }
-
 
 }
