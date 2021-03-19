@@ -12,6 +12,8 @@ import com.example.breakingbad.R
 import com.example.breakingbad.databinding.FragmentEpisodesBinding
 import com.example.breakingbad.domain.Episode
 import com.example.breakingbad.framework.base.BaseFragment
+import com.example.breakingbad.framework.extensions.showToast
+import com.example.breakingbad.presentation.result.EpisodesResult
 import com.example.breakingbad.presentation.screens.episodes.ui.adapter.EpisodeAdapter
 import com.example.breakingbad.presentation.screens.episodes.viewmodel.EpisodesViewModel
 
@@ -52,8 +54,11 @@ class EpisodesFragment : BaseFragment() {
     }
 
     override fun observeLiveData() {
-        viewModel.models.observe(viewLifecycleOwner, {
-            populate(it)
+        viewModel.episodes.observe(viewLifecycleOwner, {
+            when (it) {
+                is EpisodesResult.EpisodesSuccess -> populate(it.items)
+                is EpisodesResult.EpisodesError -> requireContext().showToast(it.error)
+            }
         })
     }
 

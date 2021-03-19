@@ -12,6 +12,8 @@ import com.example.breakingbad.R
 import com.example.breakingbad.databinding.FragmentQuotesBinding
 import com.example.breakingbad.domain.Quote
 import com.example.breakingbad.framework.base.BaseFragment
+import com.example.breakingbad.framework.extensions.showToast
+import com.example.breakingbad.presentation.result.QuotesResult
 import com.example.breakingbad.presentation.screens.quotes.ui.adapter.QuoteAdapter
 import com.example.breakingbad.presentation.screens.quotes.viewmodel.QuotesViewModel
 
@@ -52,8 +54,11 @@ class QuotesFragment : BaseFragment() {
     }
 
     override fun observeLiveData() {
-        viewModel.models.observe(viewLifecycleOwner, {
-            populate(it)
+        viewModel.quotes.observe(viewLifecycleOwner, {
+            when (it) {
+                is QuotesResult.QuotesSuccess -> populate(it.items)
+                is QuotesResult.QuotesError -> requireContext().showToast(it.error)
+            }
         })
     }
 

@@ -5,10 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.breakingbad.domain.Episode
 import com.example.breakingbad.framework.extensions.getErrorMessage
 import com.example.breakingbad.framework.util.functional.Action1
 import com.example.breakingbad.framework.util.network.ConnectivityMonitorSimple
+import com.example.breakingbad.presentation.result.EpisodesResult
 import com.example.breakingbad.presentation.screens.episodes.interactors.EpisodeInteractors
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,9 +20,9 @@ class EpisodesViewModel @Inject constructor(
 
     private val TAG = EpisodesViewModel::class.qualifiedName
 
-    private val mModels = MutableLiveData<List<Episode>>()
-    val models: LiveData<List<Episode>>
-        get() = mModels
+    private val mEpisodes = MutableLiveData<EpisodesResult>()
+    val episodes: LiveData<EpisodesResult>
+        get() = mEpisodes
 
     fun bind() {
         if (connectivity.isOnline()) {
@@ -44,10 +44,11 @@ class EpisodesViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val items = interactors.irrGetRemoteEpisodes.invoke()
-                mModels.value = items
+                mEpisodes.value = EpisodesResult.EpisodesSuccess(items)
                 interactors.irrStoreEpisodes.invoke(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
+                mEpisodes.value = EpisodesResult.EpisodesError(e.getErrorMessage())
             }
         }
     }
@@ -55,9 +56,11 @@ class EpisodesViewModel @Inject constructor(
     private fun fetchLocalItems() {
         viewModelScope.launch {
             try {
-                mModels.value = interactors.irrGetLocalEpisodes.invoke()
+                val items = interactors.irrGetLocalEpisodes.invoke()
+                mEpisodes.value = EpisodesResult.EpisodesSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
+                mEpisodes.value = EpisodesResult.EpisodesError(e.getErrorMessage())
             }
         }
     }

@@ -5,10 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.breakingbad.domain.Death
 import com.example.breakingbad.framework.extensions.getErrorMessage
 import com.example.breakingbad.framework.util.functional.Action1
 import com.example.breakingbad.framework.util.network.ConnectivityMonitorSimple
+import com.example.breakingbad.presentation.result.DeathsResult
 import com.example.breakingbad.presentation.screens.deaths.interactors.DeathInteractors
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,9 +20,9 @@ class DeathsViewModel @Inject constructor(
 
     private val TAG = DeathsViewModel::class.qualifiedName
 
-    private val mModels = MutableLiveData<List<Death>>()
-    val models: LiveData<List<Death>>
-        get() = mModels
+    private val mDeaths = MutableLiveData<DeathsResult>()
+    val deaths: LiveData<DeathsResult>
+        get() = mDeaths
 
     fun bind() {
         if (connectivity.isOnline()) {
@@ -44,10 +44,11 @@ class DeathsViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val items = interactors.irrGetRemoteDeaths.invoke()
-                mModels.value = items
+                mDeaths.value = DeathsResult.DeathsSuccess(items)
                 interactors.irrStoreDeaths.invoke(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
+                mDeaths.value = DeathsResult.DeathsError(e.getErrorMessage())
             }
         }
     }
@@ -55,9 +56,11 @@ class DeathsViewModel @Inject constructor(
     private fun fetchLocalItems() {
         viewModelScope.launch {
             try {
-                mModels.value = interactors.irrGetLocalDeaths.invoke()
+                val items = interactors.irrGetLocalDeaths.invoke()
+                mDeaths.value = DeathsResult.DeathsSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
+                mDeaths.value = DeathsResult.DeathsError(e.getErrorMessage())
             }
         }
     }

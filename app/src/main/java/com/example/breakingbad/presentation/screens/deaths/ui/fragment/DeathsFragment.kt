@@ -12,6 +12,8 @@ import com.example.breakingbad.R
 import com.example.breakingbad.databinding.FragmentDeathsBinding
 import com.example.breakingbad.domain.Death
 import com.example.breakingbad.framework.base.BaseFragment
+import com.example.breakingbad.framework.extensions.showToast
+import com.example.breakingbad.presentation.result.DeathsResult
 import com.example.breakingbad.presentation.screens.deaths.ui.adapter.DeathAdapter
 import com.example.breakingbad.presentation.screens.deaths.viewmodel.DeathsViewModel
 
@@ -52,8 +54,11 @@ class DeathsFragment : BaseFragment() {
     }
 
     override fun observeLiveData() {
-        viewModel.models.observe(viewLifecycleOwner, {
-            populate(it)
+        viewModel.deaths.observe(viewLifecycleOwner, {
+            when (it) {
+                is DeathsResult.DeathsSuccess -> populate(it.items)
+                is DeathsResult.DeathsError -> requireContext().showToast(it.error)
+            }
         })
     }
 

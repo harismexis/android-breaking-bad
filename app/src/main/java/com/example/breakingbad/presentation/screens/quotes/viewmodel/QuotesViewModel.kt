@@ -5,10 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.breakingbad.domain.Quote
 import com.example.breakingbad.framework.extensions.getErrorMessage
 import com.example.breakingbad.framework.util.functional.Action1
 import com.example.breakingbad.framework.util.network.ConnectivityMonitorSimple
+import com.example.breakingbad.presentation.result.QuotesResult
 import com.example.breakingbad.presentation.screens.quotes.interactors.QuoteInteractors
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,9 +20,9 @@ class QuotesViewModel @Inject constructor(
 
     private val TAG = QuotesViewModel::class.qualifiedName
 
-    private val mModels = MutableLiveData<List<Quote>>()
-    val models: LiveData<List<Quote>>
-        get() = mModels
+    private val mQuotes = MutableLiveData<QuotesResult>()
+    val quotes: LiveData<QuotesResult>
+        get() = mQuotes
 
     fun bind() {
         if (connectivity.isOnline()) {
@@ -44,10 +44,11 @@ class QuotesViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val items = interactors.irrGetRemoteQuotes.invoke()
-                mModels.value = items
+                mQuotes.value = QuotesResult.QuotesSuccess(items)
                 interactors.irrStoreQuotes.invoke(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
+                mQuotes.value = QuotesResult.QuotesError(e.getErrorMessage())
             }
         }
     }
@@ -55,9 +56,11 @@ class QuotesViewModel @Inject constructor(
     private fun fetchLocalItems() {
         viewModelScope.launch {
             try {
-                mModels.value = interactors.irrGetLocalQuotes.invoke()
+                val items = interactors.irrGetLocalQuotes.invoke()
+                mQuotes.value = QuotesResult.QuotesSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
+                mQuotes.value = QuotesResult.QuotesError(e.getErrorMessage())
             }
         }
     }
