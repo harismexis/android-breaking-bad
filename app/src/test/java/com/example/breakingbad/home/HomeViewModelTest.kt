@@ -46,7 +46,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         verifyRemoteCallNotDone()
         verifyLocalCallDone()
         verifyDataNotStored()
-        verifyLiveDataChangedAsExpected()
+        verifyLiveDataChangedWithSuccess()
     }
 
     @Test
@@ -90,7 +90,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         verifyInternetChecked()
         verifyRemoteCallDone(null)
         verifyLocalCallNotDone()
-        verifyLiveDataNotChanged()
+        verifyLiveDataChangedWithError()
     }
 
     @Test
@@ -106,14 +106,14 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         verifyInternetChecked()
         verifyRemoteCallNotDone()
         verifyLocalCallDone()
-        verifyLiveDataNotChanged()
+        verifyLiveDataChangedWithError()
     }
 
     private fun verify_remoteFeedCallDone_dataStored_liveDataUpdated() {
         verifyInternetChecked()
         verifyRemoteCallDone(null)
         verifyLocalCallNotDone()
-        verifyLiveDataChangedAsExpected()
+        verifyLiveDataChangedWithSuccess()
         verifyDataStored()
     }
 

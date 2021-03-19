@@ -2,6 +2,7 @@ package com.example.breakingbad.home.setup
 
 import androidx.lifecycle.Observer
 import com.example.breakingbad.domain.Actor
+import com.example.breakingbad.presentation.result.ActorsResult
 import com.example.breakingbad.presentation.screens.home.interactors.HomeInteractors
 import com.example.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.example.breakingbad.interactors.actor.IrrGetLocalActors
@@ -34,10 +35,16 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected lateinit var mockConnectivity: ConnectivityMonitorSimple
 
     @Mock
-    lateinit var mockObserver: Observer<List<Actor>>
+    lateinit var mockObserver: Observer<ActorsResult>
 
     private val mockItems = mockParser.getMockBBCharsFromFeedWithAllItemsValid()
     protected lateinit var subject: HomeViewModel
+    private val mockActorsResultSuccess = ActorsResult.ActorsSuccess(mockItems)
+    private val mockActorsResultError = ActorsResult.ActorsError(ERROR_MESSAGE)
+
+    companion object {
+        const val ERROR_MESSAGE = "error"
+    }
 
     override fun initialise() {
         super.initialise()
@@ -90,7 +97,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected fun mockRemoteCallThrowsError(actorName: String?) {
         runBlocking {
             Mockito.`when`(mockIrrGetRemoteActors.invoke(actorName))
-                .thenThrow(IllegalStateException("Error"))
+                .thenThrow(IllegalStateException(ERROR_MESSAGE))
         }
     }
 
@@ -121,7 +128,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected fun mockLocalCallThrowsError() {
         runBlocking {
             Mockito.`when`(mockIrrGetLocalActors.invoke())
-                .thenThrow(IllegalStateException("Error"))
+                .thenThrow(IllegalStateException(ERROR_MESSAGE))
         }
     }
 
@@ -140,15 +147,19 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     // LiveData
 
     protected fun initialiseLiveData() {
-        subject.models.observeForever(mockObserver)
+        subject.actorsResult.observeForever(mockObserver)
     }
 
-    protected fun verifyLiveDataChangedAsExpected() {
-        verifyLiveDataChanged(mockItems)
+    protected fun verifyLiveDataChangedWithSuccess() {
+        verifyLiveDataChanged(mockActorsResultSuccess)
     }
 
-    private fun verifyLiveDataChanged(items: List<Actor>) {
-        verify(mockObserver).onChanged(items)
+    protected fun verifyLiveDataChangedWithError() {
+        verifyLiveDataChanged(mockActorsResultError)
+    }
+
+    private fun verifyLiveDataChanged(result: ActorsResult) {
+        verify(mockObserver).onChanged(result)
     }
 
     protected fun verifyLiveDataNotChanged() {

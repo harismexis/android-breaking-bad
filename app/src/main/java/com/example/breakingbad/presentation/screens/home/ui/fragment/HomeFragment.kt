@@ -1,8 +1,10 @@
 package com.example.breakingbad.presentation.screens.home.ui.fragment
 
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.breakingbad.R
 import com.example.breakingbad.databinding.FragmentHomeBinding
 import com.example.breakingbad.domain.Actor
+import com.example.breakingbad.presentation.result.ActorsResult
 import com.example.breakingbad.framework.base.BaseFragment
 import com.example.breakingbad.presentation.screens.home.ui.adapter.ActorAdapter
 import com.example.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
@@ -73,9 +76,18 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
     }
 
     override fun observeLiveData() {
-        viewModel.models.observe(viewLifecycleOwner, {
-            populate(it)
+        viewModel.actorsResult.observe(viewLifecycleOwner, {
+            when (it) {
+                is ActorsResult.ActorsSuccess -> populate(it.items)
+                is ActorsResult.ActorsError -> populateError(it.error)
+            }
         })
+    }
+
+    private fun populateError(error: String) {
+        binding?.homeSwipeRefresh?.isRefreshing = false
+        binding?.loadingProgressBar?.visibility = View.GONE
+        showToast(error)
     }
 
     override fun onActorClick(
@@ -126,5 +138,12 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         uiModels.addAll(models)
         adapter.notifyDataSetChanged()
     }
+
+    private fun showToast(msg: String) {
+        val toast = Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT)
+        toast.setGravity(Gravity.CENTER, 0, 0)
+        toast.show()
+    }
+
 
 }

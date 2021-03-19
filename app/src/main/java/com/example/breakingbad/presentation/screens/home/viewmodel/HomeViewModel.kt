@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.breakingbad.domain.Actor
+import com.example.breakingbad.presentation.result.ActorsResult
 import com.example.breakingbad.presentation.screens.home.interactors.HomeInteractors
 import com.example.breakingbad.framework.extensions.getErrorMessage
 import com.example.breakingbad.framework.util.functional.Action1
@@ -20,9 +20,9 @@ class HomeViewModel @Inject constructor(
 
     private val TAG = HomeViewModel::class.qualifiedName
 
-    private val mModels = MutableLiveData<List<Actor>>()
-    val models: LiveData<List<Actor>>
-        get() = mModels
+    private val mActorsResult = MutableLiveData<ActorsResult>()
+    val actorsResult: LiveData<ActorsResult>
+        get() = mActorsResult
 
     var searchQuery: String? = null
         set(value) {
@@ -48,10 +48,11 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val items = interactors.irrGetRemoteActors.invoke(name)
-                mModels.value = items
+                mActorsResult.value = ActorsResult.ActorsSuccess(items)
                 interactors.irrStoreActors.invoke(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
+                mActorsResult.value = ActorsResult.ActorsError(e.getErrorMessage())
             }
         }
     }
@@ -59,9 +60,11 @@ class HomeViewModel @Inject constructor(
     private fun fetchLocalActors() {
         viewModelScope.launch {
             try {
-                mModels.value = interactors.irrGetLocalActors.invoke()
+                val items = interactors.irrGetLocalActors.invoke()
+                mActorsResult.value = ActorsResult.ActorsSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
+                mActorsResult.value = ActorsResult.ActorsError(e.getErrorMessage())
             }
         }
     }
