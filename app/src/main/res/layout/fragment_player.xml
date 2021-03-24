@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/default_background_color"
-    tools:context="com.example.breakingbad.presentation.screens.episodes.ui.fragment.EpisodesFragment">
+    tools:context=".presentation.screens.episodes.ui.fragment.EpisodesFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

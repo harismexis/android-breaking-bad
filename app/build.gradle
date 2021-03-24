@@ -12,12 +12,12 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.breakingbad"
+        applicationId "com.harismexis.breakingbad"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "com.example.breakingbad.setup.runner.InstrumentedRunner"
+        testInstrumentationRunner "com.harismexis.breakingbad.setup.runner.InstrumentedRunner"
         buildConfigField "String", "BREAKING_BAD_API_BASE_URL", commonValues.BREAKING_BAD_API_BASE_URL
     }
 

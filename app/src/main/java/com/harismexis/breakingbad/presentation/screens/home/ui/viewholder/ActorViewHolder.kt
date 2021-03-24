@@ -1,0 +1,33 @@
+package com.harismexis.breakingbad.presentation.screens.home.ui.viewholder
+
+import androidx.recyclerview.widget.RecyclerView
+import com.harismexis.breakingbad.domain.Actor
+import com.harismexis.breakingbad.framework.extensions.populateWithGlide
+import com.harismexis.breakingbad.databinding.VhActorItemBinding
+
+class ActorViewHolder(
+    private val binding: VhActorItemBinding,
+    private val itemClick: ActorClickListener
+) : RecyclerView.ViewHolder(binding.root) {
+
+    interface ActorClickListener {
+        fun onActorClick(item: Actor, position: Int)
+    }
+
+    fun bind(
+        item: Actor,
+        position: Int
+    ) {
+        itemView.context.populateWithGlide(binding.imgView, item.img)
+        binding.txtName.text = item.name
+        binding.txtMeta.text = item.nickname
+        itemView.setOnClickListener {
+            itemClick.onActorClick(item, position)
+        }
+    }
+
+    fun unbind() {
+        // Release resources, unsubscribe etc
+    }
+
+}

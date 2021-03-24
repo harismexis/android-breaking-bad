@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/home_dest"
-        android:name="com.example.breakingbad.presentation.screens.home.ui.fragment.HomeFragment"
+        android:name="com.harismexis.breakingbad.presentation.screens.home.ui.fragment.HomeFragment"
         android:label="@string/screen_home_label"
         app:defaultNavHost="true"
         tools:layout="@layout/fragment_home">
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/actor_detail_dest"
-        android:name="com.example.breakingbad.presentation.screens.actordetail.ui.fragment.ActorDetailFragment"
+        android:name="com.harismexis.breakingbad.presentation.screens.actordetail.ui.fragment.ActorDetailFragment"
         tools:layout="@layout/fragment_actor_detail">
 
         <argument
@@ -30,22 +30,22 @@
 
     <fragment
         android:id="@+id/quotes_dest"
-        android:name="com.example.breakingbad.presentation.screens.quotes.ui.fragment.QuotesFragment"
+        android:name="com.harismexis.breakingbad.presentation.screens.quotes.ui.fragment.QuotesFragment"
         tools:layout="@layout/fragment_quotes" />
 
     <fragment
         android:id="@+id/deaths_dest"
-        android:name="com.example.breakingbad.presentation.screens.deaths.ui.fragment.DeathsFragment"
+        android:name="com.harismexis.breakingbad.presentation.screens.deaths.ui.fragment.DeathsFragment"
         tools:layout="@layout/fragment_deaths" />
 
     <fragment
         android:id="@+id/episodes_dest"
-        android:name="com.example.breakingbad.presentation.screens.episodes.ui.fragment.EpisodesFragment"
+        android:name="com.harismexis.breakingbad.presentation.screens.episodes.ui.fragment.EpisodesFragment"
         tools:layout="@layout/fragment_episodes" />
 
     <fragment
         android:id="@+id/player_dest"
-        android:name="com.example.breakingbad.presentation.screens.player.PlayerFragment"
+        android:name="com.harismexis.breakingbad.presentation.screens.player.PlayerFragment"
         tools:layout="@layout/fragment_player" />
 
 </navigation>

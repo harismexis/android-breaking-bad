@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/default_background_color"
-    tools:context="com.example.breakingbad.presentation.screens.quotes.ui.fragment.QuotesFragment">
+    tools:context=".presentation.screens.quotes.ui.fragment.QuotesFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
