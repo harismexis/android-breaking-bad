@@ -7,9 +7,9 @@ import androidx.annotation.NonNull
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.harismexis.breakingbad.framework.base.BaseFragment
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentPlayerBinding
+import com.harismexis.breakingbad.framework.base.BaseFragment
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
@@ -59,8 +59,6 @@ class PlayerFragment : BaseFragment() {
             it.toolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
         }
     }
-
-    override fun initialiseViewModel() {}
 
     override fun observeLiveData() {}
 

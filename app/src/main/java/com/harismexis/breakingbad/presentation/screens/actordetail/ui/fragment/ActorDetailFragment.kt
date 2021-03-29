@@ -4,27 +4,27 @@ import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.harismexis.breakingbad.R
+import com.harismexis.breakingbad.databinding.ActorDetailViewBinding
+import com.harismexis.breakingbad.databinding.FragmentActorDetailBinding
 import com.harismexis.breakingbad.domain.Actor
 import com.harismexis.breakingbad.framework.base.BaseFragment
 import com.harismexis.breakingbad.framework.extensions.getLinkSpanned
 import com.harismexis.breakingbad.framework.extensions.populateWithGlide
+import com.harismexis.breakingbad.framework.extensions.setTextOrUnknown
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.presentation.result.ActorResult
-import com.harismexis.breakingbad.R
-import com.harismexis.breakingbad.databinding.ActorDetailViewBinding
-import com.harismexis.breakingbad.databinding.FragmentActorDetailBinding
-import com.harismexis.breakingbad.framework.extensions.setTextOrUnknown
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 
 class ActorDetailFragment : BaseFragment() {
 
     private var binding: FragmentActorDetailBinding? = null
     private var detailBinding: ActorDetailViewBinding? = null
-    private lateinit var viewModel: ActorDetailViewModel
+    private val viewModel: ActorDetailViewModel by viewModels { viewModelFactory }
 
     companion object {
         private const val ARG_ACTOR_ID = "actorId"
@@ -53,11 +53,6 @@ class ActorDetailFragment : BaseFragment() {
     override fun onDestroyView() {
         binding = null
         super.onDestroyView()
-    }
-
-    override fun initialiseViewModel() {
-        viewModel = ViewModelProviders
-            .of(this, viewModelFactory)[ActorDetailViewModel::class.java]
     }
 
     override fun initialiseViewBinding(

@@ -16,13 +16,12 @@ abstract class BaseFragment : Fragment() {
     protected lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
+        inject()
         super.onAttach(context)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initialiseViewModel()
+    open fun inject() {
+        AndroidSupportInjection.inject(this)
     }
 
     override fun onCreateView(
@@ -51,8 +50,6 @@ abstract class BaseFragment : Fragment() {
     abstract fun getRootView(): View?
 
     abstract fun onViewCreated()
-
-    abstract fun initialiseViewModel()
 
     abstract fun observeLiveData()
 

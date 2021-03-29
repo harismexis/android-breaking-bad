@@ -3,25 +3,25 @@ package com.harismexis.breakingbad.presentation.screens.home.ui.fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.harismexis.breakingbad.R
+import com.harismexis.breakingbad.databinding.FragmentHomeBinding
 import com.harismexis.breakingbad.domain.Actor
-import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.framework.base.BaseFragment
 import com.harismexis.breakingbad.framework.extensions.showToast
+import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorAdapter
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
-import com.harismexis.breakingbad.R
-import com.harismexis.breakingbad.databinding.FragmentHomeBinding
 
 class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
     android.widget.SearchView.OnQueryTextListener {
 
-    private lateinit var viewModel: HomeViewModel
+    private val viewModel: HomeViewModel by viewModels { viewModelFactory }
     private var binding: FragmentHomeBinding? = null
     private lateinit var adapter: ActorAdapter
     private var uiModels: MutableList<Actor> = mutableListOf()
@@ -53,10 +53,6 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
                 }
             }
         }
-    }
-
-    override fun initialiseViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[HomeViewModel::class.java]
     }
 
     override fun initialiseViewBinding(

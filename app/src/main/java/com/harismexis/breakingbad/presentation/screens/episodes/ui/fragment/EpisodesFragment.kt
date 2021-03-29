@@ -3,23 +3,23 @@ package com.harismexis.breakingbad.presentation.screens.episodes.ui.fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.harismexis.breakingbad.R
+import com.harismexis.breakingbad.databinding.FragmentEpisodesBinding
 import com.harismexis.breakingbad.domain.Episode
 import com.harismexis.breakingbad.framework.base.BaseFragment
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.presentation.result.EpisodesResult
 import com.harismexis.breakingbad.presentation.screens.episodes.ui.adapter.EpisodeAdapter
 import com.harismexis.breakingbad.presentation.screens.episodes.viewmodel.EpisodesViewModel
-import com.harismexis.breakingbad.R
-import com.harismexis.breakingbad.databinding.FragmentEpisodesBinding
 
 class EpisodesFragment : BaseFragment() {
 
-    private lateinit var viewModel: EpisodesViewModel
+    private val viewModel: EpisodesViewModel by viewModels { viewModelFactory }
     private var binding: FragmentEpisodesBinding? = null
     private lateinit var adapter: EpisodeAdapter
     private var uiModels: MutableList<Episode> = mutableListOf()
@@ -32,10 +32,6 @@ class EpisodesFragment : BaseFragment() {
     override fun onDestroyView() {
         binding = null
         super.onDestroyView()
-    }
-
-    override fun initialiseViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[EpisodesViewModel::class.java]
     }
 
     override fun initialiseViewBinding(

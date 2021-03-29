@@ -3,23 +3,23 @@ package com.harismexis.breakingbad.presentation.screens.quotes.ui.fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.harismexis.breakingbad.R
+import com.harismexis.breakingbad.databinding.FragmentQuotesBinding
 import com.harismexis.breakingbad.domain.Quote
 import com.harismexis.breakingbad.framework.base.BaseFragment
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.presentation.result.QuotesResult
 import com.harismexis.breakingbad.presentation.screens.quotes.ui.adapter.QuoteAdapter
 import com.harismexis.breakingbad.presentation.screens.quotes.viewmodel.QuotesViewModel
-import com.harismexis.breakingbad.R
-import com.harismexis.breakingbad.databinding.FragmentQuotesBinding
 
 class QuotesFragment : BaseFragment() {
 
-    private lateinit var viewModel: QuotesViewModel
+    private val viewModel: QuotesViewModel by viewModels { viewModelFactory }
     private var binding: FragmentQuotesBinding? = null
     private lateinit var adapter: QuoteAdapter
     private var uiModels: MutableList<Quote> = mutableListOf()
@@ -32,10 +32,6 @@ class QuotesFragment : BaseFragment() {
     override fun onDestroyView() {
         binding = null
         super.onDestroyView()
-    }
-
-    override fun initialiseViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[QuotesViewModel::class.java]
     }
 
     override fun initialiseViewBinding(

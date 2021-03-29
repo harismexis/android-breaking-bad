@@ -3,23 +3,23 @@ package com.harismexis.breakingbad.presentation.screens.deaths.ui.fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.harismexis.breakingbad.R
+import com.harismexis.breakingbad.databinding.FragmentDeathsBinding
 import com.harismexis.breakingbad.domain.Death
 import com.harismexis.breakingbad.framework.base.BaseFragment
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.presentation.result.DeathsResult
 import com.harismexis.breakingbad.presentation.screens.deaths.ui.adapter.DeathAdapter
-import com.harismexis.breakingbad.R
-import com.harismexis.breakingbad.databinding.FragmentDeathsBinding
 import com.harismexis.breakingbad.presentation.screens.deaths.viewmodel.DeathsViewModel
 
 class DeathsFragment : BaseFragment() {
 
-    private lateinit var viewModel: DeathsViewModel
+    private val viewModel: DeathsViewModel by viewModels { viewModelFactory }
     private var binding: FragmentDeathsBinding? = null
     private lateinit var adapter: DeathAdapter
     private var uiModels: MutableList<Death> = mutableListOf()
@@ -32,10 +32,6 @@ class DeathsFragment : BaseFragment() {
     override fun onDestroyView() {
         binding = null
         super.onDestroyView()
-    }
-
-    override fun initialiseViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[DeathsViewModel::class.java]
     }
 
     override fun initialiseViewBinding(
