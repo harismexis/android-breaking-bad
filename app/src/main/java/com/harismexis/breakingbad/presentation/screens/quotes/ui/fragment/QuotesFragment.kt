@@ -24,16 +24,6 @@ class QuotesFragment : BaseFragment() {
     private lateinit var adapter: QuoteAdapter
     private var uiModels: MutableList<Quote> = mutableListOf()
 
-    override fun onViewCreated() {
-        observeLiveData()
-        viewModel.bind()
-    }
-
-    override fun onDestroyView() {
-        binding = null
-        super.onDestroyView()
-    }
-
     override fun initialiseViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -41,21 +31,15 @@ class QuotesFragment : BaseFragment() {
         binding = FragmentQuotesBinding.inflate(inflater, container, false)
     }
 
-    override fun getRootView() = binding?.root
-
     override fun initialiseView() {
         setupToolbar()
         setupSwipeToRefresh()
         initialiseRecycler()
     }
 
-    override fun observeLiveData() {
-        viewModel.quotes.observe(viewLifecycleOwner, {
-            when (it) {
-                is QuotesResult.QuotesSuccess -> populate(it.items)
-                is QuotesResult.QuotesError -> requireContext().showToast(it.error)
-            }
-        })
+    override fun onViewCreated() {
+        observeLiveData()
+        viewModel.bind()
     }
 
     private fun setupToolbar() {
@@ -64,6 +48,7 @@ class QuotesFragment : BaseFragment() {
         binding?.let {
             it.toolbar.setupWithNavController(navController, appBarConf)
             it.toolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
+            it.toolbarTitle.text = getString(R.string.screen_quotes_label)
         }
     }
 
@@ -87,6 +72,15 @@ class QuotesFragment : BaseFragment() {
         }
     }
 
+    override fun observeLiveData() {
+        viewModel.quotes.observe(viewLifecycleOwner, {
+            when (it) {
+                is QuotesResult.QuotesSuccess -> populate(it.items)
+                is QuotesResult.QuotesError -> requireContext().showToast(it.error)
+            }
+        })
+    }
+
     private fun populate(models: List<Quote>) {
         binding?.let {
             it.swipeRefresh.isRefreshing = false
@@ -97,5 +91,12 @@ class QuotesFragment : BaseFragment() {
         uiModels.addAll(models)
         adapter.notifyDataSetChanged()
     }
+
+    override fun onDestroyView() {
+        binding = null
+        super.onDestroyView()
+    }
+
+    override fun getRootView() = binding?.root
 
 }
