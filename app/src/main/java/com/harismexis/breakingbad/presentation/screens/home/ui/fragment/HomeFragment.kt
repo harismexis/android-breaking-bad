@@ -26,15 +26,45 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
     private lateinit var adapter: ActorAdapter
     private var uiModels: MutableList<Actor> = mutableListOf()
 
-    override fun onViewCreated() {
-        setupToolbar()
-        observeLiveData()
-        viewModel.bind()
+    override fun initialiseViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
     }
 
-    override fun onDestroyView() {
-        binding = null
-        super.onDestroyView()
+    override fun initialiseView() {
+        setupToolbar()
+        setupSwipeToRefresh()
+        initialiseRecycler()
+        initialiseSearchView()
+    }
+
+    private fun setupSwipeToRefresh() {
+        binding?.homeSwipeRefresh?.setOnRefreshListener {
+            binding?.homeSwipeRefresh?.isRefreshing = true
+            viewModel.refresh { canRefresh ->
+                if (!canRefresh) {
+                    binding?.homeSwipeRefresh?.isRefreshing = false
+                }
+            }
+        }
+    }
+
+    private fun initialiseRecycler() {
+        adapter = ActorAdapter(uiModels, this)
+        adapter.setHasStableIds(true)
+        binding?.homeList?.layoutManager = LinearLayoutManager(this.context)
+        binding?.homeList?.adapter = adapter
+    }
+
+    private fun initialiseSearchView() {
+        binding?.searchView?.setOnQueryTextListener(this)
+    }
+
+    override fun onViewCreated() {
+        observeLiveData()
+        viewModel.bind()
     }
 
     private fun setupToolbar() {
@@ -52,22 +82,8 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
                     else -> false
                 }
             }
+            it.toolbarTitle.text = getString(R.string.screen_home_label)
         }
-    }
-
-    override fun initialiseViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ) {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
-    }
-
-    override fun getRootView() = binding?.root
-
-    override fun initialiseView() {
-        setupSwipeToRefresh()
-        initialiseRecycler()
-        initialiseSearchView()
     }
 
     override fun observeLiveData() {
@@ -77,6 +93,15 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
                 is ActorsResult.ActorsError -> populateError(it.error)
             }
         })
+    }
+
+    private fun populate(models: List<Actor>) {
+        binding?.homeSwipeRefresh?.isRefreshing = false
+        binding?.loadingProgressBar?.visibility = View.GONE
+        binding?.homeList?.visibility = View.VISIBLE
+        uiModels.clear()
+        uiModels.addAll(models)
+        adapter.notifyDataSetChanged()
     }
 
     private fun populateError(error: String) {
@@ -103,35 +128,11 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         return false
     }
 
-    private fun setupSwipeToRefresh() {
-        binding?.homeSwipeRefresh?.setOnRefreshListener {
-            binding?.homeSwipeRefresh?.isRefreshing = true
-            viewModel.refresh { canRefresh ->
-                if (!canRefresh) {
-                    binding?.homeSwipeRefresh?.isRefreshing = false
-                }
-            }
-        }
-    }
+    override fun getRootView() = binding?.root
 
-    private fun initialiseRecycler() {
-        adapter = ActorAdapter(uiModels, this)
-        adapter.setHasStableIds(true)
-        binding?.homeList?.layoutManager = LinearLayoutManager(this.context)
-        binding?.homeList?.adapter = adapter
-    }
-
-    private fun initialiseSearchView() {
-        binding?.searchView?.setOnQueryTextListener(this)
-    }
-
-    private fun populate(models: List<Actor>) {
-        binding?.homeSwipeRefresh?.isRefreshing = false
-        binding?.loadingProgressBar?.visibility = View.GONE
-        binding?.homeList?.visibility = View.VISIBLE
-        uiModels.clear()
-        uiModels.addAll(models)
-        adapter.notifyDataSetChanged()
+    override fun onDestroyView() {
+        binding = null
+        super.onDestroyView()
     }
 
 }
