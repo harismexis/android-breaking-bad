@@ -24,16 +24,6 @@ class EpisodesFragment : BaseFragment() {
     private lateinit var adapter: EpisodeAdapter
     private var uiModels: MutableList<Episode> = mutableListOf()
 
-    override fun onViewCreated() {
-        observeLiveData()
-        viewModel.bind()
-    }
-
-    override fun onDestroyView() {
-        binding = null
-        super.onDestroyView()
-    }
-
     override fun initialiseViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -41,21 +31,10 @@ class EpisodesFragment : BaseFragment() {
         binding = FragmentEpisodesBinding.inflate(inflater, container, false)
     }
 
-    override fun getRootView() = binding?.root
-
     override fun initialiseView() {
         setupToolbar()
         setupSwipeToRefresh()
         initialiseRecycler()
-    }
-
-    override fun observeLiveData() {
-        viewModel.episodes.observe(viewLifecycleOwner, {
-            when (it) {
-                is EpisodesResult.EpisodesSuccess -> populate(it.items)
-                is EpisodesResult.EpisodesError -> requireContext().showToast(it.error)
-            }
-        })
     }
 
     private fun setupToolbar() {
@@ -64,6 +43,7 @@ class EpisodesFragment : BaseFragment() {
         binding?.let {
             it.toolbar.setupWithNavController(navController, appBarConf)
             it.toolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
+            it.toolbarTitle.text = getString(R.string.screen_episodes_label)
         }
     }
 
@@ -87,6 +67,20 @@ class EpisodesFragment : BaseFragment() {
         }
     }
 
+    override fun onViewCreated() {
+        observeLiveData()
+        viewModel.bind()
+    }
+
+    override fun observeLiveData() {
+        viewModel.episodes.observe(viewLifecycleOwner, {
+            when (it) {
+                is EpisodesResult.EpisodesSuccess -> populate(it.items)
+                is EpisodesResult.EpisodesError -> requireContext().showToast(it.error)
+            }
+        })
+    }
+
     private fun populate(models: List<Episode>) {
         binding?.let {
             it.swipeRefresh.isRefreshing = false
@@ -97,5 +91,12 @@ class EpisodesFragment : BaseFragment() {
         uiModels.addAll(models)
         adapter.notifyDataSetChanged()
     }
+
+    override fun onDestroyView() {
+        binding = null
+        super.onDestroyView()
+    }
+
+    override fun getRootView() = binding?.root
 
 }
