@@ -24,16 +24,6 @@ class DeathsFragment : BaseFragment() {
     private lateinit var adapter: DeathAdapter
     private var uiModels: MutableList<Death> = mutableListOf()
 
-    override fun onViewCreated() {
-        observeLiveData()
-        viewModel.bind()
-    }
-
-    override fun onDestroyView() {
-        binding = null
-        super.onDestroyView()
-    }
-
     override fun initialiseViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -41,21 +31,10 @@ class DeathsFragment : BaseFragment() {
         binding = FragmentDeathsBinding.inflate(inflater, container, false)
     }
 
-    override fun getRootView() = binding?.root
-
     override fun initialiseView() {
         setupToolbar()
         setupSwipeToRefresh()
         initialiseRecycler()
-    }
-
-    override fun observeLiveData() {
-        viewModel.deaths.observe(viewLifecycleOwner, {
-            when (it) {
-                is DeathsResult.DeathsSuccess -> populate(it.items)
-                is DeathsResult.DeathsError -> requireContext().showToast(it.error)
-            }
-        })
     }
 
     private fun setupToolbar() {
@@ -64,6 +43,7 @@ class DeathsFragment : BaseFragment() {
         binding?.let {
             it.toolbar.setupWithNavController(navController, appBarConf)
             it.toolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
+            it.toolbarTitle.text = getString(R.string.screen_deaths_label)
         }
     }
 
@@ -87,6 +67,20 @@ class DeathsFragment : BaseFragment() {
         }
     }
 
+    override fun onViewCreated() {
+        observeLiveData()
+        viewModel.bind()
+    }
+
+    override fun observeLiveData() {
+        viewModel.deaths.observe(viewLifecycleOwner, {
+            when (it) {
+                is DeathsResult.DeathsSuccess -> populate(it.items)
+                is DeathsResult.DeathsError -> requireContext().showToast(it.error)
+            }
+        })
+    }
+
     private fun populate(models: List<Death>) {
         binding?.let {
             it.swipeRefresh.isRefreshing = false
@@ -97,5 +91,12 @@ class DeathsFragment : BaseFragment() {
         uiModels.addAll(models)
         adapter.notifyDataSetChanged()
     }
+
+    override fun onDestroyView() {
+        binding = null
+        super.onDestroyView()
+    }
+
+    override fun getRootView() = binding?.root
 
 }
