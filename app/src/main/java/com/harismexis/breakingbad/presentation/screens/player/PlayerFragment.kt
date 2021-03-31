@@ -18,25 +18,16 @@ class PlayerFragment : BaseFragment() {
     private var binding: FragmentPlayerBinding? = null
     private var youTubePlayer: YouTubePlayer? = null
 
-    override fun initialiseView() {
-        setupToolbar()
-    }
-
-    override fun onDestroyView() {
-        binding = null
-        super.onDestroyView()
-    }
-
-    override fun onViewCreated() {
-        loadVideo("QmHCn5xXHjI")
-    }
-
     override fun initialiseViewBinding(inflater: LayoutInflater, container: ViewGroup?) {
         binding = FragmentPlayerBinding.inflate(inflater, container, false)
     }
 
-    override fun getRootView(): View? {
-        return binding?.root
+    override fun initialiseView() {
+        setupToolbar()
+    }
+
+    override fun onViewCreated() {
+        loadVideo("QmHCn5xXHjI")
     }
 
     private fun loadVideo(videoId: String) {
@@ -58,6 +49,15 @@ class PlayerFragment : BaseFragment() {
             it.toolbar.setupWithNavController(navController, appBarConf)
             it.toolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
         }
+    }
+
+    override fun onDestroyView() {
+        binding = null
+        super.onDestroyView()
+    }
+
+    override fun getRootView(): View? {
+        return binding?.root
     }
 
     override fun observeLiveData() {}
