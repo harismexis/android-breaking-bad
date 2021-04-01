@@ -1,5 +1,6 @@
 package com.harismexis.breakingbad.presentation.screens.home.ui.activity
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -52,6 +53,12 @@ class MainActivity : AppCompatActivity() {
                 binding.bottomNavView.visibility = View.VISIBLE
             } else {
                 binding.bottomNavView.visibility = View.GONE
+            }
+
+            requestedOrientation = if (destination.id == R.id.player_dest) {
+                ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+            } else {
+                ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
             }
         }
     }
