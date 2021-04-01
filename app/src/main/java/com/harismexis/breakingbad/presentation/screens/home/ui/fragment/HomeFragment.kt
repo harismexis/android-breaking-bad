@@ -75,7 +75,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
             it.toolbar.inflateMenu(R.menu.menu_home)
             it.toolbar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
-                    R.id.quotes_dest -> {
+                    R.id.player_dest -> {
                         navController.navigate(R.id.player_dest)
                         true
                     }
