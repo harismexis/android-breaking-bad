@@ -31,4 +31,4 @@ More Tests will be added.
 ![Alt text](screenshots/quotes_1.png?raw=true "app screenshot")
 
 #### Player
-![Alt text](screenshots/player.png?raw=true "app screenshot")
+![Alt text](screenshots/video-player.png?raw=true "app screenshot")
