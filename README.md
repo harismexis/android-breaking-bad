@@ -1,8 +1,9 @@
 ### Overview:
 
-The project is written in Kotlin with Clean Architecture + MVVM and uses JetPack components 
-i.e. Navigation, Coroutines, LiveData, Room, ViewModel. Also popular libraries have been used
-i.e. Retrofit, Glide, Dagger, Mockito-kotlin, Mockk etc.
+The project uses Kotlin with Clean Architecture + MVVM and JetPack components i.e.
+Navigation, Coroutines, LiveData, Room, ViewModel. Some libraries have been used
+like Retrofit, Glide, Mockito-kotlin, Dagger. Video playback is done with the 
+library PierfrancescoSoffritti/android-youtube-player   
 
 ### Description:
 
