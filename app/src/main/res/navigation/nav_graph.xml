@@ -45,6 +45,14 @@
     <fragment
         android:id="@+id/player_dest"
         android:name="com.harismexis.breakingbad.presentation.screens.player.PlayerFragment"
-        tools:layout="@layout/fragment_player" />
+        tools:layout="@layout/fragment_player" >
+
+        <action
+            android:id="@+id/action_exit"
+            app:destination="@+id/home_dest"
+            app:popUpTo="@+id/home_dest"
+            app:popUpToInclusive="true"/>
+
+    </fragment>
 
 </navigation>

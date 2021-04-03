@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.annotation.NonNull
+import androidx.navigation.fragment.findNavController
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentPlayerLinearBinding
 import com.harismexis.breakingbad.framework.base.BaseFragment
@@ -59,7 +60,9 @@ class PlayerFragment : BaseFragment() {
             params.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE)
             backIcon.layoutParams = params
             backIcon.setImageResource(R.drawable.ic_arrow_left_white_rounded_24dp)
-            backIcon.setOnClickListener { requireActivity().onBackPressed() }
+            backIcon.setOnClickListener {
+                findNavController().navigate(PlayerFragmentDirections.actionExit())
+            }
             controls.addView(backIcon)
         }
     }
