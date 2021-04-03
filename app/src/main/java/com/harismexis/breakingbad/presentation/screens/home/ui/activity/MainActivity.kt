@@ -3,7 +3,6 @@ package com.harismexis.breakingbad.presentation.screens.home.ui.activity
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -60,10 +59,8 @@ class MainActivity : AppCompatActivity() {
             } else {
                 ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
             }
+
         }
     }
 
-    private fun showToast(msg: String) {
-        Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
-    }
 }

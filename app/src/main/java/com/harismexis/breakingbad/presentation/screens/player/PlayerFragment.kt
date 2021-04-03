@@ -10,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentPlayerLinearBinding
 import com.harismexis.breakingbad.framework.base.BaseFragment
+import com.harismexis.breakingbad.framework.util.ui.hideSystemUI
+import com.harismexis.breakingbad.framework.util.ui.showSystemUI
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
@@ -19,6 +21,7 @@ class PlayerFragment : BaseFragment() {
     private val videos = provideVideos()
     private var binding: FragmentPlayerLinearBinding? = null
     private var videoPlayer: YouTubePlayer? = null
+    private var isFullScreen: Boolean = false
 
     override fun initialiseViewBinding(inflater: LayoutInflater, container: ViewGroup?) {
         binding = FragmentPlayerLinearBinding.inflate(inflater, container, false)
@@ -26,6 +29,7 @@ class PlayerFragment : BaseFragment() {
 
     override fun initialiseView() {
         addBackNavigation()
+        initFullScreen()
         initPlayerMenu()
     }
 
@@ -84,7 +88,19 @@ class PlayerFragment : BaseFragment() {
         }
     }
 
+    private fun initFullScreen() {
+        binding?.let {
+            it.youTubeView.getPlayerUiController()
+                .setFullScreenButtonClickListener {
+                    isFullScreen = !isFullScreen
+                    if (isFullScreen) requireActivity().hideSystemUI()
+                    else requireActivity().showSystemUI()
+                }
+        }
+    }
+
     override fun onDestroyView() {
+        if (isFullScreen) requireActivity().showSystemUI()
         binding = null
         super.onDestroyView()
     }
