@@ -13,6 +13,7 @@ import com.harismexis.breakingbad.databinding.FragmentHomeBinding
 import com.harismexis.breakingbad.domain.Actor
 import com.harismexis.breakingbad.framework.base.BaseFragment
 import com.harismexis.breakingbad.framework.extensions.showToast
+import com.harismexis.breakingbad.framework.util.ui.hideKeyboard
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorAdapter
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
@@ -122,6 +123,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
+        requireActivity().hideKeyboard()
         viewModel.searchQuery = query
         return false
     }
