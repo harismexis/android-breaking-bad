@@ -43,9 +43,9 @@ class QuotesViewModel @Inject constructor(
     private fun fetchRemoteItems() {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteQuotes.invoke()
+                val items = interactors.irrGetRemoteQuotes()
                 mQuotes.value = QuotesResult.QuotesSuccess(items)
-                interactors.irrStoreQuotes.invoke(items)
+                interactors.irrStoreQuotes(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mQuotes.value = QuotesResult.QuotesError(e.getErrorMessage())
@@ -56,7 +56,7 @@ class QuotesViewModel @Inject constructor(
     private fun fetchLocalItems() {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetLocalQuotes.invoke()
+                val items = interactors.irrGetLocalQuotes()
                 mQuotes.value = QuotesResult.QuotesSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

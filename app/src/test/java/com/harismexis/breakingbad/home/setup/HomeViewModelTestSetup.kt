@@ -91,26 +91,26 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
         actorName: String?
     ) {
         runBlocking {
-            Mockito.`when`(mockIrrGetRemoteActors.invoke(actorName)).thenReturn(items)
+            Mockito.`when`(mockIrrGetRemoteActors(actorName)).thenReturn(items)
         }
     }
 
     protected fun mockRemoteCallThrowsError(actorName: String?) {
         runBlocking {
-            Mockito.`when`(mockIrrGetRemoteActors.invoke(actorName))
+            Mockito.`when`(mockIrrGetRemoteActors(actorName))
                 .thenThrow(error)
         }
     }
 
     protected fun verifyRemoteCallDone(name: String?) {
         runBlocking {
-            verify(mockIrrGetRemoteActors, Mockito.times(1)).invoke(name)
+            verify(mockIrrGetRemoteActors, Mockito.times(1))(name)
         }
     }
 
     protected fun verifyRemoteCallNotDone() {
         runBlocking {
-            verify(mockIrrGetRemoteActors, Mockito.never()).invoke(any())
+            verify(mockIrrGetRemoteActors, Mockito.never())(any())
         }
     }
 
@@ -122,26 +122,26 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     private fun mockLocalCall(items: List<Actor>) {
         runBlocking {
-            Mockito.`when`(mockIrrGetLocalActors.invoke()).thenReturn(items)
+            Mockito.`when`(mockIrrGetLocalActors()).thenReturn(items)
         }
     }
 
     protected fun mockLocalCallThrowsError() {
         runBlocking {
-            Mockito.`when`(mockIrrGetLocalActors.invoke())
+            Mockito.`when`(mockIrrGetLocalActors())
                 .thenThrow(error)
         }
     }
 
     protected fun verifyLocalCallDone() {
         runBlocking {
-            verify(mockIrrGetLocalActors, Mockito.times(1)).invoke()
+            verify(mockIrrGetLocalActors, Mockito.times(1))()
         }
     }
 
     protected fun verifyLocalCallNotDone() {
         runBlocking {
-            verify(mockIrrGetLocalActors, Mockito.never()).invoke()
+            verify(mockIrrGetLocalActors, Mockito.never())()
         }
     }
 
@@ -175,13 +175,13 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     private fun verifyDataStored(items: List<Actor>) {
         runBlocking {
-            verify(mockIrrStoreItems, Mockito.times(1)).invoke(items)
+            verify(mockIrrStoreItems, Mockito.times(1))(items)
         }
     }
 
     protected fun verifyDataNotStored() {
         runBlocking {
-            verify(mockIrrStoreItems, Mockito.never()).invoke(any())
+            verify(mockIrrStoreItems, Mockito.never())(any())
         }
     }
 

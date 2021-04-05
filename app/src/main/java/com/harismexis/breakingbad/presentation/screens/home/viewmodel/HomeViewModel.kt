@@ -52,9 +52,9 @@ class HomeViewModel @Inject constructor(
     private fun fetchRemoteActors(name: String?) {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteActors.invoke(name)
+                val items = interactors.irrGetRemoteActors(name)
                 mActorsResult.value = ActorsResult.ActorsSuccess(items)
-                interactors.irrStoreActors.invoke(items)
+                interactors.irrStoreActors(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mActorsResult.value = ActorsResult.ActorsError(e)
@@ -66,7 +66,7 @@ class HomeViewModel @Inject constructor(
     private fun fetchLocalActors() {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetLocalActors.invoke()
+                val items = interactors.irrGetLocalActors()
                 mActorsResult.value = ActorsResult.ActorsSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

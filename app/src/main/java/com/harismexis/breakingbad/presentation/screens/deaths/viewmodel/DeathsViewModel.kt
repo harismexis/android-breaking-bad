@@ -43,9 +43,9 @@ class DeathsViewModel @Inject constructor(
     private fun fetchRemoteItems() {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteDeaths.invoke()
+                val items = interactors.irrGetRemoteDeaths()
                 mDeaths.value = DeathsResult.DeathsSuccess(items)
-                interactors.irrStoreDeaths.invoke(items)
+                interactors.irrStoreDeaths(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mDeaths.value = DeathsResult.DeathsError(e.getErrorMessage())
@@ -56,7 +56,7 @@ class DeathsViewModel @Inject constructor(
     private fun fetchLocalItems() {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetLocalDeaths.invoke()
+                val items = interactors.irrGetLocalDeaths()
                 mDeaths.value = DeathsResult.DeathsSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

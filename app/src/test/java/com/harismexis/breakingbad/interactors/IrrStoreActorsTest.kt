@@ -38,7 +38,7 @@ class IrrStoreActorsTest : UnitTestSetup() {
     fun interactorInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
         runBlocking {
             // when
-            subject.invoke(mockItems)
+            subject(mockItems)
 
             // then
             verify(mockRepository, times(1)).updateActors(mockItems)

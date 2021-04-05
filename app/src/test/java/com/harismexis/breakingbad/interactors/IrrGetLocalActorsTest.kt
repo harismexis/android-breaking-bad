@@ -43,7 +43,7 @@ class IrrGetLocalActorsTest : UnitTestSetup() {
     fun interactorInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
         runBlocking {
             // when
-            val items = subject.invoke()
+            val items = subject()
 
             // then
             verify(mockRepository, times(1)).getActors()

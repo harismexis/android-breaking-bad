@@ -43,9 +43,9 @@ class EpisodesViewModel @Inject constructor(
     private fun fetchRemoteItems() {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteEpisodes.invoke()
+                val items = interactors.irrGetRemoteEpisodes()
                 mEpisodes.value = EpisodesResult.EpisodesSuccess(items)
-                interactors.irrStoreEpisodes.invoke(items)
+                interactors.irrStoreEpisodes(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mEpisodes.value = EpisodesResult.EpisodesError(e.getErrorMessage())
@@ -56,7 +56,7 @@ class EpisodesViewModel @Inject constructor(
     private fun fetchLocalItems() {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetLocalEpisodes.invoke()
+                val items = interactors.irrGetLocalEpisodes()
                 mEpisodes.value = EpisodesResult.EpisodesSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

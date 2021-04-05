@@ -2,9 +2,9 @@ package com.harismexis.breakingbad.actordetail.setup
 
 import androidx.lifecycle.Observer
 import com.harismexis.breakingbad.domain.Actor
-import com.harismexis.breakingbad.presentation.screens.actordetail.interactors.ActorDetailInteractors
 import com.harismexis.breakingbad.interactors.actor.IrrGetLocalActor
 import com.harismexis.breakingbad.presentation.result.ActorResult
+import com.harismexis.breakingbad.presentation.screens.actordetail.interactors.ActorDetailInteractors
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 import com.harismexis.breakingbad.setup.UnitTestSetup
 import com.nhaarman.mockitokotlin2.any
@@ -64,20 +64,20 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
         item: Actor
     ) {
         runBlocking {
-            Mockito.`when`(mockIrrGetLocalItem.invoke(itemId)).thenReturn(item)
+            Mockito.`when`(mockIrrGetLocalItem(itemId)).thenReturn(item)
         }
     }
 
     protected fun mockLocalCallThrowsError() {
         runBlocking {
-            Mockito.`when`(mockIrrGetLocalItem.invoke(any()))
+            Mockito.`when`(mockIrrGetLocalItem(any()))
                 .thenThrow(IllegalStateException(ERROR_MESSAGE))
         }
     }
 
     protected fun verifyLocalCallDone() {
         runBlocking {
-            verify(mockIrrGetLocalItem, Mockito.times(1)).invoke(mockId)
+            verify(mockIrrGetLocalItem, Mockito.times(1))(mockId)
         }
     }
 
