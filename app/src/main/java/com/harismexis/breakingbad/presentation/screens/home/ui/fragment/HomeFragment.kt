@@ -12,6 +12,7 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentHomeBinding
 import com.harismexis.breakingbad.domain.Actor
 import com.harismexis.breakingbad.framework.base.BaseFragment
+import com.harismexis.breakingbad.framework.event.EventObserver
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.framework.util.ui.hideKeyboard
 import com.harismexis.breakingbad.presentation.result.ActorsResult
@@ -96,6 +97,10 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
                 is ActorsResult.ActorsError -> populateError(it.error)
             }
         })
+
+        viewModel.showErrorMessage.observe(viewLifecycleOwner, EventObserver {
+            requireContext().showToast(it)
+        })
     }
 
     private fun populate(models: List<Actor>) {
@@ -107,10 +112,9 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         adapter.notifyDataSetChanged()
     }
 
-    private fun populateError(error: String) {
+    private fun populateError(error: Exception) {
         binding?.homeSwipeRefresh?.isRefreshing = false
         binding?.loadingProgressBar?.visibility = View.GONE
-        requireContext().showToast(error)
     }
 
     override fun onActorClick(

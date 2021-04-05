@@ -36,7 +36,7 @@ class ActorInteractorModule {
     }
 
     @Provides
-    fun provideIrrInsertActors(
+    fun provideIrrStoreActors(
         dataSource: BreakingBadLocalDataSource
     ): IrrStoreActors {
         return IrrStoreActors(BreakingBadLocalRepository(dataSource))

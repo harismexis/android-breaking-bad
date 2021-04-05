@@ -20,7 +20,8 @@ class BreakingBadLocalDataSource @Inject constructor(
     private val dao: BreakingBadLocalDao
 ) : BreakingBadBaseLocalDataSource {
 
-    override suspend fun insertActors(items: List<Actor>) {
+    override suspend fun updateActors(items: List<Actor>) {
+        dao.deleteAllActors()
         dao.insertActors(items.toLocalItems())
     }
 

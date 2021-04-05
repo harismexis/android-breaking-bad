@@ -2,8 +2,8 @@ package com.harismexis.breakingbad.datasource
 
 import com.harismexis.breakingbad.framework.datasource.database.data.BreakingBadLocalDao
 import com.harismexis.breakingbad.framework.datasource.database.data.BreakingBadLocalDataSource
-import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
 import com.harismexis.breakingbad.framework.extensions.actor.toLocalItem
+import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
 import com.harismexis.breakingbad.setup.UnitTestSetup
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
@@ -38,7 +38,7 @@ class BreakingBadLocalDataSourceTest : UnitTestSetup() {
             val mockLocalItems = mockItems.toLocalItems()
 
             // when
-            subject.insertActors(mockItems)
+            subject.updateActors(mockItems)
 
             // then
             verify(mockDao, times(1)).insertActors(mockLocalItems)

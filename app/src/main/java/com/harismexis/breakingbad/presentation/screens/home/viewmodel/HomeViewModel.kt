@@ -5,11 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.presentation.result.ActorsResult
-import com.harismexis.breakingbad.presentation.screens.home.interactors.HomeInteractors
+import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.framework.util.functional.Action1
 import com.harismexis.breakingbad.framework.util.network.ConnectivityMonitorSimple
+import com.harismexis.breakingbad.presentation.result.ActorsResult
+import com.harismexis.breakingbad.presentation.screens.home.interactors.HomeInteractors
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,6 +24,10 @@ class HomeViewModel @Inject constructor(
     private val mActorsResult = MutableLiveData<ActorsResult>()
     val actorsResult: LiveData<ActorsResult>
         get() = mActorsResult
+
+    private val mShowErrorMessage = MutableLiveData<Event<String>>()
+    val showErrorMessage : LiveData<Event<String>>
+        get() = mShowErrorMessage
 
     var searchQuery: String? = null
         set(value) {
@@ -52,7 +57,8 @@ class HomeViewModel @Inject constructor(
                 interactors.irrStoreActors.invoke(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mActorsResult.value = ActorsResult.ActorsError(e.getErrorMessage())
+                mActorsResult.value = ActorsResult.ActorsError(e)
+                mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }
     }
@@ -64,7 +70,8 @@ class HomeViewModel @Inject constructor(
                 mActorsResult.value = ActorsResult.ActorsSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mActorsResult.value = ActorsResult.ActorsError(e.getErrorMessage())
+                mActorsResult.value = ActorsResult.ActorsError(e)
+                mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }
     }

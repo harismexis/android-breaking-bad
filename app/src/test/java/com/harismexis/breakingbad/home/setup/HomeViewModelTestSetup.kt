@@ -2,12 +2,12 @@ package com.harismexis.breakingbad.home.setup
 
 import androidx.lifecycle.Observer
 import com.harismexis.breakingbad.domain.Actor
-import com.harismexis.breakingbad.presentation.result.ActorsResult
-import com.harismexis.breakingbad.presentation.screens.home.interactors.HomeInteractors
 import com.harismexis.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.harismexis.breakingbad.interactors.actor.IrrGetLocalActors
 import com.harismexis.breakingbad.interactors.actor.IrrGetRemoteActors
 import com.harismexis.breakingbad.interactors.actor.IrrStoreActors
+import com.harismexis.breakingbad.presentation.result.ActorsResult
+import com.harismexis.breakingbad.presentation.screens.home.interactors.HomeInteractors
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 import com.harismexis.breakingbad.setup.UnitTestSetup
 import com.nhaarman.mockitokotlin2.any
@@ -40,7 +40,8 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     private val mockItems = mockParser.getMockBBCharsFromFeedWithAllItemsValid()
     protected lateinit var subject: HomeViewModel
     private val mockActorsResultSuccess = ActorsResult.ActorsSuccess(mockItems)
-    private val mockActorsResultError = ActorsResult.ActorsError(ERROR_MESSAGE)
+    private val error = IllegalStateException(ERROR_MESSAGE)
+    private val mockActorsResultError = ActorsResult.ActorsError(error)
 
     companion object {
         const val ERROR_MESSAGE = "error"
@@ -97,7 +98,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected fun mockRemoteCallThrowsError(actorName: String?) {
         runBlocking {
             Mockito.`when`(mockIrrGetRemoteActors.invoke(actorName))
-                .thenThrow(IllegalStateException(ERROR_MESSAGE))
+                .thenThrow(error)
         }
     }
 
@@ -128,7 +129,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected fun mockLocalCallThrowsError() {
         runBlocking {
             Mockito.`when`(mockIrrGetLocalActors.invoke())
-                .thenThrow(IllegalStateException(ERROR_MESSAGE))
+                .thenThrow(error)
         }
     }
 

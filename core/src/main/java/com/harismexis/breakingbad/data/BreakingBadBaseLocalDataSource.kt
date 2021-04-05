@@ -7,7 +7,7 @@ import com.harismexis.breakingbad.domain.Quote
 
 interface BreakingBadBaseLocalDataSource {
 
-    suspend fun insertActors(items: List<Actor>)
+    suspend fun updateActors(items: List<Actor>)
 
     suspend fun getActor(itemId: Int): Actor?
 
