@@ -31,5 +31,8 @@ More Tests will be added.
 #### Quotes
 ![Alt text](screenshots/quotes_1.png?raw=true "app screenshot")
 
+#### Episodes
+![Alt text](screenshots/episodes.png?raw=true "app screenshot")
+
 #### Player
 ![Alt text](screenshots/player.png?raw=true "app screenshot")
