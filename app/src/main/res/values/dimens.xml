@@ -43,4 +43,7 @@
     <dimen name="player_back_icon_margin_start">10dp</dimen>
     <dimen name="player_back_icon_margin_top">10dp</dimen>
 
+    <!-- recycler divider -->
+    <dimen name="divider_margin_horizontal">26dp</dimen>
+
 </resources>

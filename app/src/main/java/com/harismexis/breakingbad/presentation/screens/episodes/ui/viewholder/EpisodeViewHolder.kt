@@ -1,8 +1,8 @@
 package com.harismexis.breakingbad.presentation.screens.episodes.ui.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
-import com.harismexis.breakingbad.domain.Episode
 import com.harismexis.breakingbad.databinding.VhEpisodeItemBinding
+import com.harismexis.breakingbad.domain.Episode
 
 class EpisodeViewHolder(
     private val binding: VhEpisodeItemBinding
@@ -15,7 +15,7 @@ class EpisodeViewHolder(
         binding.txtTitle.text = item.title
         binding.txtSeason.text = item.season
         binding.txtAirDate.text = item.air_date
-        binding.txtActors.text = item.characters?.joinToString(",")
+        binding.txtActors.text = item.characters?.joinToString(",  ")
         binding.txtSeries.text = item.series
     }
 

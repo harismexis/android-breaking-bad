@@ -30,4 +30,10 @@
     <string name="character_image">Image</string>
     <string name="cd_item_detail_image">Selected character</string>
 
+    <!-- Episodes -->
+    <string name="label_season">Season</string>
+    <string name="label_air_date">Air date</string>
+    <string name="label_series">Series</string>
+    <string name="label_actors">Actors</string>
+
 </resources>

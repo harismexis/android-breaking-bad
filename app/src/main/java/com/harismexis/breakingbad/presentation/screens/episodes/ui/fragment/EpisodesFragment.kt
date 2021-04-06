@@ -12,6 +12,7 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentEpisodesBinding
 import com.harismexis.breakingbad.domain.Episode
 import com.harismexis.breakingbad.framework.base.BaseFragment
+import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.presentation.result.EpisodesResult
 import com.harismexis.breakingbad.presentation.screens.episodes.ui.adapter.EpisodeAdapter
@@ -64,6 +65,7 @@ class EpisodesFragment : BaseFragment() {
         binding?.let {
             it.list.layoutManager = LinearLayoutManager(this.context)
             it.list.adapter = adapter
+            it.list.setDivider(R.drawable.divider)
         }
     }
 
