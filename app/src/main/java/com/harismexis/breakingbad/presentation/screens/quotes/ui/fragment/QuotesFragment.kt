@@ -12,6 +12,7 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentQuotesBinding
 import com.harismexis.breakingbad.domain.Quote
 import com.harismexis.breakingbad.framework.base.BaseFragment
+import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.presentation.result.QuotesResult
 import com.harismexis.breakingbad.presentation.screens.quotes.ui.adapter.QuoteAdapter
@@ -69,6 +70,7 @@ class QuotesFragment : BaseFragment() {
         binding?.let {
             it.list.layoutManager = LinearLayoutManager(this.context)
             it.list.adapter = adapter
+            it.list.setDivider(R.drawable.divider)
         }
     }
 
