@@ -29,7 +29,7 @@ More Tests will be added.
 ![Alt text](screenshots/actor_detail_1.png?raw=true "app screenshot")
 
 #### Quotes
-![Alt text](screenshots/quotes_1.png?raw=true "app screenshot")
+![Alt text](screenshots/quotes.png?raw=true "app screenshot")
 
 #### Episodes
 ![Alt text](screenshots/episodes.png?raw=true "app screenshot")
