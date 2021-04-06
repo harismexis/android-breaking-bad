@@ -12,6 +12,7 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentDeathsBinding
 import com.harismexis.breakingbad.domain.Death
 import com.harismexis.breakingbad.framework.base.BaseFragment
+import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.presentation.result.DeathsResult
 import com.harismexis.breakingbad.presentation.screens.deaths.ui.adapter.DeathAdapter
@@ -64,6 +65,7 @@ class DeathsFragment : BaseFragment() {
         binding?.let {
             it.list.layoutManager = LinearLayoutManager(this.context)
             it.list.adapter = adapter
+            it.list.setDivider(R.drawable.divider)
         }
     }
 

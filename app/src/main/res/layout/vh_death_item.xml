@@ -13,19 +13,26 @@
     <TextView
         android:id="@+id/txt_death"
         style="@style/VhItemTitle"
-        android:textColor="@color/light_green_six"
-        tools:text="Quote" />
+        tools:text="Dead person" />
 
     <TextView
         android:id="@+id/txt_cause"
         style="@style/VhItemMeta"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
-        tools:text="Author" />
+        tools:text="Cause" />
+
+    <TextView
+        android:id="@+id/txt_responsible_label"
+        style="@style/VhItemMeta"
+        android:layout_marginTop="@dimen/vh_death_item_responsible_label"
+        android:text="@string/label_death_responsible"
+        android:textColor="@color/light_green_six"
+        tools:text="Responsible label" />
 
     <TextView
         android:id="@+id/txt_responsible"
         style="@style/VhItemMeta"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
-        tools:text="Series" />
+        tools:text="Responsible" />
 
 </LinearLayout>

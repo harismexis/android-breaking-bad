@@ -37,7 +37,10 @@
     <string name="label_actors">Actors</string>
 
     <!-- Quotes -->
-    <string name="label_quote_author">by</string>\
+    <string name="label_quote_author">by</string>
     <string name="label_quote_in_series">in</string>
+
+    <!-- Deaths -->
+    <string name="label_death_responsible">Responsible</string>
 
 </resources>

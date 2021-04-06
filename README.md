@@ -25,11 +25,14 @@ More Tests will be added.
 
 ![Alt text](screenshots/home_filter_by_name.png?raw=true "app screenshot")
 
-#### Actor Detail
+#### Actor Details
 ![Alt text](screenshots/actor_detail_1.png?raw=true "app screenshot")
 
 #### Quotes
 ![Alt text](screenshots/quotes.png?raw=true "app screenshot")
+
+#### Deaths
+![Alt text](screenshots/deaths.png?raw=true "app screenshot")
 
 #### Episodes
 ![Alt text](screenshots/episodes.png?raw=true "app screenshot")

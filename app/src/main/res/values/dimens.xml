@@ -39,6 +39,9 @@
     <dimen name="vh_quote_txt_margin_horizontal">10dp</dimen>
     <dimen name="vh_quote_txt_meta_margin_top">10dp</dimen>
 
+    <!-- vh deaths -->
+    <dimen name="vh_death_item_responsible_label">16dp</dimen>
+
     <!-- player -->
     <dimen name="player_back_icon_margin_start">10dp</dimen>
     <dimen name="player_back_icon_margin_top">10dp</dimen>
