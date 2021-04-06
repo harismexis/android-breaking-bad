@@ -49,9 +49,7 @@
 
         <action
             android:id="@+id/action_exit"
-            app:destination="@+id/home_dest"
-            app:popUpTo="@+id/home_dest"
-            app:popUpToInclusive="true"/>
+            app:popUpTo="@+id/home_dest" />
 
     </fragment>
 
