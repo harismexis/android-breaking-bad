@@ -13,7 +13,7 @@
 
     <TextView
         android:id="@+id/txt_quote"
-        style="@style/VhQuoteItemTitle"
+        style="@style/VhItemTitle"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -23,7 +23,7 @@
 
     <TextView
         android:id="@+id/txt_author_label"
-        style="@style/VhItemMeta"
+        style="@style/VhBaseMeta"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         android:text="@string/label_quote_author"
         android:textColor="@color/light_green_six"
@@ -36,7 +36,7 @@
 
     <TextView
         android:id="@+id/txt_author"
-        style="@style/VhItemMeta"
+        style="@style/VhBaseMeta"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="@+id/txt_author_label"
@@ -47,7 +47,7 @@
 
     <TextView
         android:id="@+id/txt_series_label"
-        style="@style/VhItemMeta"
+        style="@style/VhBaseMeta"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         android:text="@string/label_quote_in_series"
         android:textColor="@color/light_green_six"
@@ -60,7 +60,7 @@
 
     <TextView
         android:id="@+id/txt_series"
-        style="@style/VhItemMeta"
+        style="@style/VhBaseMeta"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="@+id/txt_series_label"

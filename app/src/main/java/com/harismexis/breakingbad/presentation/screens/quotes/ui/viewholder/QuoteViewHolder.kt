@@ -1,8 +1,8 @@
 package com.harismexis.breakingbad.presentation.screens.quotes.ui.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
-import com.harismexis.breakingbad.domain.Quote
 import com.harismexis.breakingbad.databinding.VhQuoteItemBinding
+import com.harismexis.breakingbad.domain.Quote
 
 class QuoteViewHolder(
     private val binding: VhQuoteItemBinding
@@ -12,7 +12,7 @@ class QuoteViewHolder(
         item: Quote,
         position: Int
     ) {
-        binding.txtQuote.text = item.quote
+        binding.txtQuote.text = item.quote?.trim('.')
         binding.txtAuthor.text = item.author
         binding.txtSeries.text = item.series
     }

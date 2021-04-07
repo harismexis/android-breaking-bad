@@ -23,7 +23,7 @@
 
     <TextView
         android:id="@+id/txt_season_label"
-        style="@style/VhItemMeta"
+        style="@style/VhBaseMeta"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         android:text="@string/label_season"
         android:textColor="@color/light_green_six"
@@ -36,7 +36,7 @@
 
     <TextView
         android:id="@+id/txt_season"
-        style="@style/VhItemMeta"
+        style="@style/VhBaseMeta"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="@id/txt_season_label"
@@ -47,7 +47,7 @@
 
     <TextView
         android:id="@+id/txt_air_date_label"
-        style="@style/VhItemMeta"
+        style="@style/VhBaseMeta"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         android:text="@string/label_air_date"
         android:textColor="@color/light_green_six"
@@ -60,7 +60,7 @@
 
     <TextView
         android:id="@+id/txt_air_date"
-        style="@style/VhItemMeta"
+        style="@style/VhBaseMeta"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="@id/txt_air_date_label"
@@ -71,7 +71,7 @@
 
     <TextView
         android:id="@+id/txt_actors"
-        style="@style/VhEpisodeItemMeta"
+        style="@style/VhItemMeta"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +82,7 @@
 
     <TextView
         android:id="@+id/txt_series_label"
-        style="@style/VhItemMeta"
+        style="@style/VhBaseMeta"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         android:text="@string/label_series"
         android:textColor="@color/light_green_six"
@@ -95,7 +95,7 @@
 
     <TextView
         android:id="@+id/txt_series"
-        style="@style/VhItemMeta"
+        style="@style/VhBaseMeta"
         android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"

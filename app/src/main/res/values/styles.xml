@@ -40,25 +40,33 @@
         <item name="android:searchHintIcon">@null</item>
     </style>
 
-    <!-- vh item -->
+    <!-- vh generic -->
 
-    <style name="VhItemTxtv" parent="BaseTxtv">
+    <style name="VhBaseTxtv" parent="BaseTxtv">
         <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
         <item name="android:layout_marginStart">@dimen/vh_item_txt_margin_horizontal</item>
         <item name="android:layout_marginEnd">@dimen/vh_item_txt_margin_horizontal</item>
     </style>
 
-    <style name="VhItemTitle" parent="VhItemTxtv">
+    <style name="VhBaseTitle" parent="VhBaseTxtv">
         <item name="android:textSize">@dimen/vh_item_title_text_size</item>
         <item name="android:fontFamily">@font/ubuntu_bold</item>
     </style>
 
-    <style name="VhItemMeta" parent="VhItemTxtv">
+    <style name="VhBaseMeta" parent="VhBaseTxtv">
         <item name="android:textSize">@dimen/vh_item_meta_text_size</item>
     </style>
 
-    <!-- item detail -->
+    <style name="VhItemTitle" parent="VhBaseTitle">
+        <item name="android:maxLines">10</item>
+    </style>
+
+    <style name="VhItemMeta" parent="VhBaseMeta">
+        <item name="android:maxLines">10</item>
+    </style>
+
+    <!-- actor detail -->
 
     <style name="DetailTxtv" parent="BaseTxtv">
         <item name="android:layout_marginStart">@dimen/actor_detail_txtv_margin_horizontal</item>
@@ -78,16 +86,5 @@
     <style name="ItemDetailMeta" parent="DetailTxtv">
         <item name="android:textSize">@dimen/actor_detail_meta_text_size</item>
     </style>
-
-    <!-- quote item -->
-    <style name="VhQuoteItemTitle" parent="VhItemTitle">
-        <item name="android:maxLines">10</item>
-    </style>
-
-    <!-- episode item -->
-    <style name="VhEpisodeItemMeta" parent="VhItemMeta">
-        <item name="android:maxLines">10</item>
-    </style>
-
 
 </resources>
