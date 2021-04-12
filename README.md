@@ -1,7 +1,7 @@
 ### Overview:
 
-- The project uses Kotlin with Clean Architecture + MVVM and JetPack components i.e.
-Navigation, Coroutines, LiveData, Room, ViewModel.
+- The project uses Kotlin, Clean Architecture + MVVM and JetPack components i.e. Navigation, Coroutines, 
+LiveData, Room, ViewModel.
 - Some libraries have been used like Retrofit, Glide, Mockito-kotlin, Dagger.
 - For emitting / observing events (eg. show error message) I use Event & EventObserver as described here:
 https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150
