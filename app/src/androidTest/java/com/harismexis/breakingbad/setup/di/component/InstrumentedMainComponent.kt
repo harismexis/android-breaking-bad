@@ -4,7 +4,7 @@ import com.harismexis.breakingbad.framework.di.ui.ActivityBindingsModule
 import com.harismexis.breakingbad.framework.di.ui.FragmentBindingsModule
 import com.harismexis.breakingbad.setup.application.InstrumentedMainApplication
 import com.harismexis.breakingbad.setup.di.module.InstrumentedApplicationModule
-import com.harismexis.breakingbad.setup.factory.InstrumentedViewModelModule
+import com.harismexis.breakingbad.setup.viewmodel.factory.InstrumentedViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

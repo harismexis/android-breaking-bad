@@ -18,9 +18,9 @@ import com.harismexis.breakingbad.parser.ActorsMockParser.Companion.EXPECTED_NUM
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
 import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
-import com.harismexis.breakingbad.setup.mockvm.MockHomeVmProvider
 import com.harismexis.breakingbad.setup.testutil.RecyclerCountAssertion
 import com.harismexis.breakingbad.setup.testutil.verifyRecyclerItemAt
+import com.harismexis.breakingbad.setup.viewmodel.MockHomeVmProvider
 import io.mockk.every
 import org.junit.Assert
 import org.junit.Rule
@@ -42,7 +42,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
     private lateinit var actorsSuccess: ActorsResult.ActorsSuccess
 
     @Test
-    fun artistsFeedHasAllItemsValid_then_listShowsExpectedItems() {
+    fun actorsFeedHasAllItemsValid_then_listShowsExpectedItems() {
         // given
         mockActors = actorsParser.getMockActorsFromFeedWithAllItemsValid()
         mockSearchResultSuccess()
@@ -68,7 +68,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
     }
 
     @Test
-    fun remoteFeedHasSomeEmptyArtistJsonItems_listHasExpectedNumberOfItems() {
+    fun remoteFeedHasSomeEmptyActorJsonItems_listHasExpectedNumberOfItems() {
         // given
         mockActors = actorsParser.getMockActorsFromFeedWithSomeItemsEmpty()
         mockSearchResultSuccess()

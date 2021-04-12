@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.setup.mockvm
+package com.harismexis.breakingbad.setup.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.harismexis.breakingbad.presentation.result.ActorsResult
