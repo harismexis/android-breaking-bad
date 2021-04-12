@@ -5,7 +5,7 @@ Navigation, Coroutines, LiveData, Room, ViewModel.
 - Some libraries have been used like Retrofit, Glide, Mockito-kotlin, Dagger.
 - For emitting / observing events (eg. show error message) I use Event & EventObserver as described here:
 https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150
-- Video playback is done with the library PierfrancescoSoffritti/android-youtube-player:
+- Video playback is implemented using the library PierfrancescoSoffritti/android-youtube-player:
 https://github.com/PierfrancescoSoffritti/android-youtube-player
 
 ### Description:
