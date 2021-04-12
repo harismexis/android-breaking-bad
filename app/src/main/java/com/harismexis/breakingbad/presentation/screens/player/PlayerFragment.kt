@@ -109,6 +109,4 @@ class PlayerFragment : BaseFragment() {
         return binding?.root
     }
 
-    override fun observeLiveData() {}
-
 }

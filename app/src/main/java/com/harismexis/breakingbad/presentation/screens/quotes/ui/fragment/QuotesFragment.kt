@@ -75,7 +75,7 @@ class QuotesFragment : BaseFragment() {
         }
     }
 
-    override fun observeLiveData() {
+    private fun observeLiveData() {
         viewModel.quotes.observe(viewLifecycleOwner, {
             when (it) {
                 is QuotesResult.QuotesSuccess -> populate(it.items)

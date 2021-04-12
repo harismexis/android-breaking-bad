@@ -75,7 +75,7 @@ class EpisodesFragment : BaseFragment() {
         viewModel.bind()
     }
 
-    override fun observeLiveData() {
+    private fun observeLiveData() {
         viewModel.episodes.observe(viewLifecycleOwner, {
             when (it) {
                 is EpisodesResult.EpisodesSuccess -> populate(it.items)

@@ -51,8 +51,6 @@ abstract class BaseFragment : Fragment() {
 
     abstract fun onViewCreated()
 
-    abstract fun observeLiveData()
-
     abstract fun initialiseView()
 
 }

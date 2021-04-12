@@ -90,7 +90,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         }
     }
 
-    override fun observeLiveData() {
+    private fun observeLiveData() {
         viewModel.actorsResult.observe(viewLifecycleOwner, {
             when (it) {
                 is ActorsResult.ActorsSuccess -> populate(it.items)

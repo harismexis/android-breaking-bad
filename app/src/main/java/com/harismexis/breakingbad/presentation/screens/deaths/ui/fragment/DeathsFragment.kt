@@ -75,7 +75,7 @@ class DeathsFragment : BaseFragment() {
         viewModel.bind()
     }
 
-    override fun observeLiveData() {
+    private fun observeLiveData() {
         viewModel.deaths.observe(viewLifecycleOwner, {
             when (it) {
                 is DeathsResult.DeathsSuccess -> populate(it.items)

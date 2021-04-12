@@ -65,7 +65,7 @@ class ActorDetailFragment : BaseFragment() {
 
     override fun getRootView() = binding?.root
 
-    override fun observeLiveData() {
+    private fun observeLiveData() {
         viewModel.model.observe(viewLifecycleOwner, {
             when (it) {
                 is ActorDetailResult.ActorSuccess -> populate(it.item)
