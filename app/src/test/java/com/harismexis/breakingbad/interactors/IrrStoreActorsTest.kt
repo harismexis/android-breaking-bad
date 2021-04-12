@@ -31,7 +31,7 @@ class IrrStoreActorsTest : UnitTestSetup() {
     }
 
     private fun setupMocks() {
-        mockItems = mockParser.getMockActorsFromFeedWithAllItemsValid()
+        mockItems = actorsParser.getMockActorsFromFeedWithAllItemsValid()
     }
 
     @Test

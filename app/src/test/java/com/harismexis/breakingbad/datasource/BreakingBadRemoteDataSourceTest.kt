@@ -18,9 +18,7 @@ class BreakingBadRemoteDataSourceTest : UnitTestSetup() {
 
     @Mock
     private lateinit var mockDao: BreakingBadRemoteDao
-
     private var verificator = BBCharacterItemRemoteVerificator()
-
     private lateinit var subject: BreakingBadRemoteDataSource
 
     init {
@@ -36,7 +34,7 @@ class BreakingBadRemoteDataSourceTest : UnitTestSetup() {
         // when
         runBlocking {
             // given
-            val mockFeed = mockParser.getMockActorsFeedAllIdsValid()
+            val mockFeed = actorsParser.getMockActorsFeedAllIdsValid()
             Mockito.`when`(mockDao.getActors()).thenReturn(mockFeed)
 
             // when

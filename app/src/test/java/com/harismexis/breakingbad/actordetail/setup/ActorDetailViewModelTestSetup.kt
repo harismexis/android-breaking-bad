@@ -26,10 +26,8 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
 
     lateinit var mockItem: Actor
     var mockId: Int = 0
-
     private lateinit var mockActorResultSuccess: ActorResult
     private lateinit var mockActorResultError: ActorResult
-
     protected lateinit var subject: ActorDetailViewModel
 
     companion object {
@@ -42,7 +40,7 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
     }
 
     override fun initialiseClassUnderTest() {
-        mockItem = mockParser.getMockBBCharValid()
+        mockItem = actorsParser.getMockActorLocal()
         mockId = mockItem.char_id
         subject = ActorDetailViewModel(mockInteractors)
         mockActorResultSuccess = ActorResult.ActorSuccess(mockItem)

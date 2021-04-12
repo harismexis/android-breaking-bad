@@ -1,10 +1,9 @@
 package com.harismexis.breakingbad.setup.testutil
 
 import androidx.test.platform.app.InstrumentationRegistry
+import com.harismexis.breakingbad.parser.BaseFileParser
 
-import com.harismexis.breakingbad.parser.BaseMockParser
-
-class InstrumentedMockParser: BaseMockParser() {
+class InstrumentedFileParser: BaseFileParser() {
 
     override fun getFileAsString(filePath: String): String =
         InstrumentationRegistry.getInstrumentation().context.classLoader

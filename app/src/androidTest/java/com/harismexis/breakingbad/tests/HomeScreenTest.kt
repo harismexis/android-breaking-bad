@@ -11,10 +11,10 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.domain.Actor
-import com.harismexis.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID
-import com.harismexis.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_NO_DATA
-import com.harismexis.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY
-import com.harismexis.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID
+import com.harismexis.breakingbad.parser.ActorsMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID
+import com.harismexis.breakingbad.parser.ActorsMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_NO_DATA
+import com.harismexis.breakingbad.parser.ActorsMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY
+import com.harismexis.breakingbad.parser.ActorsMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
 import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
@@ -44,7 +44,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
     @Test
     fun artistsFeedHasAllItemsValid_then_listShowsExpectedItems() {
         // given
-        mockActors = mockParser.getMockActorsFromFeedWithAllItemsValid()
+        mockActors = actorsParser.getMockActorsFromFeedWithAllItemsValid()
         mockSearchResultSuccess()
 
         // when
@@ -57,7 +57,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
     @Test
     fun remoteFeedHasSomeInvalidIds_listShowsExpectedItems() {
         // given
-        mockActors = mockParser.getMockActorsFromFeedWithSomeIdsAbsent()
+        mockActors = actorsParser.getMockActorsFromFeedWithSomeIdsAbsent()
         mockSearchResultSuccess()
 
         // when
@@ -70,7 +70,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
     @Test
     fun remoteFeedHasSomeEmptyArtistJsonItems_listHasExpectedNumberOfItems() {
         // given
-        mockActors = mockParser.getMockActorsFromFeedWithSomeItemsEmpty()
+        mockActors = actorsParser.getMockActorsFromFeedWithSomeItemsEmpty()
         mockSearchResultSuccess()
 
         // when
@@ -83,7 +83,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
     @Test
     fun remoteFeedHasAllIdsInvalid_listShowsNoItems() {
         // given
-        mockActors = mockParser.getMockActorsFromFeedWithAllIdsInvalid()
+        mockActors = actorsParser.getMockActorsFromFeedWithAllIdsInvalid()
         mockSearchResultSuccess()
 
         // when
@@ -96,7 +96,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
     @Test
     fun remoteFeedIsEmptyJson_listShowsNoItems() {
         // given
-        mockActors = mockParser.getMockActorsFromFeedWithEmptyJsonContent()
+        mockActors = actorsParser.getMockActorsFromFeedWithEmptyJsonContent()
         mockSearchResultSuccess()
 
         // when

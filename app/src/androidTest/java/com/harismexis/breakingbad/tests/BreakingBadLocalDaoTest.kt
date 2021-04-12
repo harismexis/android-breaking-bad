@@ -7,12 +7,15 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.harismexis.breakingbad.framework.datasource.database.BreakingBadDatabase
 import com.harismexis.breakingbad.framework.datasource.database.data.BreakingBadLocalDao
 import com.harismexis.breakingbad.framework.datasource.database.table.LocalActor
+import com.harismexis.breakingbad.parser.ActorsMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID
+import com.harismexis.breakingbad.parser.ActorsMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_NO_DATA
+import com.harismexis.breakingbad.parser.ActorsMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID
 import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
-import com.harismexis.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID
-import com.harismexis.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_NO_DATA
-import com.harismexis.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID
 import kotlinx.coroutines.runBlocking
-import org.junit.*
+import org.junit.After
+import org.junit.Assert
+import org.junit.Before
+import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.IOException
 
@@ -41,7 +44,7 @@ class BreakingBadLocalDaoTest: InstrumentedTestSetup() {
     @Throws(Exception::class)
     fun savingItemsFromRemoteFeedWithAllItemsValid_then_expectedItemsRetrieved() = runBlocking {
         // given
-        val localItems = mockParser.getMockActorsLocalFromFeedWithAllItemsValid()
+        val localItems = actorsParser.getMockActorsLocalFromFeedWithAllItemsValid()
 
         // when
         dao.insertActors(localItems)
@@ -55,7 +58,7 @@ class BreakingBadLocalDaoTest: InstrumentedTestSetup() {
     @Throws(Exception::class)
     fun savingItemsFromRemoteFeedWithSomeIdsAbsent_then_expectedItemsRetrieved() = runBlocking {
         // given
-        val localItems = mockParser.getMockActorsLocalFromFeedWithSomeIdsInvalid()
+        val localItems = actorsParser.getMockActorsLocalFromFeedWithSomeIdsInvalid()
 
         // when
         dao.insertActors(localItems)
@@ -69,7 +72,7 @@ class BreakingBadLocalDaoTest: InstrumentedTestSetup() {
     @Throws(Exception::class)
     fun savingItemsFromFeedWithAllIdsAbsent_then_noItemsRetrieved() = runBlocking {
         // given
-        val localItems = mockParser.getMockActorsLocalFromFeedWithAllIdsInvalid()
+        val localItems = actorsParser.getMockActorsLocalFromFeedWithAllIdsInvalid()
 
         // when
         dao.insertActors(localItems)

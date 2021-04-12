@@ -19,7 +19,6 @@ class BreakingBadLocalDataSourceTest : UnitTestSetup() {
 
     @Mock
     private lateinit var mockDao: BreakingBadLocalDao
-
     private lateinit var subject: BreakingBadLocalDataSource
 
     init {
@@ -34,7 +33,7 @@ class BreakingBadLocalDataSourceTest : UnitTestSetup() {
     fun dataSourceInsertsItems_then_daoInsertsExpectedLocalItems() {
         runBlocking {
             // given
-            val mockItems = mockParser.getMockActorsFromFeedWithAllItemsValid()
+            val mockItems = actorsParser.getMockActorsFromFeedWithAllItemsValid()
             val mockLocalItems = mockItems.toLocalItems()
 
             // when
@@ -49,7 +48,7 @@ class BreakingBadLocalDataSourceTest : UnitTestSetup() {
     fun dataSourceRequestsItem_then_daoRetrievesExpectedLocalItem() {
         runBlocking {
             // given
-            val mockLocalItem = mockParser.getMockBBCharValid().toLocalItem()
+            val mockLocalItem = actorsParser.getMockActorLocal().toLocalItem()
             val mockItemId = mockLocalItem.char_id
             Mockito.`when`(mockDao.getActorById(mockItemId)).thenReturn(mockLocalItem)
 
@@ -65,7 +64,7 @@ class BreakingBadLocalDataSourceTest : UnitTestSetup() {
     fun dataSourceRequestsItems_then_daoRetrievesExpectedLocalItems() {
         runBlocking {
             // given
-            val mockLocalItems = mockParser.getMockActorsLocalFromFeedWithAllItemsValid()
+            val mockLocalItems = actorsParser.getMockActorsLocalFromFeedWithAllItemsValid()
             Mockito.`when`(mockDao.getAllActors()).thenReturn(mockLocalItems)
 
             // when

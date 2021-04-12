@@ -1,11 +1,11 @@
 package com.harismexis.breakingbad.extensions
 
+import com.harismexis.breakingbad.framework.extensions.actor.toItems
 import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
 import com.harismexis.breakingbad.setup.UnitTestSetup
 import com.harismexis.breakingbad.utils.BBCharacterItemLocalVerificator
 import com.harismexis.breakingbad.utils.verifyListSizeWhenAllIdsValid
 import com.harismexis.breakingbad.utils.verifyListsHaveSameSize
-import com.harismexis.breakingbad.framework.extensions.actor.toItems
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -18,7 +18,7 @@ class LocalActorExtTest : UnitTestSetup() {
     @Test
     fun itemsAreConvertedToLocalItems_then_localItemsListIsTheExpected() {
         // given
-        val items = mockParser.getMockActorsFromFeedWithAllItemsValid()
+        val items = actorsParser.getMockActorsFromFeedWithAllItemsValid()
 
         // when
         val localItems = items.toLocalItems()
@@ -33,7 +33,7 @@ class LocalActorExtTest : UnitTestSetup() {
     @Test
     fun localItemsAreConvertedToItems_then_itemListIsTheExpected() {
         // given
-        val localItems = mockParser.getMockActorsLocalFromFeedWithAllItemsValid()
+        val localItems = actorsParser.getMockActorsLocalFromFeedWithAllItemsValid()
 
         // when
         val items = localItems.toItems()

@@ -9,7 +9,7 @@ import com.harismexis.breakingbad.framework.extensions.actor.toItems
 import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
 import java.lang.reflect.Type
 
-abstract class BaseMockParser {
+class ActorsMockParser(private val parser: BaseFileParser) {
 
     companion object {
 
@@ -30,10 +30,8 @@ abstract class BaseMockParser {
             "remote_data_empty.json"
     }
 
-    abstract fun getFileAsString(filePath: String): String
-
     // local models
-    fun getMockBBCharValid(): Actor = getMockActorsFeedAllIdsValid().toItems()[0]
+    fun getMockActorLocal(): Actor = getMockActorsFeedAllIdsValid().toItems()[0]
 
     fun getMockActorsLocalFromFeedWithAllItemsValid(): List<LocalActor> =
         getMockActorsFeedAllIdsValid().toItems().toLocalItems()
@@ -78,19 +76,19 @@ abstract class BaseMockParser {
 
     // raw json string
     private fun getMockActorsDataAllIdsValid(): String =
-        getFileAsString(TEST_FILE_FIVE_VALID_ACTORS)
+        parser.getFileAsString(TEST_FILE_FIVE_VALID_ACTORS)
 
     private fun getMockActorsDataSomeIdsAbsent(): String =
-        getFileAsString(TEST_FILE_FIVE_ACTORS_BUT_TWO_IDS_INVALID)
+        parser.getFileAsString(TEST_FILE_FIVE_ACTORS_BUT_TWO_IDS_INVALID)
 
     private fun getMockActorsDataSomeItemsEmpty(): String =
-        getFileAsString(TEST_FILE_FIVE_ACTORS_BUT_TWO_EMPTY)
+        parser.getFileAsString(TEST_FILE_FIVE_ACTORS_BUT_TWO_EMPTY)
 
     private fun getMockActorsDataAllIdsAbsent(): String =
-        getFileAsString(TEST_FILE_FIVE_ACTORS_ALL_IDS_INVALID)
+        parser.getFileAsString(TEST_FILE_FIVE_ACTORS_ALL_IDS_INVALID)
 
     private fun getMockActorsDataEmptyJsonArray(): String =
-        getFileAsString(TEST_FILE_EMPTY_JSON)
+        parser.getFileAsString(TEST_FILE_EMPTY_JSON)
 
     // utils
     private fun getMockActorsFeed(
