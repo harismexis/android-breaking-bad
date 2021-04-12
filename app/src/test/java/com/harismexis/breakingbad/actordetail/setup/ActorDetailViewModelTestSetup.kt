@@ -24,8 +24,8 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
     @Mock
     lateinit var mockObserver: Observer<ActorDetailResult>
 
-    lateinit var mockItem: Actor
-    var mockId: Int = 0
+    private lateinit var mockItem: Actor
+    protected var mockId: Int = 0
     private lateinit var mockActorDetailSuccess: ActorDetailResult
     private lateinit var mockActorDetailError: ActorDetailResult
     protected lateinit var subject: ActorDetailViewModel

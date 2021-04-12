@@ -4,7 +4,7 @@ import com.harismexis.breakingbad.domain.Actor
 import com.harismexis.breakingbad.framework.datasource.network.model.RemoteActor
 import org.junit.Assert
 
-class BBCharacterItemRemoteVerificator {
+class ActorRemoteVerificator {
 
     fun verifyBBCharactersAgainstRemoteItems(
         actual: List<Actor>,

@@ -4,7 +4,7 @@ import com.harismexis.breakingbad.framework.datasource.database.table.LocalActor
 import com.harismexis.breakingbad.domain.Actor
 import org.junit.Assert
 
-class BBCharacterItemLocalVerificator {
+class ActorLocalVerificator {
 
     fun verifyLocalItemsAgainstBBCharacters(
         actual: List<LocalActor>,

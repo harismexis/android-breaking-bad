@@ -3,7 +3,7 @@ package com.harismexis.breakingbad.datasource
 import com.harismexis.breakingbad.framework.datasource.network.data.BreakingBadRemoteDao
 import com.harismexis.breakingbad.framework.datasource.network.data.BreakingBadRemoteDataSource
 import com.harismexis.breakingbad.setup.UnitTestSetup
-import com.harismexis.breakingbad.utils.BBCharacterItemRemoteVerificator
+import com.harismexis.breakingbad.utils.ActorRemoteVerificator
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.runBlocking
@@ -18,7 +18,7 @@ class BreakingBadRemoteDataSourceTest : UnitTestSetup() {
 
     @Mock
     private lateinit var mockDao: BreakingBadRemoteDao
-    private var verificator = BBCharacterItemRemoteVerificator()
+    private var verificator = ActorRemoteVerificator()
     private lateinit var subject: BreakingBadRemoteDataSource
 
     init {

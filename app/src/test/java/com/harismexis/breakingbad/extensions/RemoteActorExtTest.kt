@@ -10,7 +10,7 @@ import org.junit.runners.JUnit4
 @RunWith(JUnit4::class)
 class RemoteActorExtTest : UnitTestSetup() {
 
-    private val verificator = BBCharacterItemRemoteVerificator()
+    private val verificator = ActorRemoteVerificator()
 
     @Test
     fun feedHasAllItemsValid_then_conversionToItemsIsCorrect() {

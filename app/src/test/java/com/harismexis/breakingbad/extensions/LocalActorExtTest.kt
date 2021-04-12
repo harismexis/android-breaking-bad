@@ -3,7 +3,7 @@ package com.harismexis.breakingbad.extensions
 import com.harismexis.breakingbad.framework.extensions.actor.toItems
 import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
 import com.harismexis.breakingbad.setup.UnitTestSetup
-import com.harismexis.breakingbad.utils.BBCharacterItemLocalVerificator
+import com.harismexis.breakingbad.utils.ActorLocalVerificator
 import com.harismexis.breakingbad.utils.verifyListSizeWhenAllIdsValid
 import com.harismexis.breakingbad.utils.verifyListsHaveSameSize
 import org.junit.Test
@@ -13,7 +13,7 @@ import org.junit.runners.JUnit4
 @RunWith(JUnit4::class)
 class LocalActorExtTest : UnitTestSetup() {
 
-    private val verificator = BBCharacterItemLocalVerificator()
+    private val verificator = ActorLocalVerificator()
 
     @Test
     fun itemsAreConvertedToLocalItems_then_localItemsListIsTheExpected() {
