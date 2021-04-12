@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.framework.util.functional.Action1
 import com.harismexis.breakingbad.framework.util.network.ConnectivityMonitorSimple
@@ -23,6 +24,10 @@ class EpisodesViewModel @Inject constructor(
     private val mEpisodes = MutableLiveData<EpisodesResult>()
     val episodes: LiveData<EpisodesResult>
         get() = mEpisodes
+
+    private val mShowErrorMessage = MutableLiveData<Event<String>>()
+    val showErrorMessage : LiveData<Event<String>>
+        get() = mShowErrorMessage
 
     fun bind() {
         if (connectivity.isOnline()) {
@@ -48,7 +53,8 @@ class EpisodesViewModel @Inject constructor(
                 interactors.irrStoreEpisodes(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mEpisodes.value = EpisodesResult.EpisodesError(e.getErrorMessage())
+                mEpisodes.value = EpisodesResult.EpisodesError(e)
+                mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }
     }
@@ -60,7 +66,8 @@ class EpisodesViewModel @Inject constructor(
                 mEpisodes.value = EpisodesResult.EpisodesSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mEpisodes.value = EpisodesResult.EpisodesError(e.getErrorMessage())
+                mEpisodes.value = EpisodesResult.EpisodesError(e)
+                mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }
     }

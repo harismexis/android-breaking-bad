@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.framework.util.functional.Action1
 import com.harismexis.breakingbad.framework.util.network.ConnectivityMonitorSimple
@@ -23,6 +24,10 @@ class QuotesViewModel @Inject constructor(
     private val mQuotes = MutableLiveData<QuotesResult>()
     val quotes: LiveData<QuotesResult>
         get() = mQuotes
+
+    private val mShowErrorMessage = MutableLiveData<Event<String>>()
+    val showErrorMessage : LiveData<Event<String>>
+        get() = mShowErrorMessage
 
     fun bind() {
         if (connectivity.isOnline()) {
@@ -48,7 +53,8 @@ class QuotesViewModel @Inject constructor(
                 interactors.irrStoreQuotes(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mQuotes.value = QuotesResult.QuotesError(e.getErrorMessage())
+                mQuotes.value = QuotesResult.QuotesError(e)
+                mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }
     }
@@ -60,7 +66,8 @@ class QuotesViewModel @Inject constructor(
                 mQuotes.value = QuotesResult.QuotesSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mQuotes.value = QuotesResult.QuotesError(e.getErrorMessage())
+                mQuotes.value = QuotesResult.QuotesError(e)
+                mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }
     }

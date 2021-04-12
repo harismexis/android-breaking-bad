@@ -12,6 +12,7 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentDeathsBinding
 import com.harismexis.breakingbad.domain.Death
 import com.harismexis.breakingbad.framework.base.BaseFragment
+import com.harismexis.breakingbad.framework.event.EventObserver
 import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.presentation.result.DeathsResult
@@ -78,8 +79,12 @@ class DeathsFragment : BaseFragment() {
         viewModel.deaths.observe(viewLifecycleOwner, {
             when (it) {
                 is DeathsResult.DeathsSuccess -> populate(it.items)
-                is DeathsResult.DeathsError -> requireContext().showToast(it.error)
+                is DeathsResult.DeathsError -> {}
             }
+        })
+
+        viewModel.showErrorMessage.observe(viewLifecycleOwner, EventObserver {
+            requireContext().showToast(it)
         })
     }
 

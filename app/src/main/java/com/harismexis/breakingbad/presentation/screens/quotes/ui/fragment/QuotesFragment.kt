@@ -12,6 +12,7 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentQuotesBinding
 import com.harismexis.breakingbad.domain.Quote
 import com.harismexis.breakingbad.framework.base.BaseFragment
+import com.harismexis.breakingbad.framework.event.EventObserver
 import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.presentation.result.QuotesResult
@@ -78,8 +79,12 @@ class QuotesFragment : BaseFragment() {
         viewModel.quotes.observe(viewLifecycleOwner, {
             when (it) {
                 is QuotesResult.QuotesSuccess -> populate(it.items)
-                is QuotesResult.QuotesError -> requireContext().showToast(it.error)
+                is QuotesResult.QuotesError -> {}
             }
+        })
+
+        viewModel.showErrorMessage.observe(viewLifecycleOwner, EventObserver {
+            requireContext().showToast(it)
         })
     }
 

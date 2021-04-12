@@ -12,6 +12,7 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentEpisodesBinding
 import com.harismexis.breakingbad.domain.Episode
 import com.harismexis.breakingbad.framework.base.BaseFragment
+import com.harismexis.breakingbad.framework.event.EventObserver
 import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.presentation.result.EpisodesResult
@@ -78,8 +79,12 @@ class EpisodesFragment : BaseFragment() {
         viewModel.episodes.observe(viewLifecycleOwner, {
             when (it) {
                 is EpisodesResult.EpisodesSuccess -> populate(it.items)
-                is EpisodesResult.EpisodesError -> requireContext().showToast(it.error)
+                is EpisodesResult.EpisodesError -> {}
             }
+        })
+
+        viewModel.showErrorMessage.observe(viewLifecycleOwner, EventObserver {
+            requireContext().showToast(it)
         })
     }
 
