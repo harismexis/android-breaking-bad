@@ -1,6 +1,5 @@
 package com.harismexis.breakingbad.setup.di.component
 
-import com.harismexis.breakingbad.framework.di.ui.ActivityBindingsModule
 import com.harismexis.breakingbad.framework.di.ui.FragmentBindingsModule
 import com.harismexis.breakingbad.setup.application.InstrumentedMainApplication
 import com.harismexis.breakingbad.setup.di.module.InstrumentedApplicationModule
@@ -15,7 +14,6 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        ActivityBindingsModule::class,
         FragmentBindingsModule::class,
         InstrumentedViewModelModule::class,
         InstrumentedApplicationModule::class

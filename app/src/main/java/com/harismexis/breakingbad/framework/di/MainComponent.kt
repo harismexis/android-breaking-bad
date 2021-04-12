@@ -4,7 +4,6 @@ import com.harismexis.breakingbad.framework.application.MainApplication
 import com.harismexis.breakingbad.framework.di.api.BreakingBadApiModule
 import com.harismexis.breakingbad.framework.di.application.ApplicationModule
 import com.harismexis.breakingbad.framework.di.interactor.*
-import com.harismexis.breakingbad.framework.di.ui.ActivityBindingsModule
 import com.harismexis.breakingbad.framework.di.ui.FragmentBindingsModule
 import com.harismexis.breakingbad.framework.viewmodelfactory.ViewModelModule
 import dagger.BindsInstance
@@ -17,7 +16,6 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        ActivityBindingsModule::class,
         FragmentBindingsModule::class,
         ViewModelModule::class,
         ApplicationModule::class,
