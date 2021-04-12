@@ -25,7 +25,7 @@
     <string name="label_status">Status</string>
     <string name="label_portrayed">Portrayed</string>
     <string name="label_category">Category</string>
-    <string name="missing_value">[missing value]</string>
+    <string name="missing_value">n/a</string>
     <string name="missing_img_url">[missing image url]</string>
     <string name="character_image">Image</string>
     <string name="cd_item_detail_image">Selected character</string>
