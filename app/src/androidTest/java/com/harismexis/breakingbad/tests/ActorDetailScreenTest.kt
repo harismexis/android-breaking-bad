@@ -12,11 +12,11 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.harismexis.breakingbad.R
-import com.harismexis.breakingbad.presentation.result.ActorResult
+import com.harismexis.breakingbad.presentation.result.ActorDetailResult
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
 import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
-import com.harismexis.breakingbad.setup.testutil.getStringRes
+import com.harismexis.breakingbad.setup.testutil.getExpectedText
 import com.harismexis.breakingbad.setup.viewmodel.MockActorDetailVmProvider
 import com.harismexis.breakingbad.setup.viewmodel.MockHomeVmProvider
 import io.mockk.every
@@ -41,11 +41,11 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
     private val mockDetailViewModel = MockActorDetailVmProvider.mockActorDetailViewModel
     private var mockActor = mockActors[0]
     private var mockActorId = mockActor.char_id
-    private lateinit var actorDetailSuccess: ActorResult.ActorSuccess
+    private lateinit var actorDetailSuccess: ActorDetailResult.ActorSuccess
 
     init {
         every { mockHomeViewModel.actorsResult } returns MockHomeVmProvider.actorsResult
-        every { mockDetailViewModel.retrieveItemById(mockActorId) } just runs
+        every { mockDetailViewModel.retrieveActorById(mockActorId) } just runs
         // every { mockDetailViewModel.id } returns mockArtists[clickIndexOnSearchList]
     }
 
@@ -90,13 +90,8 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
         onView(withId(textViewId)).check(matches(withText(getExpectedText(value))))
     }
 
-    private fun getExpectedText(value: String?): String {
-        return if (value.isNullOrBlank()) getStringRes(R.string.missing_value)
-        else value
-    }
-
     private fun mockActorDetailResultSuccess() {
-        actorDetailSuccess = ActorResult.ActorSuccess(mockActor)
+        actorDetailSuccess = ActorDetailResult.ActorSuccess(mockActor)
         every { mockDetailViewModel.model } returns MockActorDetailVmProvider.mModel
     }
 

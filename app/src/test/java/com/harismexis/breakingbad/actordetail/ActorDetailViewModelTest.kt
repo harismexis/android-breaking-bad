@@ -24,7 +24,7 @@ class ActorDetailViewModelTest : ActorDetailViewModelTestSetup() {
         mockLocalCall()
 
         // when
-        subject.retrieveItemById(mockId)
+        subject.retrieveActorById(mockId)
 
         // then
         verifyLocalCallDone()
@@ -37,7 +37,7 @@ class ActorDetailViewModelTest : ActorDetailViewModelTestSetup() {
         mockLocalCallThrowsError()
 
         // when
-        subject.retrieveItemById(mockId)
+        subject.retrieveActorById(mockId)
 
         // then
         verifyLocalCallDone()

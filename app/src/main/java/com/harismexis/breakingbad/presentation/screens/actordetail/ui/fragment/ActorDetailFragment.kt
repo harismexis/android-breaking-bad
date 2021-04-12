@@ -17,7 +17,7 @@ import com.harismexis.breakingbad.framework.extensions.getLinkSpanned
 import com.harismexis.breakingbad.framework.extensions.populateWithGlide
 import com.harismexis.breakingbad.framework.extensions.setTextOrUnknown
 import com.harismexis.breakingbad.framework.extensions.showToast
-import com.harismexis.breakingbad.presentation.result.ActorResult
+import com.harismexis.breakingbad.presentation.result.ActorDetailResult
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 
 class ActorDetailFragment : BaseFragment() {
@@ -68,8 +68,8 @@ class ActorDetailFragment : BaseFragment() {
     override fun observeLiveData() {
         viewModel.model.observe(viewLifecycleOwner, {
             when (it) {
-                is ActorResult.ActorSuccess -> populate(it.item)
-                is ActorResult.ActorError -> populateError(it.error)
+                is ActorDetailResult.ActorSuccess -> populate(it.item)
+                is ActorDetailResult.ActorError -> populateError(it.error)
             }
         })
     }
@@ -83,7 +83,7 @@ class ActorDetailFragment : BaseFragment() {
     private fun fetchLocalItem() {
         val actorId = arguments?.getInt(ARG_ACTOR_ID)
         actorId?.let {
-            viewModel.retrieveItemById(it)
+            viewModel.retrieveActorById(it)
         }
     }
 

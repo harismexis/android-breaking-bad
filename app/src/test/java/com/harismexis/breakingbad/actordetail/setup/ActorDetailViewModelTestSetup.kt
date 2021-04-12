@@ -3,7 +3,7 @@ package com.harismexis.breakingbad.actordetail.setup
 import androidx.lifecycle.Observer
 import com.harismexis.breakingbad.domain.Actor
 import com.harismexis.breakingbad.interactors.actor.IrrGetLocalActor
-import com.harismexis.breakingbad.presentation.result.ActorResult
+import com.harismexis.breakingbad.presentation.result.ActorDetailResult
 import com.harismexis.breakingbad.presentation.screens.actordetail.interactors.ActorDetailInteractors
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 import com.harismexis.breakingbad.setup.UnitTestSetup
@@ -22,12 +22,12 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
     protected lateinit var mockInteractors: ActorDetailInteractors
 
     @Mock
-    lateinit var mockObserver: Observer<ActorResult>
+    lateinit var mockObserver: Observer<ActorDetailResult>
 
     lateinit var mockItem: Actor
     var mockId: Int = 0
-    private lateinit var mockActorResultSuccess: ActorResult
-    private lateinit var mockActorResultError: ActorResult
+    private lateinit var mockActorDetailSuccess: ActorDetailResult
+    private lateinit var mockActorDetailError: ActorDetailResult
     protected lateinit var subject: ActorDetailViewModel
 
     companion object {
@@ -43,8 +43,8 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
         mockItem = actorsParser.getMockActorLocal()
         mockId = mockItem.char_id
         subject = ActorDetailViewModel(mockInteractors)
-        mockActorResultSuccess = ActorResult.ActorSuccess(mockItem)
-        mockActorResultError = ActorResult.ActorError(ERROR_MESSAGE)
+        mockActorDetailSuccess = ActorDetailResult.ActorSuccess(mockItem)
+        mockActorDetailError = ActorDetailResult.ActorError(ERROR_MESSAGE)
     }
 
     private fun initialiseMockInteractors() {
@@ -82,14 +82,14 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
     // LiveData
 
     protected fun verifyLiveDataChangedWithSuccess() {
-        verifyLiveDataChanged(mockActorResultSuccess)
+        verifyLiveDataChanged(mockActorDetailSuccess)
     }
 
     protected fun verifyLiveDataChangedWithError() {
-        verifyLiveDataChanged(mockActorResultError)
+        verifyLiveDataChanged(mockActorDetailError)
     }
 
-    private fun verifyLiveDataChanged(result: ActorResult) {
+    private fun verifyLiveDataChanged(result: ActorDetailResult) {
         verify(mockObserver).onChanged(result)
     }
 
