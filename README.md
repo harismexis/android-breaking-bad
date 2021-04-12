@@ -1,4 +1,4 @@
-### Overview:
+### Technologies:
 
 - The project uses Kotlin, Clean Architecture + MVVM and JetPack components i.e. Navigation, Coroutines, 
 LiveData, Room, ViewModel.
@@ -14,7 +14,7 @@ The Home Screen shows a list of Breaking Bad Actors with image and brief informa
 If internet is not available the actors will be retrieved from local storage (Room). Home screen 
 also supports searching actors by name. There is a BottomNavigationView which navigates to Quotes, 
 Deaths and Episodes screens. There is also a Player screen for loading breaking bad youtube videos.
-The project is ongoing so more things will be added in the future.  
+The project is ongoing so more things will be added / improved in the future.  
 
 ### Tests:
 
