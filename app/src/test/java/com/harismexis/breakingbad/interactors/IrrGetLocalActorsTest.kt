@@ -33,7 +33,7 @@ class IrrGetLocalActorsTest : UnitTestSetup() {
     }
 
     private fun setupMocks() {
-        mockItems = mockParser.getMockBBCharsFromFeedWithAllItemsValid()
+        mockItems = mockParser.getMockActorsFromFeedWithAllItemsValid()
         runBlocking {
             Mockito.`when`(mockRepository.getActors()).thenReturn(mockItems)
         }

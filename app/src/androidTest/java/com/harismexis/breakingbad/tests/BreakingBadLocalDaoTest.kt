@@ -8,9 +8,9 @@ import com.harismexis.breakingbad.framework.datasource.database.BreakingBadDatab
 import com.harismexis.breakingbad.framework.datasource.database.data.BreakingBadLocalDao
 import com.harismexis.breakingbad.framework.datasource.database.table.LocalActor
 import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
-import com.harismexis.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_ALL_IDS_VALID
-import com.harismexis.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_NO_DATA
-import com.harismexis.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_BBCHARS_WHEN_TWO_IDS_ABSENT
+import com.harismexis.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID
+import com.harismexis.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_NO_DATA
+import com.harismexis.breakingbad.parser.BaseMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID
 import kotlinx.coroutines.runBlocking
 import org.junit.*
 import org.junit.runner.RunWith
@@ -41,42 +41,42 @@ class BreakingBadLocalDaoTest: InstrumentedTestSetup() {
     @Throws(Exception::class)
     fun savingItemsFromRemoteFeedWithAllItemsValid_then_expectedItemsRetrieved() = runBlocking {
         // given
-        val localItems = mockParser.getMockBBCharsLocalFromFeedWithAllItemsValid()
+        val localItems = mockParser.getMockActorsLocalFromFeedWithAllItemsValid()
 
         // when
         dao.insertActors(localItems)
         val retrievedLocalItems = dao.getAllActors()
 
         // then
-        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, EXPECTED_NUM_BBCHARS_WHEN_ALL_IDS_VALID)
+        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID)
     }
 
     @Test
     @Throws(Exception::class)
     fun savingItemsFromRemoteFeedWithSomeIdsAbsent_then_expectedItemsRetrieved() = runBlocking {
         // given
-        val localItems = mockParser.getMockBBCharsLocalFromFeedWithSomeIdsAbsent()
+        val localItems = mockParser.getMockActorsLocalFromFeedWithSomeIdsInvalid()
 
         // when
         dao.insertActors(localItems)
         val retrievedLocalItems = dao.getAllActors()
 
         // then
-        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, EXPECTED_NUM_BBCHARS_WHEN_TWO_IDS_ABSENT)
+        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID)
     }
 
     @Test
     @Throws(Exception::class)
     fun savingItemsFromFeedWithAllIdsAbsent_then_noItemsRetrieved() = runBlocking {
         // given
-        val localItems = mockParser.getMockBBCharsLocalFromFeedWithAllIdsAbsent()
+        val localItems = mockParser.getMockActorsLocalFromFeedWithAllIdsInvalid()
 
         // when
         dao.insertActors(localItems)
         val retrievedLocalItems = dao.getAllActors()
 
         // then
-        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, EXPECTED_NUM_BBCHARS_WHEN_NO_DATA)
+        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, EXPECTED_NUM_ACTORS_WHEN_NO_DATA)
     }
 
     private fun verifyActualAgainstExpected(

@@ -9,7 +9,7 @@ import androidx.test.espresso.ViewAssertion
 import org.hamcrest.Matchers.`is`
 import org.junit.Assert.assertThat
 
-class RecyclerViewItemCountAssertion(private val expectedCount: Int) : ViewAssertion {
+class RecyclerCountAssertion(private val expectedCount: Int) : ViewAssertion {
 
     override fun check(
         view: View,

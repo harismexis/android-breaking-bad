@@ -18,7 +18,7 @@ class LocalActorExtTest : UnitTestSetup() {
     @Test
     fun itemsAreConvertedToLocalItems_then_localItemsListIsTheExpected() {
         // given
-        val items = mockParser.getMockBBCharsFromFeedWithAllItemsValid()
+        val items = mockParser.getMockActorsFromFeedWithAllItemsValid()
 
         // when
         val localItems = items.toLocalItems()
@@ -33,7 +33,7 @@ class LocalActorExtTest : UnitTestSetup() {
     @Test
     fun localItemsAreConvertedToItems_then_itemListIsTheExpected() {
         // given
-        val localItems = mockParser.getMockBBCharsLocalFromFeedWithAllItemsValid()
+        val localItems = mockParser.getMockActorsLocalFromFeedWithAllItemsValid()
 
         // when
         val items = localItems.toItems()

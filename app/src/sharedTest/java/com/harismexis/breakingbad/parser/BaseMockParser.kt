@@ -1,30 +1,30 @@
 package com.harismexis.breakingbad.parser
 
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import com.harismexis.breakingbad.domain.Actor
 import com.harismexis.breakingbad.framework.datasource.database.table.LocalActor
 import com.harismexis.breakingbad.framework.datasource.network.model.RemoteActor
 import com.harismexis.breakingbad.framework.extensions.actor.toItems
 import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
-import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
 abstract class BaseMockParser {
 
     companion object {
 
-        const val EXPECTED_NUM_BBCHARS_WHEN_ALL_IDS_VALID = 5
-        const val EXPECTED_NUM_BBCHARS_WHEN_TWO_IDS_ABSENT = 3
-        const val EXPECTED_NUM_BBCHARS_WHEN_TWO_EMPTY = 3
-        const val EXPECTED_NUM_BBCHARS_WHEN_NO_DATA = 0
+        const val EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID = 5
+        const val EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID = 3
+        const val EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY = 3
+        const val EXPECTED_NUM_ACTORS_WHEN_NO_DATA = 0
 
-        private const val TEST_FILE_FIVE_VALID_BBCHARS =
+        private const val TEST_FILE_FIVE_VALID_ACTORS =
             "remote_data_five_valid_bbcharacters.json"
-        private const val TEST_FILE_FIVE_BBCHARS_BUT_TWO_IDS_ABSENT =
+        private const val TEST_FILE_FIVE_ACTORS_BUT_TWO_IDS_INVALID =
             "remote_data_five_bbcharacters_two_ids_absent.json"
-        private const val TEST_FILE_FIVE_BBCHARS_BUT_TWO_EMPTY =
+        private const val TEST_FILE_FIVE_ACTORS_BUT_TWO_EMPTY =
             "remote_data_five_bbcharacters_two_items_empty.json"
-        private const val TEST_FILE_FIVE_BBCHARS_ALL_IDS_ABSENT =
+        private const val TEST_FILE_FIVE_ACTORS_ALL_IDS_INVALID =
             "remote_data_five_bbcharacters_all_ids_absent.json"
         private const val TEST_FILE_EMPTY_JSON =
             "remote_data_empty.json"
@@ -33,73 +33,73 @@ abstract class BaseMockParser {
     abstract fun getFileAsString(filePath: String): String
 
     // local models
-    fun getMockBBCharValid(): Actor = getMockBBCharsFeedAllIdsValid().toItems()[0]
+    fun getMockBBCharValid(): Actor = getMockActorsFeedAllIdsValid().toItems()[0]
 
-    fun getMockBBCharsLocalFromFeedWithAllItemsValid(): List<LocalActor> =
-        getMockBBCharsFeedAllIdsValid().toItems().toLocalItems()
+    fun getMockActorsLocalFromFeedWithAllItemsValid(): List<LocalActor> =
+        getMockActorsFeedAllIdsValid().toItems().toLocalItems()
 
-    fun getMockBBCharsLocalFromFeedWithSomeIdsAbsent(): List<LocalActor> =
-        getMockBBCharsFeedSomeIdsAbsent().toItems().toLocalItems()
+    fun getMockActorsLocalFromFeedWithSomeIdsInvalid(): List<LocalActor> =
+        getMockActorsFeedSomeIdsAbsent().toItems().toLocalItems()
 
-    fun getMockBBCharsLocalFromFeedWithAllIdsAbsent(): List<LocalActor> =
-        getMockBBCharsFeedAllIdsAbsent().toItems().toLocalItems()
+    fun getMockActorsLocalFromFeedWithAllIdsInvalid(): List<LocalActor> =
+        getMockActorsFeedAllIdsAbsent().toItems().toLocalItems()
 
     // base models
-    fun getMockBBCharsFromFeedWithAllItemsValid(): List<Actor> =
-        getMockBBCharsFeedAllIdsValid().toItems()
+    fun getMockActorsFromFeedWithAllItemsValid(): List<Actor> =
+        getMockActorsFeedAllIdsValid().toItems()
 
-    fun getMockBBCharsFromFeedWithSomeIdsAbsent(): List<Actor> =
-        getMockBBCharsFeedSomeIdsAbsent().toItems()
+    fun getMockActorsFromFeedWithSomeIdsAbsent(): List<Actor> =
+        getMockActorsFeedSomeIdsAbsent().toItems()
 
-    fun getMockBBCharsFromFeedWithSomeItemsEmpty(): List<Actor> =
+    fun getMockActorsFromFeedWithSomeItemsEmpty(): List<Actor> =
         getMockBBCharsFeedSomeItemsEmpty().toItems()
 
-    fun getMockBBCharsFromFeedWithAllIdsAbsent(): List<Actor> =
-        getMockBBCharsFeedAllIdsAbsent().toItems()
+    fun getMockActorsFromFeedWithAllIdsInvalid(): List<Actor> =
+        getMockActorsFeedAllIdsAbsent().toItems()
 
-    fun getMockBBCharsFromFeedWithEmptyJsonArray(): List<Actor> =
-        getMockBBCharsFeedEmptyJsonArray().toItems()
+    fun getMockActorsFromFeedWithEmptyJsonContent(): List<Actor> =
+        getMockActorsFeedEmptyJsonArray().toItems()
 
     // remote models
-    fun getMockBBCharsFeedAllIdsValid(): List<RemoteActor> =
-        getMockBBCharactersFeed(getMockBBCharsDataAllIdsValid())
+    fun getMockActorsFeedAllIdsValid(): List<RemoteActor> =
+        getMockActorsFeed(getMockActorsDataAllIdsValid())
 
-    fun getMockBBCharsFeedSomeIdsAbsent(): List<RemoteActor> =
-        getMockBBCharactersFeed(getMockBBCharsDataSomeIdsAbsent())
+    fun getMockActorsFeedSomeIdsAbsent(): List<RemoteActor> =
+        getMockActorsFeed(getMockActorsDataSomeIdsAbsent())
 
     fun getMockBBCharsFeedSomeItemsEmpty(): List<RemoteActor> =
-        getMockBBCharactersFeed(getMockBBCharsDataSomeItemsEmpty())
+        getMockActorsFeed(getMockActorsDataSomeItemsEmpty())
 
-    fun getMockBBCharsFeedAllIdsAbsent(): List<RemoteActor> =
-        getMockBBCharactersFeed(getMockBBCharsDataAllIdsAbsent())
+    fun getMockActorsFeedAllIdsAbsent(): List<RemoteActor> =
+        getMockActorsFeed(getMockActorsDataAllIdsAbsent())
 
-    fun getMockBBCharsFeedEmptyJsonArray(): List<RemoteActor> =
-        getMockBBCharactersFeed(getMockBBCharsDataEmptyJsonArray())
+    fun getMockActorsFeedEmptyJsonArray(): List<RemoteActor> =
+        getMockActorsFeed(getMockActorsDataEmptyJsonArray())
 
     // raw json string
-    private fun getMockBBCharsDataAllIdsValid(): String =
-        getFileAsString(TEST_FILE_FIVE_VALID_BBCHARS)
+    private fun getMockActorsDataAllIdsValid(): String =
+        getFileAsString(TEST_FILE_FIVE_VALID_ACTORS)
 
-    private fun getMockBBCharsDataSomeIdsAbsent(): String =
-        getFileAsString(TEST_FILE_FIVE_BBCHARS_BUT_TWO_IDS_ABSENT)
+    private fun getMockActorsDataSomeIdsAbsent(): String =
+        getFileAsString(TEST_FILE_FIVE_ACTORS_BUT_TWO_IDS_INVALID)
 
-    private fun getMockBBCharsDataSomeItemsEmpty(): String =
-        getFileAsString(TEST_FILE_FIVE_BBCHARS_BUT_TWO_EMPTY)
+    private fun getMockActorsDataSomeItemsEmpty(): String =
+        getFileAsString(TEST_FILE_FIVE_ACTORS_BUT_TWO_EMPTY)
 
-    private fun getMockBBCharsDataAllIdsAbsent(): String =
-        getFileAsString(TEST_FILE_FIVE_BBCHARS_ALL_IDS_ABSENT)
+    private fun getMockActorsDataAllIdsAbsent(): String =
+        getFileAsString(TEST_FILE_FIVE_ACTORS_ALL_IDS_INVALID)
 
-    private fun getMockBBCharsDataEmptyJsonArray(): String =
+    private fun getMockActorsDataEmptyJsonArray(): String =
         getFileAsString(TEST_FILE_EMPTY_JSON)
 
     // utils
-    private fun getMockBBCharactersFeed(
+    private fun getMockActorsFeed(
         text: String
     ): List<RemoteActor> {
-        return convertToBBCharacters(text)
+        return convertToRemoteActors(text)
     }
 
-    private fun convertToBBCharacters(jsonFeed: String?): List<RemoteActor> {
+    private fun convertToRemoteActors(jsonFeed: String?): List<RemoteActor> {
         val gson = GsonBuilder().setLenient().create()
         val type: Type = object : TypeToken<ArrayList<RemoteActor>>() {}.type
         return gson.fromJson(jsonFeed, type)

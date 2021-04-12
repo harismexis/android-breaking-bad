@@ -8,7 +8,7 @@ import javax.inject.Provider
 
 fun provideMockVmMap(): MutableMap<Class<out ViewModel>, Provider<ViewModel>> {
     val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>> = mutableMapOf()
-    viewModels[HomeViewModel::class.java] = Provider { MockHomeViewModel.getMockHomeViewModel() }
+    viewModels[HomeViewModel::class.java] = Provider { MockHomeVmProvider.mockHomeViewModel }
     viewModels[ActorDetailViewModel::class.java] = Provider { MockActorDetailViewModel.getMockActorDetailViewModel() }
     return viewModels
 }
