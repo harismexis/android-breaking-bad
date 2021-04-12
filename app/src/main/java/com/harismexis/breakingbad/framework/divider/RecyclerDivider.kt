@@ -1,4 +1,4 @@
-package com.example.musicbrainz.framework.divider
+package com.harismexis.breakingbad.framework.divider
 
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable

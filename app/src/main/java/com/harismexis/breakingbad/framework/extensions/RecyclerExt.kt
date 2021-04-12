@@ -3,7 +3,7 @@ package com.harismexis.breakingbad.framework.extensions
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.musicbrainz.framework.divider.RecyclerDivider
+import com.harismexis.breakingbad.framework.divider.RecyclerDivider
 
 fun RecyclerView.setDivider(
     @DrawableRes divider: Int
