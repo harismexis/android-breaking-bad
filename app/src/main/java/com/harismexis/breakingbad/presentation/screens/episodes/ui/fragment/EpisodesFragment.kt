@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentEpisodesBinding
 import com.harismexis.breakingbad.domain.Episode
-import com.harismexis.breakingbad.framework.base.BaseFragment
 import com.harismexis.breakingbad.framework.event.EventObserver
 import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast
+import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.result.EpisodesResult
 import com.harismexis.breakingbad.presentation.screens.episodes.ui.adapter.EpisodeAdapter
 import com.harismexis.breakingbad.presentation.screens.episodes.viewmodel.EpisodesViewModel

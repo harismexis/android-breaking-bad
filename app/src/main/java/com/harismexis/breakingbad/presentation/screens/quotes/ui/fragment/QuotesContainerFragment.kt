@@ -1,18 +1,18 @@
-package com.harismexis.breakingbad.presentation.screens.episodes.ui.fragment
+package com.harismexis.breakingbad.presentation.screens.quotes.ui.fragment
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.presentation.base.BaseViewPagerFragment
 
-class EpisodesContainerFragment : BaseViewPagerFragment() {
+class QuotesContainerFragment : BaseViewPagerFragment() {
 
     override fun getPageAdapter(): FragmentStateAdapter {
-        return EpisodesPagerAdapter(requireActivity() as AppCompatActivity, 2)
+        return QuotesPagerAdapter(requireActivity() as AppCompatActivity, 2)
     }
 
     override fun getToolbarTitle(): String {
-        return getString(R.string.screen_episodes_label)
+        return getString(R.string.screen_quotes_label)
     }
 
 }

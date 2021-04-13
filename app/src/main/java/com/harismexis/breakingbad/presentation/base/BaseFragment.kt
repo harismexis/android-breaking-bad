@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.base
+package com.harismexis.breakingbad.presentation.base
 
 import android.content.Context
 import android.os.Bundle

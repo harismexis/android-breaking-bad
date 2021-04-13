@@ -1,20 +1,18 @@
 package com.harismexis.breakingbad.presentation.screens.quotes.ui.fragment
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentQuotesBinding
 import com.harismexis.breakingbad.domain.Quote
-import com.harismexis.breakingbad.framework.base.BaseFragment
 import com.harismexis.breakingbad.framework.event.EventObserver
 import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast
+import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.result.QuotesResult
 import com.harismexis.breakingbad.presentation.screens.quotes.ui.adapter.QuoteAdapter
 import com.harismexis.breakingbad.presentation.screens.quotes.viewmodel.QuotesViewModel
@@ -26,6 +24,19 @@ class QuotesFragment : BaseFragment() {
     private lateinit var adapter: QuoteAdapter
     private var uiModels: MutableList<Quote> = mutableListOf()
 
+    companion object {
+
+        private const val ARG_SERIES_NAME = "series_name"
+
+        fun newInstance(seriesName: String): QuotesFragment {
+            val args = Bundle()
+            args.putString(ARG_SERIES_NAME, seriesName)
+            return QuotesFragment().apply {
+                arguments = args
+            }
+        }
+    }
+
     override fun initialiseViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -34,7 +45,6 @@ class QuotesFragment : BaseFragment() {
     }
 
     override fun onCreateView() {
-        setupToolbar()
         setupSwipeToRefresh()
         initialiseRecycler()
     }
@@ -42,16 +52,6 @@ class QuotesFragment : BaseFragment() {
     override fun onViewCreated() {
         observeLiveData()
         viewModel.bind()
-    }
-
-    private fun setupToolbar() {
-        val navController = findNavController()
-        val appBarConf = AppBarConfiguration(navController.graph)
-        binding?.let {
-            it.toolbar.setupWithNavController(navController, appBarConf)
-            it.toolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
-            it.toolbarTitle.text = getString(R.string.screen_quotes_label)
-        }
     }
 
     private fun setupSwipeToRefresh() {

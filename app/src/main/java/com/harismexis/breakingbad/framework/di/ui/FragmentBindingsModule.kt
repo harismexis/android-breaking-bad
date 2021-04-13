@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.framework.di.ui
 
-import com.harismexis.breakingbad.framework.base.BaseFragment
+import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.actordetail.ui.fragment.ActorDetailFragment
 import com.harismexis.breakingbad.presentation.screens.deaths.ui.fragment.DeathsFragment
 import com.harismexis.breakingbad.presentation.screens.episodes.ui.fragment.EpisodesFragment

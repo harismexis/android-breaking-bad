@@ -12,7 +12,7 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.ActorDetailViewBinding
 import com.harismexis.breakingbad.databinding.FragmentActorDetailBinding
 import com.harismexis.breakingbad.domain.Actor
-import com.harismexis.breakingbad.framework.base.BaseFragment
+import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.framework.extensions.getLinkSpanned
 import com.harismexis.breakingbad.framework.extensions.populateWithGlide
 import com.harismexis.breakingbad.framework.extensions.setTextOrUnknown

@@ -29,8 +29,8 @@
 
     <fragment
         android:id="@+id/quotes_dest"
-        android:name="com.harismexis.breakingbad.presentation.screens.quotes.ui.fragment.QuotesFragment"
-        tools:layout="@layout/fragment_quotes" />
+        android:name="com.harismexis.breakingbad.presentation.screens.quotes.ui.fragment.QuotesContainerFragment"
+        tools:layout="@layout/fragment_view_pager_container" />
 
     <fragment
         android:id="@+id/deaths_dest"
@@ -40,7 +40,7 @@
     <fragment
         android:id="@+id/episodes_dest"
         android:name="com.harismexis.breakingbad.presentation.screens.episodes.ui.fragment.EpisodesContainerFragment"
-        tools:layout="@layout/fragment_episodes_container" />
+        tools:layout="@layout/fragment_view_pager_container" />
 
     <fragment
         android:id="@+id/player_dest"

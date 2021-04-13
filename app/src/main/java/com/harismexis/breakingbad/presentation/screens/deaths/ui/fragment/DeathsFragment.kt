@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentDeathsBinding
 import com.harismexis.breakingbad.domain.Death
-import com.harismexis.breakingbad.framework.base.BaseFragment
+import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.framework.event.EventObserver
 import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast

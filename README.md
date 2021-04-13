@@ -32,7 +32,7 @@ More Tests will be added.
 ![Alt text](screenshots/actor_detail_1.png?raw=true "app screenshot")
 
 #### Quotes
-![Alt text](screenshots/quotes.png?raw=true "app screenshot")
+![Alt text](screenshots/quotes_tabs.png?raw=true "app screenshot")
 
 #### Deaths
 ![Alt text](screenshots/deaths.png?raw=true "app screenshot")
