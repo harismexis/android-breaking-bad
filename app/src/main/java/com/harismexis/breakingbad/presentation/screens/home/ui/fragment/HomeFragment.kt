@@ -35,7 +35,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         binding = FragmentHomeBinding.inflate(inflater, container, false)
     }
 
-    override fun initialiseView() {
+    override fun onCreateView() {
         setupToolbar()
         setupSwipeToRefresh()
         initialiseRecycler()

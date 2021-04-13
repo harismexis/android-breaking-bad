@@ -39,13 +39,13 @@
 
     <fragment
         android:id="@+id/episodes_dest"
-        android:name="com.harismexis.breakingbad.presentation.screens.episodes.ui.fragment.EpisodesFragment"
-        tools:layout="@layout/fragment_episodes" />
+        android:name="com.harismexis.breakingbad.presentation.screens.episodes.ui.fragment.EpisodesContainerFragment"
+        tools:layout="@layout/fragment_episodes_container" />
 
     <fragment
         android:id="@+id/player_dest"
         android:name="com.harismexis.breakingbad.presentation.screens.player.PlayerFragment"
-        tools:layout="@layout/fragment_player" >
+        tools:layout="@layout/fragment_player">
 
         <action
             android:id="@+id/action_exit"

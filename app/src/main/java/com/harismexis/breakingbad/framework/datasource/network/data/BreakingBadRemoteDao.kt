@@ -23,8 +23,8 @@ class BreakingBadRemoteDao @Inject constructor(private val api: BreakingBadApi) 
         return api.getDeaths()
     }
 
-    suspend fun getEpisodes(): List<RemoteEpisode?>? {
-        return api.getEpisodes()
+    suspend fun getEpisodes(series: String? = null): List<RemoteEpisode?>? {
+        return api.getEpisodes(series)
     }
 
 }

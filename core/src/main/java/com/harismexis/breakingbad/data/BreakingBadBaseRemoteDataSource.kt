@@ -13,6 +13,6 @@ interface BreakingBadBaseRemoteDataSource {
 
     suspend fun getDeaths(): List<Death>
 
-    suspend fun getEpisodes(): List<Episode>
+    suspend fun getEpisodes(series: String? = null): List<Episode>
 
 }

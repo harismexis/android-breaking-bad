@@ -33,7 +33,7 @@ class QuotesFragment : BaseFragment() {
         binding = FragmentQuotesBinding.inflate(inflater, container, false)
     }
 
-    override fun initialiseView() {
+    override fun onCreateView() {
         setupToolbar()
         setupSwipeToRefresh()
         initialiseRecycler()

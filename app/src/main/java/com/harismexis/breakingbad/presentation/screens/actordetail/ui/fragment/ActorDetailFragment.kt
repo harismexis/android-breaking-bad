@@ -78,7 +78,7 @@ class ActorDetailFragment : BaseFragment() {
         requireContext().showToast(error)
     }
 
-    override fun initialiseView() {}
+    override fun onCreateView() {}
 
     private fun fetchLocalItem() {
         val actorId = arguments?.getInt(ARG_ACTOR_ID)

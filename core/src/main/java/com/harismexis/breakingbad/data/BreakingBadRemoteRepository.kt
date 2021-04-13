@@ -14,5 +14,5 @@ data class BreakingBadRemoteRepository(
 
     suspend fun getDeaths(): List<Death> = dataSource.getDeaths()
 
-    suspend fun getEpisodes(): List<Episode> = dataSource.getEpisodes()
+    suspend fun getEpisodes(series: String? = null): List<Episode> = dataSource.getEpisodes(series)
 }

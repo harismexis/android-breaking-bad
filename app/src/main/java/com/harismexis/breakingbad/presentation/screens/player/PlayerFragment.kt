@@ -27,7 +27,7 @@ class PlayerFragment : BaseFragment() {
         binding = FragmentPlayerLinearBinding.inflate(inflater, container, false)
     }
 
-    override fun initialiseView() {
+    override fun onCreateView() {
         addBackNavigation()
         initFullScreen()
         initPlayerMenu()

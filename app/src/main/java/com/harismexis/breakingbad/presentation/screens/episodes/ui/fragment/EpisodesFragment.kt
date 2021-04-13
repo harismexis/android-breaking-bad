@@ -1,12 +1,10 @@
 package com.harismexis.breakingbad.presentation.screens.episodes.ui.fragment
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentEpisodesBinding
@@ -21,32 +19,40 @@ import com.harismexis.breakingbad.presentation.screens.episodes.viewmodel.Episod
 
 class EpisodesFragment : BaseFragment() {
 
+    companion object {
+
+        private const val ARG_SERIES_NAME = "series_name"
+
+        fun newInstance(seriesName: String): EpisodesFragment {
+            val args = Bundle()
+            args.putString(ARG_SERIES_NAME, seriesName)
+            return EpisodesFragment().apply {
+                arguments = args
+            }
+        }
+    }
+
     private val viewModel: EpisodesViewModel by viewModels { viewModelFactory }
     private var binding: FragmentEpisodesBinding? = null
     private lateinit var adapter: EpisodeAdapter
     private var uiModels: MutableList<Episode> = mutableListOf()
+    private var seriesName: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        seriesName = arguments?.getString(ARG_SERIES_NAME)
+    }
+
+    override fun onCreateView() {
+        setupSwipeToRefresh()
+        initialiseRecycler()
+    }
 
     override fun initialiseViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
     ) {
         binding = FragmentEpisodesBinding.inflate(inflater, container, false)
-    }
-
-    override fun initialiseView() {
-        setupToolbar()
-        setupSwipeToRefresh()
-        initialiseRecycler()
-    }
-
-    private fun setupToolbar() {
-        val navController = findNavController()
-        val appBarConf = AppBarConfiguration(navController.graph)
-        binding?.let {
-            it.toolbar.setupWithNavController(navController, appBarConf)
-            it.toolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
-            it.toolbarTitle.text = getString(R.string.screen_episodes_label)
-        }
     }
 
     private fun setupSwipeToRefresh() {
@@ -72,14 +78,15 @@ class EpisodesFragment : BaseFragment() {
 
     override fun onViewCreated() {
         observeLiveData()
-        viewModel.bind()
+        viewModel.fetchEpisodes(seriesName)
     }
 
     private fun observeLiveData() {
         viewModel.episodes.observe(viewLifecycleOwner, {
             when (it) {
                 is EpisodesResult.EpisodesSuccess -> populate(it.items)
-                is EpisodesResult.EpisodesError -> {}
+                is EpisodesResult.EpisodesError -> {
+                }
             }
         })
 

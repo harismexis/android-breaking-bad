@@ -27,7 +27,7 @@ class BreakingBadRemoteDataSource @Inject constructor(
         return dao.getDeaths().toItems()
     }
 
-    override suspend fun getEpisodes(): List<Episode> {
-        return dao.getEpisodes().toItems()
+    override suspend fun getEpisodes(series: String?): List<Episode> {
+        return dao.getEpisodes(series).toItems()
     }
 }

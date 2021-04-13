@@ -30,7 +30,7 @@ abstract class BaseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         initialiseViewBinding(inflater, container)
-        initialiseView()
+        onCreateView()
         return getRootView()
     }
 
@@ -51,6 +51,6 @@ abstract class BaseFragment : Fragment() {
 
     abstract fun onViewCreated()
 
-    abstract fun initialiseView()
+    abstract fun onCreateView()
 
 }

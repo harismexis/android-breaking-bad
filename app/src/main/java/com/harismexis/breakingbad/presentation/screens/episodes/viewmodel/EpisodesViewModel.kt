@@ -26,14 +26,17 @@ class EpisodesViewModel @Inject constructor(
         get() = mEpisodes
 
     private val mShowErrorMessage = MutableLiveData<Event<String>>()
-    val showErrorMessage : LiveData<Event<String>>
+    val showErrorMessage: LiveData<Event<String>>
         get() = mShowErrorMessage
 
-    fun bind() {
+    private var seriesName: String? = null
+
+    fun fetchEpisodes(seriesName: String?) {
+        this.seriesName = seriesName
         if (connectivity.isOnline()) {
-            fetchRemoteItems()
+            fetchRemoteEpisodes(seriesName)
         } else {
-            fetchLocalItems()
+            fetchLocalEpisodes()
         }
     }
 
@@ -41,14 +44,14 @@ class EpisodesViewModel @Inject constructor(
         val canRefresh = connectivity.isOnline()
         callback.call(canRefresh)
         if (canRefresh) {
-            fetchRemoteItems()
+            fetchRemoteEpisodes(this.seriesName)
         }
     }
 
-    private fun fetchRemoteItems() {
+    private fun fetchRemoteEpisodes(seriesName: String?) {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteEpisodes()
+                val items = interactors.irrGetRemoteEpisodes(seriesName)
                 mEpisodes.value = EpisodesResult.EpisodesSuccess(items)
                 interactors.irrStoreEpisodes(items)
             } catch (e: Exception) {
@@ -59,7 +62,7 @@ class EpisodesViewModel @Inject constructor(
         }
     }
 
-    private fun fetchLocalItems() {
+    private fun fetchLocalEpisodes() {
         viewModelScope.launch {
             try {
                 val items = interactors.irrGetLocalEpisodes()

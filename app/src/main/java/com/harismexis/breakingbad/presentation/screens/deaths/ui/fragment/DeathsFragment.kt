@@ -33,7 +33,7 @@ class DeathsFragment : BaseFragment() {
         binding = FragmentDeathsBinding.inflate(inflater, container, false)
     }
 
-    override fun initialiseView() {
+    override fun onCreateView() {
         setupToolbar()
         setupSwipeToRefresh()
         initialiseRecycler()
