@@ -2,30 +2,25 @@
 <resources>
 
     <!-- Palette -->
-
     <color name="transparent">#00ffffff</color>
-
-    <color name="primary">#2196F3</color>
-
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-
-    <color name="blue_one">#0099F7</color>
-
-    <color name="black">#FF000000</color>
-    <color name="black_six">#222222</color>
 
     <color name="white">#FFFFFFFF</color>
     <color name="white_one">#ffffff</color>
 
-    <color name="grey_one">#4d4d4d</color>
-    <color name="grey_three">#cccccc</color>
-    <color name="grey_four">#808080</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="primary">#2196F3</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="blue_one">#0099F7</color>
+
+    <color name="black">#FF000000</color>
+    <color name="black_six">#222222</color>
     <color name="grey_nine">#80404040</color>
+    <color name="grey_one">#4d4d4d</color>
+    <color name="grey_four">#808080</color>
+    <color name="grey_three">#cccccc</color>
 
     <color name="yellow_one">#ffc800</color>
     <color name="yellow_two">#ffb200</color>
@@ -33,7 +28,6 @@
     <color name="green_four">#81C784</color>
     <color name="green_five">#66BB6A</color>
     <color name="green_six">#4CAF50</color>
-
     <color name="light_green_six">#8BC34A</color>
     <color name="light_green_seven">#7CB342</color>
 
