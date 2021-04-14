@@ -30,7 +30,7 @@ class RemoteActorExtTest : UnitTestSetup() {
     @Test
     fun feedHasSomeIdsAbsent_then_conversionToItemsIsCorrect() {
         // given
-        val remoteItems = actorsParser.getMockActorsFeedSomeIdsAbsent()
+        val remoteItems = actorsParser.getMockActorsFeedSomeIdsInvalid()
 
         // when
         val items = remoteItems.toItems()
@@ -56,7 +56,7 @@ class RemoteActorExtTest : UnitTestSetup() {
     @Test
     fun feedHasAllIdsAbsent_then_itemListIsEmpty() {
         // given
-        val remoteItems = actorsParser.getMockActorsFeedAllIdsAbsent()
+        val remoteItems = actorsParser.getMockActorsFeedAllIdsInvalid()
 
         // when
         val items = remoteItems.toItems()

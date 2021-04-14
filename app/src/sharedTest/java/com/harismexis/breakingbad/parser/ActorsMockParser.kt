@@ -8,24 +8,25 @@ import com.harismexis.breakingbad.framework.datasource.network.model.RemoteActor
 import com.harismexis.breakingbad.framework.extensions.actor.toItems
 import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
 import java.lang.reflect.Type
+import java.util.*
 
 class ActorsMockParser(private val parser: BaseFileParser) {
 
     companion object {
 
         const val EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID = 5
-        const val EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID = 3
+        const val EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID = 2
         const val EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY = 3
         const val EXPECTED_NUM_ACTORS_WHEN_NO_DATA = 0
 
         private const val TEST_FILE_FIVE_VALID_ACTORS =
-            "remote_data_five_valid_bbcharacters.json"
-        private const val TEST_FILE_FIVE_ACTORS_BUT_TWO_IDS_INVALID =
-            "remote_data_five_bbcharacters_two_ids_absent.json"
+            "remote_data_5_valid_actors.json"
+        private const val TEST_FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID =
+            "remote_data_5_actors_3_ids_invalid.json"
         private const val TEST_FILE_FIVE_ACTORS_BUT_TWO_EMPTY =
-            "remote_data_five_bbcharacters_two_items_empty.json"
+            "remote_data_5_actors_2_items_empty.json"
         private const val TEST_FILE_FIVE_ACTORS_ALL_IDS_INVALID =
-            "remote_data_five_bbcharacters_all_ids_absent.json"
+            "remote_data_5_actors_all_ids_invalid.json"
         private const val TEST_FILE_EMPTY_JSON =
             "remote_data_empty.json"
     }
@@ -37,23 +38,23 @@ class ActorsMockParser(private val parser: BaseFileParser) {
         getMockActorsFeedAllIdsValid().toItems().toLocalItems()
 
     fun getMockActorsLocalFromFeedWithSomeIdsInvalid(): List<LocalActor> =
-        getMockActorsFeedSomeIdsAbsent().toItems().toLocalItems()
+        getMockActorsFeedSomeIdsInvalid().toItems().toLocalItems()
 
     fun getMockActorsLocalFromFeedWithAllIdsInvalid(): List<LocalActor> =
-        getMockActorsFeedAllIdsAbsent().toItems().toLocalItems()
+        getMockActorsFeedAllIdsInvalid().toItems().toLocalItems()
 
     // base models
     fun getMockActorsFromFeedWithAllItemsValid(): List<Actor> =
         getMockActorsFeedAllIdsValid().toItems()
 
-    fun getMockActorsFromFeedWithSomeIdsAbsent(): List<Actor> =
-        getMockActorsFeedSomeIdsAbsent().toItems()
+    fun getMockActorsFromFeedWithSomeIdsInvalid(): List<Actor> =
+        getMockActorsFeedSomeIdsInvalid().toItems()
 
     fun getMockActorsFromFeedWithSomeItemsEmpty(): List<Actor> =
         getMockBBCharsFeedSomeItemsEmpty().toItems()
 
     fun getMockActorsFromFeedWithAllIdsInvalid(): List<Actor> =
-        getMockActorsFeedAllIdsAbsent().toItems()
+        getMockActorsFeedAllIdsInvalid().toItems()
 
     fun getMockActorsFromFeedWithEmptyJsonContent(): List<Actor> =
         getMockActorsFeedEmptyJsonArray().toItems()
@@ -62,14 +63,14 @@ class ActorsMockParser(private val parser: BaseFileParser) {
     fun getMockActorsFeedAllIdsValid(): List<RemoteActor> =
         getMockActorsFeed(getMockActorsDataAllIdsValid())
 
-    fun getMockActorsFeedSomeIdsAbsent(): List<RemoteActor> =
-        getMockActorsFeed(getMockActorsDataSomeIdsAbsent())
+    fun getMockActorsFeedSomeIdsInvalid(): List<RemoteActor> =
+        getMockActorsFeed(getMockActorsDataSomeIdsInvalid())
 
     fun getMockBBCharsFeedSomeItemsEmpty(): List<RemoteActor> =
         getMockActorsFeed(getMockActorsDataSomeItemsEmpty())
 
-    fun getMockActorsFeedAllIdsAbsent(): List<RemoteActor> =
-        getMockActorsFeed(getMockActorsDataAllIdsAbsent())
+    fun getMockActorsFeedAllIdsInvalid(): List<RemoteActor> =
+        getMockActorsFeed(getMockActorsDataAllIdsInvalid())
 
     fun getMockActorsFeedEmptyJsonArray(): List<RemoteActor> =
         getMockActorsFeed(getMockActorsDataEmptyJsonArray())
@@ -78,13 +79,13 @@ class ActorsMockParser(private val parser: BaseFileParser) {
     private fun getMockActorsDataAllIdsValid(): String =
         parser.getFileAsString(TEST_FILE_FIVE_VALID_ACTORS)
 
-    private fun getMockActorsDataSomeIdsAbsent(): String =
-        parser.getFileAsString(TEST_FILE_FIVE_ACTORS_BUT_TWO_IDS_INVALID)
+    private fun getMockActorsDataSomeIdsInvalid(): String =
+        parser.getFileAsString(TEST_FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID)
 
     private fun getMockActorsDataSomeItemsEmpty(): String =
         parser.getFileAsString(TEST_FILE_FIVE_ACTORS_BUT_TWO_EMPTY)
 
-    private fun getMockActorsDataAllIdsAbsent(): String =
+    private fun getMockActorsDataAllIdsInvalid(): String =
         parser.getFileAsString(TEST_FILE_FIVE_ACTORS_ALL_IDS_INVALID)
 
     private fun getMockActorsDataEmptyJsonArray(): String =

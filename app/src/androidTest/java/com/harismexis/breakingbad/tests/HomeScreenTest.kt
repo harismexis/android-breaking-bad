@@ -48,7 +48,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         mockSearchResultSuccess()
 
         // when
-        launchActivityAndTriggerSearchResult()
+        launchActivity()
 
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID)
@@ -57,11 +57,11 @@ class HomeScreenTest : InstrumentedTestSetup() {
     @Test
     fun remoteFeedHasSomeInvalidIds_listShowsExpectedItems() {
         // given
-        mockActors = actorsParser.getMockActorsFromFeedWithSomeIdsAbsent()
+        mockActors = actorsParser.getMockActorsFromFeedWithSomeIdsInvalid()
         mockSearchResultSuccess()
 
         // when
-        launchActivityAndTriggerSearchResult()
+        launchActivity()
 
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID)
@@ -74,7 +74,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         mockSearchResultSuccess()
 
         // when
-        launchActivityAndTriggerSearchResult()
+        launchActivity()
 
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY)
@@ -87,7 +87,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         mockSearchResultSuccess()
 
         // when
-        launchActivityAndTriggerSearchResult()
+        launchActivity()
 
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_NO_DATA)
@@ -100,7 +100,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         mockSearchResultSuccess()
 
         // when
-        launchActivityAndTriggerSearchResult()
+        launchActivity()
 
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_NO_DATA)
@@ -108,14 +108,14 @@ class HomeScreenTest : InstrumentedTestSetup() {
 
     private fun mockSearchResultSuccess() {
         actorsSuccess = ActorsResult.ActorsSuccess(mockActors)
+        every { mockViewModel.fetchActors() } answers {
+                MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
+        }
         every { mockViewModel.actorsResult } returns MockHomeVmProvider.fakeActorsResult
     }
 
-    private fun launchActivityAndTriggerSearchResult() {
+    private fun launchActivity() {
         testRule.launchActivity(null)
-        testRule.activity.runOnUiThread {
-            MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
-        }
     }
 
     private fun verifyRecycler(expectedNumberOfItems: Int) {
