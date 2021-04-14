@@ -108,13 +108,13 @@ class HomeScreenTest : InstrumentedTestSetup() {
 
     private fun mockSearchResultSuccess() {
         actorsSuccess = ActorsResult.ActorsSuccess(mockActors)
-        every { mockViewModel.actorsResult } returns MockHomeVmProvider.actorsResult
+        every { mockViewModel.actorsResult } returns MockHomeVmProvider.fakeActorsResult
     }
 
     private fun launchActivityAndTriggerSearchResult() {
         testRule.launchActivity(null)
         testRule.activity.runOnUiThread {
-            MockHomeVmProvider.actorsResult.value = actorsSuccess
+            MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
         }
     }
 

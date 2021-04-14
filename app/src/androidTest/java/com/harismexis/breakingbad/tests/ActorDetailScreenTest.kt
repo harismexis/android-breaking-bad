@@ -44,7 +44,7 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
     private lateinit var actorDetailSuccess: ActorDetailResult.ActorSuccess
 
     init {
-        every { mockHomeViewModel.actorsResult } returns MockHomeVmProvider.actorsResult
+        every { mockHomeViewModel.actorsResult } returns MockHomeVmProvider.fakeActorsResult
         every { mockDetailViewModel.retrieveActorById(mockActorId) } just runs
         // every { mockDetailViewModel.id } returns mockArtists[clickIndexOnSearchList]
     }
@@ -104,7 +104,7 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
     private fun launchActivityAndFetchSearchResults() {
         testRule.launchActivity(null)
         testRule.activity.runOnUiThread {
-            MockHomeVmProvider.actorsResult.value = actorsSuccess
+            MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
         }
     }
 

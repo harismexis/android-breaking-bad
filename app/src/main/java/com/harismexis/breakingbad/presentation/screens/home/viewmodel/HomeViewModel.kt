@@ -35,7 +35,7 @@ class HomeViewModel @Inject constructor(
             fetchRemoteActors(value)
         }
 
-    fun bind() {
+    fun fetchActors() {
         if (connectivity.isOnline()) {
             fetchRemoteActors(searchQuery)
         } else {

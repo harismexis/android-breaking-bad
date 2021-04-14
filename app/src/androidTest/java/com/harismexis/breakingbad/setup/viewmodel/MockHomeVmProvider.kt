@@ -8,6 +8,6 @@ import io.mockk.mockk
 object MockHomeVmProvider {
 
     val mockHomeViewModel: HomeViewModel = mockk(relaxed = true)
-    var actorsResult = MutableLiveData<ActorsResult>()
+    var fakeActorsResult = MutableLiveData<ActorsResult>()
 
 }

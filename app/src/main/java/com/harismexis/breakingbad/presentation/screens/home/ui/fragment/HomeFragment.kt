@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentHomeBinding
 import com.harismexis.breakingbad.domain.Actor
-import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.framework.event.EventObserver
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.framework.util.ui.hideKeyboard
+import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorAdapter
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
@@ -66,7 +66,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
 
     override fun onViewCreated() {
         observeLiveData()
-        viewModel.bind()
+        viewModel.fetchActors()
     }
 
     private fun setupToolbar() {
