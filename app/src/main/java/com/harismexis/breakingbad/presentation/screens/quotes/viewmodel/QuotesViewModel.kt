@@ -29,11 +29,14 @@ class QuotesViewModel @Inject constructor(
     val showErrorMessage : LiveData<Event<String>>
         get() = mShowErrorMessage
 
-    fun bind() {
+    private var seriesName: String? = null
+
+    fun fetchQuotes(seriesName: String?) {
+        this.seriesName = seriesName
         if (connectivity.isOnline()) {
-            fetchRemoteItems()
+            fetchRemoteQuotes(seriesName)
         } else {
-            fetchLocalItems()
+            fetchLocalQuotes()
         }
     }
 
@@ -41,14 +44,14 @@ class QuotesViewModel @Inject constructor(
         val canRefresh = connectivity.isOnline()
         callback.call(canRefresh)
         if (canRefresh) {
-            fetchRemoteItems()
+            fetchRemoteQuotes(seriesName)
         }
     }
 
-    private fun fetchRemoteItems() {
+    private fun fetchRemoteQuotes(seriesName: String?) {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteQuotes()
+                val items = interactors.irrGetRemoteQuotes(seriesName)
                 mQuotes.value = QuotesResult.QuotesSuccess(items)
                 interactors.irrStoreQuotes(items)
             } catch (e: Exception) {
@@ -59,7 +62,7 @@ class QuotesViewModel @Inject constructor(
         }
     }
 
-    private fun fetchLocalItems() {
+    private fun fetchLocalQuotes() {
         viewModelScope.launch {
             try {
                 val items = interactors.irrGetLocalQuotes()

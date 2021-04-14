@@ -9,7 +9,7 @@ interface BreakingBadBaseRemoteDataSource {
 
     suspend fun getActors(name: String? = null): List<Actor>
 
-    suspend fun getQuotes(): List<Quote>
+    suspend fun getQuotes(series: String? = null): List<Quote>
 
     suspend fun getDeaths(): List<Death>
 

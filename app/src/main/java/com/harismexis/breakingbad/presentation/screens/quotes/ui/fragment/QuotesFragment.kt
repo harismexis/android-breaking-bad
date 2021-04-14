@@ -23,6 +23,7 @@ class QuotesFragment : BaseFragment() {
     private var binding: FragmentQuotesBinding? = null
     private lateinit var adapter: QuoteAdapter
     private var uiModels: MutableList<Quote> = mutableListOf()
+    private var seriesName: String? = null
 
     companion object {
 
@@ -35,6 +36,11 @@ class QuotesFragment : BaseFragment() {
                 arguments = args
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        seriesName = arguments?.getString(ARG_SERIES_NAME)
     }
 
     override fun initialiseViewBinding(
@@ -51,7 +57,7 @@ class QuotesFragment : BaseFragment() {
 
     override fun onViewCreated() {
         observeLiveData()
-        viewModel.bind()
+        viewModel.fetchQuotes(seriesName)
     }
 
     private fun setupSwipeToRefresh() {

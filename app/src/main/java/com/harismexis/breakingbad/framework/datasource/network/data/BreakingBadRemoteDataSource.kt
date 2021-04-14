@@ -19,8 +19,8 @@ class BreakingBadRemoteDataSource @Inject constructor(
         return dao.getActors(name).toItems()
     }
 
-    override suspend fun getQuotes(): List<Quote> {
-        return dao.getQuotes().toItems()
+    override suspend fun getQuotes(series: String?): List<Quote> {
+        return dao.getQuotes(series).toItems()
     }
 
     override suspend fun getDeaths(): List<Death> {

@@ -15,8 +15,8 @@ class BreakingBadRemoteDao @Inject constructor(private val api: BreakingBadApi) 
         return api.getCharactersByName(name)
     }
 
-    suspend fun getQuotes(): List<RemoteQuote?>? {
-        return api.getQuotes()
+    suspend fun getQuotes(series: String? = null): List<RemoteQuote?>? {
+        return api.getQuotes(series)
     }
 
     suspend fun getDeaths(): List<RemoteDeath?>? {

@@ -10,7 +10,7 @@ data class BreakingBadRemoteRepository(
 ) {
     suspend fun getActors(name: String? = null): List<Actor> = dataSource.getActors(name)
 
-    suspend fun getQuotes(): List<Quote> = dataSource.getQuotes()
+    suspend fun getQuotes(series: String? = null): List<Quote> = dataSource.getQuotes(series)
 
     suspend fun getDeaths(): List<Death> = dataSource.getDeaths()
 

@@ -15,7 +15,9 @@ interface BreakingBadApi {
     ): List<RemoteActor?>?
 
     @GET("quotes")
-    suspend fun getQuotes(): List<RemoteQuote?>?
+    suspend fun getQuotes(
+        @Query("series") series: String? = null
+    ): List<RemoteQuote?>?
 
     @GET("deaths")
     suspend fun getDeaths(): List<RemoteDeath?>?
