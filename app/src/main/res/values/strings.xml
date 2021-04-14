@@ -5,7 +5,7 @@
     <string name="screen_home_label">Cast</string>
     <string name="screen_actor_detail_label">Actor</string>
     <string name="screen_quotes_label">Quotes</string>
-    <string name="screen_deaths_label">Deaths</string>
+    <string name="screen_deaths_label">Breaking Bad Deaths</string>
     <string name="screen_episodes_label">Episodes</string>
     <string name="screen_player_label">Player</string>
 
@@ -41,6 +41,8 @@
     <string name="label_quote_in_series">in</string>
 
     <!-- Deaths -->
+    <string name="label_death_victim">Victim</string>
+    <string name="label_death_cause">Treatment</string>
     <string name="label_death_responsible">Responsible</string>
 
 </resources>

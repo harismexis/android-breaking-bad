@@ -11,9 +11,25 @@
     android:paddingBottom="@dimen/vh_quote_padding_vertical">
 
     <TextView
+        android:id="@+id/txt_victim_label"
+        style="@style/VhBaseMeta"
+        android:text="@string/label_death_victim"
+        android:textColor="@color/light_green_six"
+        tools:text="Victim label" />
+
+    <TextView
         android:id="@+id/txt_death"
         style="@style/VhItemTitle"
-        tools:text="Dead person" />
+        android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
+        tools:text="Victim" />
+
+    <TextView
+        android:id="@+id/txt_cause_label"
+        style="@style/VhBaseMeta"
+        android:layout_marginTop="@dimen/vh_death_label_margin_top"
+        android:text="@string/label_death_cause"
+        android:textColor="@color/light_green_six"
+        tools:text="Cause label" />
 
     <TextView
         android:id="@+id/txt_cause"
@@ -24,7 +40,7 @@
     <TextView
         android:id="@+id/txt_responsible_label"
         style="@style/VhBaseMeta"
-        android:layout_marginTop="@dimen/vh_death_item_responsible_label"
+        android:layout_marginTop="@dimen/vh_death_label_margin_top"
         android:text="@string/label_death_responsible"
         android:textColor="@color/light_green_six"
         tools:text="Responsible label" />

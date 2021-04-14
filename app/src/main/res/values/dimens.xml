@@ -13,7 +13,7 @@
     <dimen name="vh_item_title_text_size">17sp</dimen>
     <dimen name="vh_item_meta_text_size">16sp</dimen>
     <dimen name="vh_item_txt_margin_horizontal">10dp</dimen>
-    <dimen name="vh_item_txt_meta_margin_top">10dp</dimen>
+    <dimen name="vh_item_txt_meta_margin_top">8dp</dimen>
 
     <!-- vh actor item -->
     <dimen name="vh_actor_img_width">140dp</dimen>
@@ -33,14 +33,14 @@
     <dimen name="actor_detail_root_padding">2dp</dimen>
     <dimen name="actor_detail_padding_bottom">20dp</dimen>
 
-    <!-- vh quote item -->
+    <!-- vh quote -->
     <dimen name="vh_quote_padding_vertical">20dp</dimen>
     <dimen name="vh_quote_padding_horizontal">16dp</dimen>
     <dimen name="vh_quote_txt_margin_horizontal">10dp</dimen>
     <dimen name="vh_quote_txt_meta_margin_top">10dp</dimen>
 
-    <!-- vh deaths -->
-    <dimen name="vh_death_item_responsible_label">16dp</dimen>
+    <!-- vh death -->
+    <dimen name="vh_death_label_margin_top">16dp</dimen>
 
     <!-- player -->
     <dimen name="player_back_icon_margin_start">10dp</dimen>
