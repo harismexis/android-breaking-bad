@@ -35,7 +35,7 @@ More Tests will be added.
 ![Alt text](screenshots/quotes_tabs.png?raw=true "app screenshot")
 
 #### Deaths
-![Alt text](screenshots/deaths.png?raw=true "app screenshot")
+![Alt text](screenshots/deaths_bb.png?raw=true "app screenshot")
 
 #### Episodes
 ![Alt text](screenshots/episodes_tabs.png?raw=true "app screenshot")
