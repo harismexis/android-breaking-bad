@@ -11,10 +11,10 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.domain.Actor
-import com.harismexis.breakingbad.parser.ActorsMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID
-import com.harismexis.breakingbad.parser.ActorsMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_NO_DATA
-import com.harismexis.breakingbad.parser.ActorsMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY
-import com.harismexis.breakingbad.parser.ActorsMockParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID
+import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID
+import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_NO_DATA
+import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY
+import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
 import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
@@ -44,8 +44,8 @@ class HomeScreenTest : InstrumentedTestSetup() {
     @Test
     fun actorsFeedHasAllItemsValid_then_listShowsExpectedItems() {
         // given
-        mockActors = actorsParser.getMockActorsFromFeedWithAllItemsValid()
-        mockSearchResultSuccess()
+        mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
+        mockInitialResults()
 
         // when
         launchActivity()
@@ -57,8 +57,8 @@ class HomeScreenTest : InstrumentedTestSetup() {
     @Test
     fun remoteFeedHasSomeInvalidIds_listShowsExpectedItems() {
         // given
-        mockActors = actorsParser.getMockActorsFromFeedWithSomeIdsInvalid()
-        mockSearchResultSuccess()
+        mockActors = actorsParser.getMockActorsWhenJsonHasSomeInvalidIds()
+        mockInitialResults()
 
         // when
         launchActivity()
@@ -70,8 +70,8 @@ class HomeScreenTest : InstrumentedTestSetup() {
     @Test
     fun remoteFeedHasSomeEmptyActorJsonItems_listHasExpectedNumberOfItems() {
         // given
-        mockActors = actorsParser.getMockActorsFromFeedWithSomeItemsEmpty()
-        mockSearchResultSuccess()
+        mockActors = actorsParser.getMockActorsWhenJsonHasSomeEmptyItems()
+        mockInitialResults()
 
         // when
         launchActivity()
@@ -83,8 +83,8 @@ class HomeScreenTest : InstrumentedTestSetup() {
     @Test
     fun remoteFeedHasAllIdsInvalid_listShowsNoItems() {
         // given
-        mockActors = actorsParser.getMockActorsFromFeedWithAllIdsInvalid()
-        mockSearchResultSuccess()
+        mockActors = actorsParser.getMockActorsWhenJsonHasAllIdsInvalid()
+        mockInitialResults()
 
         // when
         launchActivity()
@@ -96,8 +96,8 @@ class HomeScreenTest : InstrumentedTestSetup() {
     @Test
     fun remoteFeedIsEmptyJson_listShowsNoItems() {
         // given
-        mockActors = actorsParser.getMockActorsFromFeedWithEmptyJsonContent()
-        mockSearchResultSuccess()
+        mockActors = actorsParser.getMockActorsWhenJsonIsEmpty()
+        mockInitialResults()
 
         // when
         launchActivity()
@@ -106,7 +106,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_NO_DATA)
     }
 
-    private fun mockSearchResultSuccess() {
+    private fun mockInitialResults() {
         actorsSuccess = ActorsResult.ActorsSuccess(mockActors)
         every { mockViewModel.fetchActors() } answers {
                 MockHomeVmProvider.fakeActorsResult.value = actorsSuccess

@@ -35,7 +35,7 @@ class IrrGetRemoteActorsTest : UnitTestSetup() {
     }
 
     private fun setupMocks() {
-        mockItems = actorsParser.getMockActorsFromFeedWithAllItemsValid()
+        mockItems = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
         runBlocking {
             Mockito.`when`(mockRepository.getActors()).thenReturn(mockItems)
         }

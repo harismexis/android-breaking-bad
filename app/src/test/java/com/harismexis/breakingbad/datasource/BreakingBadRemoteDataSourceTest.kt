@@ -34,7 +34,7 @@ class BreakingBadRemoteDataSourceTest : UnitTestSetup() {
         // when
         runBlocking {
             // given
-            val mockFeed = actorsParser.getMockActorsFeedAllIdsValid()
+            val mockFeed = actorsParser.getMockRemoteActorsWhenJsonHasAllIdsValid()
             Mockito.`when`(mockDao.getActors()).thenReturn(mockFeed)
 
             // when

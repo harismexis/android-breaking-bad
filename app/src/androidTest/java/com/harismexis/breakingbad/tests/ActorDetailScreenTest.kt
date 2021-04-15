@@ -34,7 +34,7 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
         ActivityTestRule(MainActivity::class.java, false, false)
 
     private val mockHomeViewModel = MockHomeVmProvider.mockHomeViewModel
-    private var mockActors = actorsParser.getMockActorsFromFeedWithAllItemsValid()
+    private var mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
     private var actorsSuccess = ActorsResult.ActorsSuccess(mockActors)
     private var clickIndexOnSearchList = 0
 
@@ -52,7 +52,7 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
     @Test
     fun clickFirstSearchResult_opensActorDetailsAndShowsExpectedActorData() {
         // given
-        mockActors = actorsParser.getMockActorsFromFeedWithAllItemsValid()
+        mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
         mockActorDetailResultSuccess()
 
         // when

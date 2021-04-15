@@ -34,7 +34,7 @@ class IrrGetLocalActorTest : UnitTestSetup() {
     }
 
     private fun setupMocks() {
-        mockItem = actorsParser.getMockActorLocal()
+        mockItem = actorsParser.getMockLocalActor()
         mockItemId = mockItem.char_id
         runBlocking {
             Mockito.`when`(mockRepository.getActor(mockItemId)).thenReturn(mockItem)

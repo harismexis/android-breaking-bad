@@ -40,7 +40,7 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
     }
 
     override fun initialiseClassUnderTest() {
-        mockItem = actorsParser.getMockActorLocal()
+        mockItem = actorsParser.getMockLocalActor()
         mockId = mockItem.char_id
         subject = ActorDetailViewModel(mockInteractors)
         mockActorDetailSuccess = ActorDetailResult.ActorSuccess(mockItem)

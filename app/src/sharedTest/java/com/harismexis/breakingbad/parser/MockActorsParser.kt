@@ -1,0 +1,116 @@
+package com.harismexis.breakingbad.parser
+
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
+import com.harismexis.breakingbad.domain.Actor
+import com.harismexis.breakingbad.framework.datasource.database.table.LocalActor
+import com.harismexis.breakingbad.framework.datasource.network.model.RemoteActor
+import com.harismexis.breakingbad.framework.extensions.actor.toItems
+import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
+import java.lang.reflect.Type
+import java.util.*
+
+class MockActorsParser(private val parser: BaseFileParser) {
+
+    companion object {
+
+        const val EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID = 5
+        const val EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID = 2
+        const val EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY = 3
+        const val EXPECTED_NUM_ACTORS_WHEN_NO_DATA = 0
+        const val EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER = 2
+
+        private const val FILE_FIVE_VALID_ACTORS =
+            "remote-5-valid-actors.json"
+        private const val FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID =
+            "remote-5-actors-3-ids-invalid.json"
+        private const val FILE_FIVE_ACTORS_BUT_TWO_EMPTY =
+            "remote-5-actors-2-items-empty.json"
+        private const val FILE_FIVE_ACTORS_ALL_IDS_INVALID =
+            "remote-5-actors-all-ids-invalid.json"
+        private const val FILE_EMPTY_JSON =
+            "remote-empty.json"
+        private const val FILE_SEARCH_ACTORS_BY_NAME_LIKE_WALTER =
+            "remote-search-actors-by-name-like-walter.json"
+    }
+
+    // local models
+    fun getMockLocalActor(): Actor = getMockRemoteActorsWhenJsonHasAllIdsValid().toItems()[0]
+
+    fun getMockLocalActorsWhenJsonHasAllItemsValid(): List<LocalActor> =
+        getMockActorsWhenJsonHasAllItemsValid().toLocalItems()
+
+    fun getMockLocalActorsWhenJsonHasSomeInvalidIds(): List<LocalActor> =
+        getMockActorsWhenJsonHasSomeInvalidIds().toLocalItems()
+
+    fun getMockLocalActorsWhenJsonHasAllIdsInvalid(): List<LocalActor> =
+        getMockActorsWhenJsonHasAllIdsInvalid().toLocalItems()
+
+    // core models
+    fun getMockActorsWhenJsonHasAllItemsValid(): List<Actor> =
+        getMockRemoteActorsWhenJsonHasAllIdsValid().toItems()
+
+    fun getMockActorsWhenJsonHasSomeInvalidIds(): List<Actor> =
+        getMockRemoteActorsWhenJsonHasSomeInvalidIds().toItems()
+
+    fun getMockActorsWhenJsonHasSomeEmptyItems(): List<Actor> =
+        getMockRemoteActorsWhenJsonHasSomeEmptyItems().toItems()
+
+    fun getMockActorsWhenJsonHasAllIdsInvalid(): List<Actor> =
+        getMockRemoteActorsWhenJsonHasAllIdsInvalid().toItems()
+
+    fun getMockActorsWhenJsonIsEmpty(): List<Actor> =
+        getMockRemoteActorsWhenJsonIsEmpty().toItems()
+
+    // remote models
+    fun getMockRemoteActorsWhenJsonHasAllIdsValid(): List<RemoteActor> =
+        getMockRemoteActors(getMockDataAllIdsValid())
+
+    fun getMockRemoteActorsWhenJsonHasSomeInvalidIds(): List<RemoteActor> =
+        getMockRemoteActors(getMockDataSomeIdsInvalid())
+
+    fun getMockRemoteActorsWhenJsonHasSomeEmptyItems(): List<RemoteActor> =
+        getMockRemoteActors(getMockDataSomeItemsEmpty())
+
+    fun getMockRemoteActorsWhenJsonHasAllIdsInvalid(): List<RemoteActor> =
+        getMockRemoteActors(getMockDataAllIdsInvalid())
+
+    fun getMockRemoteActorsWhenJsonIsEmpty(): List<RemoteActor> =
+        getMockRemoteActors(getMockDataEmptyJsonArray())
+
+    fun getMockRemoteActorsSearchByNameLikeWalter(): List<RemoteActor> =
+        getMockRemoteActors(getMockDataSearchByNameLikeWalter())
+
+    // raw json string
+    private fun getMockDataAllIdsValid(): String =
+        parser.getFileAsString(FILE_FIVE_VALID_ACTORS)
+
+    private fun getMockDataSomeIdsInvalid(): String =
+        parser.getFileAsString(FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID)
+
+    private fun getMockDataSomeItemsEmpty(): String =
+        parser.getFileAsString(FILE_FIVE_ACTORS_BUT_TWO_EMPTY)
+
+    private fun getMockDataAllIdsInvalid(): String =
+        parser.getFileAsString(FILE_FIVE_ACTORS_ALL_IDS_INVALID)
+
+    private fun getMockDataEmptyJsonArray(): String =
+        parser.getFileAsString(FILE_EMPTY_JSON)
+
+    private fun getMockDataSearchByNameLikeWalter(): String =
+        parser.getFileAsString(FILE_SEARCH_ACTORS_BY_NAME_LIKE_WALTER)
+
+    // utils
+    private fun getMockRemoteActors(
+        text: String
+    ): List<RemoteActor> {
+        return convertToRemoteActors(text)
+    }
+
+    private fun convertToRemoteActors(jsonFeed: String?): List<RemoteActor> {
+        val gson = GsonBuilder().setLenient().create()
+        val type: Type = object : TypeToken<ArrayList<RemoteActor>>() {}.type
+        return gson.fromJson(jsonFeed, type)
+    }
+
+}
