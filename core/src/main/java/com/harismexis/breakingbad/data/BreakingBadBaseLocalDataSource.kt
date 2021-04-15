@@ -16,6 +16,8 @@ interface BreakingBadBaseLocalDataSource {
 
     suspend fun getQuotes(): List<Quote>
 
+    suspend fun getQuotesBySeries(seriesName: String?): List<Quote>
+
     suspend fun insertQuotes(items: List<Quote>)
 
 

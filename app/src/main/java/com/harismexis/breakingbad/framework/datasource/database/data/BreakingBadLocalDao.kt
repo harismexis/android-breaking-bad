@@ -1,6 +1,9 @@
 package com.harismexis.breakingbad.framework.datasource.database.data
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.harismexis.breakingbad.framework.datasource.database.table.LocalActor
 import com.harismexis.breakingbad.framework.datasource.database.table.LocalDeath
 import com.harismexis.breakingbad.framework.datasource.database.table.LocalEpisode
@@ -26,6 +29,9 @@ interface BreakingBadLocalDao {
 
     @Query("SELECT * FROM quote_table")
     suspend fun getAllQuotes(): List<LocalQuote?>?
+
+    @Query("SELECT * FROM quote_table WHERE series = :seriesName")
+    suspend fun getQuotesBySeries(seriesName: String?): List<LocalQuote?>?
 
     @Query("DELETE FROM quote_table")
     suspend fun deleteAllQuotes()

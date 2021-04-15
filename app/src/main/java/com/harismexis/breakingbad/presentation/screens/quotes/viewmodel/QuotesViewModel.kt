@@ -36,7 +36,7 @@ class QuotesViewModel @Inject constructor(
         if (connectivity.isOnline()) {
             fetchRemoteQuotes(seriesName)
         } else {
-            fetchLocalQuotes()
+            fetchLocalQuotes(seriesName)
         }
     }
 
@@ -62,10 +62,10 @@ class QuotesViewModel @Inject constructor(
         }
     }
 
-    private fun fetchLocalQuotes() {
+    private fun fetchLocalQuotes(seriesName: String?) {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetLocalQuotes()
+                val items = interactors.irrGetLocalQuotesBySeries(seriesName)
                 mQuotes.value = QuotesResult.QuotesSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

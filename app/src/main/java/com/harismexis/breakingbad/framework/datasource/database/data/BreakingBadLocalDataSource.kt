@@ -39,6 +39,7 @@ class BreakingBadLocalDataSource @Inject constructor(
         return dao.getAllActors().toItems()
     }
 
+
     override suspend fun insertQuotes(items: List<Quote>) {
         dao.insertQuotes(items.toLocalItems())
     }
@@ -47,6 +48,11 @@ class BreakingBadLocalDataSource @Inject constructor(
         return dao.getAllQuotes().toItems()
     }
 
+    override suspend fun getQuotesBySeries(seriesName: String?): List<Quote> {
+        return dao.getQuotesBySeries(seriesName).toItems()
+    }
+
+
     override suspend fun insertDeaths(items: List<Death>) {
         dao.insertDeaths(items.toLocalItems())
     }
@@ -54,6 +60,7 @@ class BreakingBadLocalDataSource @Inject constructor(
     override suspend fun getDeaths(): List<Death> {
         return dao.getAllDeaths().toItems()
     }
+
 
     override suspend fun insertEpisodes(items: List<Episode>) {
         dao.insertEpisodes(items.toLocalItems())

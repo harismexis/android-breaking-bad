@@ -14,13 +14,18 @@ class BreakingBadLocalRepository(
 
     suspend fun getActors(): List<Actor> = dataSource.getActors()
 
+
     suspend fun getQuotes(): List<Quote> = dataSource.getQuotes()
 
+    suspend fun getQuotesBySeries(seriesName: String?): List<Quote> = dataSource.getQuotesBySeries(seriesName)
+
     suspend fun insertQuotes(items: List<Quote>) = dataSource.insertQuotes(items)
+
 
     suspend fun getDeaths(): List<Death> = dataSource.getDeaths()
 
     suspend fun insertDeaths(items: List<Death>) = dataSource.insertDeaths(items)
+
 
     suspend fun getEpisodes(): List<Episode> = dataSource.getEpisodes()
 

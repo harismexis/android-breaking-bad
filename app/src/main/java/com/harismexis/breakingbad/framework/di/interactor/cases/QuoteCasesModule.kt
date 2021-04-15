@@ -5,6 +5,7 @@ import com.harismexis.breakingbad.data.BreakingBadRemoteRepository
 import com.harismexis.breakingbad.framework.datasource.database.data.BreakingBadLocalDataSource
 import com.harismexis.breakingbad.framework.datasource.network.data.BreakingBadRemoteDataSource
 import com.harismexis.breakingbad.interactors.quote.IrrGetLocalQuotes
+import com.harismexis.breakingbad.interactors.quote.IrrGetLocalQuotesBySeries
 import com.harismexis.breakingbad.interactors.quote.IrrGetRemoteQuotes
 import com.harismexis.breakingbad.interactors.quote.IrrStoreQuotes
 import dagger.Module
@@ -28,6 +29,14 @@ class QuoteCasesModule {
         source: BreakingBadLocalDataSource
     ): IrrGetLocalQuotes {
         return IrrGetLocalQuotes(BreakingBadLocalRepository(source))
+    }
+
+    @Provides
+    @Singleton
+    fun provideIrrGetLocalQuotesBySeries(
+        source: BreakingBadLocalDataSource
+    ): IrrGetLocalQuotesBySeries {
+        return IrrGetLocalQuotesBySeries(BreakingBadLocalRepository(source))
     }
 
     @Provides

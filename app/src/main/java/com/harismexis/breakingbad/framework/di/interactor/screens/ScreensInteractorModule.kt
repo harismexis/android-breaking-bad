@@ -10,7 +10,7 @@ import com.harismexis.breakingbad.interactors.death.IrrStoreDeaths
 import com.harismexis.breakingbad.interactors.episode.IrrGetLocalEpisodes
 import com.harismexis.breakingbad.interactors.episode.IrrGetRemoteEpisodes
 import com.harismexis.breakingbad.interactors.episode.IrrStoreEpisodes
-import com.harismexis.breakingbad.interactors.quote.IrrGetLocalQuotes
+import com.harismexis.breakingbad.interactors.quote.IrrGetLocalQuotesBySeries
 import com.harismexis.breakingbad.interactors.quote.IrrGetRemoteQuotes
 import com.harismexis.breakingbad.interactors.quote.IrrStoreQuotes
 import com.harismexis.breakingbad.presentation.screens.actordetail.interactors.ActorDetailInteractors
@@ -51,12 +51,12 @@ class ScreensInteractorModule {
     @Singleton
     fun provideQuoteInteractors(
         irrGetRemoteQuotes: IrrGetRemoteQuotes,
-        irrGetLocalQuotes: IrrGetLocalQuotes,
+        irrGetLocalQuotesBySeries: IrrGetLocalQuotesBySeries,
         irrStoreQuotes: IrrStoreQuotes
     ): QuoteInteractors {
         return QuoteInteractors(
             irrGetRemoteQuotes,
-            irrGetLocalQuotes,
+            irrGetLocalQuotesBySeries,
             irrStoreQuotes
         )
     }
