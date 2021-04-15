@@ -1,7 +1,5 @@
 package com.harismexis.breakingbad.domain
 
-import java.io.Serializable
-
 data class Episode(
     val episode_id: Int,
     val title: String?,
@@ -10,4 +8,14 @@ data class Episode(
     val characters: List<String>?,
     val episode: String?,
     val series: String?
-) : Serializable
+) {
+
+    companion object {
+
+        fun Episode?.charactersString(): String? {
+            return this?.characters?.joinToString(",  ")
+        }
+
+    }
+
+}

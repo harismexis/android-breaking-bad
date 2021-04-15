@@ -9,6 +9,7 @@ data class LocalActor(
     @PrimaryKey @ColumnInfo(name = "char_id") val char_id: Int,
     @ColumnInfo(name = "name") val name: String?,
     @ColumnInfo(name = "birthday") val birthday: String?,
+    @ColumnInfo(name = "occupation") val occupation: List<String>?,
     @ColumnInfo(name = "img") val img: String?,
     @ColumnInfo(name = "status") val status: String?,
     @ColumnInfo(name = "nickname") val nickname: String?,

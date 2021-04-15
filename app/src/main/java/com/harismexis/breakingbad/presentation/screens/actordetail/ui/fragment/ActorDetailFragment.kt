@@ -12,11 +12,12 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.ActorDetailViewBinding
 import com.harismexis.breakingbad.databinding.FragmentActorDetailBinding
 import com.harismexis.breakingbad.domain.Actor
-import com.harismexis.breakingbad.presentation.base.BaseFragment
+import com.harismexis.breakingbad.domain.Actor.Companion.occupationString
 import com.harismexis.breakingbad.framework.extensions.getLinkSpanned
 import com.harismexis.breakingbad.framework.extensions.populateWithGlide
 import com.harismexis.breakingbad.framework.extensions.setTextOrUnknown
 import com.harismexis.breakingbad.framework.extensions.showToast
+import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.result.ActorDetailResult
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 
@@ -87,24 +88,25 @@ class ActorDetailFragment : BaseFragment() {
         }
     }
 
-    private fun populate(item: Actor) {
+    private fun populate(actor: Actor) {
         binding?.let {
-            it.toolbarTitle.text = item.name
+            it.toolbarTitle.text = actor.name
             it.toolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
         }
         detailBinding?.let {
-            requireContext().populateWithGlide(it.img, item.img)
-            it.txtName.setTextOrUnknown(item.name)
-            it.txtBirthday.setTextOrUnknown(item.birthday)
-            it.txtStatus.setTextOrUnknown(item.status)
-            it.txtNickname.setTextOrUnknown(item.nickname)
-            it.txtPortrayed.setTextOrUnknown(item.portrayed)
-            it.txtCategory.setTextOrUnknown(item.category.toString())
+            requireContext().populateWithGlide(it.img, actor.img)
+            it.txtName.setTextOrUnknown(actor.name)
+            it.txtNickname.setTextOrUnknown(actor.nickname)
+            it.txtPortrayed.setTextOrUnknown(actor.portrayed)
+            it.txtOccupation.setTextOrUnknown(actor.occupationString())
+            it.txtBirthday.setTextOrUnknown(actor.birthday)
+            it.txtStatus.setTextOrUnknown(actor.status)
+            it.txtCategory.setTextOrUnknown(actor.category.toString())
             it.txtImgUrl.movementMethod = LinkMovementMethod.getInstance()
             it.txtImgUrl.text = getLinkSpanned(
                 getString(R.string.missing_img_url),
                 getString(R.string.character_image),
-                item.img
+                actor.img
             )
         }
     }

@@ -12,6 +12,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.harismexis.breakingbad.R
+import com.harismexis.breakingbad.domain.Actor.Companion.occupationString
 import com.harismexis.breakingbad.presentation.result.ActorDetailResult
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
@@ -66,17 +67,20 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
         verifyLabel(R.id.txt_name_label, R.string.label_name)
         verifyValue(R.id.txt_name, mockActor.name)
 
-        verifyLabel(R.id.txt_birthday_label, R.string.label_birthday)
-        verifyValue(R.id.txt_birthday, mockActor.birthday)
-
-        verifyLabel(R.id.txt_status_label, R.string.label_status)
-        verifyValue(R.id.txt_status, mockActor.status)
-
         verifyLabel(R.id.txt_nickname_label, R.string.label_nickname)
         verifyValue(R.id.txt_nickname, mockActor.nickname)
 
         verifyLabel(R.id.txt_portrayed_label, R.string.label_portrayed)
         verifyValue(R.id.txt_portrayed, mockActor.portrayed)
+
+        verifyLabel(R.id.txt_occupation_label, R.string.label_occupation)
+        verifyValue(R.id.txt_occupation, mockActor.occupationString())
+
+        verifyLabel(R.id.txt_birthday_label, R.string.label_birthday)
+        verifyValue(R.id.txt_birthday, mockActor.birthday)
+
+        verifyLabel(R.id.txt_status_label, R.string.label_status)
+        verifyValue(R.id.txt_status, mockActor.status)
 
         verifyLabel(R.id.txt_category_label, R.string.label_category)
         verifyValue(R.id.txt_category, mockActor.category)

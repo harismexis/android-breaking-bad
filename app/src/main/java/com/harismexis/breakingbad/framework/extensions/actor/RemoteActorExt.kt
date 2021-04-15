@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.framework.extensions.actor
 
-import com.harismexis.breakingbad.framework.datasource.network.model.RemoteActor
 import com.harismexis.breakingbad.domain.Actor
+import com.harismexis.breakingbad.framework.datasource.network.model.RemoteActor
 
 fun List<RemoteActor?>?.toItems(): List<Actor> {
     val items = mutableListOf<Actor>()
@@ -18,6 +18,7 @@ private fun RemoteActor.toItem(id: Int): Actor {
         id,
         this.name,
         this.birthday,
+        this.occupation,
         this.img,
         this.status,
         this.nickname,

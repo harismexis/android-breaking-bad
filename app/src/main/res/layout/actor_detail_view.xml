@@ -18,83 +18,96 @@
         style="@style/ItemDetailLabel"
         android:layout_marginTop="@dimen/actor_detail_title_margin_top"
         android:text="@string/label_name"
-        tools:text="Breed name label" />
+        tools:text="Name label" />
 
     <TextView
         android:id="@+id/txt_name"
         style="@style/ItemDetailTitle"
         android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
-        tools:text="Breed name" />
-
-    <TextView
-        android:id="@+id/txt_birthday_label"
-        style="@style/ItemDetailLabel"
-        android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
-        android:text="@string/label_birthday"
-        tools:text="Origin label" />
-
-    <TextView
-        android:id="@+id/txt_birthday"
-        style="@style/ItemDetailMeta"
-        android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
-        tools:text="Origin" />
-
-    <TextView
-        android:id="@+id/txt_status_label"
-        style="@style/ItemDetailLabel"
-        android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
-        android:text="@string/label_status"
-        tools:text="Description label" />
-
-    <TextView
-        android:id="@+id/txt_status"
-        style="@style/ItemDetailMeta"
-        android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
-        tools:text="Description" />
+        tools:text="Name" />
 
     <TextView
         android:id="@+id/txt_nickname_label"
         style="@style/ItemDetailLabel"
         android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
         android:text="@string/label_nickname"
-        tools:text="Temperament label" />
+        tools:text="Nickname label" />
 
     <TextView
         android:id="@+id/txt_nickname"
         style="@style/ItemDetailMeta"
         android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
-        tools:text="Temperament" />
+        tools:text="Nickname" />
 
     <TextView
         android:id="@+id/txt_portrayed_label"
         style="@style/ItemDetailLabel"
         android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
         android:text="@string/label_portrayed"
-        tools:text="Life span label" />
+        tools:text="Portrayed label" />
 
     <TextView
         android:id="@+id/txt_portrayed"
         style="@style/ItemDetailMeta"
         android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
-        tools:text="Life span" />
+        tools:text="Portrayed" />
+
+    <TextView
+        android:id="@+id/txt_occupation_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
+        android:text="@string/label_occupation"
+        tools:text="Occupation label" />
+
+    <TextView
+        android:id="@+id/txt_occupation"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
+        tools:text="Occupation" />
+
+    <TextView
+        android:id="@+id/txt_birthday_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
+        android:text="@string/label_birthday"
+        tools:text="Birthday label" />
+
+    <TextView
+        android:id="@+id/txt_birthday"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
+        tools:text="Birthday" />
+
+    <TextView
+        android:id="@+id/txt_status_label"
+        style="@style/ItemDetailLabel"
+        android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
+        android:text="@string/label_status"
+        tools:text="Status label" />
+
+    <TextView
+        android:id="@+id/txt_status"
+        style="@style/ItemDetailMeta"
+        android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
+        tools:text="Status" />
 
     <TextView
         android:id="@+id/txt_category_label"
         style="@style/ItemDetailLabel"
         android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
         android:text="@string/label_category"
-        tools:text="Energy level label" />
+        tools:text="Category label" />
 
     <TextView
         android:id="@+id/txt_category"
         style="@style/ItemDetailMeta"
         android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
-        tools:text="Energy level" />
+        tools:text="Category" />
 
     <TextView
         android:id="@+id/txt_img_url"
         style="@style/ItemDetailMeta"
         android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
-        tools:text="Wikipedia url" />
+        tools:text="Image url" />
 
 </LinearLayout>
