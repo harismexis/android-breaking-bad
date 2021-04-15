@@ -1,8 +1,11 @@
 package com.harismexis.breakingbad.setup.testutil
 
 import androidx.annotation.IdRes
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import org.hamcrest.Matchers
 
@@ -27,4 +30,16 @@ fun verifyRecyclerItemGoneAt(
 ) {
     Espresso.onView(withRecycler(recyclerId).atPositionOnView(index, viewId))
         .check(ViewAssertions.matches(Matchers.not(ViewMatchers.isDisplayed())))
+}
+
+fun clickRecyclerAt(
+    @IdRes rvId: Int,
+    position: Int
+) {
+    Espresso.onView(ViewMatchers.withId(rvId)).perform(
+        RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+            position,
+            ViewActions.click()
+        )
+    )
 }

@@ -2,11 +2,8 @@ package com.harismexis.breakingbad.tests
 
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
-import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -17,6 +14,7 @@ import com.harismexis.breakingbad.presentation.result.ActorDetailResult
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
 import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
+import com.harismexis.breakingbad.setup.testutil.clickRecyclerAt
 import com.harismexis.breakingbad.setup.testutil.getExpectedText
 import com.harismexis.breakingbad.setup.viewmodel.MockActorDetailVmProvider
 import com.harismexis.breakingbad.setup.viewmodel.MockHomeVmProvider
@@ -35,7 +33,7 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
     private val mockHomeViewModel = MockHomeVmProvider.mockHomeViewModel
     private var mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
     private var actorsSuccess = ActorsResult.ActorsSuccess(mockActors)
-    private var clickIndexOnSearchList = 0
+    private var clickIndexOnSearchResultList = 0
 
     private val mockDetailViewModel = MockActorDetailVmProvider.mockActorDetailViewModel
     private var mockActor = mockActors[0]
@@ -52,14 +50,32 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
     @Test
     fun clickFirstSearchResult_opensActorDetailsAndShowsExpectedActorData() {
         // given
-        mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
+        mockInitialResultsInHomeScreen()
         mockActorDetailResultSuccess()
 
         // when
-        openHomeAndClickFirstItemToOpenActorDetails()
+        openHomeAndClickListItemToOpenActorDetails()
 
         // then
         verifyActorDetailsAreTheExpected()
+    }
+
+    private fun mockInitialResultsInHomeScreen() {
+        actorsSuccess = ActorsResult.ActorsSuccess(mockActors)
+        every { mockHomeViewModel.fetchInitialActors() } answers {
+            MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
+        }
+        every { mockHomeViewModel.actorsResult } returns MockHomeVmProvider.fakeActorsResult
+    }
+
+    private fun mockActorDetailResultSuccess() {
+        actorDetailSuccess = ActorDetailResult.ActorSuccess(mockActor)
+        every { mockDetailViewModel.actorDetailResult } returns MockActorDetailVmProvider.fakeActorDetailResult
+    }
+
+    private fun openHomeAndClickListItemToOpenActorDetails() {
+        testRule.launchActivity(null)
+        clickRecyclerAt(R.id.home_list, clickIndexOnSearchResultList)
     }
 
     private fun verifyActorDetailsAreTheExpected() {
@@ -91,32 +107,6 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
 
     private fun verifyValue(@IdRes textViewId: Int, value: String?) {
         onView(withId(textViewId)).check(matches(withText(getExpectedText(value))))
-    }
-
-    private fun mockActorDetailResultSuccess() {
-        actorDetailSuccess = ActorDetailResult.ActorSuccess(mockActor)
-        every { mockDetailViewModel.actorDetailResult } returns MockActorDetailVmProvider.fakeActorDetailResult
-    }
-
-    private fun openHomeAndClickFirstItemToOpenActorDetails() {
-        launchActivity()
-        clickRecyclerAt(clickIndexOnSearchList) // click an actor on search list to open ActorDetail
-    }
-
-    private fun launchActivity() {
-        testRule.launchActivity(null)
-        testRule.activity.runOnUiThread {
-            MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
-        }
-    }
-
-    private fun clickRecyclerAt(position: Int) {
-        onView(withId(R.id.home_list)).perform(
-            actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                position,
-                click()
-            )
-        )
     }
 
 }
