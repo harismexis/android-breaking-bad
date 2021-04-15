@@ -26,7 +26,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         mockRemoteCallReturnsAllItemsValid()
 
         // when
-        subject.fetchActors()
+        subject.fetchInitialActors()
 
         // then
         verify_remoteFeedCallDone_dataStored_liveDataUpdated()
@@ -39,7 +39,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         mockLocalCallReturnsAllItemsValid()
 
         // when
-        subject.fetchActors()
+        subject.fetchInitialActors()
 
         // then
         verifyInternetChecked()
@@ -84,7 +84,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         mockRemoteCallThrowsError(null)
 
         // when
-        subject.fetchActors()
+        subject.fetchInitialActors()
 
         // then
         verifyInternetChecked()
@@ -100,7 +100,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         mockLocalCallThrowsError()
 
         // when
-        subject.fetchActors()
+        subject.fetchInitialActors()
 
         // then
         verifyInternetChecked()

@@ -35,7 +35,7 @@ class HomeViewModel @Inject constructor(
             fetchRemoteActors(value)
         }
 
-    fun fetchActors() {
+    fun fetchInitialActors() {
         if (connectivity.isOnline()) {
             fetchRemoteActors(searchQuery)
         } else {
@@ -49,7 +49,7 @@ class HomeViewModel @Inject constructor(
         if (canRefresh) fetchRemoteActors(searchQuery)
     }
 
-    private fun fetchRemoteActors(name: String?) {
+    private fun fetchRemoteActors(name: String? = null) {
         viewModelScope.launch {
             try {
                 val items = interactors.irrGetRemoteActors(name)

@@ -108,7 +108,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
 
     private fun mockInitialResults() {
         actorsSuccess = ActorsResult.ActorsSuccess(mockActors)
-        every { mockViewModel.fetchActors() } answers {
+        every { mockViewModel.fetchInitialActors() } answers {
                 MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
         }
         every { mockViewModel.actorsResult } returns MockHomeVmProvider.fakeActorsResult

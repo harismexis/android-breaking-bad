@@ -66,7 +66,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
 
     override fun onViewCreated() {
         observeLiveData()
-        viewModel.fetchActors()
+        viewModel.fetchInitialActors()
     }
 
     private fun setupToolbar() {
