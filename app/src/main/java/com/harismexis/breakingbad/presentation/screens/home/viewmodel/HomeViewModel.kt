@@ -29,11 +29,7 @@ class HomeViewModel @Inject constructor(
     val showErrorMessage : LiveData<Event<String>>
         get() = mShowErrorMessage
 
-    var searchQuery: String? = null
-        set(value) {
-            field = value
-            fetchRemoteActors(value)
-        }
+    private var searchQuery: String? = null
 
     fun fetchInitialActors() {
         if (connectivity.isOnline()) {
@@ -41,6 +37,11 @@ class HomeViewModel @Inject constructor(
         } else {
             fetchLocalActors()
         }
+    }
+
+    fun updateSearchQuery(query: String?) {
+        searchQuery = query
+        fetchRemoteActors(query)
     }
 
     fun refresh(callback: Action1<Boolean>) {

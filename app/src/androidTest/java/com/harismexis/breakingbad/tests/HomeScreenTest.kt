@@ -13,12 +13,14 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.domain.Actor
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_NO_DATA
+import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
 import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
 import com.harismexis.breakingbad.setup.testutil.RecyclerCountAssertion
+import com.harismexis.breakingbad.setup.testutil.SearchViewActionExtension
 import com.harismexis.breakingbad.setup.testutil.verifyRecyclerItemAt
 import com.harismexis.breakingbad.setup.viewmodel.MockHomeVmProvider
 import io.mockk.every
@@ -37,85 +39,111 @@ class HomeScreenTest : InstrumentedTestSetup() {
             false, false
         )
 
+    companion object {
+        const val WALTER = "walter"
+    }
+
     private val mockViewModel = MockHomeVmProvider.mockHomeViewModel
     private lateinit var mockActors: List<Actor>
     private lateinit var actorsSuccess: ActorsResult.ActorsSuccess
 
     @Test
-    fun actorsFeedHasAllItemsValid_then_listShowsExpectedItems() {
+    fun actorsFeedHasAllItemsValid_listHasExpectedItems() {
         // given
-        mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
-        mockInitialResults()
+        mockInitialResults(actorsParser.getMockActorsWhenJsonHasAllItemsValid())
 
         // when
-        launchActivity()
+        testRule.launchActivity(null)
 
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID)
     }
 
     @Test
-    fun remoteFeedHasSomeInvalidIds_listShowsExpectedItems() {
+    fun remoteFeedHasSomeInvalidIds_listHasExpectedItems() {
         // given
-        mockActors = actorsParser.getMockActorsWhenJsonHasSomeInvalidIds()
-        mockInitialResults()
+        mockInitialResults(actorsParser.getMockActorsWhenJsonHasSomeInvalidIds())
 
         // when
-        launchActivity()
+        testRule.launchActivity(null)
 
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID)
     }
 
     @Test
-    fun remoteFeedHasSomeEmptyActorJsonItems_listHasExpectedNumberOfItems() {
+    fun remoteFeedHasSomeEmptyActorJsonItems_listHasExpectedItems() {
         // given
-        mockActors = actorsParser.getMockActorsWhenJsonHasSomeEmptyItems()
-        mockInitialResults()
+        mockInitialResults(actorsParser.getMockActorsWhenJsonHasSomeEmptyItems())
 
         // when
-        launchActivity()
+        testRule.launchActivity(null)
 
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY)
     }
 
     @Test
-    fun remoteFeedHasAllIdsInvalid_listShowsNoItems() {
+    fun remoteFeedHasAllIdsInvalid_listHasNoItems() {
         // given
-        mockActors = actorsParser.getMockActorsWhenJsonHasAllIdsInvalid()
-        mockInitialResults()
+        mockInitialResults(actorsParser.getMockActorsWhenJsonHasAllIdsInvalid())
 
         // when
-        launchActivity()
+        testRule.launchActivity(null)
 
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_NO_DATA)
     }
 
     @Test
-    fun remoteFeedIsEmptyJson_listShowsNoItems() {
+    fun remoteFeedIsEmptyJson_listHasNoItems() {
         // given
-        mockActors = actorsParser.getMockActorsWhenJsonIsEmpty()
-        mockInitialResults()
+        mockInitialResults(actorsParser.getMockActorsWhenJsonIsEmpty())
 
         // when
-        launchActivity()
+        testRule.launchActivity(null)
 
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_NO_DATA)
     }
 
-    private fun mockInitialResults() {
+    @Test
+    fun userSearchesActorByName_listHasExpectedItems() {
+        // Test Initial Results
+
+        // given
+        mockInitialResults(actorsParser.getMockActorsWhenJsonHasAllItemsValid())
+        // when
+        testRule.launchActivity(null)
+        // then
+        verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID)
+
+        // Search by actor name and check results
+
+        // given
+        mockSearchResults(WALTER, actorsParser.getMockActorsSearchByNameLikeWalter())
+        // when
+        onView(withId(R.id.searchView)).perform(SearchViewActionExtension.submitQuery(WALTER))
+        // then
+        verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER)
+    }
+
+    private fun mockInitialResults(mockData: List<Actor>) {
+        mockActors = mockData
         actorsSuccess = ActorsResult.ActorsSuccess(mockActors)
         every { mockViewModel.fetchInitialActors() } answers {
-                MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
+            MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
         }
         every { mockViewModel.actorsResult } returns MockHomeVmProvider.fakeActorsResult
     }
 
-    private fun launchActivity() {
-        testRule.launchActivity(null)
+    private fun mockSearchResults(actorName: String, mockData: List<Actor>) {
+        mockActors = mockData
+        actorsSuccess = ActorsResult.ActorsSuccess(mockActors)
+        every { mockViewModel.updateSearchQuery(actorName) } answers {
+            MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
+        }
+        every { mockViewModel.actorsResult } returns MockHomeVmProvider.fakeActorsResult
     }
 
     private fun verifyRecycler(expectedNumberOfItems: Int) {
