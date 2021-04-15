@@ -10,7 +10,9 @@ import com.harismexis.breakingbad.framework.extensions.death.toItems
 import com.harismexis.breakingbad.framework.extensions.episode.toItems
 import com.harismexis.breakingbad.framework.extensions.quote.toItems
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class BreakingBadRemoteDataSource @Inject constructor(
     private val dao: BreakingBadRemoteDao
 ) : BreakingBadBaseRemoteDataSource {

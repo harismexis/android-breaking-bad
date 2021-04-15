@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.di.interactor
+package com.harismexis.breakingbad.framework.di.interactor.cases
 
 import com.harismexis.breakingbad.data.BreakingBadLocalRepository
 import com.harismexis.breakingbad.data.BreakingBadRemoteRepository
@@ -7,27 +7,15 @@ import com.harismexis.breakingbad.framework.datasource.network.data.BreakingBadR
 import com.harismexis.breakingbad.interactors.episode.IrrGetLocalEpisodes
 import com.harismexis.breakingbad.interactors.episode.IrrGetRemoteEpisodes
 import com.harismexis.breakingbad.interactors.episode.IrrStoreEpisodes
-import com.harismexis.breakingbad.presentation.screens.episodes.interactors.EpisodeInteractors
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
-class EpisodeInteractorModule {
+class EpisodeCasesModule {
 
     @Provides
-    fun provideEpisodeIrrs(
-        irrGetRemoteEpisodes: IrrGetRemoteEpisodes,
-        irrGetLocalEpisodes: IrrGetLocalEpisodes,
-        irrStoreEpisodes: IrrStoreEpisodes
-    ): EpisodeInteractors {
-        return EpisodeInteractors(
-            irrGetRemoteEpisodes,
-            irrGetLocalEpisodes,
-            irrStoreEpisodes
-        )
-    }
-
-    @Provides
+    @Singleton
     fun provideIrrGetRemoteEpisodes(
         source: BreakingBadRemoteDataSource
     ): IrrGetRemoteEpisodes {
@@ -35,6 +23,7 @@ class EpisodeInteractorModule {
     }
 
     @Provides
+    @Singleton
     fun provideIrrGetLocalEpisodes(
         source: BreakingBadLocalDataSource
     ): IrrGetLocalEpisodes {
@@ -42,6 +31,7 @@ class EpisodeInteractorModule {
     }
 
     @Provides
+    @Singleton
     fun provideIrrStoreEpisodes(
         source: BreakingBadLocalDataSource
     ): IrrStoreEpisodes {

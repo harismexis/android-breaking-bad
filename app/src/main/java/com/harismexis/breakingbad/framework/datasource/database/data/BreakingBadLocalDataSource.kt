@@ -15,7 +15,9 @@ import com.harismexis.breakingbad.framework.extensions.episode.toLocalItems
 import com.harismexis.breakingbad.framework.extensions.quote.toItems
 import com.harismexis.breakingbad.framework.extensions.quote.toLocalItems
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class BreakingBadLocalDataSource @Inject constructor(
     private val dao: BreakingBadLocalDao
 ) : BreakingBadBaseLocalDataSource {

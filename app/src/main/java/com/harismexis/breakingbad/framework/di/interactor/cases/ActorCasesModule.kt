@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.di.interactor
+package com.harismexis.breakingbad.framework.di.interactor.cases
 
 import com.harismexis.breakingbad.data.BreakingBadLocalRepository
 import com.harismexis.breakingbad.data.BreakingBadRemoteRepository
@@ -10,11 +10,13 @@ import com.harismexis.breakingbad.interactors.actor.IrrGetRemoteActors
 import com.harismexis.breakingbad.interactors.actor.IrrStoreActors
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
-class ActorInteractorModule {
+class ActorCasesModule {
 
     @Provides
+    @Singleton
     fun provideIrrGetRemoteActors(
         dataSource: BreakingBadRemoteDataSource
     ): IrrGetRemoteActors {
@@ -22,6 +24,7 @@ class ActorInteractorModule {
     }
 
     @Provides
+    @Singleton
     fun provideIrrGetLocalActors(
         dataSource: BreakingBadLocalDataSource
     ): IrrGetLocalActors {
@@ -29,6 +32,7 @@ class ActorInteractorModule {
     }
 
     @Provides
+    @Singleton
     fun provideIrrGetLocalActor(
         dataSource: BreakingBadLocalDataSource
     ): IrrGetLocalActor {
@@ -36,6 +40,7 @@ class ActorInteractorModule {
     }
 
     @Provides
+    @Singleton
     fun provideIrrStoreActors(
         dataSource: BreakingBadLocalDataSource
     ): IrrStoreActors {

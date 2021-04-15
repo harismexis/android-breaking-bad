@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.di.interactor
+package com.harismexis.breakingbad.framework.di.interactor.cases
 
 import com.harismexis.breakingbad.data.BreakingBadLocalRepository
 import com.harismexis.breakingbad.data.BreakingBadRemoteRepository
@@ -7,27 +7,15 @@ import com.harismexis.breakingbad.framework.datasource.network.data.BreakingBadR
 import com.harismexis.breakingbad.interactors.death.IrrGetLocalDeaths
 import com.harismexis.breakingbad.interactors.death.IrrGetRemoteDeaths
 import com.harismexis.breakingbad.interactors.death.IrrStoreDeaths
-import com.harismexis.breakingbad.presentation.screens.deaths.interactors.DeathInteractors
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
-class DeathInteractorModule {
+class DeathCasesModule {
 
     @Provides
-    fun provideDeathIrrs(
-        irrGetRemoteDeaths: IrrGetRemoteDeaths,
-        irrGetLocalDeaths: IrrGetLocalDeaths,
-        irrStoreDeaths: IrrStoreDeaths
-    ): DeathInteractors {
-        return DeathInteractors(
-            irrGetRemoteDeaths,
-            irrGetLocalDeaths,
-            irrStoreDeaths
-        )
-    }
-
-    @Provides
+    @Singleton
     fun provideIrrGetRemoteDeaths(
         source: BreakingBadRemoteDataSource
     ): IrrGetRemoteDeaths {
@@ -35,6 +23,7 @@ class DeathInteractorModule {
     }
 
     @Provides
+    @Singleton
     fun provideIrrGetLocalDeaths(
         source: BreakingBadLocalDataSource
     ): IrrGetLocalDeaths {
@@ -42,6 +31,7 @@ class DeathInteractorModule {
     }
 
     @Provides
+    @Singleton
     fun provideIrrStoreDeaths(
         source: BreakingBadLocalDataSource
     ): IrrStoreDeaths {
