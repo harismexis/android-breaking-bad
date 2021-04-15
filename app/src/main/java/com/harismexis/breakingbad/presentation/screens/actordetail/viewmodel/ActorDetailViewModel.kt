@@ -17,20 +17,20 @@ class ActorDetailViewModel @Inject constructor(
 
     private val tag = ActorDetailViewModel::class.qualifiedName
 
-    private val mModel = MutableLiveData<ActorDetailResult>()
-    val model: LiveData<ActorDetailResult>
-        get() = mModel
+    private val mActorDetailResult = MutableLiveData<ActorDetailResult>()
+    val actorDetailResult: LiveData<ActorDetailResult>
+        get() = mActorDetailResult
 
     fun retrieveActorById(itemId: Int) {
         viewModelScope.launch {
             try {
                 val item = interactors.irrGetLocalItem(itemId)
                 item?.let {
-                    mModel.value = ActorDetailResult.ActorSuccess(item)
+                    mActorDetailResult.value = ActorDetailResult.ActorSuccess(item)
                 }
             } catch (e: Exception) {
                 Log.d(tag, e.getErrorMessage())
-                mModel.value = ActorDetailResult.ActorError(e.getErrorMessage())
+                mActorDetailResult.value = ActorDetailResult.ActorError(e.getErrorMessage())
             }
         }
     }

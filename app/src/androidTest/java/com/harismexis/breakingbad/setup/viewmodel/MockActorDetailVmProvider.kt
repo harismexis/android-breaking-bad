@@ -8,6 +8,6 @@ import io.mockk.mockk
 object MockActorDetailVmProvider {
 
     val mockActorDetailViewModel: ActorDetailViewModel = mockk(relaxed = true)
-    var mModel = MutableLiveData<ActorDetailResult>()
+    var fakeActorDetailResult = MutableLiveData<ActorDetailResult>()
 
 }

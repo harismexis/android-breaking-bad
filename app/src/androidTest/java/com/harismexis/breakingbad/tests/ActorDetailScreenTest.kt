@@ -21,8 +21,6 @@ import com.harismexis.breakingbad.setup.testutil.getExpectedText
 import com.harismexis.breakingbad.setup.viewmodel.MockActorDetailVmProvider
 import com.harismexis.breakingbad.setup.viewmodel.MockHomeVmProvider
 import io.mockk.every
-import io.mockk.just
-import io.mockk.runs
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -46,8 +44,9 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
 
     init {
         every { mockHomeViewModel.actorsResult } returns MockHomeVmProvider.fakeActorsResult
-        every { mockDetailViewModel.retrieveActorById(mockActorId) } just runs
-        // every { mockDetailViewModel.id } returns mockArtists[clickIndexOnSearchList]
+        every { mockDetailViewModel.retrieveActorById(mockActorId) } answers {
+            MockActorDetailVmProvider.fakeActorDetailResult.value = actorDetailSuccess
+        }
     }
 
     @Test
@@ -96,25 +95,18 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
 
     private fun mockActorDetailResultSuccess() {
         actorDetailSuccess = ActorDetailResult.ActorSuccess(mockActor)
-        every { mockDetailViewModel.model } returns MockActorDetailVmProvider.mModel
+        every { mockDetailViewModel.actorDetailResult } returns MockActorDetailVmProvider.fakeActorDetailResult
     }
 
     private fun openHomeAndClickFirstItemToOpenActorDetails() {
-        launchActivityAndFetchSearchResults()
+        launchActivity()
         clickRecyclerAt(clickIndexOnSearchList) // click an actor on search list to open ActorDetail
-        triggerActorDetailResult()
     }
 
-    private fun launchActivityAndFetchSearchResults() {
+    private fun launchActivity() {
         testRule.launchActivity(null)
         testRule.activity.runOnUiThread {
             MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
-        }
-    }
-
-    private fun triggerActorDetailResult() {
-        testRule.activity.runOnUiThread {
-            MockActorDetailVmProvider.mModel.value = actorDetailSuccess
         }
     }
 

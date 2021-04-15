@@ -94,7 +94,7 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
     }
 
     protected fun initialiseLiveData() {
-        subject.model.observeForever(mockObserver)
+        subject.actorDetailResult.observeForever(mockObserver)
     }
 
 }
