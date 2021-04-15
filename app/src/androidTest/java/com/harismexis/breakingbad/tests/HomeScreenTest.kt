@@ -13,6 +13,7 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.domain.Actor
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_NO_DATA
+import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID
@@ -41,6 +42,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
 
     companion object {
         const val WALTER = "walter"
+        const val SALA = "sala"
     }
 
     private val mockViewModel = MockHomeVmProvider.mockHomeViewModel
@@ -118,7 +120,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID)
 
-        // Search by actor name and check results
+        // Search by actor name "walter" and check results
 
         // given
         mockSearchResults(WALTER, actorsParser.getMockActorsSearchByNameLikeWalter())
@@ -126,6 +128,15 @@ class HomeScreenTest : InstrumentedTestSetup() {
         onView(withId(R.id.searchView)).perform(SearchViewActionExtension.submitQuery(WALTER))
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER)
+
+        // Search by actor name "sala" and check results
+
+        // given
+        mockSearchResults(SALA, actorsParser.getMockActorsSearchByNameLikeSala())
+        // when
+        onView(withId(R.id.searchView)).perform(SearchViewActionExtension.submitQuery(SALA))
+        // then
+        verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA)
     }
 
     private fun mockInitialResults(mockData: List<Actor>) {

@@ -19,6 +19,7 @@ class MockActorsParser(private val parser: BaseFileParser) {
         const val EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY = 3
         const val EXPECTED_NUM_ACTORS_WHEN_NO_DATA = 0
         const val EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER = 2
+        const val EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA = 4
 
         private const val FILE_FIVE_VALID_ACTORS =
             "remote-5-valid-actors.json"
@@ -32,6 +33,8 @@ class MockActorsParser(private val parser: BaseFileParser) {
             "remote-empty.json"
         private const val FILE_SEARCH_ACTORS_BY_NAME_LIKE_WALTER =
             "remote-search-actors-by-name-like-walter.json"
+        private const val FILE_SEARCH_ACTORS_BY_NAME_LIKE_SALA =
+            "remote-search-actors-by-name-like-sala.json"
     }
 
     // local models
@@ -48,6 +51,9 @@ class MockActorsParser(private val parser: BaseFileParser) {
 
     fun getMockLocalActorsSearchByNameLikeWalter(): List<LocalActor> =
         getMockActorsSearchByNameLikeWalter().toLocalItems()
+
+    fun getMockLocalActorsSearchByNameLikeSala(): List<LocalActor> =
+        getMockActorsSearchByNameLikeSala().toLocalItems()
 
     // core models
     fun getMockActorsWhenJsonHasAllItemsValid(): List<Actor> =
@@ -68,6 +74,9 @@ class MockActorsParser(private val parser: BaseFileParser) {
     fun getMockActorsSearchByNameLikeWalter(): List<Actor> =
         getMockRemoteActorsSearchByNameLikeWalter().toItems()
 
+    fun getMockActorsSearchByNameLikeSala(): List<Actor> =
+        getMockRemoteActorsSearchByNameLikeSala().toItems()
+
     // remote models
     fun getMockRemoteActorsWhenJsonHasAllIdsValid(): List<RemoteActor> =
         getMockRemoteActors(getMockDataAllIdsValid())
@@ -87,6 +96,9 @@ class MockActorsParser(private val parser: BaseFileParser) {
     fun getMockRemoteActorsSearchByNameLikeWalter(): List<RemoteActor> =
         getMockRemoteActors(getMockDataSearchByNameLikeWalter())
 
+    fun getMockRemoteActorsSearchByNameLikeSala(): List<RemoteActor> =
+        getMockRemoteActors(getMockDataSearchByNameLikeSala())
+
     // raw json string
     private fun getMockDataAllIdsValid(): String =
         parser.getFileAsString(FILE_FIVE_VALID_ACTORS)
@@ -105,6 +117,9 @@ class MockActorsParser(private val parser: BaseFileParser) {
 
     private fun getMockDataSearchByNameLikeWalter(): String =
         parser.getFileAsString(FILE_SEARCH_ACTORS_BY_NAME_LIKE_WALTER)
+
+    private fun getMockDataSearchByNameLikeSala(): String =
+        parser.getFileAsString(FILE_SEARCH_ACTORS_BY_NAME_LIKE_SALA)
 
     // utils
     private fun getMockRemoteActors(

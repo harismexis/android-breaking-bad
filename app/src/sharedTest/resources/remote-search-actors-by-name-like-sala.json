@@ -1,0 +1,86 @@
+[{
+  "char_id": 10,
+  "name": "Hector Salamanca",
+  "birthday": "Unknown",
+  "occupation": [
+    "Former Senior Cartel Leader"
+  ],
+  "img": "https://vignette.wikia.nocookie.net/breakingbad/images/b/b4/Hector_BCS.jpg/revision/latest?cb=20170810091606",
+  "status": "Deceased",
+  "nickname": "Don Hector",
+  "appearance": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "portrayed": "Mark Margolis",
+  "category": "Breaking Bad, Better Call Saul",
+  "better_call_saul_appearance": [
+    2,
+    3,
+    4,
+    5
+  ]
+},
+  {
+    "char_id": 12,
+    "name": "Tuco Salamanca",
+    "birthday": "Unknown",
+    "occupation": [
+      "Meth Distributor"
+    ],
+    "img": "https://vignette.wikia.nocookie.net/breakingbad/images/a/a7/Tuco_BCS.jpg/revision/latest?cb=20170810082445",
+    "status": "Deceased",
+    "nickname": "Tuco",
+    "appearance": [
+      1,
+      2
+    ],
+    "portrayed": "Raymond Cruz",
+    "category": "Breaking Bad, Better Call Saul",
+    "better_call_saul_appearance": [
+      1,
+      2
+    ]
+  },
+  {
+    "char_id": 13,
+    "name": "Marco & Leonel Salamanca",
+    "birthday": "Unknown",
+    "occupation": [
+      "Cartel Hitman"
+    ],
+    "img": "https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_the-cousins-lg.jpg",
+    "status": "Deceased",
+    "nickname": "The Cousins",
+    "appearance": [
+      3
+    ],
+    "portrayed": "Luis & Daniel Moncada",
+    "category": "Breaking Bad",
+    "better_call_saul_appearance": [
+
+    ]
+  },
+  {
+    "char_id": 116,
+    "name": "Eduardo Salamanca",
+    "birthday": "Unknown",
+    "occupation": [
+      "Cartel Member"
+    ],
+    "img": "https://vignette.wikia.nocookie.net/breakingbad/images/8/85/LaloProfileBCS.png/revision/latest?cb=20180925050152",
+    "status": "Alive",
+    "nickname": "Lalo",
+    "appearance": [
+
+    ],
+    "portrayed": "Tony Dalton",
+    "category": "Better Call Saul",
+    "better_call_saul_appearance": [
+      4,
+      5
+    ]
+  }
+]
