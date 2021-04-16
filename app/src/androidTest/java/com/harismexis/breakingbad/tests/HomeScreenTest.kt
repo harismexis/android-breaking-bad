@@ -62,7 +62,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
     }
 
     @Test
-    fun remoteFeedHasSomeInvalidIds_listHasExpectedItems() {
+    fun actorsFeedHasSomeInvalidIds_listHasExpectedItems() {
         // given
         mockInitialResults(actorsParser.getMockActorsWhenJsonHasSomeInvalidIds())
 
@@ -74,7 +74,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
     }
 
     @Test
-    fun remoteFeedHasSomeEmptyActorJsonItems_listHasExpectedItems() {
+    fun actorsFeedHasSomeEmptyActorJsonItems_listHasExpectedItems() {
         // given
         mockInitialResults(actorsParser.getMockActorsWhenJsonHasSomeEmptyItems())
 
@@ -86,7 +86,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
     }
 
     @Test
-    fun remoteFeedHasAllIdsInvalid_listHasNoItems() {
+    fun actorsFeedHasAllIdsInvalid_listHasNoItems() {
         // given
         mockInitialResults(actorsParser.getMockActorsWhenJsonHasAllIdsInvalid())
 
@@ -98,7 +98,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
     }
 
     @Test
-    fun remoteFeedIsEmptyJson_listHasNoItems() {
+    fun actorsFeedIsEmptyJson_listHasNoItems() {
         // given
         mockInitialResults(actorsParser.getMockActorsWhenJsonIsEmpty())
 
