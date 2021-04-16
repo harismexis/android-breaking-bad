@@ -29,11 +29,11 @@ class DeathsViewModel @Inject constructor(
     val showErrorMessage : LiveData<Event<String>>
         get() = mShowErrorMessage
 
-    fun bind() {
+    fun fetchDeaths() {
         if (connectivity.isOnline()) {
-            fetchRemoteItems()
+            fetchRemoteDeaths()
         } else {
-            fetchLocalItems()
+            fetchLocalDeaths()
         }
     }
 
@@ -41,11 +41,11 @@ class DeathsViewModel @Inject constructor(
         val canRefresh = connectivity.isOnline()
         callback.call(canRefresh)
         if (canRefresh) {
-            fetchRemoteItems()
+            fetchRemoteDeaths()
         }
     }
 
-    private fun fetchRemoteItems() {
+    private fun fetchRemoteDeaths() {
         viewModelScope.launch {
             try {
                 val items = interactors.irrGetRemoteDeaths()
@@ -59,7 +59,7 @@ class DeathsViewModel @Inject constructor(
         }
     }
 
-    private fun fetchLocalItems() {
+    private fun fetchLocalDeaths() {
         viewModelScope.launch {
             try {
                 val items = interactors.irrGetLocalDeaths()

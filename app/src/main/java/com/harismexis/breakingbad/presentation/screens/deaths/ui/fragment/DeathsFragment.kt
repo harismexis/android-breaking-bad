@@ -72,7 +72,7 @@ class DeathsFragment : BaseFragment() {
 
     override fun onViewCreated() {
         observeLiveData()
-        viewModel.bind()
+        viewModel.fetchDeaths()
     }
 
     private fun observeLiveData() {
