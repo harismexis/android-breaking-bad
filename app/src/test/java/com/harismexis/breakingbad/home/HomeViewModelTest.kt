@@ -16,56 +16,56 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
 
     @Before
     fun doBeforeEachTestCase() {
-        initialiseLiveData()
+        initActorsLiveData()
     }
 
     @Test
-    fun internetOn_when_viewModelBinds_then_remoteCallDone_dataStored_liveDataUpdated() {
+    fun internetOn_when_viewModelBinds_then_remoteActorsCallDone_actorsStored_liveDataUpdated() {
         // given
-        mockInternetOn()
-        mockRemoteCallReturnsAllItemsValid()
+        mockInternetActive(true)
+        mockRemoteActorsCallReturnsAllItemsValid()
 
         // when
         subject.fetchInitialActors()
 
         // then
-        verify_remoteFeedCallDone_dataStored_liveDataUpdated()
+        verify_remoteActorsCallDone_actorsStored_liveDataUpdated()
     }
 
     @Test
-    fun internetOff_when_viewModelBinds_then_localItemsFetched_liveDataUpdated() {
+    fun internetOff_when_viewModelBinds_then_localActorsFetched_liveDataUpdated() {
         // given
-        mockInternetOff()
-        mockLocalCallReturnsAllItemsValid()
+        mockInternetActive(false)
+        mockLocalActorsCallReturnsAllItemsValid()
 
         // when
         subject.fetchInitialActors()
 
         // then
         verifyInternetChecked()
-        verifyRemoteCallNotDone()
-        verifyLocalCallDone()
-        verifyDataNotStored()
-        verifyLiveDataChangedWithSuccess()
+        verifyRemoteActorsCallNotDone()
+        verifyLocalActorsCallDone()
+        verifyActorsNotStored()
+        verifyActorsLiveDataChangedWithSuccess()
     }
 
     @Test
-    fun internetOn_when_viewModelRefreshes_then_dataRefreshed() {
+    fun internetOn_when_viewModelRefreshes_then_remoteActorsRefreshed() {
         // given
-        mockInternetOn()
-        mockRemoteCallReturnsAllItemsValid()
+        mockInternetActive(true)
+        mockRemoteActorsCallReturnsAllItemsValid()
 
         // when
         subject.refresh {}
 
         // then
-        verify_remoteFeedCallDone_dataStored_liveDataUpdated()
+        verify_remoteActorsCallDone_actorsStored_liveDataUpdated()
     }
 
     @Test
     fun internetOff_when_viewModelRefreshes_then_nothingHappens() {
         // given
-        mockInternetOff()
+        mockInternetActive(false)
 
         // when
         subject.refresh {}
@@ -74,47 +74,47 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         verifyInternetChecked()
         verifyZeroInteractions(mockIrrGetRemoteActors)
         verifyZeroInteractions(mockIrrGetLocalActors)
-        verifyLiveDataNotChanged()
+        verifyActorsLiveDataNotChanged()
     }
 
     @Test
     fun remoteCallThrowsError_when_viewModelBinds_nothingHappens() {
         // given
-        mockInternetOn()
-        mockRemoteCallThrowsError(null)
+        mockInternetActive(true)
+        mockRemoteActorsCallThrowsError()
 
         // when
         subject.fetchInitialActors()
 
         // then
         verifyInternetChecked()
-        verifyRemoteCallDone(null)
-        verifyLocalCallNotDone()
-        verifyLiveDataChangedWithError()
+        verifyRemoteActorsCallDone()
+        verifyLocalActorsCallNotDone()
+        verifyActorsLiveDataChangedWithError()
     }
 
     @Test
     fun localCallThrowsError_when_viewModelBinds_nothingHappens() {
         // given
-        mockInternetOff()
-        mockLocalCallThrowsError()
+        mockInternetActive(false)
+        mockLocalActorsCallThrowsError()
 
         // when
         subject.fetchInitialActors()
 
         // then
         verifyInternetChecked()
-        verifyRemoteCallNotDone()
-        verifyLocalCallDone()
-        verifyLiveDataChangedWithError()
+        verifyRemoteActorsCallNotDone()
+        verifyLocalActorsCallDone()
+        verifyActorsLiveDataChangedWithError()
     }
 
-    private fun verify_remoteFeedCallDone_dataStored_liveDataUpdated() {
+    private fun verify_remoteActorsCallDone_actorsStored_liveDataUpdated() {
         verifyInternetChecked()
-        verifyRemoteCallDone(null)
-        verifyLocalCallNotDone()
-        verifyLiveDataChangedWithSuccess()
-        verifyDataStored()
+        verifyRemoteActorsCallDone()
+        verifyLocalActorsCallNotDone()
+        verifyActorsLiveDataChangedWithSuccess()
+        verifyActorsStored()
     }
 
 }

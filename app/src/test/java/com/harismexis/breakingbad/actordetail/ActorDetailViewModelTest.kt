@@ -15,32 +15,32 @@ class ActorDetailViewModelTest : ActorDetailViewModelTestSetup() {
 
     @Before
     fun doBeforeEachTestCase() {
-        initialiseLiveData()
+        initActorDetailLiveData()
     }
 
     @Test
-    fun retrievingLocalItem_localItemRetrievedAndLiveDataUpdated() {
+    fun retrievingLocalActor_localActorRetrievedAndLiveDataUpdated() {
         // given
-        mockLocalCall()
+        mockLocalActorCall()
 
         // when
-        subject.retrieveActorById(mockId)
+        subject.retrieveActorById(mockActorId)
 
         // then
-        verifyLocalCallDone()
+        verifyLocalActorCallDone()
         verifyLiveDataChangedWithSuccess()
     }
 
     @Test
-    fun retrievingLocalItemThrowsError_nothingHappens() {
+    fun retrievingLocalActorThrowsError_nothingHappens() {
         // given
-        mockLocalCallThrowsError()
+        mockLocalActorCallThrowsError()
 
         // when
-        subject.retrieveActorById(mockId)
+        subject.retrieveActorById(mockActorId)
 
         // then
-        verifyLocalCallDone()
+        verifyLocalActorCallDone()
         verifyLiveDataChangedWithError()
     }
 

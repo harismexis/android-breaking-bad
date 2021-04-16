@@ -20,28 +20,24 @@ import org.mockito.Mockito
 abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     @Mock
-    protected lateinit var mockIrrGetLocalActors: IrrGetLocalActors
-
-    @Mock
     protected lateinit var mockIrrGetRemoteActors: IrrGetRemoteActors
-
     @Mock
-    protected lateinit var mockIrrStoreItems: IrrStoreActors
-
+    protected lateinit var mockIrrGetLocalActors: IrrGetLocalActors
     @Mock
-    protected lateinit var mockInteractors: HomeInteractors
-
+    protected lateinit var mockIrrStoreActors: IrrStoreActors
+    @Mock
+    protected lateinit var mockHomeInteractors: HomeInteractors
     @Mock
     protected lateinit var mockConnectivity: ConnectivityMonitorSimple
-
     @Mock
     lateinit var mockObserver: Observer<ActorsResult>
 
-    private val mockItems = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
-    protected lateinit var subject: HomeViewModel
-    private val mockActorsResultSuccess = ActorsResult.ActorsSuccess(mockItems)
+    private val mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
+    private val mockActorsResultSuccess = ActorsResult.ActorsSuccess(mockActors)
     private val error = IllegalStateException(ERROR_MESSAGE)
     private val mockActorsResultError = ActorsResult.ActorsError(error)
+
+    protected lateinit var subject: HomeViewModel
 
     companion object {
         const val ERROR_MESSAGE = "error"
@@ -53,26 +49,18 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     }
 
     override fun initialiseClassUnderTest() {
-        subject = HomeViewModel(mockInteractors, mockConnectivity)
+        subject = HomeViewModel(mockHomeInteractors, mockConnectivity)
     }
 
     private fun initialiseMockInteractors() {
-        Mockito.`when`(mockInteractors.irrGetRemoteActors).thenReturn(mockIrrGetRemoteActors)
-        Mockito.`when`(mockInteractors.irrGetLocalActors).thenReturn(mockIrrGetLocalActors)
-        Mockito.`when`(mockInteractors.irrStoreActors).thenReturn(mockIrrStoreItems)
+        Mockito.`when`(mockHomeInteractors.irrGetRemoteActors).thenReturn(mockIrrGetRemoteActors)
+        Mockito.`when`(mockHomeInteractors.irrGetLocalActors).thenReturn(mockIrrGetLocalActors)
+        Mockito.`when`(mockHomeInteractors.irrStoreActors).thenReturn(mockIrrStoreActors)
     }
 
     // Internet
 
-    protected fun mockInternetOn() {
-        mockInternetActive(true)
-    }
-
-    protected fun mockInternetOff() {
-        mockInternetActive(false)
-    }
-
-    private fun mockInternetActive(active: Boolean) {
+    protected fun mockInternetActive(active: Boolean) {
         Mockito.`when`(mockConnectivity.isOnline()).thenReturn(active)
     }
 
@@ -82,33 +70,33 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     // Remote Call
 
-    protected fun mockRemoteCallReturnsAllItemsValid() {
-        mockRemoteCall(mockItems, null)
+    protected fun mockRemoteActorsCallReturnsAllItemsValid() {
+        mockRemoteActorsCall(mockActors)
     }
 
-    private fun mockRemoteCall(
+    private fun mockRemoteActorsCall(
         items: List<Actor>,
-        actorName: String?
+        actorName: String? = null
     ) {
         runBlocking {
             Mockito.`when`(mockIrrGetRemoteActors(actorName)).thenReturn(items)
         }
     }
 
-    protected fun mockRemoteCallThrowsError(actorName: String?) {
+    protected fun mockRemoteActorsCallThrowsError(actorName: String? = null) {
         runBlocking {
             Mockito.`when`(mockIrrGetRemoteActors(actorName))
                 .thenThrow(error)
         }
     }
 
-    protected fun verifyRemoteCallDone(name: String?) {
+    protected fun verifyRemoteActorsCallDone(name: String? = null) {
         runBlocking {
             verify(mockIrrGetRemoteActors, Mockito.times(1))(name)
         }
     }
 
-    protected fun verifyRemoteCallNotDone() {
+    protected fun verifyRemoteActorsCallNotDone() {
         runBlocking {
             verify(mockIrrGetRemoteActors, Mockito.never())(any())
         }
@@ -116,30 +104,30 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     // Local Call
 
-    protected fun mockLocalCallReturnsAllItemsValid() {
-        mockLocalCall(mockItems)
+    protected fun mockLocalActorsCallReturnsAllItemsValid() {
+        mockLocalActorsCall(mockActors)
     }
 
-    private fun mockLocalCall(items: List<Actor>) {
+    private fun mockLocalActorsCall(items: List<Actor>) {
         runBlocking {
             Mockito.`when`(mockIrrGetLocalActors()).thenReturn(items)
         }
     }
 
-    protected fun mockLocalCallThrowsError() {
+    protected fun mockLocalActorsCallThrowsError() {
         runBlocking {
             Mockito.`when`(mockIrrGetLocalActors())
                 .thenThrow(error)
         }
     }
 
-    protected fun verifyLocalCallDone() {
+    protected fun verifyLocalActorsCallDone() {
         runBlocking {
             verify(mockIrrGetLocalActors, Mockito.times(1))()
         }
     }
 
-    protected fun verifyLocalCallNotDone() {
+    protected fun verifyLocalActorsCallNotDone() {
         runBlocking {
             verify(mockIrrGetLocalActors, Mockito.never())()
         }
@@ -147,41 +135,41 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     // LiveData
 
-    protected fun initialiseLiveData() {
+    protected fun initActorsLiveData() {
         subject.actorsResult.observeForever(mockObserver)
     }
 
-    protected fun verifyLiveDataChangedWithSuccess() {
-        verifyLiveDataChanged(mockActorsResultSuccess)
+    protected fun verifyActorsLiveDataChangedWithSuccess() {
+        verifyActorsLiveDataChanged(mockActorsResultSuccess)
     }
 
-    protected fun verifyLiveDataChangedWithError() {
-        verifyLiveDataChanged(mockActorsResultError)
+    protected fun verifyActorsLiveDataChangedWithError() {
+        verifyActorsLiveDataChanged(mockActorsResultError)
     }
 
-    private fun verifyLiveDataChanged(result: ActorsResult) {
+    private fun verifyActorsLiveDataChanged(result: ActorsResult) {
         verify(mockObserver).onChanged(result)
     }
 
-    protected fun verifyLiveDataNotChanged() {
+    protected fun verifyActorsLiveDataNotChanged() {
         verifyZeroInteractions(mockObserver)
     }
 
     // Store Data
 
-    protected fun verifyDataStored() {
-        verifyDataStored(mockItems)
+    protected fun verifyActorsStored() {
+        verifyActorsStored(mockActors)
     }
 
-    private fun verifyDataStored(items: List<Actor>) {
+    private fun verifyActorsStored(items: List<Actor>) {
         runBlocking {
-            verify(mockIrrStoreItems, Mockito.times(1))(items)
+            verify(mockIrrStoreActors, Mockito.times(1))(items)
         }
     }
 
-    protected fun verifyDataNotStored() {
+    protected fun verifyActorsNotStored() {
         runBlocking {
-            verify(mockIrrStoreItems, Mockito.never())(any())
+            verify(mockIrrStoreActors, Mockito.never())(any())
         }
     }
 

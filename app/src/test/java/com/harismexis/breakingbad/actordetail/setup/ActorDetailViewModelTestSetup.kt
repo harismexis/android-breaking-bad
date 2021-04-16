@@ -16,18 +16,17 @@ import org.mockito.Mockito
 abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
 
     @Mock
-    protected lateinit var mockIrrGetLocalItem: IrrGetLocalActor
-
+    protected lateinit var mockIrrGetLocalActor: IrrGetLocalActor
     @Mock
-    protected lateinit var mockInteractors: ActorDetailInteractors
-
+    protected lateinit var mockActorDetailInteractors: ActorDetailInteractors
     @Mock
     lateinit var mockObserver: Observer<ActorDetailResult>
 
-    private lateinit var mockItem: Actor
-    protected var mockId: Int = 0
+    private lateinit var mockActor: Actor
+    protected var mockActorId: Int = 0
     private lateinit var mockActorDetailSuccess: ActorDetailResult
     private lateinit var mockActorDetailError: ActorDetailResult
+
     protected lateinit var subject: ActorDetailViewModel
 
     companion object {
@@ -40,42 +39,42 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
     }
 
     override fun initialiseClassUnderTest() {
-        mockItem = actorsParser.getMockLocalActor()
-        mockId = mockItem.char_id
-        subject = ActorDetailViewModel(mockInteractors)
-        mockActorDetailSuccess = ActorDetailResult.ActorSuccess(mockItem)
+        mockActor = actorsParser.getMockLocalActor()
+        mockActorId = mockActor.char_id
+        subject = ActorDetailViewModel(mockActorDetailInteractors)
+        mockActorDetailSuccess = ActorDetailResult.ActorSuccess(mockActor)
         mockActorDetailError = ActorDetailResult.ActorError(ERROR_MESSAGE)
     }
 
     private fun initialiseMockInteractors() {
-        Mockito.`when`(mockInteractors.irrGetLocalItem).thenReturn(mockIrrGetLocalItem)
+        Mockito.`when`(mockActorDetailInteractors.irrGetLocalItem).thenReturn(mockIrrGetLocalActor)
     }
 
     // Local Call
 
-    protected fun mockLocalCall() {
-        mockLocalCall(mockId, mockItem)
+    protected fun mockLocalActorCall() {
+        mockLocalActorCall(mockActorId, mockActor)
     }
 
-    private fun mockLocalCall(
-        itemId: Int,
-        item: Actor
+    private fun mockLocalActorCall(
+        actorId: Int,
+        actor: Actor
     ) {
         runBlocking {
-            Mockito.`when`(mockIrrGetLocalItem(itemId)).thenReturn(item)
+            Mockito.`when`(mockIrrGetLocalActor(actorId)).thenReturn(actor)
         }
     }
 
-    protected fun mockLocalCallThrowsError() {
+    protected fun mockLocalActorCallThrowsError() {
         runBlocking {
-            Mockito.`when`(mockIrrGetLocalItem(any()))
+            Mockito.`when`(mockIrrGetLocalActor(any()))
                 .thenThrow(IllegalStateException(ERROR_MESSAGE))
         }
     }
 
-    protected fun verifyLocalCallDone() {
+    protected fun verifyLocalActorCallDone() {
         runBlocking {
-            verify(mockIrrGetLocalItem, Mockito.times(1))(mockId)
+            verify(mockIrrGetLocalActor, Mockito.times(1))(mockActorId)
         }
     }
 
@@ -93,7 +92,7 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
         verify(mockObserver).onChanged(result)
     }
 
-    protected fun initialiseLiveData() {
+    protected fun initActorDetailLiveData() {
         subject.actorDetailResult.observeForever(mockObserver)
     }
 
