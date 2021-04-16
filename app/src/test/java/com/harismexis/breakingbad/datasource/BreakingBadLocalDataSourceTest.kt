@@ -2,7 +2,6 @@ package com.harismexis.breakingbad.datasource
 
 import com.harismexis.breakingbad.framework.datasource.database.data.BreakingBadLocalDao
 import com.harismexis.breakingbad.framework.datasource.database.data.BreakingBadLocalDataSource
-import com.harismexis.breakingbad.framework.extensions.actor.toLocalItem
 import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
 import com.harismexis.breakingbad.setup.UnitTestSetup
 import com.nhaarman.mockitokotlin2.times
@@ -30,42 +29,42 @@ class BreakingBadLocalDataSourceTest : UnitTestSetup() {
     }
 
     @Test
-    fun dataSourceInsertsItems_then_daoInsertsExpectedLocalItems() {
+    fun dataSourceInsertsActors_then_daoCallsExpectedMethod() {
         runBlocking {
             // given
-            val mockItems = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
-            val mockLocalItems = mockItems.toLocalItems()
+            val mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
+            val mockLocalActors = mockActors.toLocalItems()
 
             // when
-            subject.updateActors(mockItems)
+            subject.updateActors(mockActors)
 
             // then
-            verify(mockDao, times(1)).insertActors(mockLocalItems)
+            verify(mockDao, times(1)).insertActors(mockLocalActors)
         }
     }
 
     @Test
-    fun dataSourceRequestsItem_then_daoRetrievesExpectedLocalItem() {
+    fun dataSourceRequestsActor_then_daoCallsExpectedMethod() {
         runBlocking {
             // given
-            val mockLocalItem = actorsParser.getMockLocalActor().toLocalItem()
-            val mockItemId = mockLocalItem.char_id
-            Mockito.`when`(mockDao.getActorById(mockItemId)).thenReturn(mockLocalItem)
+            val mockLocalActor = actorsParser.getMockLocalActor()
+            val mockLocalActorId = mockLocalActor.char_id
+            Mockito.`when`(mockDao.getActorById(mockLocalActorId)).thenReturn(mockLocalActor)
 
             // when
-            val item = subject.getActor(mockItemId)
+            val actor = subject.getActor(mockLocalActorId)
 
             // then
-            verify(mockDao, times(1)).getActorById(mockItemId)
+            verify(mockDao, times(1)).getActorById(mockLocalActorId)
         }
     }
 
     @Test
-    fun dataSourceRequestsItems_then_daoRetrievesExpectedLocalItems() {
+    fun dataSourceRequestsActors_then_daoCallsExpectedMethod() {
         runBlocking {
             // given
-            val mockLocalItems = actorsParser.getMockLocalActorsWhenJsonHasAllItemsValid()
-            Mockito.`when`(mockDao.getAllActors()).thenReturn(mockLocalItems)
+            val mockLocalActors = actorsParser.getMockLocalActorsWhenJsonHasAllItemsValid()
+            Mockito.`when`(mockDao.getAllActors()).thenReturn(mockLocalActors)
 
             // when
             val items = subject.getActors()

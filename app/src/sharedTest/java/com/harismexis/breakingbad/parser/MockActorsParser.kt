@@ -38,7 +38,7 @@ class MockActorsParser(private val parser: BaseFileParser) {
     }
 
     // local models
-    fun getMockLocalActor(): Actor = getMockRemoteActorsWhenJsonHasAllIdsValid().toItems()[0]
+    fun getMockLocalActor(): LocalActor = getMockLocalActorsWhenJsonHasAllItemsValid()[0]
 
     fun getMockLocalActorsWhenJsonHasAllItemsValid(): List<LocalActor> =
         getMockActorsWhenJsonHasAllItemsValid().toLocalItems()
@@ -56,6 +56,8 @@ class MockActorsParser(private val parser: BaseFileParser) {
         getMockActorsSearchByNameLikeSala().toLocalItems()
 
     // core models
+    fun getMockActor(): Actor = getMockActorsWhenJsonHasAllItemsValid()[0]
+
     fun getMockActorsWhenJsonHasAllItemsValid(): List<Actor> =
         getMockRemoteActorsWhenJsonHasAllIdsValid().toItems()
 

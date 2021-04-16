@@ -20,8 +20,8 @@ class IrrGetLocalActorTest : UnitTestSetup() {
     @Mock
     private lateinit var mockRepository: BreakingBadLocalRepository
 
-    private lateinit var mockItem: Actor
-    private var mockItemId: Int = 0
+    private lateinit var mockActor: Actor
+    private var mockActorId: Int = 0
     private lateinit var subject: IrrGetLocalActor
 
     init {
@@ -34,10 +34,10 @@ class IrrGetLocalActorTest : UnitTestSetup() {
     }
 
     private fun setupMocks() {
-        mockItem = actorsParser.getMockLocalActor()
-        mockItemId = mockItem.char_id
+        mockActor = actorsParser.getMockActor()
+        mockActorId = mockActor.char_id
         runBlocking {
-            Mockito.`when`(mockRepository.getActor(mockItemId)).thenReturn(mockItem)
+            Mockito.`when`(mockRepository.getActor(mockActorId)).thenReturn(mockActor)
         }
     }
 
@@ -45,11 +45,11 @@ class IrrGetLocalActorTest : UnitTestSetup() {
     fun interactorInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
         runBlocking {
             // when
-            val item = subject(mockItemId)
+            val item = subject(mockActorId)
 
             // then
-            verify(mockRepository, times(1)).getActor(mockItemId)
-            Assert.assertEquals(mockItem.char_id, item!!.char_id)
+            verify(mockRepository, times(1)).getActor(mockActorId)
+            Assert.assertEquals(mockActor.char_id, item!!.char_id)
         }
 
 }

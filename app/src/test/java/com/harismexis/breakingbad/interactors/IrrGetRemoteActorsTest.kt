@@ -21,7 +21,7 @@ class IrrGetRemoteActorsTest : UnitTestSetup() {
     @Mock
     private lateinit var mockRepository: BreakingBadRemoteRepository
 
-    private lateinit var mockItems: List<Actor>
+    private lateinit var mockActors: List<Actor>
     private lateinit var subject: IrrGetRemoteActors
 
     init {
@@ -35,9 +35,9 @@ class IrrGetRemoteActorsTest : UnitTestSetup() {
     }
 
     private fun setupMocks() {
-        mockItems = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
+        mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
         runBlocking {
-            Mockito.`when`(mockRepository.getActors()).thenReturn(mockItems)
+            Mockito.`when`(mockRepository.getActors()).thenReturn(mockActors)
         }
     }
 
@@ -49,7 +49,7 @@ class IrrGetRemoteActorsTest : UnitTestSetup() {
 
             // then
             verify(mockRepository, times(1)).getActors()
-            Assert.assertEquals(mockItems.size, items.size)
+            Assert.assertEquals(mockActors.size, items.size)
         }
 
 }
