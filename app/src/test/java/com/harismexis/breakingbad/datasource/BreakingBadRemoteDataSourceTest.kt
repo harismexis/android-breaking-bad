@@ -34,15 +34,15 @@ class BreakingBadRemoteDataSourceTest : UnitTestSetup() {
         // when
         runBlocking {
             // given
-            val mockFeed = actorsParser.getMockRemoteActorsWhenJsonHasAllIdsValid()
-            Mockito.`when`(mockDao.getActors()).thenReturn(mockFeed)
+            val mockRemoteActors = actorsParser.getMockRemoteActorsWhenJsonHasAllIdsValid()
+            Mockito.`when`(mockDao.getActors()).thenReturn(mockRemoteActors)
 
             // when
             val items = subject.getActors()
 
             // then
             verify(mockDao, times(1)).getActors()
-            verificator.verifyBBCharactersAgainstRemoteItems(items, mockFeed)
+            verificator.verifyActorsAgainstRemoteActors(items, mockRemoteActors)
         }
     }
 

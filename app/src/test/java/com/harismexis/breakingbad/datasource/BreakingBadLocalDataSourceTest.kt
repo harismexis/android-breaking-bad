@@ -48,7 +48,7 @@ class BreakingBadLocalDataSourceTest : UnitTestSetup() {
         runBlocking {
             // given
             val mockLocalActor = actorsParser.getMockLocalActor()
-            val mockLocalActorId = mockLocalActor.char_id
+            val mockLocalActorId = mockLocalActor.actorId
             Mockito.`when`(mockDao.getActorById(mockLocalActorId)).thenReturn(mockLocalActor)
 
             // when

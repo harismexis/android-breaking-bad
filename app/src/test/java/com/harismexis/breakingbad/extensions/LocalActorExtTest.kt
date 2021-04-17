@@ -27,7 +27,7 @@ class LocalActorExtTest : UnitTestSetup() {
         verifyListsHaveSameSize(items, localItems)
         verifyListSizeWhenAllIdsValid(items)
         verifyListSizeWhenAllIdsValid(localItems)
-        verificator.verifyLocalItemsAgainstBBCharacters(localItems, items)
+        verificator.verifyLocalActorsAgainstActors(localItems, items)
     }
 
     @Test
@@ -42,7 +42,7 @@ class LocalActorExtTest : UnitTestSetup() {
         verifyListsHaveSameSize(items, localItems)
         verifyListSizeWhenAllIdsValid(localItems)
         verifyListSizeWhenAllIdsValid(items)
-        verificator.verifyBBCharactersAgainstLocalItems(items, localItems)
+        verificator.verifyActorsAgainstLocalActors(items, localItems)
     }
 
     override fun initialiseClassUnderTest() {

@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.domain
 
 data class Actor(
-    val char_id: Int,
+    val actorId: Int,
     val name: String?,
     val birthday: String?,
     var occupation: List<String>?,

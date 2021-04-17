@@ -15,7 +15,7 @@ fun List<LocalActor?>?.toItems(): List<Actor> {
 
 fun LocalActor.toItem(): Actor {
     return Actor(
-        this.char_id,
+        this.actorId,
         this.name,
         this.birthday,
         this.occupation,
@@ -39,7 +39,7 @@ fun List<Actor?>?.toLocalItems(): List<LocalActor> {
 
 fun Actor.toLocalItem(): LocalActor {
     return LocalActor(
-        this.char_id,
+        this.actorId,
         this.name,
         this.birthday,
         this.occupation,

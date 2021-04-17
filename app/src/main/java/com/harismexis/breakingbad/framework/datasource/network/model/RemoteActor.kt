@@ -1,7 +1,10 @@
 package com.harismexis.breakingbad.framework.datasource.network.model
 
+import com.google.gson.annotations.SerializedName
+
 data class RemoteActor(
-    val char_id: Int?,
+    @SerializedName("char_id")
+    val actorId: Int?,
     val name: String?,
     val birthday: String?,
     var occupation: List<String>?,

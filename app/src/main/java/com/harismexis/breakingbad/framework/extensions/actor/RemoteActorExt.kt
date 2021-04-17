@@ -6,9 +6,9 @@ import com.harismexis.breakingbad.framework.datasource.network.model.RemoteActor
 fun List<RemoteActor?>?.toItems(): List<Actor> {
     val items = mutableListOf<Actor>()
     if (this == null) return items.toList()
-    val filteredList = this.filter { it?.char_id != null }
+    val filteredList = this.filter { it?.actorId != null }
     items.addAll(filteredList.map {
-        it !!.toItem(it.char_id !!)
+        it !!.toItem(it.actorId !!)
     })
     return items.toList()
 }

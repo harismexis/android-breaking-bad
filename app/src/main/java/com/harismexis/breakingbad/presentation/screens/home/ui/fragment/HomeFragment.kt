@@ -122,7 +122,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         position: Int
     ) {
         binding?.searchView?.clearFocus()
-        val action = HomeFragmentDirections.actionHomeDestToActorDetailDest(item.char_id)
+        val action = HomeFragmentDirections.actionHomeDestToActorDetailDest(item.actorId)
         findNavController().navigate(action)
     }
 

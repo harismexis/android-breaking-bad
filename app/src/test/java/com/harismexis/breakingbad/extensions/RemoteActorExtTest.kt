@@ -24,7 +24,7 @@ class RemoteActorExtTest : UnitTestSetup() {
         verifyListsHaveSameSize(remoteItems, items)
         verifyListSizeWhenAllIdsValid(remoteItems)
         verifyListSizeWhenAllIdsValid(items)
-        verificator.verifyBBCharactersAgainstRemoteItems(items, remoteItems)
+        verificator.verifyActorsAgainstRemoteActors(items, remoteItems)
     }
 
     @Test
@@ -37,7 +37,7 @@ class RemoteActorExtTest : UnitTestSetup() {
 
         // then
         verifyListSizeWhenSomeIdsAbsent(items)
-        verificator.verifyBBCharactersAgainstRemoteItems(items, remoteItems)
+        verificator.verifyActorsAgainstRemoteActors(items, remoteItems)
     }
 
     @Test
@@ -50,7 +50,7 @@ class RemoteActorExtTest : UnitTestSetup() {
 
         // then
         verifyListSizeWhenSomeItemsEmpty(items)
-        verificator.verifyBBCharactersAgainstRemoteItems(items, remoteItems)
+        verificator.verifyActorsAgainstRemoteActors(items, remoteItems)
     }
 
     @Test

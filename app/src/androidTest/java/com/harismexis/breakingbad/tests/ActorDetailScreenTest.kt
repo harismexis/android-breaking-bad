@@ -37,7 +37,7 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
 
     private val mockDetailViewModel = MockActorDetailVmProvider.mockActorDetailViewModel
     private var mockActor = mockActors[0]
-    private var mockActorId = mockActor.char_id
+    private var mockActorId = mockActor.actorId
     private lateinit var actorDetailSuccess: ActorDetailResult.ActorSuccess
 
     init {

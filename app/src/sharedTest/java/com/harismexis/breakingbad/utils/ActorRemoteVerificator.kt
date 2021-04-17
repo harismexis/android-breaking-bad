@@ -6,16 +6,16 @@ import org.junit.Assert
 
 class ActorRemoteVerificator {
 
-    fun verifyBBCharactersAgainstRemoteItems(
+    fun verifyActorsAgainstRemoteActors(
         actual: List<Actor>,
         expected: List<RemoteActor?>
     ) {
         expected.forEachIndexed lit@{ _, remoteItem ->
             if (remoteItem == null) return@lit
             actual.forEachIndexed { _, item ->
-                remoteItem.char_id?.let {
-                    if (it == item.char_id) {
-                        verifyBBCharacterAgainstRemoteItem(item, remoteItem)
+                remoteItem.actorId?.let {
+                    if (it == item.actorId) {
+                        verifyActorAgainstRemoteActor(item, remoteItem)
                         return@lit
                     }
                 }
@@ -23,11 +23,11 @@ class ActorRemoteVerificator {
         }
     }
 
-    private fun verifyBBCharacterAgainstRemoteItem(
+    private fun verifyActorAgainstRemoteActor(
         actual: Actor,
         expected: RemoteActor
     ) {
-        Assert.assertEquals(expected.char_id, actual.char_id)
+        Assert.assertEquals(expected.actorId, actual.actorId)
         Assert.assertEquals(expected.name, actual.name)
         Assert.assertEquals(expected.birthday, actual.birthday)
         Assert.assertEquals(expected.img, actual.img)

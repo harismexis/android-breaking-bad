@@ -35,7 +35,7 @@ class IrrGetLocalActorTest : UnitTestSetup() {
 
     private fun setupMocks() {
         mockActor = actorsParser.getMockActor()
-        mockActorId = mockActor.char_id
+        mockActorId = mockActor.actorId
         runBlocking {
             Mockito.`when`(mockRepository.getActor(mockActorId)).thenReturn(mockActor)
         }
@@ -49,7 +49,7 @@ class IrrGetLocalActorTest : UnitTestSetup() {
 
             // then
             verify(mockRepository, times(1)).getActor(mockActorId)
-            Assert.assertEquals(mockActor.char_id, item!!.char_id)
+            Assert.assertEquals(mockActor.actorId, item!!.actorId)
         }
 
 }

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "breaking_bad_actor_table")
 data class LocalActor(
-    @PrimaryKey @ColumnInfo(name = "char_id") val char_id: Int,
+    @PrimaryKey @ColumnInfo(name = "char_id") val actorId: Int,
     @ColumnInfo(name = "name") val name: String?,
     @ColumnInfo(name = "birthday") val birthday: String?,
     @ColumnInfo(name = "occupation") val occupation: List<String>?,
