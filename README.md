@@ -24,21 +24,23 @@ More Tests will be added.
 ### Screenshots:
 
 #### Home
-![Alt text](screenshots/home_all.png?raw=true "app screenshot")
+![Alt text](screenshots/home-all.png?raw=true "app screenshot")
 
-![Alt text](screenshots/home_filter_by_name.png?raw=true "app screenshot")
+![Alt text](screenshots/home-filter-by-name.png?raw=true "app screenshot")
 
 #### Actor Details
-![Alt text](screenshots/actor_detail_1.png?raw=true "app screenshot")
+![Alt text](screenshots/actor-detail-1.png?raw=true "app screenshot")
 
 #### Quotes
-![Alt text](screenshots/quotes_tabs.png?raw=true "app screenshot")
+![Alt text](screenshots/quotes-tabs.png?raw=true "app screenshot")
 
 #### Deaths
-![Alt text](screenshots/deaths_bb.png?raw=true "app screenshot")
+![Alt text](screenshots/deaths-bb.png?raw=true "app screenshot")
 
 #### Episodes
-![Alt text](screenshots/episodes_tabs.png?raw=true "app screenshot")
+![Alt text](screenshots/episodes-tabs.png?raw=true "app screenshot")
 
 #### Player
-![Alt text](screenshots/player.png?raw=true "app screenshot")
+![Alt text](screenshots/player-1.png?raw=true "app screenshot")
+
+![Alt text](screenshots/player-3.png?raw=true "app screenshot")
