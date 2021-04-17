@@ -8,35 +8,35 @@ class ActorLocalVerificator {
 
     fun verifyActorsAgainstLocalActors(
         actual: List<Actor>,
-        expected: List<LocalActor>
+        localActors: List<LocalActor>
     ) {
-        verifyListsHaveSameSize(actual, expected)
-        expected.forEachIndexed { index, localItem ->
-            val item = actual[index]
-            verifyActorAgainstLocalActor(item, localItem)
+        verifyListsHaveSameSize(actual, localActors)
+        localActors.forEachIndexed { index, localActor ->
+            val actor = actual[index]
+            verifyActorAgainstLocalActor(actor, localActor)
         }
     }
 
     private fun verifyActorAgainstLocalActor(
         actual: Actor,
-        expected: LocalActor
+        localActor: LocalActor
     ) {
-        Assert.assertEquals(expected.actorId, actual.actorId)
-        Assert.assertEquals(expected.name, actual.name)
-        Assert.assertEquals(expected.birthday, actual.birthday)
-        Assert.assertEquals(expected.img, actual.img)
-        Assert.assertEquals(expected.status, actual.status)
-        Assert.assertEquals(expected.nickname, actual.nickname)
-        Assert.assertEquals(expected.portrayed, actual.portrayed)
-        Assert.assertEquals(expected.category, actual.category)
+        Assert.assertEquals(localActor.actorId, actual.actorId)
+        Assert.assertEquals(localActor.name, actual.name)
+        Assert.assertEquals(localActor.birthday, actual.birthday)
+        Assert.assertEquals(localActor.img, actual.img)
+        Assert.assertEquals(localActor.status, actual.status)
+        Assert.assertEquals(localActor.nickname, actual.nickname)
+        Assert.assertEquals(localActor.portrayed, actual.portrayed)
+        Assert.assertEquals(localActor.category, actual.category)
     }
 
     fun verifyLocalActorsAgainstActors(
         actual: List<LocalActor>,
-        expected: List<Actor>
+        actors: List<Actor>
     ) {
-        verifyListsHaveSameSize(actual, expected)
-        expected.forEachIndexed { index, item ->
+        verifyListsHaveSameSize(actual, actors)
+        actors.forEachIndexed { index, item ->
             val localItem = actual[index]
             verifyLocalActorAgainstActor(localItem, item)
         }
@@ -44,16 +44,16 @@ class ActorLocalVerificator {
 
     private fun verifyLocalActorAgainstActor(
         actual: LocalActor,
-        expected: Actor
+        actor: Actor
     ) {
-        Assert.assertEquals(expected.actorId, actual.actorId)
-        Assert.assertEquals(expected.name, actual.name)
-        Assert.assertEquals(expected.birthday, actual.birthday)
-        Assert.assertEquals(expected.img, actual.img)
-        Assert.assertEquals(expected.status, actual.status)
-        Assert.assertEquals(expected.nickname, actual.nickname)
-        Assert.assertEquals(expected.portrayed, actual.portrayed)
-        Assert.assertEquals(expected.category, actual.category)
+        Assert.assertEquals(actor.actorId, actual.actorId)
+        Assert.assertEquals(actor.name, actual.name)
+        Assert.assertEquals(actor.birthday, actual.birthday)
+        Assert.assertEquals(actor.img, actual.img)
+        Assert.assertEquals(actor.status, actual.status)
+        Assert.assertEquals(actor.nickname, actual.nickname)
+        Assert.assertEquals(actor.portrayed, actual.portrayed)
+        Assert.assertEquals(actor.category, actual.category)
     }
 
 }

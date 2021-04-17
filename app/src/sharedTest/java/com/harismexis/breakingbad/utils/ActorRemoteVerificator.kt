@@ -8,14 +8,14 @@ class ActorRemoteVerificator {
 
     fun verifyActorsAgainstRemoteActors(
         actual: List<Actor>,
-        expected: List<RemoteActor?>
+        remoteActors: List<RemoteActor?>
     ) {
-        expected.forEachIndexed lit@{ _, remoteItem ->
-            if (remoteItem == null) return@lit
-            actual.forEachIndexed { _, item ->
-                remoteItem.actorId?.let {
-                    if (it == item.actorId) {
-                        verifyActorAgainstRemoteActor(item, remoteItem)
+        remoteActors.forEachIndexed lit@{ _, remoteActor ->
+            if (remoteActor == null) return@lit
+            actual.forEachIndexed { _, actor ->
+                remoteActor.actorId?.let {
+                    if (it == actor.actorId) {
+                        verifyActorAgainstRemoteActor(actor, remoteActor)
                         return@lit
                     }
                 }
@@ -25,16 +25,16 @@ class ActorRemoteVerificator {
 
     private fun verifyActorAgainstRemoteActor(
         actual: Actor,
-        expected: RemoteActor
+        remoteActor: RemoteActor
     ) {
-        Assert.assertEquals(expected.actorId, actual.actorId)
-        Assert.assertEquals(expected.name, actual.name)
-        Assert.assertEquals(expected.birthday, actual.birthday)
-        Assert.assertEquals(expected.img, actual.img)
-        Assert.assertEquals(expected.status, actual.status)
-        Assert.assertEquals(expected.nickname, actual.nickname)
-        Assert.assertEquals(expected.portrayed, actual.portrayed)
-        Assert.assertEquals(expected.category, actual.category)
+        Assert.assertEquals(remoteActor.actorId, actual.actorId)
+        Assert.assertEquals(remoteActor.name, actual.name)
+        Assert.assertEquals(remoteActor.birthday, actual.birthday)
+        Assert.assertEquals(remoteActor.img, actual.img)
+        Assert.assertEquals(remoteActor.status, actual.status)
+        Assert.assertEquals(remoteActor.nickname, actual.nickname)
+        Assert.assertEquals(remoteActor.portrayed, actual.portrayed)
+        Assert.assertEquals(remoteActor.category, actual.category)
     }
 
 }

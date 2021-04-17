@@ -38,11 +38,11 @@ class BreakingBadRemoteDataSourceTest : UnitTestSetup() {
             Mockito.`when`(mockDao.getActors()).thenReturn(mockRemoteActors)
 
             // when
-            val items = subject.getActors()
+            val actors = subject.getActors()
 
             // then
             verify(mockDao, times(1)).getActors()
-            verificator.verifyActorsAgainstRemoteActors(items, mockRemoteActors)
+            verificator.verifyActorsAgainstRemoteActors(actors, mockRemoteActors)
         }
     }
 
