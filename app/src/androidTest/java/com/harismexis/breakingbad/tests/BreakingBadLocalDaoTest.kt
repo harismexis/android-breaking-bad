@@ -40,7 +40,7 @@ class BreakingBadLocalDaoTest: InstrumentedTestSetup() {
         database.close()
     }
 
-    //@Test
+    @Test
     @Throws(Exception::class)
     fun savingItemsFromRemoteFeedWithAllItemsValid_then_expectedItemsRetrieved() = runBlocking {
         // given
@@ -68,7 +68,7 @@ class BreakingBadLocalDaoTest: InstrumentedTestSetup() {
         verifyActualAgainstExpected(retrievedLocalItems!!, localItems, EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID)
     }
 
-    //@Test
+    @Test
     @Throws(Exception::class)
     fun savingItemsFromFeedWithAllIdsAbsent_then_noItemsRetrieved() = runBlocking {
         // given
