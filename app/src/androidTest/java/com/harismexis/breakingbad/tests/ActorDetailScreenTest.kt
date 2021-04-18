@@ -2,12 +2,12 @@ package com.harismexis.breakingbad.tests
 
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
+import androidx.test.core.app.launchActivity
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.rule.ActivityTestRule
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.domain.Actor.Companion.occupationString
 import com.harismexis.breakingbad.presentation.result.ActorDetailResult
@@ -19,16 +19,11 @@ import com.harismexis.breakingbad.setup.testutil.getExpectedText
 import com.harismexis.breakingbad.setup.viewmodel.MockActorDetailVmProvider
 import com.harismexis.breakingbad.setup.viewmodel.MockHomeVmProvider
 import io.mockk.every
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class ActorDetailScreenTest : InstrumentedTestSetup() {
-
-    @get:Rule
-    val testRule: ActivityTestRule<MainActivity> =
-        ActivityTestRule(MainActivity::class.java, false, false)
 
     private val mockHomeViewModel = MockHomeVmProvider.mockHomeViewModel
     private var mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
@@ -74,7 +69,7 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
     }
 
     private fun openHomeAndClickListItemToOpenActorDetails() {
-        testRule.launchActivity(null)
+        val scenario = launchActivity<MainActivity>()
         clickRecyclerAt(R.id.home_list, clickIndexOnSearchResultList)
     }
 
