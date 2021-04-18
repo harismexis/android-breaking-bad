@@ -28,8 +28,8 @@ ext {
     def glide = '4.11.0'
     def dagger_2 = '2.30.1'
 
-    def androidx_test = '1.2.0'
-    def espresso = '3.2.0'
+    def androidx_test = '1.3.0'
+    def espresso = '3.3.0'
     def androidx_junit = '1.1.2'
     def arch_core = '2.1.0'
     def work = '2.2.0'
@@ -47,6 +47,8 @@ ext {
     def rx_relay = '2.1.1'
 
     def soffritti_youtube_player = '10.0.5'
+
+    def fragment_version = "1.3.2"
 
     libraries = [
             kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin",
@@ -78,7 +80,8 @@ ext {
     ]
 
     librariesDebug = [
-            truth: "com.google.truth:truth:$truth"
+            truth: "com.google.truth:truth:$truth",
+            fragment_testing : "androidx.fragment:fragment-testing:$fragment_version"
     ]
 
     mockkDependencies = [
@@ -95,11 +98,12 @@ ext {
     ]
 
     androidTestLibraries = [
-            test_core       : "androidx.test:core:$androidx_test",
+            core_testing    : "androidx.arch.core:core-testing:$arch_core",
+            test_core_ktx       : "androidx.test:core-ktx:$androidx_test",
 
             runner          : "androidx.test:runner:$androidx_test",
             rules           : "androidx.test:rules:$androidx_test",
-            // orchestrator    : "androidx.test:orchestrator:$androidx_test",
+            orchestrator    : "androidx.test:orchestrator:$androidx_test",
 
             junit           : "androidx.test.ext:junit:$androidx_junit",
             truth           : "androidx.test.ext:truth:$androidx_test",

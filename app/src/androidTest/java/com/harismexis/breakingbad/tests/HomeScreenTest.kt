@@ -2,13 +2,13 @@ package com.harismexis.breakingbad.tests
 
 import androidx.annotation.IdRes
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.core.app.launchActivity
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.rule.ActivityTestRule
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.domain.Actor
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID
@@ -26,19 +26,11 @@ import com.harismexis.breakingbad.setup.testutil.verifyRecyclerItemAt
 import com.harismexis.breakingbad.setup.viewmodel.MockHomeVmProvider
 import io.mockk.every
 import org.junit.Assert
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class HomeScreenTest : InstrumentedTestSetup() {
-
-    @get:Rule
-    val testRule: ActivityTestRule<MainActivity> =
-        ActivityTestRule(
-            MainActivity::class.java,
-            false, false
-        )
 
     companion object {
         const val WALTER = "walter"
@@ -55,9 +47,8 @@ class HomeScreenTest : InstrumentedTestSetup() {
         mockInitialResults(actorsParser.getMockActorsWhenJsonHasAllItemsValid())
 
         // when
-        testRule.launchActivity(null)
-
-        // then
+        val scenario = launchActivity<MainActivity>()
+        scenario.onActivity {}
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID)
     }
 
@@ -67,7 +58,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         mockInitialResults(actorsParser.getMockActorsWhenJsonHasSomeInvalidIds())
 
         // when
-        testRule.launchActivity(null)
+        val scenario = launchActivity<MainActivity>()
 
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID)
@@ -79,7 +70,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         mockInitialResults(actorsParser.getMockActorsWhenJsonHasSomeEmptyItems())
 
         // when
-        testRule.launchActivity(null)
+        val scenario = launchActivity<MainActivity>()
 
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY)
@@ -91,7 +82,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         mockInitialResults(actorsParser.getMockActorsWhenJsonHasAllIdsInvalid())
 
         // when
-        testRule.launchActivity(null)
+        val scenario = launchActivity<MainActivity>()
 
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_NO_DATA)
@@ -103,7 +94,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         mockInitialResults(actorsParser.getMockActorsWhenJsonIsEmpty())
 
         // when
-        testRule.launchActivity(null)
+        val scenario = launchActivity<MainActivity>()
 
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_NO_DATA)
@@ -116,7 +107,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         // given
         mockInitialResults(actorsParser.getMockActorsWhenJsonHasAllItemsValid())
         // when
-        testRule.launchActivity(null)
+        val scenario = launchActivity<MainActivity>()
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID)
 
