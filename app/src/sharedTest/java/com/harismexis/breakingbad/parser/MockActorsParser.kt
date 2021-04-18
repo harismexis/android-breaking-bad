@@ -21,19 +21,19 @@ class MockActorsParser(private val parser: BaseFileParser) {
         const val EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER = 2
         const val EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA = 4
 
-        private const val FILE_FIVE_VALID_ACTORS =
+        const val FILE_FIVE_VALID_ACTORS =
             "remote-5-valid-actors.json"
-        private const val FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID =
+        const val FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID =
             "remote-5-actors-3-ids-invalid.json"
-        private const val FILE_FIVE_ACTORS_BUT_TWO_EMPTY =
+        const val FILE_FIVE_ACTORS_BUT_TWO_EMPTY =
             "remote-5-actors-2-items-empty.json"
-        private const val FILE_FIVE_ACTORS_ALL_IDS_INVALID =
+        const val FILE_FIVE_ACTORS_ALL_IDS_INVALID =
             "remote-5-actors-all-ids-invalid.json"
-        private const val FILE_EMPTY_JSON =
+        const val FILE_EMPTY_JSON =
             "remote-empty.json"
-        private const val FILE_SEARCH_ACTORS_BY_NAME_LIKE_WALTER =
+        const val FILE_SEARCH_ACTORS_BY_NAME_LIKE_WALTER =
             "remote-search-actors-by-name-like-walter.json"
-        private const val FILE_SEARCH_ACTORS_BY_NAME_LIKE_SALA =
+        const val FILE_SEARCH_ACTORS_BY_NAME_LIKE_SALA =
             "remote-search-actors-by-name-like-sala.json"
     }
 

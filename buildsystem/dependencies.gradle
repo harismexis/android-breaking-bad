@@ -39,6 +39,7 @@ ext {
     def mockk = '1.9.3' //1.10.3-jdk8
     def mockk_android = '1.9.3' // 1.10.3-jdk8
     def google_truth = '0.42'
+    def mock_webserver = '4.9.1'
 
     def retrofit2_adapter_rxjava2 = '2.6.0'
     def rxjava2 = '2.2.12'
@@ -89,7 +90,8 @@ ext {
             junit           : "androidx.test.ext:junit:$androidx_junit",
             coroutines_test : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_android",
             mockito_kotlin  : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin",
-            core_testing    : "androidx.arch.core:core-testing:$arch_core"
+            core_testing    : "androidx.arch.core:core-testing:$arch_core",
+            mockwebserver   : "com.squareup.okhttp3:mockwebserver:$mock_webserver"
     ]
 
     androidTestLibraries = [
