@@ -48,7 +48,8 @@ class HomeScreenTest : InstrumentedTestSetup() {
 
         // when
         val scenario = launchActivity<MainActivity>()
-        scenario.onActivity {}
+
+        // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID)
     }
 
