@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.actordetail.dao
+package com.harismexis.breakingbad.dao
 
 import com.harismexis.breakingbad.framework.datasource.network.api.BreakingBadApi
 import com.harismexis.breakingbad.framework.datasource.network.data.BreakingBadRemoteDao

@@ -1,10 +1,9 @@
 package com.harismexis.breakingbad.actordetail.setup
 
 import androidx.lifecycle.Observer
+import com.harismexis.breakingbad.datamodel.LocalRepository
 import com.harismexis.breakingbad.domain.Actor
-import com.harismexis.breakingbad.interactors.actor.IrrGetLocalActor
 import com.harismexis.breakingbad.presentation.result.ActorDetailResult
-import com.harismexis.breakingbad.presentation.screens.actordetail.interactors.ActorDetailInteractors
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 import com.harismexis.breakingbad.setup.UnitTestSetup
 import com.nhaarman.mockitokotlin2.any
@@ -16,9 +15,8 @@ import org.mockito.Mockito
 abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
 
     @Mock
-    protected lateinit var mockIrrGetLocalActor: IrrGetLocalActor
-    @Mock
-    protected lateinit var mockActorDetailInteractors: ActorDetailInteractors
+    protected lateinit var mockLocalRepo: LocalRepository
+
     @Mock
     lateinit var mockObserver: Observer<ActorDetailResult>
 
@@ -41,13 +39,13 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
     override fun initialiseClassUnderTest() {
         mockActor = actorsParser.getMockActor()
         mockActorId = mockActor.actorId
-        subject = ActorDetailViewModel(mockActorDetailInteractors)
+        subject = ActorDetailViewModel(mockLocalRepo)
         mockActorDetailSuccess = ActorDetailResult.ActorSuccess(mockActor)
         mockActorDetailError = ActorDetailResult.ActorError(ERROR_MESSAGE)
     }
 
     private fun initialiseMockInteractors() {
-        Mockito.`when`(mockActorDetailInteractors.irrGetLocalItem).thenReturn(mockIrrGetLocalActor)
+        //Mockito.`when`(mockActorDetailInteractors.irrGetLocalItem).thenReturn(mockIrrGetLocalActor)
     }
 
     // Local Call
@@ -61,20 +59,20 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
         actor: Actor
     ) {
         runBlocking {
-            Mockito.`when`(mockIrrGetLocalActor(actorId)).thenReturn(actor)
+            Mockito.`when`(mockLocalRepo.getActor(actorId)).thenReturn(actor)
         }
     }
 
     protected fun mockLocalActorCallThrowsError() {
         runBlocking {
-            Mockito.`when`(mockIrrGetLocalActor(any()))
+            Mockito.`when`(mockLocalRepo.getActor(any()))
                 .thenThrow(IllegalStateException(ERROR_MESSAGE))
         }
     }
 
     protected fun verifyLocalActorCallDone() {
         runBlocking {
-            verify(mockIrrGetLocalActor, Mockito.times(1))(mockActorId)
+            verify(mockLocalRepo, Mockito.times(1)).getActor(mockActorId)
         }
     }
 

@@ -5,17 +5,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.harismexis.breakingbad.datamodel.LocalRepository
+import com.harismexis.breakingbad.datamodel.RemoteRepository
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.framework.util.functional.Action1
 import com.harismexis.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.harismexis.breakingbad.presentation.result.QuotesResult
-import com.harismexis.breakingbad.presentation.screens.quotes.interactors.QuoteInteractors
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class QuotesViewModel @Inject constructor(
-    private val interactors: QuoteInteractors,
+    private val remoteRepo: RemoteRepository,
+    private val localRepo: LocalRepository,
     private val connectivity: ConnectivityMonitorSimple,
 ) : ViewModel() {
 
@@ -51,9 +53,9 @@ class QuotesViewModel @Inject constructor(
     private fun fetchRemoteQuotes(seriesName: String?) {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteQuotes(seriesName)
+                val items = remoteRepo.getQuotes(seriesName)
                 mQuotes.value = QuotesResult.QuotesSuccess(items)
-                interactors.irrStoreQuotes(items)
+                localRepo.insertQuotes(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mQuotes.value = QuotesResult.QuotesError(e)
@@ -65,7 +67,7 @@ class QuotesViewModel @Inject constructor(
     private fun fetchLocalQuotes(seriesName: String?) {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetLocalQuotesBySeries(seriesName)
+                val items = localRepo.getQuotesBySeries(seriesName)
                 mQuotes.value = QuotesResult.QuotesSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

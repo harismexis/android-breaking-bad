@@ -1,10 +1,10 @@
-package com.harismexis.breakingbad.framework.datasource.database.data
+package com.harismexis.breakingbad.datamodel
 
-import com.harismexis.breakingbad.data.BreakingBadBaseLocalDataSource
 import com.harismexis.breakingbad.domain.Actor
 import com.harismexis.breakingbad.domain.Death
 import com.harismexis.breakingbad.domain.Episode
 import com.harismexis.breakingbad.domain.Quote
+import com.harismexis.breakingbad.framework.datasource.database.data.BreakingBadLocalDao
 import com.harismexis.breakingbad.framework.extensions.actor.toItem
 import com.harismexis.breakingbad.framework.extensions.actor.toItems
 import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
@@ -18,16 +18,16 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class BreakingBadLocalDataSource @Inject constructor(
+class LocalRepository @Inject constructor(
     private val dao: BreakingBadLocalDao
-) : BreakingBadBaseLocalDataSource {
+) {
 
-    override suspend fun updateActors(items: List<Actor>) {
+    suspend fun updateActors(items: List<Actor>) {
         dao.deleteAllActors()
         dao.insertActors(items.toLocalItems())
     }
 
-    override suspend fun getActor(itemId: Int): Actor? {
+    suspend fun getActor(itemId: Int): Actor? {
         val localItem = dao.getActorById(itemId)
         localItem?.let {
             return it.toItem()
@@ -35,38 +35,36 @@ class BreakingBadLocalDataSource @Inject constructor(
         return null
     }
 
-    override suspend fun getActors(): List<Actor> {
+    suspend fun getActors(): List<Actor> {
         return dao.getAllActors().toItems()
     }
 
-
-    override suspend fun insertQuotes(items: List<Quote>) {
+    suspend fun insertQuotes(items: List<Quote>) {
         dao.insertQuotes(items.toLocalItems())
     }
 
-    override suspend fun getQuotes(): List<Quote> {
+    suspend fun getQuotes(): List<Quote> {
         return dao.getAllQuotes().toItems()
     }
 
-    override suspend fun getQuotesBySeries(seriesName: String?): List<Quote> {
+    suspend fun getQuotesBySeries(seriesName: String?): List<Quote> {
         return dao.getQuotesBySeries(seriesName).toItems()
     }
 
 
-    override suspend fun insertDeaths(items: List<Death>) {
+    suspend fun insertDeaths(items: List<Death>) {
         dao.insertDeaths(items.toLocalItems())
     }
 
-    override suspend fun getDeaths(): List<Death> {
+    suspend fun getDeaths(): List<Death> {
         return dao.getAllDeaths().toItems()
     }
 
-
-    override suspend fun insertEpisodes(items: List<Episode>) {
+    suspend fun insertEpisodes(items: List<Episode>) {
         dao.insertEpisodes(items.toLocalItems())
     }
 
-    override suspend fun getEpisodes(): List<Episode> {
+    suspend fun getEpisodes(): List<Episode> {
         return dao.getAllEpisodes().toItems()
     }
 

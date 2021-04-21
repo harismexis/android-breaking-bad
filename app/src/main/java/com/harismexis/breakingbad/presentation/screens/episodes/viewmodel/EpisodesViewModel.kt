@@ -5,17 +5,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.harismexis.breakingbad.datamodel.LocalRepository
+import com.harismexis.breakingbad.datamodel.RemoteRepository
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.framework.util.functional.Action1
 import com.harismexis.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.harismexis.breakingbad.presentation.result.EpisodesResult
-import com.harismexis.breakingbad.presentation.screens.episodes.interactors.EpisodeInteractors
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class EpisodesViewModel @Inject constructor(
-    private val interactors: EpisodeInteractors,
+    private val remoteRepo: RemoteRepository,
+    private val localRepo: LocalRepository,
     private val connectivity: ConnectivityMonitorSimple,
 ) : ViewModel() {
 
@@ -51,9 +53,9 @@ class EpisodesViewModel @Inject constructor(
     private fun fetchRemoteEpisodes(seriesName: String?) {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteEpisodes(seriesName)
+                val items = remoteRepo.getEpisodes(seriesName)
                 mEpisodes.value = EpisodesResult.EpisodesSuccess(items)
-                interactors.irrStoreEpisodes(items)
+                localRepo.insertEpisodes(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mEpisodes.value = EpisodesResult.EpisodesError(e)
@@ -65,7 +67,7 @@ class EpisodesViewModel @Inject constructor(
     private fun fetchLocalEpisodes() {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetLocalEpisodes()
+                val items = localRepo.getEpisodes()
                 mEpisodes.value = EpisodesResult.EpisodesSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

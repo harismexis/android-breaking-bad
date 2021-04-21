@@ -5,17 +5,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.harismexis.breakingbad.datamodel.LocalRepository
+import com.harismexis.breakingbad.datamodel.RemoteRepository
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.framework.util.functional.Action1
 import com.harismexis.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.harismexis.breakingbad.presentation.result.ActorsResult
-import com.harismexis.breakingbad.presentation.screens.home.interactors.HomeInteractors
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
-    private val interactors: HomeInteractors,
+    private val remoteRepo: RemoteRepository,
+    private val localRepo: LocalRepository,
     private val connectivity: ConnectivityMonitorSimple,
 ) : ViewModel() {
 
@@ -53,9 +55,9 @@ class HomeViewModel @Inject constructor(
     private fun fetchRemoteActors(name: String? = null) {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteActors(name)
+                val items = remoteRepo.getActors(name)
                 mActorsResult.value = ActorsResult.ActorsSuccess(items)
-                interactors.irrStoreActors(items)
+                localRepo.updateActors(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mActorsResult.value = ActorsResult.ActorsError(e)
@@ -67,7 +69,7 @@ class HomeViewModel @Inject constructor(
     private fun fetchLocalActors() {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetLocalActors()
+                val items = localRepo.getActors()
                 mActorsResult.value = ActorsResult.ActorsSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

@@ -5,17 +5,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.harismexis.breakingbad.datamodel.LocalRepository
+import com.harismexis.breakingbad.datamodel.RemoteRepository
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.framework.util.functional.Action1
 import com.harismexis.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.harismexis.breakingbad.presentation.result.DeathsResult
-import com.harismexis.breakingbad.presentation.screens.deaths.interactors.DeathInteractors
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DeathsViewModel @Inject constructor(
-    private val interactors: DeathInteractors,
+    private val remoteRepo: RemoteRepository,
+    private val localRepo: LocalRepository,
     private val connectivity: ConnectivityMonitorSimple,
 ) : ViewModel() {
 
@@ -48,9 +50,9 @@ class DeathsViewModel @Inject constructor(
     private fun fetchRemoteDeaths() {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetRemoteDeaths()
+                val items = remoteRepo.getDeaths()
                 mDeaths.value = DeathsResult.DeathsSuccess(items)
-                interactors.irrStoreDeaths(items)
+                localRepo.insertDeaths(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mDeaths.value = DeathsResult.DeathsError(e)
@@ -62,7 +64,7 @@ class DeathsViewModel @Inject constructor(
     private fun fetchLocalDeaths() {
         viewModelScope.launch {
             try {
-                val items = interactors.irrGetLocalDeaths()
+                val items = localRepo.getDeaths()
                 mDeaths.value = DeathsResult.DeathsSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
