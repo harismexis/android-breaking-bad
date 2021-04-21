@@ -1,9 +1,9 @@
 package com.harismexis.breakingbad.presentation.screens.home.ui.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
-import com.harismexis.breakingbad.domain.Actor
 import com.harismexis.breakingbad.framework.extensions.populateWithGlide
 import com.harismexis.breakingbad.databinding.VhActorItemBinding
+import com.harismexis.breakingbad.datamodel.domain.Actor
 
 class ActorViewHolder(
     private val binding: VhActorItemBinding,

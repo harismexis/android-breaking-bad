@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.framework.extensions.episode
 
-import com.harismexis.breakingbad.domain.Episode
+import com.harismexis.breakingbad.datamodel.domain.Episode
 import com.harismexis.breakingbad.framework.datasource.network.model.RemoteEpisode
 
 fun List<RemoteEpisode?>?.toItems(): List<Episode> {

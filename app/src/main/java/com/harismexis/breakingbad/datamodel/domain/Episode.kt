@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.domain
+package com.harismexis.breakingbad.datamodel.domain
 
 data class Episode(
     val episode_id: Int,

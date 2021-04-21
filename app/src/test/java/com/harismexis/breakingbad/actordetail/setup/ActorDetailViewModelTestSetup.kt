@@ -1,8 +1,8 @@
 package com.harismexis.breakingbad.actordetail.setup
 
 import androidx.lifecycle.Observer
-import com.harismexis.breakingbad.datamodel.LocalRepository
-import com.harismexis.breakingbad.domain.Actor
+import com.harismexis.breakingbad.datamodel.data.LocalRepository
+import com.harismexis.breakingbad.datamodel.domain.Actor
 import com.harismexis.breakingbad.presentation.result.ActorDetailResult
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 import com.harismexis.breakingbad.setup.UnitTestSetup
@@ -31,21 +31,12 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
         const val ERROR_MESSAGE = "error"
     }
 
-    override fun initialise() {
-        super.initialise()
-        initialiseMockInteractors()
-    }
-
     override fun initialiseClassUnderTest() {
         mockActor = actorsParser.getMockActor()
         mockActorId = mockActor.actorId
         subject = ActorDetailViewModel(mockLocalRepo)
         mockActorDetailSuccess = ActorDetailResult.ActorSuccess(mockActor)
         mockActorDetailError = ActorDetailResult.ActorError(ERROR_MESSAGE)
-    }
-
-    private fun initialiseMockInteractors() {
-        //Mockito.`when`(mockActorDetailInteractors.irrGetLocalItem).thenReturn(mockIrrGetLocalActor)
     }
 
     // Local Call

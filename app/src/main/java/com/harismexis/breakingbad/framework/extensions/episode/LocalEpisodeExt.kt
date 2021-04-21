@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.framework.extensions.episode
 
-import com.harismexis.breakingbad.domain.Episode
+import com.harismexis.breakingbad.datamodel.domain.Episode
 import com.harismexis.breakingbad.framework.datasource.database.table.LocalEpisode
 
 fun List<LocalEpisode?>?.toItems(): List<Episode> {

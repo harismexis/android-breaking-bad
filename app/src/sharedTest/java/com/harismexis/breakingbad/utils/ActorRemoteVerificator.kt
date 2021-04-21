@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.utils
 
-import com.harismexis.breakingbad.domain.Actor
+import com.harismexis.breakingbad.datamodel.domain.Actor
 import com.harismexis.breakingbad.framework.datasource.network.model.RemoteActor
 import org.junit.Assert
 

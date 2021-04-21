@@ -1,9 +1,9 @@
-package com.harismexis.breakingbad.datamodel
+package com.harismexis.breakingbad.datamodel.data
 
-import com.harismexis.breakingbad.domain.Actor
-import com.harismexis.breakingbad.domain.Death
-import com.harismexis.breakingbad.domain.Episode
-import com.harismexis.breakingbad.domain.Quote
+import com.harismexis.breakingbad.datamodel.domain.Actor
+import com.harismexis.breakingbad.datamodel.domain.Death
+import com.harismexis.breakingbad.datamodel.domain.Episode
+import com.harismexis.breakingbad.datamodel.domain.Quote
 import com.harismexis.breakingbad.framework.datasource.database.data.BreakingBadLocalDao
 import com.harismexis.breakingbad.framework.extensions.actor.toItem
 import com.harismexis.breakingbad.framework.extensions.actor.toItems

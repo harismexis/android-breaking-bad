@@ -3,8 +3,8 @@ package com.harismexis.breakingbad.presentation.screens.deaths.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.harismexis.breakingbad.domain.Death
 import com.harismexis.breakingbad.databinding.VhDeathItemBinding
+import com.harismexis.breakingbad.datamodel.domain.Death
 import com.harismexis.breakingbad.presentation.screens.deaths.ui.viewholder.DeathViewHolder
 
 class DeathAdapter(

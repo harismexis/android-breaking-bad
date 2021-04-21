@@ -1,9 +1,9 @@
 package com.harismexis.breakingbad.home.setup
 
 import androidx.lifecycle.Observer
-import com.harismexis.breakingbad.datamodel.LocalRepository
-import com.harismexis.breakingbad.datamodel.RemoteRepository
-import com.harismexis.breakingbad.domain.Actor
+import com.harismexis.breakingbad.datamodel.data.LocalRepository
+import com.harismexis.breakingbad.datamodel.data.RemoteRepository
+import com.harismexis.breakingbad.datamodel.domain.Actor
 import com.harismexis.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
@@ -38,19 +38,8 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
         const val ERROR_MESSAGE = "error"
     }
 
-    override fun initialise() {
-        super.initialise()
-        initialiseMockInteractors()
-    }
-
     override fun initialiseClassUnderTest() {
         subject = HomeViewModel(mockRemoteRepo, mockLocalRepo, mockConnectivity)
-    }
-
-    private fun initialiseMockInteractors() {
-//        Mockito.`when`(mockHomeInteractors.irrGetRemoteActors).thenReturn(mockIrrGetRemoteActors)
-//        Mockito.`when`(mockHomeInteractors.irrGetLocalActors).thenReturn(mockIrrGetLocalActors)
-//        Mockito.`when`(mockHomeInteractors.irrStoreActors).thenReturn(mockIrrStoreActors)
     }
 
     // Internet

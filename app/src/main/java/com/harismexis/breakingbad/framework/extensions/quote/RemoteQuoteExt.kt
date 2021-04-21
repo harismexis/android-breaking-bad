@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.framework.extensions.quote
 
-import com.harismexis.breakingbad.domain.Quote
+import com.harismexis.breakingbad.datamodel.domain.Quote
 import com.harismexis.breakingbad.framework.datasource.network.model.RemoteQuote
 
 fun List<RemoteQuote?>?.toItems(): List<Quote> {

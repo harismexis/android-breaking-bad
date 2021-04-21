@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.framework.extensions.death
 
-import com.harismexis.breakingbad.domain.Death
+import com.harismexis.breakingbad.datamodel.domain.Death
 import com.harismexis.breakingbad.framework.datasource.database.table.LocalDeath
 
 fun List<LocalDeath?>?.toItems(): List<Death> {

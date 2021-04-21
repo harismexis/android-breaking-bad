@@ -3,8 +3,8 @@ package com.harismexis.breakingbad.presentation.screens.episodes.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.harismexis.breakingbad.domain.Episode
 import com.harismexis.breakingbad.databinding.VhEpisodeItemBinding
+import com.harismexis.breakingbad.datamodel.domain.Episode
 import com.harismexis.breakingbad.presentation.screens.episodes.ui.viewholder.EpisodeViewHolder
 
 class EpisodeAdapter(

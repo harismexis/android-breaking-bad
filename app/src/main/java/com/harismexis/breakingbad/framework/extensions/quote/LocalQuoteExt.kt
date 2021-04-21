@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.framework.extensions.quote
 
-import com.harismexis.breakingbad.domain.Quote
+import com.harismexis.breakingbad.datamodel.domain.Quote
 import com.harismexis.breakingbad.framework.datasource.database.table.LocalQuote
 
 fun List<LocalQuote?>?.toItems(): List<Quote> {

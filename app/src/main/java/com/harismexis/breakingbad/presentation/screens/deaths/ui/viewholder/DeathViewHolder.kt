@@ -2,7 +2,7 @@ package com.harismexis.breakingbad.presentation.screens.deaths.ui.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.harismexis.breakingbad.databinding.VhDeathItemBinding
-import com.harismexis.breakingbad.domain.Death
+import com.harismexis.breakingbad.datamodel.domain.Death
 
 class DeathViewHolder(
     private val binding: VhDeathItemBinding

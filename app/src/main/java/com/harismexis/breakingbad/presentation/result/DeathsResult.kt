@@ -1,6 +1,7 @@
 package com.harismexis.breakingbad.presentation.result
 
-import com.harismexis.breakingbad.domain.Death
+import com.harismexis.breakingbad.datamodel.domain.Death
+
 
 sealed class DeathsResult {
     data class DeathsSuccess(val items: List<Death>): DeathsResult()
