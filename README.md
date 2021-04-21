@@ -1,6 +1,6 @@
 ### Technologies:
 
-- The project uses Kotlin, Clean Architecture + MVVM and JetPack components i.e. Navigation, Coroutines, 
+- The project is written in Kotlin, MVVM and JetPack components i.e. Navigation, Coroutines, 
 LiveData, Room, ViewModel.
 - Some libraries have been used i.e. Retrofit, Glide, Dagger, Mockito-kotlin.
 - For emitting / observing events (eg. show error message) I use Event & EventObserver as described here:

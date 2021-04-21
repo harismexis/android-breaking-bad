@@ -54,10 +54,14 @@ class BreakingBadRemoteDaoTest : UnitTestSetup() {
         mockWebServer.shutdown()
     }
 
+    private fun enqueueResponseStatus200(filePath: String) {
+        mockWebServer.enqueueResponse(filePath, 200)
+    }
+
     @Test
-    fun test_1() {
+    fun whenJsonHasAllIdsValid_actorsItemsAreCorrect() {
         val expected = actorsParser.getMockRemoteActorsWhenJsonHasAllIdsValid()
-        mockWebServer.enqueueResponse(FILE_FIVE_VALID_ACTORS, 200)
+        enqueueResponseStatus200(FILE_FIVE_VALID_ACTORS)
         runBlocking {
             val actual = subject.getActors()
             assertEquals(expected, actual)
@@ -65,9 +69,9 @@ class BreakingBadRemoteDaoTest : UnitTestSetup() {
     }
 
     @Test
-    fun test_2() {
+    fun whenJsonHasSomeInvalidIds_actorsItemsAreCorrect() {
         val expected = actorsParser.getMockRemoteActorsWhenJsonHasSomeInvalidIds()
-        mockWebServer.enqueueResponse(FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID, 200)
+        enqueueResponseStatus200(FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID)
         runBlocking {
             val actual = subject.getActors()
             assertEquals(expected, actual)
@@ -75,9 +79,9 @@ class BreakingBadRemoteDaoTest : UnitTestSetup() {
     }
 
     @Test
-    fun test_3() {
+    fun whenJsonHasSomeEmptyItems_actorsItemsAreCorrect() {
         val expected = actorsParser.getMockRemoteActorsWhenJsonHasSomeEmptyItems()
-        mockWebServer.enqueueResponse(FILE_FIVE_ACTORS_BUT_TWO_EMPTY, 200)
+        enqueueResponseStatus200(FILE_FIVE_ACTORS_BUT_TWO_EMPTY)
         runBlocking {
             val actual = subject.getActors()
             assertEquals(expected, actual)
@@ -85,9 +89,9 @@ class BreakingBadRemoteDaoTest : UnitTestSetup() {
     }
 
     @Test
-    fun test_4() {
+    fun whenJsonHasAllIdsInvalid_actorsItemsAreEmpty() {
         val expected = actorsParser.getMockRemoteActorsWhenJsonHasAllIdsInvalid()
-        mockWebServer.enqueueResponse(FILE_FIVE_ACTORS_ALL_IDS_INVALID, 200)
+        enqueueResponseStatus200(FILE_FIVE_ACTORS_ALL_IDS_INVALID)
         runBlocking {
             val actual = subject.getActors()
             assertEquals(expected, actual)
@@ -95,9 +99,9 @@ class BreakingBadRemoteDaoTest : UnitTestSetup() {
     }
 
     @Test
-    fun test_5() {
+    fun whenJsonIsEmpty_actorsItemsAreEmpty() {
         val expected = actorsParser.getMockRemoteActorsWhenJsonIsEmpty()
-        mockWebServer.enqueueResponse(FILE_EMPTY_JSON, 200)
+        enqueueResponseStatus200(FILE_EMPTY_JSON)
         runBlocking {
             val actual = subject.getActors()
             assertEquals(expected, actual)
