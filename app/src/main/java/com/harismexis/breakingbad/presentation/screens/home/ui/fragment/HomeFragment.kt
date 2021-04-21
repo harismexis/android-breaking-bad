@@ -9,7 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.R
-import com.harismexis.breakingbad.databinding.FragmentHomeBarBinding
+import com.harismexis.breakingbad.databinding.FragmentHomeBinding
 import com.harismexis.breakingbad.datamodel.domain.Actor
 import com.harismexis.breakingbad.framework.event.EventObserver
 import com.harismexis.breakingbad.framework.extensions.showToast
@@ -24,7 +24,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
     android.widget.SearchView.OnQueryTextListener {
 
     private val viewModel: HomeViewModel by viewModels { viewModelFactory }
-    private var binding: FragmentHomeBarBinding? = null
+    private var binding: FragmentHomeBinding? = null
     private lateinit var adapter: ActorAdapter
     private var uiModels: MutableList<Actor> = mutableListOf()
 
@@ -32,7 +32,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         inflater: LayoutInflater,
         container: ViewGroup?
     ) {
-        binding = FragmentHomeBarBinding.inflate(inflater, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
     }
 
     override fun onCreateView() {
