@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.datamodel.data.LocalRepository
-import com.harismexis.breakingbad.datamodel.data.RemoteRepository
+import com.harismexis.breakingbad.datamodel.repo.DeathLocalRepo
+import com.harismexis.breakingbad.datamodel.repo.DeathRemoteRepo
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.framework.util.functional.Action1
@@ -16,8 +16,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DeathsViewModel @Inject constructor(
-    private val remoteRepo: RemoteRepository,
-    private val localRepo: LocalRepository,
+    private val deathRemote: DeathRemoteRepo,
+    private val deathLocal: DeathLocalRepo,
     private val connectivity: ConnectivityMonitorSimple,
 ) : ViewModel() {
 
@@ -50,9 +50,9 @@ class DeathsViewModel @Inject constructor(
     private fun fetchRemoteDeaths() {
         viewModelScope.launch {
             try {
-                val items = remoteRepo.getDeaths()
+                val items = deathRemote.getDeaths()
                 mDeaths.value = DeathsResult.DeathsSuccess(items)
-                localRepo.insertDeaths(items)
+                deathLocal.insertDeaths(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mDeaths.value = DeathsResult.DeathsError(e)
@@ -64,7 +64,7 @@ class DeathsViewModel @Inject constructor(
     private fun fetchLocalDeaths() {
         viewModelScope.launch {
             try {
-                val items = localRepo.getDeaths()
+                val items = deathLocal.getDeaths()
                 mDeaths.value = DeathsResult.DeathsSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

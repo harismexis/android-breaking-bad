@@ -1,9 +1,9 @@
 package com.harismexis.breakingbad.home.setup
 
 import androidx.lifecycle.Observer
-import com.harismexis.breakingbad.datamodel.data.LocalRepository
-import com.harismexis.breakingbad.datamodel.data.RemoteRepository
 import com.harismexis.breakingbad.datamodel.domain.Actor
+import com.harismexis.breakingbad.datamodel.repo.ActorLocalRepo
+import com.harismexis.breakingbad.datamodel.repo.ActorRemoteRepo
 import com.harismexis.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
@@ -18,9 +18,9 @@ import org.mockito.Mockito
 abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     @Mock
-    protected lateinit var mockRemoteRepo: RemoteRepository
+    protected lateinit var mockActorRemote: ActorRemoteRepo
     @Mock
-    protected lateinit var mockLocalRepo: LocalRepository
+    protected lateinit var mockActorLocal: ActorLocalRepo
 
     @Mock
     protected lateinit var mockConnectivity: ConnectivityMonitorSimple
@@ -39,7 +39,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     }
 
     override fun initialiseClassUnderTest() {
-        subject = HomeViewModel(mockRemoteRepo, mockLocalRepo, mockConnectivity)
+        subject = HomeViewModel(mockActorRemote, mockActorLocal, mockConnectivity)
     }
 
     // Internet
@@ -63,26 +63,26 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
         actorName: String? = null
     ) {
         runBlocking {
-            Mockito.`when`(mockRemoteRepo.getActors(actorName)).thenReturn(items)
+            Mockito.`when`(mockActorRemote.getActors(actorName)).thenReturn(items)
         }
     }
 
     protected fun mockRemoteActorsCallThrowsError(actorName: String? = null) {
         runBlocking {
-            Mockito.`when`(mockRemoteRepo.getActors(actorName))
+            Mockito.`when`(mockActorRemote.getActors(actorName))
                 .thenThrow(error)
         }
     }
 
     protected fun verifyRemoteActorsCallDone(name: String? = null) {
         runBlocking {
-            verify(mockRemoteRepo, Mockito.times(1)).getActors(name)
+            verify(mockActorRemote, Mockito.times(1)).getActors(name)
         }
     }
 
     protected fun verifyRemoteActorsCallNotDone() {
         runBlocking {
-            verify(mockRemoteRepo, Mockito.never()).getActors(any())
+            verify(mockActorRemote, Mockito.never()).getActors(any())
         }
     }
 
@@ -94,26 +94,26 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     private fun mockLocalActorsCall(items: List<Actor>) {
         runBlocking {
-            Mockito.`when`(mockLocalRepo.getActors()).thenReturn(items)
+            Mockito.`when`(mockActorLocal.getActors()).thenReturn(items)
         }
     }
 
     protected fun mockLocalActorsCallThrowsError() {
         runBlocking {
-            Mockito.`when`(mockLocalRepo.getActors())
+            Mockito.`when`(mockActorLocal.getActors())
                 .thenThrow(error)
         }
     }
 
     protected fun verifyLocalActorsCallDone() {
         runBlocking {
-            verify(mockLocalRepo, Mockito.times(1)).getActors()
+            verify(mockActorLocal, Mockito.times(1)).getActors()
         }
     }
 
     protected fun verifyLocalActorsCallNotDone() {
         runBlocking {
-            verify(mockLocalRepo, Mockito.never()).getActors()
+            verify(mockActorLocal, Mockito.never()).getActors()
         }
     }
 
@@ -147,13 +147,13 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     private fun verifyActorsStored(items: List<Actor>) {
         runBlocking {
-            verify(mockLocalRepo, Mockito.times(1)).updateActors(items)
+            verify(mockActorLocal, Mockito.times(1)).updateActors(items)
         }
     }
 
     protected fun verifyActorsNotStored() {
         runBlocking {
-            verify(mockLocalRepo, Mockito.never()).updateActors(any())
+            verify(mockActorLocal, Mockito.never()).updateActors(any())
         }
     }
 

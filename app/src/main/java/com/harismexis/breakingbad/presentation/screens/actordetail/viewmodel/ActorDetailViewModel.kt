@@ -5,14 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.datamodel.data.LocalRepository
+import com.harismexis.breakingbad.datamodel.repo.ActorLocalRepo
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.presentation.result.ActorDetailResult
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class ActorDetailViewModel @Inject constructor(
-    private val localRepo: LocalRepository,
+    private val actorLocal: ActorLocalRepo,
 ) : ViewModel() {
 
     private val tag = ActorDetailViewModel::class.qualifiedName
@@ -24,7 +24,7 @@ class ActorDetailViewModel @Inject constructor(
     fun retrieveActorById(itemId: Int) {
         viewModelScope.launch {
             try {
-                val item = localRepo.getActor(itemId)
+                val item = actorLocal.getActor(itemId)
                 item?.let {
                     mActorDetailResult.value = ActorDetailResult.ActorSuccess(item)
                 }

@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.datamodel.data.LocalRepository
-import com.harismexis.breakingbad.datamodel.data.RemoteRepository
+import com.harismexis.breakingbad.datamodel.repo.ActorLocalRepo
+import com.harismexis.breakingbad.datamodel.repo.ActorRemoteRepo
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.framework.util.functional.Action1
@@ -16,8 +16,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
-    private val remoteRepo: RemoteRepository,
-    private val localRepo: LocalRepository,
+    private val actorRemote: ActorRemoteRepo,
+    private val actorLocal: ActorLocalRepo,
     private val connectivity: ConnectivityMonitorSimple,
 ) : ViewModel() {
 
@@ -55,9 +55,9 @@ class HomeViewModel @Inject constructor(
     private fun fetchRemoteActors(name: String? = null) {
         viewModelScope.launch {
             try {
-                val items = remoteRepo.getActors(name)
+                val items = actorRemote.getActors(name)
                 mActorsResult.value = ActorsResult.ActorsSuccess(items)
-                localRepo.updateActors(items)
+                actorLocal.updateActors(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mActorsResult.value = ActorsResult.ActorsError(e)
@@ -69,7 +69,7 @@ class HomeViewModel @Inject constructor(
     private fun fetchLocalActors() {
         viewModelScope.launch {
             try {
-                val items = localRepo.getActors()
+                val items = actorLocal.getActors()
                 mActorsResult.value = ActorsResult.ActorsSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

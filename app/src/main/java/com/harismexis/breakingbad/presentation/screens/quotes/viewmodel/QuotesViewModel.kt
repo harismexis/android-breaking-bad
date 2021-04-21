@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.datamodel.data.LocalRepository
-import com.harismexis.breakingbad.datamodel.data.RemoteRepository
+import com.harismexis.breakingbad.datamodel.repo.QuoteLocalRepo
+import com.harismexis.breakingbad.datamodel.repo.QuoteRemoteRepo
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.framework.util.functional.Action1
@@ -16,8 +16,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class QuotesViewModel @Inject constructor(
-    private val remoteRepo: RemoteRepository,
-    private val localRepo: LocalRepository,
+    private val quoteRemote: QuoteRemoteRepo,
+    private val quoteLocal: QuoteLocalRepo,
     private val connectivity: ConnectivityMonitorSimple,
 ) : ViewModel() {
 
@@ -53,9 +53,9 @@ class QuotesViewModel @Inject constructor(
     private fun fetchRemoteQuotes(seriesName: String?) {
         viewModelScope.launch {
             try {
-                val items = remoteRepo.getQuotes(seriesName)
+                val items = quoteRemote.getQuotes(seriesName)
                 mQuotes.value = QuotesResult.QuotesSuccess(items)
-                localRepo.insertQuotes(items)
+                quoteLocal.insertQuotes(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mQuotes.value = QuotesResult.QuotesError(e)
@@ -67,7 +67,7 @@ class QuotesViewModel @Inject constructor(
     private fun fetchLocalQuotes(seriesName: String?) {
         viewModelScope.launch {
             try {
-                val items = localRepo.getQuotesBySeries(seriesName)
+                val items = quoteLocal.getQuotesBySeries(seriesName)
                 mQuotes.value = QuotesResult.QuotesSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

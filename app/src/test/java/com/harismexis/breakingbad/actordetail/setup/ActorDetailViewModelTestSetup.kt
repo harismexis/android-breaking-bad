@@ -1,8 +1,8 @@
 package com.harismexis.breakingbad.actordetail.setup
 
 import androidx.lifecycle.Observer
-import com.harismexis.breakingbad.datamodel.data.LocalRepository
 import com.harismexis.breakingbad.datamodel.domain.Actor
+import com.harismexis.breakingbad.datamodel.repo.ActorLocalRepo
 import com.harismexis.breakingbad.presentation.result.ActorDetailResult
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 import com.harismexis.breakingbad.setup.UnitTestSetup
@@ -15,7 +15,7 @@ import org.mockito.Mockito
 abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
 
     @Mock
-    protected lateinit var mockLocalRepo: LocalRepository
+    protected lateinit var mockActorLocal: ActorLocalRepo
 
     @Mock
     lateinit var mockObserver: Observer<ActorDetailResult>
@@ -34,7 +34,7 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
     override fun initialiseClassUnderTest() {
         mockActor = actorsParser.getMockActor()
         mockActorId = mockActor.actorId
-        subject = ActorDetailViewModel(mockLocalRepo)
+        subject = ActorDetailViewModel(mockActorLocal)
         mockActorDetailSuccess = ActorDetailResult.ActorSuccess(mockActor)
         mockActorDetailError = ActorDetailResult.ActorError(ERROR_MESSAGE)
     }
@@ -50,20 +50,20 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
         actor: Actor
     ) {
         runBlocking {
-            Mockito.`when`(mockLocalRepo.getActor(actorId)).thenReturn(actor)
+            Mockito.`when`(mockActorLocal.getActor(actorId)).thenReturn(actor)
         }
     }
 
     protected fun mockLocalActorCallThrowsError() {
         runBlocking {
-            Mockito.`when`(mockLocalRepo.getActor(any()))
+            Mockito.`when`(mockActorLocal.getActor(any()))
                 .thenThrow(IllegalStateException(ERROR_MESSAGE))
         }
     }
 
     protected fun verifyLocalActorCallDone() {
         runBlocking {
-            verify(mockLocalRepo, Mockito.times(1)).getActor(mockActorId)
+            verify(mockActorLocal, Mockito.times(1)).getActor(mockActorId)
         }
     }
 
