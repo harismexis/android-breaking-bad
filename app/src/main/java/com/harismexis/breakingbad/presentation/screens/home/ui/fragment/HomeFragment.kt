@@ -71,9 +71,8 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
 
     private fun setupToolbar() {
         val navController = findNavController()
-        val appBarConf = AppBarConfiguration(navController.graph)
+        val appBarConf = AppBarConfiguration(navController.graph, binding?.drawerLayout)
         binding?.apply { ->
-            navView.setupWithNavController(navController)
             toolbar.setupWithNavController(navController, appBarConf)
             toolbar.inflateMenu(R.menu.menu_home)
             // Without listener it's not working, but it should(?)
@@ -87,7 +86,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
                     else -> false
                 }
             }
-            toolbarTitle.text = getString(R.string.screen_home_label)
+            navView.setupWithNavController(navController)
         }
     }
 

@@ -15,7 +15,7 @@
         android:theme="@style/Theme.AndroidBreakingBad">
 
         <activity android:name=".presentation.screens.home.ui.activity.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/MainActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

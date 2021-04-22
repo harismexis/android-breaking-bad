@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="MainActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="drawerArrowStyle">@style/DrawerIcon</item>
+    </style>
+
     <!-- base -->
 
     <style name="BaseTxtv">
@@ -85,6 +89,11 @@
 
     <style name="ItemDetailMeta" parent="DetailTxtv">
         <item name="android:textSize">@dimen/actor_detail_meta_text_size</item>
+    </style>
+
+    <style name="DrawerIcon" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/white</item>
     </style>
 
 </resources>
