@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/quotes_dest"
+        android:enabled="true"
+        android:icon="@drawable/ic_article_white_24dp"
+        android:title="@string/quotes"
+        app:showAsAction="ifRoom|withText" />
+
+    <item
+        android:id="@+id/episodes_dest"
+        android:enabled="true"
+        android:icon="@drawable/ic_subscriptions_white_24dp"
+        android:title="@string/episodes"
+        app:showAsAction="ifRoom|withText" />
+
+    <item
+        android:id="@+id/deaths_dest"
+        android:enabled="true"
+        android:icon="@drawable/ic_person_off_white_24dp"
+        android:title="@string/deaths"
+        app:showAsAction="ifRoom|withText" />
+
+    <item
+        android:id="@+id/player_dest"
+        android:enabled="true"
+        android:icon="@drawable/ic_ondemand_video_white_24dp"
+        android:title="@string/player"
+        app:showAsAction="ifRoom|withText" />
+
+</menu>

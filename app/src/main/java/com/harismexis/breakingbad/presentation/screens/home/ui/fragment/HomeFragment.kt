@@ -72,13 +72,13 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
     private fun setupToolbar() {
         val navController = findNavController()
         val appBarConf = AppBarConfiguration(navController.graph)
-        binding?.let { it ->
-            it.toolbar.setupWithNavController(navController, appBarConf)
-            it.toolbarTitle.text = getString(R.string.screen_home_label)
-            it.toolbar.inflateMenu(R.menu.menu_home)
+        binding?.apply { ->
+            navView.setupWithNavController(navController)
+            toolbar.setupWithNavController(navController, appBarConf)
+            toolbar.inflateMenu(R.menu.menu_home)
             // Without listener it's not working, but it should(?)
             // as we call setupWithNavController
-            it.toolbar.setOnMenuItemClickListener { item ->
+            toolbar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.player_dest -> {
                         navController.navigate(R.id.player_dest)
@@ -87,6 +87,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
                     else -> false
                 }
             }
+            toolbarTitle.text = getString(R.string.screen_home_label)
         }
     }
 
