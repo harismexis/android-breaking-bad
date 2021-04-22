@@ -22,11 +22,11 @@
     <dimen name="vh_actor_padding_horizontal">16dp</dimen>
 
     <!-- actor detail -->
-    <dimen name="actor_detail_img_height">440dp</dimen>
+    <dimen name="actor_detail_img_height">580dp</dimen>
     <dimen name="actor_detail_title_text_size">20sp</dimen>
     <dimen name="actor_detail_label_text_size">16sp</dimen>
     <dimen name="actor_detail_meta_text_size">16sp</dimen>
-    <dimen name="actor_detail_title_margin_top">30dp</dimen>
+    <dimen name="actor_detail_title_margin_top">4dp</dimen>
     <dimen name="actor_detail_txt_label_margin_top">32dp</dimen>
     <dimen name="actor_detail_txt_meta_margin_top">10dp</dimen>
     <dimen name="actor_detail_txtv_margin_horizontal">18dp</dimen>
