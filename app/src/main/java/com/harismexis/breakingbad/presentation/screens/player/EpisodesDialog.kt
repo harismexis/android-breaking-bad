@@ -1,7 +1,6 @@
 package com.harismexis.breakingbad.presentation.screens.player
 
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Window
@@ -33,17 +32,7 @@ class EpisodesDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListe
         val builder: AlertDialog.Builder = AlertDialog.Builder(requireActivity())
         builder.setView(binding?.root)
         initialiseRecycler()
-        dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE);
-//        builder.setPositiveButton("OK",
-//            DialogInterface.OnClickListener { dialog, which ->
-//                // on success
-//            })
-        builder.setNegativeButton("Cancel",
-            DialogInterface.OnClickListener { dialog, which ->
-//                if (dialog != null && dialog.isShowing()) {
-//                    dialog.dismiss()
-//                }
-            })
+        dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
         return builder.create()
     }
 

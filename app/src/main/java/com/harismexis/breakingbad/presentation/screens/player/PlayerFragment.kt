@@ -94,7 +94,7 @@ class PlayerFragment : BaseFragment() {
             controller.showMenuButton(true)
             val menu = controller.getMenu()
             menu?.addItem(MenuItem(
-                "Youtube Videos",
+                "Videos",
             )
             { showVideoChooser() })
         }
