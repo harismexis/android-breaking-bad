@@ -1,18 +1,24 @@
 package com.harismexis.breakingbad.presentation.screens.home.ui.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.navigation.NavigationView
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentHomeBinding
 import com.harismexis.breakingbad.datamodel.domain.Actor
 import com.harismexis.breakingbad.framework.event.EventObserver
 import com.harismexis.breakingbad.framework.extensions.showToast
+import com.harismexis.breakingbad.framework.util.mapNewMexicoIntent
 import com.harismexis.breakingbad.framework.util.ui.hideKeyboard
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.result.ActorsResult
@@ -20,8 +26,11 @@ import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorAdap
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 
-class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
-    android.widget.SearchView.OnQueryTextListener {
+
+class HomeFragment : BaseFragment(),
+    ActorViewHolder.ActorClickListener,
+    android.widget.SearchView.OnQueryTextListener,
+    NavigationView.OnNavigationItemSelectedListener {
 
     private val viewModel: HomeViewModel by viewModels { viewModelFactory }
     private var binding: FragmentHomeBinding? = null
@@ -88,6 +97,7 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
             }
             navView.setupWithNavController(navController)
         }
+        binding?.navView?.setNavigationItemSelectedListener(this)
     }
 
     private fun observeLiveData() {
@@ -142,5 +152,22 @@ class HomeFragment : BaseFragment(), ActorViewHolder.ActorClickListener,
         binding = null
         super.onDestroyView()
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.map_dest -> {
+                startActivity(mapNewMexicoIntent())
+            }
+            R.id.doc_dest -> {
+                val browserIntent = Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://breakingbadapi.com/"))
+                startActivity(browserIntent)
+            }
+        }
+        binding?.drawerLayout?.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+
 
 }

@@ -14,6 +14,8 @@
     <string name="episodes">Episodes</string>
     <string name="player">Player</string>
     <string name="videos">Videos</string>
+    <string name="map">Map</string>
+    <string name="api">API</string>
 
     <!-- vh actor -->
     <string name="content_description_character_image">Actor Image</string>

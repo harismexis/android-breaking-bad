@@ -30,4 +30,18 @@
         android:title="@string/player"
         app:showAsAction="ifRoom|withText" />
 
+    <item
+        android:id="@+id/map_dest"
+        android:enabled="true"
+        android:icon="@drawable/ic_map_white_24dp"
+        android:title="@string/map"
+        app:showAsAction="ifRoom|withText" />
+
+    <item
+        android:id="@+id/doc_dest"
+        android:enabled="true"
+        android:icon="@drawable/ic_documentation_white_24dp"
+        android:title="@string/api"
+        app:showAsAction="ifRoom|withText" />
+
 </menu>
