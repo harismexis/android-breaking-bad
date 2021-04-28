@@ -41,6 +41,6 @@ More Tests will be added.
 ![Alt text](screenshots/episodes-tabs.png?raw=true "app screenshot")
 
 #### Player
-![Alt text](screenshots/player-1.png?raw=true "app screenshot")
+![Alt text](screenshots/player-5.png?raw=true "app screenshot")
 
 ![Alt text](screenshots/player-3.png?raw=true "app screenshot")
