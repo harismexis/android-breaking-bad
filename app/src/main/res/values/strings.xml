@@ -9,11 +9,11 @@
     <string name="screen_episodes_label">Episodes</string>
     <string name="screen_player_label">Player</string>
 
-    <!-- -->
     <string name="quotes">Quotes</string>
     <string name="deaths">Deaths</string>
     <string name="episodes">Episodes</string>
     <string name="player">Player</string>
+    <string name="videos">Videos</string>
 
     <!-- vh actor -->
     <string name="content_description_character_image">Actor Image</string>

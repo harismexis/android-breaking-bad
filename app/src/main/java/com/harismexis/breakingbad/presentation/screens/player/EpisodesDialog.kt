@@ -16,7 +16,7 @@ class EpisodesDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListe
     private var uiModels: MutableList<VideoItem> = mutableListOf()
     var itemClick: VideoItemViewHolder.VideoItemClickListener? = null
 
-    private fun initialiseRecycler() {
+    private fun setupRecycler() {
         uiModels.clear()
         uiModels.addAll(provideVideos())
         adapter = VideosAdapter(uiModels, this)
@@ -28,11 +28,18 @@ class EpisodesDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListe
         }
     }
 
+    private fun setupCloseIcon() {
+        binding?.let {
+            it.iconExit.setOnClickListener { dismiss() }
+        }
+    }
+    
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = DialogEpisodesBinding.inflate(LayoutInflater.from(requireActivity()))
         val builder: AlertDialog.Builder = AlertDialog.Builder(requireActivity())
         builder.setView(binding?.root)
-        initialiseRecycler()
+        setupCloseIcon()
+        setupRecycler()
         dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
         return builder.create()
     }
