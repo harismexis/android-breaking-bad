@@ -8,7 +8,7 @@ allprojects {
 ext {
     nav_version = '2.3.4'
 
-    kotlin = '1.4.31'
+    kotlin = '1.4.32'
 
     def appcompat = '1.2.0'
     def material = '1.2.0'
