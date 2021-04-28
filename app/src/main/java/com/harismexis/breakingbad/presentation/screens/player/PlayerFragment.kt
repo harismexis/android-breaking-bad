@@ -9,9 +9,9 @@ import androidx.annotation.NonNull
 import androidx.navigation.fragment.findNavController
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentPlayerLinearBinding
-import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.framework.util.ui.hideSystemUI
 import com.harismexis.breakingbad.framework.util.ui.showSystemUI
+import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
@@ -71,21 +71,38 @@ class PlayerFragment : BaseFragment() {
         }
     }
 
+//    private fun initPlayerMenu() {
+//        binding?.let {
+//            val controller = it.youTubeView.getPlayerUiController()
+//            controller.showMenuButton(true)
+//            val menu = controller.getMenu()
+//            for (i in 0 until videos.size) {
+//                val id = videos[i].videoId
+//                val title = videos[i].videoTitle
+//                menu?.addItem(MenuItem(
+//                    title,
+//                    R.drawable.ic_play_circle_black_24dp
+//                )
+//                { videoPlayer?.loadVideo(id, 0f) })
+//            }
+//        }
+//    }
+
     private fun initPlayerMenu() {
         binding?.let {
             val controller = it.youTubeView.getPlayerUiController()
             controller.showMenuButton(true)
             val menu = controller.getMenu()
-            for (i in 0 until videos.size) {
-                val id = videos[i].videoId
-                val title = videos[i].videoTitle
-                menu?.addItem(MenuItem(
-                    title,
-                    R.drawable.ic_play_circle_black_24dp
-                )
-                { videoPlayer?.loadVideo(id, 0f) })
-            }
+            menu?.addItem(MenuItem(
+                "Youtube Videos",
+            )
+            { showVideoChooser() })
         }
+    }
+
+    private fun showVideoChooser() {
+        binding?.youTubeView?.getPlayerUiController()?.getMenu()?.dismiss()
+        EpisodesDialog.newInstance("").show(childFragmentManager, "Video Dialog")
     }
 
     private fun initFullScreen() {
