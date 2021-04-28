@@ -16,7 +16,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
 
-class PlayerFragment : BaseFragment() {
+class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListener {
 
     private val videos = provideVideos()
     private var binding: FragmentPlayerLinearBinding? = null
@@ -71,23 +71,6 @@ class PlayerFragment : BaseFragment() {
         }
     }
 
-//    private fun initPlayerMenu() {
-//        binding?.let {
-//            val controller = it.youTubeView.getPlayerUiController()
-//            controller.showMenuButton(true)
-//            val menu = controller.getMenu()
-//            for (i in 0 until videos.size) {
-//                val id = videos[i].videoId
-//                val title = videos[i].videoTitle
-//                menu?.addItem(MenuItem(
-//                    title,
-//                    R.drawable.ic_play_circle_black_24dp
-//                )
-//                { videoPlayer?.loadVideo(id, 0f) })
-//            }
-//        }
-//    }
-
     private fun initPlayerMenu() {
         binding?.let {
             val controller = it.youTubeView.getPlayerUiController()
@@ -102,7 +85,8 @@ class PlayerFragment : BaseFragment() {
 
     private fun showVideoChooser() {
         binding?.youTubeView?.getPlayerUiController()?.getMenu()?.dismiss()
-        EpisodesDialog.newInstance("").show(childFragmentManager, "Video Dialog")
+        EpisodesDialog.newInstance(this).show(childFragmentManager,
+            "Video Dialog")
     }
 
     private fun initFullScreen() {
@@ -124,6 +108,10 @@ class PlayerFragment : BaseFragment() {
 
     override fun getRootView(): View? {
         return binding?.root
+    }
+
+    override fun onVideoClicked(item: VideoItem, position: Int) {
+        videoPlayer?.loadVideo(item.videoId, 0f)
     }
 
 }

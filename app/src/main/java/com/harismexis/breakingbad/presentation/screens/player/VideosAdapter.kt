@@ -7,7 +7,7 @@ import com.harismexis.breakingbad.databinding.VhVideoItemBinding
 
 class VideosAdapter(
     private val models: List<VideoItem>,
-    private val itemClick: VideoItemViewHolder.VideoItemClickListener
+    private val itemClick: VideoItemViewHolder.VideoItemClickListener?
 ) : RecyclerView.Adapter<VideoItemViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -37,11 +37,6 @@ class VideosAdapter(
 
     override fun getItemId(position: Int): Long {
         return position.toLong()
-    }
-
-    override fun onViewDetachedFromWindow(holder: VideoItemViewHolder) {
-        super.onViewDetachedFromWindow(holder)
-        holder.unbind()
     }
 
 }

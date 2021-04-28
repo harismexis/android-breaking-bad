@@ -14,6 +14,7 @@ class EpisodesDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListe
     private var binding: DialogEpisodesBinding? = null
     private lateinit var adapter: VideosAdapter
     private var uiModels: MutableList<VideoItem> = mutableListOf()
+    var itemClick: VideoItemViewHolder.VideoItemClickListener? = null
 
     private fun initialiseRecycler() {
         uiModels.clear()
@@ -38,17 +39,18 @@ class EpisodesDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListe
 
     companion object {
 
-        fun newInstance(title: String?): EpisodesDialog {
+        fun newInstance(
+            itemClick: VideoItemViewHolder.VideoItemClickListener?
+        ): EpisodesDialog {
             val frag = EpisodesDialog()
-            val args = Bundle()
-            args.putString("title", title)
-            frag.arguments = args
+            frag.itemClick = itemClick
             return frag
         }
     }
 
     override fun onVideoClicked(item: VideoItem, position: Int) {
-
+        dismiss()
+        itemClick?.onVideoClicked(item, position)
     }
 
 }

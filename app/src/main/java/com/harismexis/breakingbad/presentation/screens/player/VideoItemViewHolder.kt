@@ -5,7 +5,7 @@ import com.harismexis.breakingbad.databinding.VhVideoItemBinding
 
 class VideoItemViewHolder(
     private val binding: VhVideoItemBinding,
-    private val itemClick: VideoItemClickListener
+    private val itemClick: VideoItemClickListener?
 ) : RecyclerView.ViewHolder(binding.root) {
 
     interface VideoItemClickListener {
@@ -17,11 +17,7 @@ class VideoItemViewHolder(
         position: Int
     ) {
         binding.txtInfo.text = item.videoTitle
-        itemView.setOnClickListener { itemClick.onVideoClicked(item, position) }
-    }
-
-    fun unbind() {
-        // Release resources, unsubscribe etc
+        itemView.setOnClickListener { itemClick?.onVideoClicked(item, position) }
     }
 
 }
