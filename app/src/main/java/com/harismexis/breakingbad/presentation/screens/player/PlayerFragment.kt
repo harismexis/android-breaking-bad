@@ -76,17 +76,14 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
             val controller = it.youTubeView.getPlayerUiController()
             controller.showMenuButton(true)
             val menu = controller.getMenu()
-            menu?.addItem(MenuItem(
-                "Videos",
-            )
+            menu?.addItem(MenuItem(getString(R.string.videos))
             { showVideoChooser() })
         }
     }
 
     private fun showVideoChooser() {
         binding?.youTubeView?.getPlayerUiController()?.getMenu()?.dismiss()
-        EpisodesDialog.newInstance(this).show(childFragmentManager,
-            "Video Dialog")
+        VideosDialog.newInstance(this).show(childFragmentManager, "")
     }
 
     private fun initFullScreen() {

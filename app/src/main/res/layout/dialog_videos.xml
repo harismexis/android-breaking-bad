@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/default_background_color"
     android:orientation="vertical"
-    tools:context=".presentation.screens.player.EpisodesDialog">
+    tools:context=".presentation.screens.player.VideosDialog">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,7 +14,6 @@
 
         <TextView
             style="@style/ItemDetailTitle"
-            android:layout_width="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/videos" />
 
