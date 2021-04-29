@@ -166,6 +166,26 @@ class HomeScreenTest : InstrumentedTestSetup() {
             .check(matches(hasDescendant(withId(R.id.doc_dest))))
     }
 
+    @Test
+    fun bottomNavigationView_HasExpectedItems() {
+
+        // given
+        mockInitialResults(actorsParser.getMockActorsWhenJsonHasAllItemsValid())
+
+        // when
+        val scenario = launchActivity<MainActivity>()
+
+        // then
+        onView(withId(R.id.bottom_nav_view))
+            .check(matches(isDisplayed()))
+            .check(matches(hasDescendant(withText(R.string.quotes))))
+            .check(matches(hasDescendant(withId(R.id.quotes_dest))))
+            .check(matches(hasDescendant(withText(R.string.episodes))))
+            .check(matches(hasDescendant(withId(R.id.episodes_dest))))
+            .check(matches(hasDescendant(withText(R.string.deaths))))
+            .check(matches(hasDescendant(withId(R.id.deaths_dest))))
+    }
+
     private fun mockInitialResults(mockData: List<Actor>) {
         mockActors = mockData
         actorsSuccess = ActorsResult.ActorsSuccess(mockActors)
