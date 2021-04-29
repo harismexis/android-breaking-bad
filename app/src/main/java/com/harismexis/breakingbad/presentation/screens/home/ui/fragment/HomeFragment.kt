@@ -87,13 +87,8 @@ class HomeFragment : BaseFragment(),
             // Without listener it's not working, but it should(?)
             // as we call setupWithNavController
             toolbar.setOnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    R.id.player_dest -> {
-                        navController.navigate(R.id.player_dest)
-                        true
-                    }
-                    else -> false
-                }
+                item.onNavDestinationSelected(findNavController())
+                true
             }
             navView.setupWithNavController(navController)
         }
