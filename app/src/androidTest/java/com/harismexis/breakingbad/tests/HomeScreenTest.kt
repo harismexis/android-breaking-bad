@@ -211,9 +211,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
     }
 
     private fun verifyRecyclerCount(expectedNumberOfItems: Int) {
-        // Checking if the mock result success has correct number of items
         Assert.assertEquals(actorsSuccess.items.size, expectedNumberOfItems)
-        // Checking if recycler has correct number of items
         onView(withId(R.id.home_list)).check(RecyclerCountAssertion(expectedNumberOfItems))
     }
 

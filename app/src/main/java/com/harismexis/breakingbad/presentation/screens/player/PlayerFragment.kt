@@ -72,7 +72,7 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
             backIcon.layoutParams = params
             backIcon.setImageResource(R.drawable.ic_arrow_left_white_rounded_24dp)
             backIcon.setOnClickListener {
-                findNavController().navigate(PlayerFragmentDirections.actionExit())
+                findNavController().popBackStack()
             }
             controls.addView(backIcon)
         }

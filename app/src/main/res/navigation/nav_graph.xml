@@ -47,10 +47,6 @@
         android:name="com.harismexis.breakingbad.presentation.screens.player.PlayerFragment"
         tools:layout="@layout/fragment_player">
 
-        <action
-            android:id="@+id/action_exit"
-            app:popUpTo="@+id/home_dest" />
-
     </fragment>
 
 </navigation>
