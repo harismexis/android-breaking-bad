@@ -12,16 +12,23 @@ import com.harismexis.breakingbad.databinding.FragmentPlayerLinearBinding
 import com.harismexis.breakingbad.framework.util.ui.hideSystemUI
 import com.harismexis.breakingbad.framework.util.ui.showSystemUI
 import com.harismexis.breakingbad.presentation.base.BaseFragment
+import com.harismexis.breakingbad.presentation.screens.player.videosdialog.VideoItem
+import com.harismexis.breakingbad.presentation.screens.player.videosdialog.VideoItemViewHolder
+import com.harismexis.breakingbad.presentation.screens.player.videosdialog.VideosDialog
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
 
 class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListener {
 
-    private val videos = provideVideos()
+    private var currentVideoId = provideVideos()[0].videoId
     private var binding: FragmentPlayerLinearBinding? = null
     private var videoPlayer: YouTubePlayer? = null
     private var isFullScreen: Boolean = false
+
+    companion object {
+        const val TAG_VIDEOS_DIALOG = "videos_dialog"
+    }
 
     override fun initialiseViewBinding(inflater: LayoutInflater, container: ViewGroup?) {
         binding = FragmentPlayerLinearBinding.inflate(inflater, container, false)
@@ -34,10 +41,10 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
     }
 
     override fun onViewCreated() {
-        loadVideo(videos[0].videoId)
+        initPlayerAndStartPlayback(currentVideoId)
     }
 
-    private fun loadVideo(videoId: String) {
+    private fun initPlayerAndStartPlayback(videoId: String) {
         binding?.let {
             lifecycle.addObserver(it.youTubeView)
             it.youTubeView.initialize(object : AbstractYouTubePlayerListener() {
@@ -77,13 +84,14 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
             controller.showMenuButton(true)
             val menu = controller.getMenu()
             menu?.addItem(MenuItem(getString(R.string.videos))
-            { showVideoChooser() })
+            { showVideosDialog() })
         }
     }
 
-    private fun showVideoChooser() {
+    private fun showVideosDialog() {
         binding?.youTubeView?.getPlayerUiController()?.getMenu()?.dismiss()
-        VideosDialog.newInstance(this).show(childFragmentManager, "")
+        VideosDialog.newInstance(currentVideoId, this)
+            .show(childFragmentManager, TAG_VIDEOS_DIALOG)
     }
 
     private fun initFullScreen() {
@@ -108,6 +116,7 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
     }
 
     override fun onVideoClicked(item: VideoItem, position: Int) {
+        currentVideoId = item.videoId
         videoPlayer?.loadVideo(item.videoId, 0f)
     }
 

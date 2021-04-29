@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.presentation.screens.player
+package com.harismexis.breakingbad.presentation.screens.player.videosdialog
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

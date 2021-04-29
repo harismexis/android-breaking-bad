@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.presentation.screens.player
+package com.harismexis.breakingbad.presentation.screens.player.videosdialog
 
 import android.app.Dialog
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.databinding.DialogVideosBinding
+import com.harismexis.breakingbad.presentation.screens.player.provideVideoItems
 
 class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListener {
 
@@ -18,12 +19,18 @@ class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListene
 
     companion object {
 
+        private const val ARG_CURRENT_VIDEO_ID = "current_video_id"
+
         fun newInstance(
+            selectedVideoId: String,
             itemClick: VideoItemViewHolder.VideoItemClickListener?
         ): VideosDialog {
-            val frag = VideosDialog()
-            frag.itemClick = itemClick
-            return frag
+            val fragment = VideosDialog()
+            val args = Bundle()
+            args.putString(ARG_CURRENT_VIDEO_ID, selectedVideoId)
+            fragment.arguments = args
+            fragment.itemClick = itemClick
+            return fragment
         }
     }
 
@@ -39,13 +46,19 @@ class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListene
 
     private fun setupRecycler() {
         videos.clear()
-        videos.addAll(provideVideos())
+        videos.addAll(provideVideoItems())
+
+        val selectedId = arguments?.getString(ARG_CURRENT_VIDEO_ID, videos[0].videoId)
+        val current = videos.indexOfFirst { it.videoId == selectedId }
+        videos[current].isPlaying = true
+
         adapter = VideosAdapter(videos, this)
         adapter.setHasStableIds(true)
         binding?.list?.let {
             it.layoutManager = LinearLayoutManager(this.context)
             it.adapter = adapter
             adapter.notifyDataSetChanged()
+            it.scrollToPosition(current)
         }
     }
 
@@ -57,6 +70,9 @@ class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListene
 
     override fun onVideoClicked(item: VideoItem, position: Int) {
         dismiss()
+        videos.forEach { it.isPlaying = false }
+        videos[position].isPlaying = true
+        adapter.notifyDataSetChanged()
         itemClick?.onVideoClicked(item, position)
     }
 

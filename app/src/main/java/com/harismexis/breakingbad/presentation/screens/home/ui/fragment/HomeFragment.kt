@@ -26,7 +26,6 @@ import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorAdap
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 
-
 class HomeFragment : BaseFragment(),
     ActorViewHolder.ActorClickListener,
     android.widget.SearchView.OnQueryTextListener,

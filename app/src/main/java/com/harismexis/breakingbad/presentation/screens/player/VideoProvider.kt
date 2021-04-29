@@ -1,60 +1,67 @@
 package com.harismexis.breakingbad.presentation.screens.player
 
-fun provideVideos(): ArrayList<VideoItem> {
-    val videos = ArrayList<VideoItem>()
+import com.harismexis.breakingbad.presentation.screens.player.videosdialog.Video
+import com.harismexis.breakingbad.presentation.screens.player.videosdialog.VideoItem
+
+fun provideVideos(): List<Video> {
+    val videos = ArrayList<Video>()
     videos.add(
-        VideoItem(
+        Video(
             "QmHCn5xXHjI",
             "Breaking Bad Blooper Reel"
         )
     )
     videos.add(
-        VideoItem(
+        Video(
             "zzyudpED6sg",
             "Every death in Breaking Bad"
         )
     )
     videos.add(
-        VideoItem(
+        Video(
             "Xs6_vecSv2Y",
             "Breaking Bad Greatest Moments"
         )
     )
     videos.add(
-        VideoItem(
+        Video(
             "c9BW9dCVYzA",
             "Hank and Walt"
         )
     )
     videos.add(
-        VideoItem(
+        Video(
             "pgxFTghg0lI",
             "Breaking Bad Season 3: Episode 7: Killing the Twins HD CLIP"
         )
     )
     videos.add(
-        VideoItem(
+        Video(
             "6P7XzoTJRa8",
             "Breaking Bad Season 5: Episode 14: The phone call HD CLIP"
         )
     )
     videos.add(
-        VideoItem(
+        Video(
             "QLUG7jSUR08",
             "Breaking Bad Season 5: Episode 7: Walt kills Mike HD CLIP"
         )
     )
     videos.add(
-        VideoItem(
+        Video(
             "5wOvXusjqgI",
             "Breaking Bad Season 5: Episode 9: The confrontation HD CLIP"
         )
     )
     videos.add(
-        VideoItem(
+        Video(
             "8-aOkHmo-_c",
             "Breaking Bad Season 5: Episode 10: That money thing HD CLIP"
         )
     )
     return videos
+}
+
+fun provideVideoItems(): List<VideoItem> {
+    return provideVideos().map { VideoItem(it.videoId, it.videoTitle) }
 }
