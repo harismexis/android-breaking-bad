@@ -8,12 +8,13 @@ import com.harismexis.breakingbad.parser.MockActorsParser.Companion.FILE_FIVE_AC
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.FILE_FIVE_ACTORS_BUT_TWO_EMPTY
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.FILE_FIVE_VALID_ACTORS
 import com.harismexis.breakingbad.setup.UnitTestSetup
-import com.harismexis.breakingbad.setup.enqueueResponse
+import com.harismexis.breakingbad.testutil.enqueueResponse
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -43,6 +44,11 @@ class BreakingBadRemoteDaoTest : UnitTestSetup() {
 
     init {
         initialise()
+    }
+
+    @Before
+    fun doBefore() {
+        initialiseClassUnderTest()
     }
 
     override fun initialiseClassUnderTest() {

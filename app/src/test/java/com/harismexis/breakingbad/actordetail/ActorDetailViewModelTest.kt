@@ -16,6 +16,7 @@ class ActorDetailViewModelTest : ActorDetailViewModelTestSetup() {
 
     @Before
     fun doBefore() {
+        initialiseClassUnderTest()
         observeActorDetailLiveData()
     }
 

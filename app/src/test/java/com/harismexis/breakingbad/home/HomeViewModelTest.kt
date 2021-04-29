@@ -2,6 +2,7 @@ package com.harismexis.breakingbad.home
 
 import com.harismexis.breakingbad.home.setup.HomeViewModelTestSetup
 import com.nhaarman.mockitokotlin2.verifyZeroInteractions
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -16,10 +17,11 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
 
     @Before
     fun doBefore() {
+        initialiseClassUnderTest()
         observeActorsLiveData()
     }
 
-    @Before
+    @After
     fun doAfter() {
         stopObservingLiveData()
     }
