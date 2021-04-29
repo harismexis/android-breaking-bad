@@ -24,9 +24,11 @@ More Tests will be added.
 ### Screenshots:
 
 #### Home
-![Alt text](screenshots/home-all.png?raw=true "app screenshot")
+![Alt text](screenshots/home-1.png?raw=true "app screenshot")
 
-![Alt text](screenshots/home-filter-by-name.png?raw=true "app screenshot")
+![Alt text](screenshots/home-2.png?raw=true "app screenshot")
+
+![Alt text](screenshots/home-3.png?raw=true "app screenshot")
 
 #### Actor Details
 ![Alt text](screenshots/actor-detail-1.png?raw=true "app screenshot")
