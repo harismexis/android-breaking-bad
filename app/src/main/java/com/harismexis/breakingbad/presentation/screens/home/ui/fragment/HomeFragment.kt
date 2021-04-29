@@ -37,6 +37,10 @@ class HomeFragment : BaseFragment(),
     private lateinit var adapter: ActorAdapter
     private var uiModels: MutableList<Actor> = mutableListOf()
 
+    companion object {
+        const val BREAKING_BAD_API_WEBSITE = "https://breakingbadapi.com/"
+    }
+
     override fun initialiseViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -65,8 +69,10 @@ class HomeFragment : BaseFragment(),
     private fun initialiseRecycler() {
         adapter = ActorAdapter(uiModels, this)
         adapter.setHasStableIds(true)
-        binding?.homeList?.layoutManager = LinearLayoutManager(this.context)
-        binding?.homeList?.adapter = adapter
+        binding?.homeList?.let {
+            it.layoutManager = LinearLayoutManager(this.context)
+            it.adapter = adapter
+        }
     }
 
     private fun initialiseSearchView() {
@@ -82,17 +88,19 @@ class HomeFragment : BaseFragment(),
         val navController = findNavController()
         val appBarConf = AppBarConfiguration(navController.graph, binding?.drawerLayout)
         binding?.apply { ->
-            toolbar.setupWithNavController(navController, appBarConf)
-            toolbar.inflateMenu(R.menu.menu_home)
-            // Without listener it's not working, but it should(?)
-            // as we call setupWithNavController
-            toolbar.setOnMenuItemClickListener { item ->
-                item.onNavDestinationSelected(findNavController())
-                true
+            toolbar.apply {
+                setupWithNavController(navController, appBarConf)
+                inflateMenu(R.menu.menu_home)
+                // Without listener it's not working, but it should(?)
+                // as we call setupWithNavController
+                setOnMenuItemClickListener { item ->
+                    item.onNavDestinationSelected(findNavController())
+                    true
+                }
             }
             navView.setupWithNavController(navController)
+            navView.setNavigationItemSelectedListener(this@HomeFragment)
         }
-        binding?.navView?.setNavigationItemSelectedListener(this)
     }
 
     private fun observeLiveData() {
@@ -156,7 +164,7 @@ class HomeFragment : BaseFragment(),
             R.id.doc_dest -> {
                 val browserIntent = Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://breakingbadapi.com/")
+                    Uri.parse(BREAKING_BAD_API_WEBSITE)
                 )
                 startActivity(browserIntent)
             }
