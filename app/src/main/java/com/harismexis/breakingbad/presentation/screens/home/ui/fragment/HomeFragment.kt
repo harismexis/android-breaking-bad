@@ -10,6 +10,7 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
@@ -158,15 +159,20 @@ class HomeFragment : BaseFragment(),
                 startActivity(mapNewMexicoIntent())
             }
             R.id.doc_dest -> {
-                val browserIntent = Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://breakingbadapi.com/"))
+                val browserIntent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://breakingbadapi.com/")
+                )
                 startActivity(browserIntent)
             }
+            else -> item.onNavDestinationSelected(findNavController())
         }
-        binding?.drawerLayout?.closeDrawer(GravityCompat.START)
+        closeDrawer()
         return true
     }
 
-
+    private fun closeDrawer() {
+        binding?.drawerLayout?.closeDrawer(GravityCompat.START)
+    }
 
 }

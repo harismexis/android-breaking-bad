@@ -74,7 +74,6 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
     }
 
     private fun verifyActorDetailsAreTheExpected() {
-        verifyLabel(R.id.txt_name_label, R.string.label_name)
         verifyValue(R.id.txt_name, mockActor.name)
 
         verifyLabel(R.id.txt_nickname_label, R.string.label_nickname)

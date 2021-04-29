@@ -14,13 +14,6 @@
         android:scaleType="centerCrop" />
 
     <TextView
-        android:id="@+id/txt_name_label"
-        style="@style/ItemDetailLabel"
-        android:layout_marginTop="@dimen/actor_detail_title_margin_top"
-        android:text="@string/label_name"
-        tools:text="Name label" />
-
-    <TextView
         android:id="@+id/txt_name"
         style="@style/ItemDetailTitle"
         android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"

@@ -25,8 +25,8 @@
     <string name="label_nickname">Nickname</string>
     <string name="label_birthday">Birthday</string>
     <string name="label_status">Status</string>
-    <string name="label_portrayed">Portrayed</string>
-    <string name="label_occupation">Occupation</string>
+    <string name="label_portrayed">Real name</string>
+    <string name="label_occupation">Role</string>
     <string name="label_category">Category</string>
     <string name="missing_value">n/a</string>
     <string name="missing_img_url">[missing image url]</string>
