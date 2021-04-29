@@ -10,8 +10,7 @@ import androidx.test.espresso.contrib.DrawerActions
 import androidx.test.espresso.contrib.DrawerMatchers.isClosed
 import androidx.test.espresso.contrib.DrawerMatchers.isOpen
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.datamodel.domain.Actor
@@ -153,6 +152,18 @@ class HomeScreenTest : InstrumentedTestSetup() {
 
         onView(withId(R.id.nav_view))
             .check(matches(isDisplayed()))
+            .check(matches(hasDescendant(withText(R.string.quotes))))
+            .check(matches(hasDescendant(withId(R.id.quotes_dest))))
+            .check(matches(hasDescendant(withText(R.string.episodes))))
+            .check(matches(hasDescendant(withId(R.id.episodes_dest))))
+            .check(matches(hasDescendant(withText(R.string.deaths))))
+            .check(matches(hasDescendant(withId(R.id.deaths_dest))))
+            .check(matches(hasDescendant(withText(R.string.player))))
+            .check(matches(hasDescendant(withId(R.id.player_dest))))
+            .check(matches(hasDescendant(withText(R.string.map))))
+            .check(matches(hasDescendant(withId(R.id.map_dest))))
+            .check(matches(hasDescendant(withText(R.string.api))))
+            .check(matches(hasDescendant(withId(R.id.doc_dest))))
     }
 
     private fun mockInitialResults(mockData: List<Actor>) {
