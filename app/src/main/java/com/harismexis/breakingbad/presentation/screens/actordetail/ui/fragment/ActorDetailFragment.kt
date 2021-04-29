@@ -95,7 +95,6 @@ class ActorDetailFragment : BaseFragment() {
         }
         detailBinding?.let {
             requireContext().populateWithGlide(it.img, actor.img)
-            it.txtName.setTextOrUnknown(actor.name)
             it.txtNickname.setTextOrUnknown(actor.nickname)
             it.txtPortrayed.setTextOrUnknown(actor.portrayed)
             it.txtOccupation.setTextOrUnknown(actor.occupationString())
