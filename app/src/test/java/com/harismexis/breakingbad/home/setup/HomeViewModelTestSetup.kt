@@ -119,8 +119,12 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     // LiveData
 
-    protected fun initActorsLiveData() {
+    protected fun observeActorsLiveData() {
         subject.actorsResult.observeForever(mockObserver)
+    }
+
+    protected fun stopObservingLiveData() {
+        subject.actorsResult.removeObserver(mockObserver)
     }
 
     protected fun verifyActorsLiveDataChangedWithSuccess() {

@@ -81,8 +81,12 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
         verify(mockObserver).onChanged(result)
     }
 
-    protected fun initActorDetailLiveData() {
+    protected fun observeActorDetailLiveData() {
         subject.actorDetailResult.observeForever(mockObserver)
+    }
+
+    protected fun stopObservingLiveData() {
+        subject.actorDetailResult.removeObserver(mockObserver)
     }
 
 }

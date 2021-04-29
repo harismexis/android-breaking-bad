@@ -15,8 +15,13 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
     }
 
     @Before
-    fun doBeforeEachTestCase() {
-        initActorsLiveData()
+    fun doBefore() {
+        observeActorsLiveData()
+    }
+
+    @Before
+    fun doAfter() {
+        stopObservingLiveData()
     }
 
     @Test

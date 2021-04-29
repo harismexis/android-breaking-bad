@@ -1,6 +1,7 @@
 package com.harismexis.breakingbad.actordetail
 
 import com.harismexis.breakingbad.actordetail.setup.ActorDetailViewModelTestSetup
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -14,8 +15,13 @@ class ActorDetailViewModelTest : ActorDetailViewModelTestSetup() {
     }
 
     @Before
-    fun doBeforeEachTestCase() {
-        initActorDetailLiveData()
+    fun doBefore() {
+        observeActorDetailLiveData()
+    }
+
+    @After
+    fun doAfter() {
+        stopObservingLiveData()
     }
 
     @Test
