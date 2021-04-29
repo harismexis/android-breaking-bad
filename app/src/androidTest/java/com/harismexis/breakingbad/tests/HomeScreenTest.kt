@@ -1,10 +1,13 @@
 package com.harismexis.breakingbad.tests
 
+import android.view.Gravity
 import androidx.annotation.IdRes
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.launchActivity
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.DrawerActions
+import androidx.test.espresso.contrib.DrawerMatchers.isClosed
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -28,6 +31,7 @@ import io.mockk.every
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
+
 
 @RunWith(AndroidJUnit4::class)
 class HomeScreenTest : InstrumentedTestSetup() {
@@ -129,6 +133,24 @@ class HomeScreenTest : InstrumentedTestSetup() {
         onView(withId(R.id.searchView)).perform(SearchViewActionExtension.submitQuery(SALA))
         // then
         verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA)
+    }
+
+    @Test
+    fun openNavigationDrawer_showsDrawer() {
+
+        // given
+        mockInitialResults(actorsParser.getMockActorsWhenJsonHasAllItemsValid())
+
+        // when
+        val scenario = launchActivity<MainActivity>()
+
+        // then
+        onView(withId(R.id.home_drawer_layout))
+            .check(matches(isClosed(Gravity.LEFT)))
+            .perform(DrawerActions.open())
+
+        onView(withId(R.id.nav_view))
+            .check(matches(isDisplayed()))
     }
 
     private fun mockInitialResults(mockData: List<Actor>) {

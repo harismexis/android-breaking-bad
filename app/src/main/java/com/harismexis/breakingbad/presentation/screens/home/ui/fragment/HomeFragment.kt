@@ -86,7 +86,7 @@ class HomeFragment : BaseFragment(),
 
     private fun setupToolbar() {
         val navController = findNavController()
-        val appBarConf = AppBarConfiguration(navController.graph, binding?.drawerLayout)
+        val appBarConf = AppBarConfiguration(navController.graph, binding?.homeDrawerLayout)
         binding?.apply { ->
             toolbar.apply {
                 setupWithNavController(navController, appBarConf)
@@ -175,7 +175,7 @@ class HomeFragment : BaseFragment(),
     }
 
     private fun closeDrawer() {
-        binding?.drawerLayout?.closeDrawer(GravityCompat.START)
+        binding?.homeDrawerLayout?.closeDrawer(GravityCompat.START)
     }
 
 }
