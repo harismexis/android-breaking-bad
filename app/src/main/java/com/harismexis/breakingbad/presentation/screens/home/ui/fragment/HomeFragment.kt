@@ -18,9 +18,9 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentHomeBinding
 import com.harismexis.breakingbad.datamodel.domain.Actor
 import com.harismexis.breakingbad.framework.event.EventObserver
-import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.framework.util.mapNewMexicoIntent
 import com.harismexis.breakingbad.framework.util.ui.hideKeyboard
+import com.harismexis.breakingbad.framework.util.ui.showSnackBar
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorAdapter
@@ -112,7 +112,8 @@ class HomeFragment : BaseFragment(),
         })
 
         viewModel.showErrorMessage.observe(viewLifecycleOwner, EventObserver {
-            requireContext().showToast(it)
+            // requireContext().showToast(it)
+            binding?.homeCoordinator?.showSnackBar(it)
         })
     }
 

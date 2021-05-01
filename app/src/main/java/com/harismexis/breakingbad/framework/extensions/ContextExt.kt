@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.harismexis.breakingbad.R
 
+
 fun Context.getColorCompat(@ColorRes colorResId: Int): Int {
     return ContextCompat.getColor(this, colorResId)
 }
