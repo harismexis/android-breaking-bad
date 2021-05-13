@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.presentation.base.BaseViewPagerFragment
+import com.harismexis.breakingbad.presentation.screens.quotes.ui.adapter.QuotesPagerAdapter
 
 class QuotesContainerFragment : BaseViewPagerFragment() {
 
