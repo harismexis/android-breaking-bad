@@ -97,7 +97,7 @@ ext {
 
     androidTestLibraries = [
             core_testing    : "androidx.arch.core:core-testing:$arch_core",
-            test_core_ktx       : "androidx.test:core-ktx:$androidx_test",
+            test_core_ktx   : "androidx.test:core-ktx:$androidx_test",
 
             runner          : "androidx.test:runner:$androidx_test",
             rules           : "androidx.test:rules:$androidx_test",
@@ -107,13 +107,13 @@ ext {
             truth           : "androidx.test.ext:truth:$androidx_test",
             google_truth    : "com.google.truth:truth:$google_truth",
 
-            espresso_core               : "androidx.test.espresso:espresso-core:$espresso",
-            espresso_contrib            : "androidx.test.espresso:espresso-contrib:$espresso",
-            espresso_intents            : "androidx.test.espresso:espresso-intents:$espresso",
-            espresso_accessibility      : "androidx.test.espresso:espresso-accessibility:$espresso",
-            espresso_web                : "androidx.test.espresso:espresso-web:$espresso",
-            idling_concurrent           : "androidx.test.espresso.idling:idling-concurrent:$espresso",
-            espresso_idling_resource    : "androidx.test.espresso:espresso-idling-resource:$espresso",
+            espresso_core          : "androidx.test.espresso:espresso-core:$espresso",
+            espresso_contrib       : "androidx.test.espresso:espresso-contrib:$espresso",
+            espresso_intents       : "androidx.test.espresso:espresso-intents:$espresso",
+            espresso_accessibility : "androidx.test.espresso:espresso-accessibility:$espresso",
+            espresso_web           : "androidx.test.espresso:espresso-web:$espresso",
+            idling_concurrent      : "androidx.test.espresso.idling:idling-concurrent:$espresso",
+            espresso_idling        : "androidx.test.espresso:espresso-idling-resource:$espresso",
 
             arch_core       : "androidx.arch.core:core-testing:$arch_core",
             work_testing    : "androidx.work:work-testing:$work",
@@ -121,27 +121,27 @@ ext {
 
             mockito_android : "org.mockito:mockito-android:$mockito",
             mockito_core    : "org.mockito:mockito-core:$mockito",
-            mockk_android : "io.mockk:mockk-android:$mockk_android",
+            mockk_android   : "io.mockk:mockk-android:$mockk_android",
             nav_testing     : "androidx.navigation:navigation-testing:$nav_version"
     ]
 
     daggerDependancies = [
-            dagger                : "com.google.dagger:dagger:$dagger_2",
-            dagger_android        : "com.google.dagger:dagger-android:$dagger_2",
-            dagger_android_support: "com.google.dagger:dagger-android-support:$dagger_2"
+            dagger                 : "com.google.dagger:dagger:$dagger_2",
+            dagger_android         : "com.google.dagger:dagger-android:$dagger_2",
+            dagger_android_support : "com.google.dagger:dagger-android-support:$dagger_2"
     ]
 
     annotationProcessorsDependencies = [
-            dagger_compiler         : "com.google.dagger:dagger-compiler:$dagger_2",
-            dagger_android_processor: "com.google.dagger:dagger-android-processor:$dagger_2",
-            glide_compiler          : "com.github.bumptech.glide:compiler:${glide}"
+            dagger_compiler          : "com.google.dagger:dagger-compiler:$dagger_2",
+            dagger_android_processor : "com.google.dagger:dagger-android-processor:$dagger_2",
+            glide_compiler           : "com.github.bumptech.glide:compiler:${glide}"
     ]
 
     rxJavaDependencies = [
-            retrofit_adapter: "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_adapter_rxjava2",
-            rxjava          : "io.reactivex.rxjava2:rxjava:$rxjava2",
-            rxandroid       : "io.reactivex.rxjava2:rxandroid:$rxandroid",
-            rxrelay         : "com.jakewharton.rxrelay2:rxrelay:${rx_relay}"
+            retrofit_adapter : "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_adapter_rxjava2",
+            rxjava           : "io.reactivex.rxjava2:rxjava:$rxjava2",
+            rxandroid        : "io.reactivex.rxjava2:rxandroid:$rxandroid",
+            rxrelay          : "com.jakewharton.rxrelay2:rxrelay:${rx_relay}"
     ]
 
     glideDependencies = [
