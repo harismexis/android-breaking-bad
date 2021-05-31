@@ -15,19 +15,21 @@ ext {
     def constraint_layout = '2.0.4'
     def swipe_refresh_layout = '1.1.0'
 
-    def coroutines_android = '1.5.0'
-    def room = '2.3.0-beta02'
+    def core_ktx = '1.5.0'
     def viewmodel_ktx = '2.3.1'
     def livedata_ktx = '2.3.1'
     def activity_ktx = '1.2.0-beta01'
     def fragment_ktx = '1.3.0-beta01'
+    def fragment_version = '1.3.2'
+
+    def coroutines_android = '1.5.0'
+    def room = '2.3.0-beta02'
+    def dagger_2 = '2.36'
 
     def gson = '2.8.7'
     def retrofit_gson = '2.9.0'
     def retrofit = '2.9.0'
     def glide = '4.12.0'
-
-    def dagger_2 = '2.36'
 
     def androidx_test = '1.3.0'
     def espresso = '3.3.0'
@@ -49,30 +51,26 @@ ext {
 
     def soffritti_youtube_player = '10.0.5'
 
-    def fragment_version = "1.3.2"
-
     libraries = [
             kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin",
-
-            coroutines         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_android",
-            coroutines_android : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android",
-
             appCompat          : "androidx.appcompat:appcompat:$appcompat",
             material           : "com.google.android.material:material:$material",
             constraint_layout  : "androidx.constraintlayout:constraintlayout:$constraint_layout",
 
-            livedata           : "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_ktx",
-            viewmodel          : "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_ktx",
-
+            core_ktx           : "androidx.core:core-ktx:$core_ktx",
+            livedata_ktx       : "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_ktx",
+            viewmodel_ktx      : "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_ktx",
             activity_ktx       : "androidx.activity:activity-ktx:$activity_ktx",
             fragment_ktx       : "androidx.fragment:fragment-ktx:$fragment_ktx",
 
-            room               : "androidx.room:room-ktx:$room",
+            coroutines         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_android",
+            coroutines_android : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android",
 
             gson               : "com.google.code.gson:gson:$gson",
             retrofit_gson      : "com.squareup.retrofit2:converter-gson:$retrofit_gson",
             retrofit           : "com.squareup.retrofit2:retrofit:$retrofit",
 
+            room               : "androidx.room:room-ktx:$room",
             swiperefreshlayout : "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout"
     ]
 
@@ -144,7 +142,7 @@ ext {
             retrofit_adapter: "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_adapter_rxjava2",
             rxjava          : "io.reactivex.rxjava2:rxjava:$rxjava2",
             rxandroid       : "io.reactivex.rxjava2:rxandroid:$rxandroid",
-            rxrelay         : "com.jakewharton.rxrelay2:rxrelay:${rx_relay}",
+            rxrelay         : "com.jakewharton.rxrelay2:rxrelay:${rx_relay}"
     ]
 
     glideDependencies = [
@@ -153,12 +151,12 @@ ext {
     ]
 
     navigationDependencies = [
-            nav_fragment : "androidx.navigation:navigation-fragment:$nav_version",
-            nav_ui : "androidx.navigation:navigation-ui:$nav_version",
+            nav_fragment     : "androidx.navigation:navigation-fragment:$nav_version",
+            nav_ui           : "androidx.navigation:navigation-ui:$nav_version",
             nav_fragment_ktx : "androidx.navigation:navigation-fragment-ktx:$nav_version",
-            nav_ui_ktx : "androidx.navigation:navigation-ui-ktx:$nav_version",
-            nav_dynamic_features_fragment : "androidx.navigation:navigation-dynamic-features-fragment:$nav_version",
-            nav_compose : "androidx.navigation:navigation-compose:1.0.0-alpha09"
+            nav_ui_ktx       : "androidx.navigation:navigation-ui-ktx:$nav_version",
+            nav_dynamic      : "androidx.navigation:navigation-dynamic-features-fragment:$nav_version",
+            nav_compose      : "androidx.navigation:navigation-compose:1.0.0-alpha09"
     ]
 
     soffrittiYouTubePlayer = [
