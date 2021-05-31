@@ -15,7 +15,7 @@ ext {
     def constraint_layout = '2.0.4'
     def swipe_refresh_layout = '1.1.0'
 
-    def coroutines_android = '1.4.2'
+    def coroutines_android = '1.5.0'
     def room = '2.3.0-beta02'
     def viewmodel_ktx = '2.3.1'
     def livedata_ktx = '2.3.1'
