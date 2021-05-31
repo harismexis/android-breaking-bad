@@ -43,7 +43,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
 
     private val mockViewModel = MockHomeVmProvider.mockHomeViewModel
     private lateinit var mockActors: List<Actor>
-    private lateinit var actorsSuccess: ActorsResult.ActorsSuccess
+    private lateinit var actorsSuccess: ActorsResult.Success
 
     @Test
     fun actorsFeedHasAllItemsValid_listHasExpectedItems() {
@@ -188,7 +188,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
 
     private fun mockInitialResults(mockData: List<Actor>) {
         mockActors = mockData
-        actorsSuccess = ActorsResult.ActorsSuccess(mockActors)
+        actorsSuccess = ActorsResult.Success(mockActors)
         every { mockViewModel.fetchInitialActors() } answers {
             MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
         }
@@ -197,7 +197,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
 
     private fun mockSearchResults(actorName: String, mockData: List<Actor>) {
         mockActors = mockData
-        actorsSuccess = ActorsResult.ActorsSuccess(mockActors)
+        actorsSuccess = ActorsResult.Success(mockActors)
         every { mockViewModel.updateSearchQuery(actorName) } answers {
             MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
         }

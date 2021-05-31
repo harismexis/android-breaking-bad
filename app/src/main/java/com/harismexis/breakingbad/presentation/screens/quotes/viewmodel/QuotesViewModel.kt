@@ -54,11 +54,11 @@ class QuotesViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val items = quoteRemote.getQuotes(seriesName)
-                mQuotes.value = QuotesResult.QuotesSuccess(items)
+                mQuotes.value = QuotesResult.Success(items)
                 quoteLocal.insertQuotes(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mQuotes.value = QuotesResult.QuotesError(e)
+                mQuotes.value = QuotesResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }
@@ -68,10 +68,10 @@ class QuotesViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val items = quoteLocal.getQuotesBySeries(seriesName)
-                mQuotes.value = QuotesResult.QuotesSuccess(items)
+                mQuotes.value = QuotesResult.Success(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mQuotes.value = QuotesResult.QuotesError(e)
+                mQuotes.value = QuotesResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }

@@ -51,11 +51,11 @@ class DeathsViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val items = deathRemote.getDeaths()
-                mDeaths.value = DeathsResult.DeathsSuccess(items)
+                mDeaths.value = DeathsResult.Success(items)
                 deathLocal.insertDeaths(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mDeaths.value = DeathsResult.DeathsError(e)
+                mDeaths.value = DeathsResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }
@@ -65,10 +65,10 @@ class DeathsViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val items = deathLocal.getDeaths()
-                mDeaths.value = DeathsResult.DeathsSuccess(items)
+                mDeaths.value = DeathsResult.Success(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mDeaths.value = DeathsResult.DeathsError(e)
+                mDeaths.value = DeathsResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }

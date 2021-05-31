@@ -106,8 +106,8 @@ class HomeFragment : BaseFragment(),
     private fun observeLiveData() {
         viewModel.actorsResult.observe(viewLifecycleOwner, {
             when (it) {
-                is ActorsResult.ActorsSuccess -> populate(it.items)
-                is ActorsResult.ActorsError -> populateError(it.error)
+                is ActorsResult.Success -> populate(it.items)
+                is ActorsResult.Error -> populateError(it.error)
             }
         })
 

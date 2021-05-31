@@ -26,11 +26,11 @@ class ActorDetailViewModel @Inject constructor(
             try {
                 val item = actorLocal.getActor(itemId)
                 item?.let {
-                    mActorDetailResult.value = ActorDetailResult.ActorSuccess(item)
+                    mActorDetailResult.value = ActorDetailResult.Success(item)
                 }
             } catch (e: Exception) {
                 Log.d(tag, e.getErrorMessage())
-                mActorDetailResult.value = ActorDetailResult.ActorError(e.getErrorMessage())
+                mActorDetailResult.value = ActorDetailResult.Error(e.getErrorMessage())
             }
         }
     }

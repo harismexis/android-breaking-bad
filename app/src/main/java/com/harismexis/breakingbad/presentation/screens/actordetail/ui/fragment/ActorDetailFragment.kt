@@ -69,8 +69,8 @@ class ActorDetailFragment : BaseFragment() {
     private fun observeLiveData() {
         viewModel.actorDetailResult.observe(viewLifecycleOwner, {
             when (it) {
-                is ActorDetailResult.ActorSuccess -> populate(it.item)
-                is ActorDetailResult.ActorError -> populateError(it.error)
+                is ActorDetailResult.Success -> populate(it.item)
+                is ActorDetailResult.Error -> populateError(it.error)
             }
         })
     }

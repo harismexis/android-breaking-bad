@@ -56,11 +56,11 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val items = actorRemote.getActors(name)
-                mActorsResult.value = ActorsResult.ActorsSuccess(items)
+                mActorsResult.value = ActorsResult.Success(items)
                 actorLocal.updateActors(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mActorsResult.value = ActorsResult.ActorsError(e)
+                mActorsResult.value = ActorsResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }
@@ -70,10 +70,10 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val items = actorLocal.getActors()
-                mActorsResult.value = ActorsResult.ActorsSuccess(items)
+                mActorsResult.value = ActorsResult.Success(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mActorsResult.value = ActorsResult.ActorsError(e)
+                mActorsResult.value = ActorsResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }

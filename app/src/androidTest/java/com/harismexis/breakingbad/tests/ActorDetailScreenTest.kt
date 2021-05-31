@@ -27,13 +27,13 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
 
     private val mockHomeViewModel = MockHomeVmProvider.mockHomeViewModel
     private var mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
-    private var actorsSuccess = ActorsResult.ActorsSuccess(mockActors)
+    private var actorsSuccess = ActorsResult.Success(mockActors)
     private var clickIndexOnSearchResultList = 0
 
     private val mockDetailViewModel = MockActorDetailVmProvider.mockActorDetailViewModel
     private var mockActor = mockActors[0]
     private var mockActorId = mockActor.actorId
-    private lateinit var actorDetailSuccess: ActorDetailResult.ActorSuccess
+    private lateinit var actorDetailSuccess: ActorDetailResult.Success
 
     init {
         every { mockHomeViewModel.actorsResult } returns MockHomeVmProvider.fakeActorsResult
@@ -56,7 +56,7 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
     }
 
     private fun mockInitialResultsInHomeScreen() {
-        actorsSuccess = ActorsResult.ActorsSuccess(mockActors)
+        actorsSuccess = ActorsResult.Success(mockActors)
         every { mockHomeViewModel.fetchInitialActors() } answers {
             MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
         }
@@ -64,7 +64,7 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
     }
 
     private fun mockActorDetailResultSuccess() {
-        actorDetailSuccess = ActorDetailResult.ActorSuccess(mockActor)
+        actorDetailSuccess = ActorDetailResult.Success(mockActor)
         every { mockDetailViewModel.actorDetailResult } returns MockActorDetailVmProvider.fakeActorDetailResult
     }
 

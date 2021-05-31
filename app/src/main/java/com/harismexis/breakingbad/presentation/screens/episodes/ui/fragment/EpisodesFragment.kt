@@ -84,8 +84,8 @@ class EpisodesFragment : BaseFragment() {
     private fun observeLiveData() {
         viewModel.episodes.observe(viewLifecycleOwner, {
             when (it) {
-                is EpisodesResult.EpisodesSuccess -> populate(it.items)
-                is EpisodesResult.EpisodesError -> {
+                is EpisodesResult.Success -> populate(it.items)
+                is EpisodesResult.Error -> {
                 }
             }
         })

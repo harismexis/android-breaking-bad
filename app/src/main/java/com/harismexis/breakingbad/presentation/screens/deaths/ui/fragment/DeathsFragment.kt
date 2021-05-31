@@ -78,8 +78,8 @@ class DeathsFragment : BaseFragment() {
     private fun observeLiveData() {
         viewModel.deaths.observe(viewLifecycleOwner, {
             when (it) {
-                is DeathsResult.DeathsSuccess -> populate(it.items)
-                is DeathsResult.DeathsError -> {}
+                is DeathsResult.Success -> populate(it.items)
+                is DeathsResult.Error -> {}
             }
         })
 

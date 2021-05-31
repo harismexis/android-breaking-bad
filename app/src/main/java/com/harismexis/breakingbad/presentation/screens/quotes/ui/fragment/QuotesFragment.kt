@@ -84,8 +84,8 @@ class QuotesFragment : BaseFragment() {
     private fun observeLiveData() {
         viewModel.quotes.observe(viewLifecycleOwner, {
             when (it) {
-                is QuotesResult.QuotesSuccess -> populate(it.items)
-                is QuotesResult.QuotesError -> {}
+                is QuotesResult.Success -> populate(it.items)
+                is QuotesResult.Error -> {}
             }
         })
 

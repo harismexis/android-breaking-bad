@@ -35,8 +35,8 @@ abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
         mockActor = actorsParser.getMockActor()
         mockActorId = mockActor.actorId
         subject = ActorDetailViewModel(mockActorLocal)
-        mockActorDetailSuccess = ActorDetailResult.ActorSuccess(mockActor)
-        mockActorDetailError = ActorDetailResult.ActorError(ERROR_MESSAGE)
+        mockActorDetailSuccess = ActorDetailResult.Success(mockActor)
+        mockActorDetailError = ActorDetailResult.Error(ERROR_MESSAGE)
     }
 
     // Local Call

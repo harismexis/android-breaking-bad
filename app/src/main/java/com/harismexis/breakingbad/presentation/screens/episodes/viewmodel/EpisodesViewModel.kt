@@ -54,11 +54,11 @@ class EpisodesViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val items = episodesRemote.getEpisodes(seriesName)
-                mEpisodes.value = EpisodesResult.EpisodesSuccess(items)
+                mEpisodes.value = EpisodesResult.Success(items)
                 episodesLocal.insertEpisodes(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mEpisodes.value = EpisodesResult.EpisodesError(e)
+                mEpisodes.value = EpisodesResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }
@@ -68,10 +68,10 @@ class EpisodesViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val items = episodesLocal.getEpisodes()
-                mEpisodes.value = EpisodesResult.EpisodesSuccess(items)
+                mEpisodes.value = EpisodesResult.Success(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mEpisodes.value = EpisodesResult.EpisodesError(e)
+                mEpisodes.value = EpisodesResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }
