@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.datamodel.repo.QuoteLocalRepo
-import com.harismexis.breakingbad.datamodel.repo.QuoteRemoteRepo
+import com.harismexis.breakingbad.datamodel.repository.QuotesLocalRepository
+import com.harismexis.breakingbad.datamodel.repository.QuotesRemoteRepository
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.framework.util.functional.Action1
@@ -16,8 +16,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class QuotesViewModel @Inject constructor(
-    private val quoteRemote: QuoteRemoteRepo,
-    private val quoteLocal: QuoteLocalRepo,
+    private val quoteRemote: QuotesRemoteRepository,
+    private val quoteLocal: QuotesLocalRepository,
     private val connectivity: ConnectivityMonitorSimple,
 ) : ViewModel() {
 

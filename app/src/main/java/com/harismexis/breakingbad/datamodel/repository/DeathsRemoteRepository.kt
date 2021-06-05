@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.datamodel.repo
+package com.harismexis.breakingbad.datamodel.repository
 
 import com.harismexis.breakingbad.datamodel.domain.Death
 import com.harismexis.breakingbad.framework.datasource.network.data.BreakingBadRemoteDao
@@ -7,7 +7,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DeathRemoteRepo @Inject constructor(
+class DeathsRemoteRepository @Inject constructor(
     private val dao: BreakingBadRemoteDao
 ) {
     suspend fun getDeaths(): List<Death> = dao.getDeaths().toItems()

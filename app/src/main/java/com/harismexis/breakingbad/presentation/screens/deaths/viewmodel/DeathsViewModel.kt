@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.datamodel.repo.DeathLocalRepo
-import com.harismexis.breakingbad.datamodel.repo.DeathRemoteRepo
+import com.harismexis.breakingbad.datamodel.repository.DeathsLocalRepository
+import com.harismexis.breakingbad.datamodel.repository.DeathsRemoteRepository
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.framework.util.functional.Action1
@@ -16,8 +16,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DeathsViewModel @Inject constructor(
-    private val deathRemote: DeathRemoteRepo,
-    private val deathLocal: DeathLocalRepo,
+    private val deathRemote: DeathsRemoteRepository,
+    private val deathLocal: DeathsLocalRepository,
     private val connectivity: ConnectivityMonitorSimple,
 ) : ViewModel() {
 

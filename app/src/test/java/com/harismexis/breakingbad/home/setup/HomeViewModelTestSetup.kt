@@ -2,8 +2,8 @@ package com.harismexis.breakingbad.home.setup
 
 import androidx.lifecycle.Observer
 import com.harismexis.breakingbad.datamodel.domain.Actor
-import com.harismexis.breakingbad.datamodel.repo.ActorLocalRepo
-import com.harismexis.breakingbad.datamodel.repo.ActorRemoteRepo
+import com.harismexis.breakingbad.datamodel.repository.ActorsLocalRepository
+import com.harismexis.breakingbad.datamodel.repository.ActorsRemoteRepository
 import com.harismexis.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
@@ -18,9 +18,9 @@ import org.mockito.Mockito
 abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     @Mock
-    protected lateinit var mockActorRemote: ActorRemoteRepo
+    protected lateinit var mockActorRemote: ActorsRemoteRepository
     @Mock
-    protected lateinit var mockActorLocal: ActorLocalRepo
+    protected lateinit var mockActorLocal: ActorsLocalRepository
 
     @Mock
     protected lateinit var mockConnectivity: ConnectivityMonitorSimple

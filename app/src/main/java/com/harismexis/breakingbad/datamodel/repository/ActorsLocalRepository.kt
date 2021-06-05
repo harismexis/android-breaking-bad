@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.datamodel.repo
+package com.harismexis.breakingbad.datamodel.repository
 
 import com.harismexis.breakingbad.datamodel.domain.Actor
 import com.harismexis.breakingbad.framework.datasource.database.data.BreakingBadLocalDao
@@ -9,7 +9,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ActorLocalRepo @Inject constructor(
+class ActorsLocalRepository @Inject constructor(
     private val dao: BreakingBadLocalDao
 ) {
     suspend fun updateActors(items: List<Actor>) {

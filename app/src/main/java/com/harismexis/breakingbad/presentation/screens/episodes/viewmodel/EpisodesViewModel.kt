@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.datamodel.repo.EpisodeLocalRepo
-import com.harismexis.breakingbad.datamodel.repo.EpisodeRemoteRepo
+import com.harismexis.breakingbad.datamodel.repository.EpisodesLocalRepository
+import com.harismexis.breakingbad.datamodel.repository.EpisodesRemoteRepository
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.framework.util.functional.Action1
@@ -16,8 +16,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class EpisodesViewModel @Inject constructor(
-    private val episodesRemote: EpisodeRemoteRepo,
-    private val episodesLocal: EpisodeLocalRepo,
+    private val episodesRemote: EpisodesRemoteRepository,
+    private val episodesLocal: EpisodesLocalRepository,
     private val connectivity: ConnectivityMonitorSimple,
 ) : ViewModel() {
 

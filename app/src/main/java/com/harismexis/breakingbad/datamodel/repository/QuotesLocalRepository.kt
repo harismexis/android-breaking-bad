@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.datamodel.repo
+package com.harismexis.breakingbad.datamodel.repository
 
 import com.harismexis.breakingbad.datamodel.domain.Quote
 import com.harismexis.breakingbad.framework.datasource.database.data.BreakingBadLocalDao
@@ -8,7 +8,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class QuoteLocalRepo @Inject constructor(
+class QuotesLocalRepository @Inject constructor(
     private val dao: BreakingBadLocalDao
 ) {
     suspend fun insertQuotes(items: List<Quote>) {

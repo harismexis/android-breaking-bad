@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.datamodel.repo
+package com.harismexis.breakingbad.datamodel.repository
 
 import com.harismexis.breakingbad.datamodel.domain.Actor
 import com.harismexis.breakingbad.framework.datasource.network.data.BreakingBadRemoteDao
@@ -7,7 +7,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-data class ActorRemoteRepo @Inject constructor(
+data class ActorsRemoteRepository @Inject constructor(
     private val dao: BreakingBadRemoteDao
 ) {
     suspend fun getActors(name: String? = null): List<Actor> = dao.getActors(name).toItems()

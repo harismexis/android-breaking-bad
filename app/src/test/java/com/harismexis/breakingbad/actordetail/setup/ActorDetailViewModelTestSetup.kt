@@ -2,7 +2,7 @@ package com.harismexis.breakingbad.actordetail.setup
 
 import androidx.lifecycle.Observer
 import com.harismexis.breakingbad.datamodel.domain.Actor
-import com.harismexis.breakingbad.datamodel.repo.ActorLocalRepo
+import com.harismexis.breakingbad.datamodel.repository.ActorsLocalRepository
 import com.harismexis.breakingbad.presentation.result.ActorDetailResult
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 import com.harismexis.breakingbad.setup.UnitTestSetup
@@ -15,7 +15,7 @@ import org.mockito.Mockito
 abstract class ActorDetailViewModelTestSetup : UnitTestSetup() {
 
     @Mock
-    protected lateinit var mockActorLocal: ActorLocalRepo
+    protected lateinit var mockActorLocal: ActorsLocalRepository
 
     @Mock
     lateinit var mockObserver: Observer<ActorDetailResult>

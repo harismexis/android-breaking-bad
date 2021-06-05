@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.datamodel.repo
+package com.harismexis.breakingbad.datamodel.repository
 
 import com.harismexis.breakingbad.datamodel.domain.Death
 import com.harismexis.breakingbad.framework.datasource.database.data.BreakingBadLocalDao
@@ -8,7 +8,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DeathLocalRepo @Inject constructor(
+class DeathsLocalRepository @Inject constructor(
     private val dao: BreakingBadLocalDao
 ) {
     suspend fun insertDeaths(items: List<Death>) {
