@@ -23,7 +23,7 @@ ext {
     def fragment_version = '1.3.2'
 
     def coroutines_android = '1.5.0'
-    def room = '2.3.0-beta02'
+    def room = '2.3.0'
     def dagger_2 = '2.36'
 
     def gson = '2.8.7'
