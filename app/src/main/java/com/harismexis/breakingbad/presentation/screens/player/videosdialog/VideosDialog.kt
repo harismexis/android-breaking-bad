@@ -8,13 +8,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.databinding.DialogVideosBinding
-import com.harismexis.breakingbad.presentation.screens.player.VideosCatalog
+import com.harismexis.breakingbad.presentation.screens.player.getVideosList
 
 class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListener {
 
     private var binding: DialogVideosBinding? = null
     private lateinit var adapter: VideosAdapter
-    private var videos: MutableList<VideoItem> = mutableListOf()
+    private var videos: MutableList<Video> = mutableListOf()
     var itemClick: VideoItemViewHolder.VideoItemClickListener? = null
 
     companion object {
@@ -46,10 +46,10 @@ class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListene
 
     private fun setupRecycler() {
         videos.clear()
-        videos.addAll(VideosCatalog.getVideoItems())
+        videos.addAll(getVideosList())
 
-        val selectedId = arguments?.getString(ARG_CURRENT_VIDEO_ID, videos[0].videoId)
-        val current = videos.indexOfFirst { it.videoId == selectedId }
+        val selectedId = arguments?.getString(ARG_CURRENT_VIDEO_ID, videos[0].id)
+        val current = videos.indexOfFirst { it.id == selectedId }
         videos[current].isPlaying = true
 
         adapter = VideosAdapter(videos, this)
@@ -68,7 +68,7 @@ class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListene
         }
     }
 
-    override fun onVideoClicked(item: VideoItem, position: Int) {
+    override fun onVideoClicked(item: Video, position: Int) {
         dismiss()
         videos.forEach { it.isPlaying = false }
         videos[position].isPlaying = true

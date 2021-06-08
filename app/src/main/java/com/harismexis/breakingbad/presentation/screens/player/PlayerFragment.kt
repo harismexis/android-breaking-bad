@@ -12,7 +12,7 @@ import com.harismexis.breakingbad.databinding.FragmentPlayerBinding
 import com.harismexis.breakingbad.framework.util.ui.hideSystemUI
 import com.harismexis.breakingbad.framework.util.ui.showSystemUI
 import com.harismexis.breakingbad.presentation.base.BaseFragment
-import com.harismexis.breakingbad.presentation.screens.player.videosdialog.VideoItem
+import com.harismexis.breakingbad.presentation.screens.player.videosdialog.Video
 import com.harismexis.breakingbad.presentation.screens.player.videosdialog.VideoItemViewHolder
 import com.harismexis.breakingbad.presentation.screens.player.videosdialog.VideosDialog
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -21,7 +21,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
 
 class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListener {
 
-    private var currentVideoId = VideosCatalog.getVideoItems()[0].videoId
+    private var currentVideoId = getFirstVideoId()
     private var binding: FragmentPlayerBinding? = null
     private var videoPlayer: YouTubePlayer? = null
     private var isFullScreen: Boolean = false
@@ -115,9 +115,9 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
         return binding?.root
     }
 
-    override fun onVideoClicked(item: VideoItem, position: Int) {
-        currentVideoId = item.videoId
-        videoPlayer?.loadVideo(item.videoId, 0f)
+    override fun onVideoClicked(video: Video, position: Int) {
+        currentVideoId = video.id
+        videoPlayer?.loadVideo(video.id, 0f)
     }
 
 }

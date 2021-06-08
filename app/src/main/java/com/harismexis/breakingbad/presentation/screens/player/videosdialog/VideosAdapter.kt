@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.harismexis.breakingbad.databinding.VhVideoItemBinding
 
 class VideosAdapter(
-    private val models: List<VideoItem>,
+    private val items: List<Video>,
     private val itemClick: VideoItemViewHolder.VideoItemClickListener?
 ) : RecyclerView.Adapter<VideoItemViewHolder>() {
 
@@ -28,11 +28,11 @@ class VideosAdapter(
         viewHolder: VideoItemViewHolder,
         position: Int
     ) {
-        viewHolder.bind(models[position], position)
+        viewHolder.bind(items[position], position)
     }
 
     override fun getItemCount(): Int {
-        return models.size
+        return items.size
     }
 
     override fun getItemId(position: Int): Long {
