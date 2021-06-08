@@ -8,7 +8,7 @@ import android.widget.RelativeLayout
 import androidx.annotation.NonNull
 import androidx.navigation.fragment.findNavController
 import com.harismexis.breakingbad.R
-import com.harismexis.breakingbad.databinding.FragmentPlayerLinearBinding
+import com.harismexis.breakingbad.databinding.FragmentPlayerBinding
 import com.harismexis.breakingbad.framework.util.ui.hideSystemUI
 import com.harismexis.breakingbad.framework.util.ui.showSystemUI
 import com.harismexis.breakingbad.presentation.base.BaseFragment
@@ -22,7 +22,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
 class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListener {
 
     private var currentVideoId = provideVideos()[0].videoId
-    private var binding: FragmentPlayerLinearBinding? = null
+    private var binding: FragmentPlayerBinding? = null
     private var videoPlayer: YouTubePlayer? = null
     private var isFullScreen: Boolean = false
 
@@ -31,7 +31,7 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
     }
 
     override fun initialiseViewBinding(inflater: LayoutInflater, container: ViewGroup?) {
-        binding = FragmentPlayerLinearBinding.inflate(inflater, container, false)
+        binding = FragmentPlayerBinding.inflate(inflater, container, false)
     }
 
     override fun onCreateView() {
