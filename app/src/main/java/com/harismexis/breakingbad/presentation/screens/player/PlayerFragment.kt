@@ -21,7 +21,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
 
 class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListener {
 
-    private var currentVideoId = provideVideos()[0].videoId
+    private var currentVideoId = VideosCatalog.getVideoItems()[0].videoId
     private var binding: FragmentPlayerBinding? = null
     private var videoPlayer: YouTubePlayer? = null
     private var isFullScreen: Boolean = false

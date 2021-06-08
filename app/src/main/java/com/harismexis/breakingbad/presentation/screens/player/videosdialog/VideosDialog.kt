@@ -8,7 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.databinding.DialogVideosBinding
-import com.harismexis.breakingbad.presentation.screens.player.provideVideoItems
+import com.harismexis.breakingbad.presentation.screens.player.VideosCatalog
 
 class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListener {
 
@@ -46,7 +46,7 @@ class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListene
 
     private fun setupRecycler() {
         videos.clear()
-        videos.addAll(provideVideoItems())
+        videos.addAll(VideosCatalog.getVideoItems())
 
         val selectedId = arguments?.getString(ARG_CURRENT_VIDEO_ID, videos[0].videoId)
         val current = videos.indexOfFirst { it.videoId == selectedId }
