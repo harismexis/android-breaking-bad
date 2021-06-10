@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.harismexis.breakingbad.framework.datasource.database.BreakingBadDatabase
-import com.harismexis.breakingbad.framework.datasource.database.data.BreakingBadLocalDao
-import com.harismexis.breakingbad.framework.datasource.database.table.LocalActor
+import com.harismexis.breakingbad.model.datasource.database.schema.BreakingBadDatabase
+import com.harismexis.breakingbad.model.datasource.database.dao.BreakingBadLocalDao
+import com.harismexis.breakingbad.model.datasource.database.table.LocalActor
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_NO_DATA
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID

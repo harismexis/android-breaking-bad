@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.framework.di.api
 
-import com.harismexis.breakingbad.framework.datasource.network.api.BreakingBadApi
+import com.harismexis.breakingbad.model.datasource.network.api.BreakingBadApi
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.harismexis.breakingbad.BuildConfig

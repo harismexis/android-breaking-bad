@@ -2,9 +2,9 @@ package com.harismexis.breakingbad.parser
 
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import com.harismexis.breakingbad.datamodel.domain.Actor
-import com.harismexis.breakingbad.framework.datasource.database.table.LocalActor
-import com.harismexis.breakingbad.framework.datasource.network.model.RemoteActor
+import com.harismexis.breakingbad.model.domain.Actor
+import com.harismexis.breakingbad.model.datasource.database.table.LocalActor
+import com.harismexis.breakingbad.model.datasource.network.model.RemoteActor
 import com.harismexis.breakingbad.framework.extensions.actor.toItems
 import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
 import java.lang.reflect.Type

@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.utils
 
-import com.harismexis.breakingbad.datamodel.domain.Actor
-import com.harismexis.breakingbad.framework.datasource.database.table.LocalActor
+import com.harismexis.breakingbad.model.domain.Actor
+import com.harismexis.breakingbad.model.datasource.database.table.LocalActor
 import org.junit.Assert
 
 class ActorLocalVerificator {

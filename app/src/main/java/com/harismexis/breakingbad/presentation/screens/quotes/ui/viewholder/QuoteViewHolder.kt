@@ -2,7 +2,7 @@ package com.harismexis.breakingbad.presentation.screens.quotes.ui.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.harismexis.breakingbad.databinding.VhQuoteItemBinding
-import com.harismexis.breakingbad.datamodel.domain.Quote
+import com.harismexis.breakingbad.model.domain.Quote
 
 class QuoteViewHolder(
     private val binding: VhQuoteItemBinding

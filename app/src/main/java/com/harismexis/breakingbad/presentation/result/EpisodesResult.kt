@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.presentation.result
 
-import com.harismexis.breakingbad.datamodel.domain.Episode
+import com.harismexis.breakingbad.model.domain.Episode
 
 sealed class EpisodesResult {
     data class Success(val items: List<Episode>): EpisodesResult()

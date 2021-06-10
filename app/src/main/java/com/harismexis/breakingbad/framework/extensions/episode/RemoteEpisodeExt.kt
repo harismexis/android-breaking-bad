@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.framework.extensions.episode
 
-import com.harismexis.breakingbad.datamodel.domain.Episode
-import com.harismexis.breakingbad.framework.datasource.network.model.RemoteEpisode
+import com.harismexis.breakingbad.model.domain.Episode
+import com.harismexis.breakingbad.model.datasource.network.model.RemoteEpisode
 
 fun List<RemoteEpisode?>?.toItems(): List<Episode> {
     val items = mutableListOf<Episode>()

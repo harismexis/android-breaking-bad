@@ -1,9 +1,9 @@
 package com.harismexis.breakingbad.home.setup
 
 import androidx.lifecycle.Observer
-import com.harismexis.breakingbad.datamodel.domain.Actor
-import com.harismexis.breakingbad.datamodel.repository.ActorsLocalRepository
-import com.harismexis.breakingbad.datamodel.repository.ActorsRemoteRepository
+import com.harismexis.breakingbad.model.domain.Actor
+import com.harismexis.breakingbad.model.repository.ActorsLocalRepository
+import com.harismexis.breakingbad.model.repository.ActorsRemoteRepository
 import com.harismexis.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel

@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.presentation.result
 
-import com.harismexis.breakingbad.datamodel.domain.Quote
+import com.harismexis.breakingbad.model.domain.Quote
 
 sealed class QuotesResult {
     data class Success(val items: List<Quote>): QuotesResult()

@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.datamodel.repository.QuotesLocalRepository
-import com.harismexis.breakingbad.datamodel.repository.QuotesRemoteRepository
+import com.harismexis.breakingbad.model.repository.QuotesLocalRepository
+import com.harismexis.breakingbad.model.repository.QuotesRemoteRepository
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.framework.util.functional.Action1

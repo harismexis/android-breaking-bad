@@ -11,8 +11,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.ActorDetailViewBinding
 import com.harismexis.breakingbad.databinding.FragmentActorDetailBinding
-import com.harismexis.breakingbad.datamodel.domain.Actor
-import com.harismexis.breakingbad.datamodel.domain.Actor.Companion.occupationString
+import com.harismexis.breakingbad.model.domain.Actor
+import com.harismexis.breakingbad.model.domain.Actor.Companion.occupationString
 import com.harismexis.breakingbad.framework.extensions.getLinkSpanned
 import com.harismexis.breakingbad.framework.extensions.populateWithGlide
 import com.harismexis.breakingbad.framework.extensions.setTextOrUnknown
