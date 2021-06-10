@@ -67,25 +67,17 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-
     implementation libraries.values()
     implementation rxJavaDependencies.values()
     implementation daggerDependancies.values()
     implementation navigationDependencies.values()
     implementation soffrittiYouTubePlayer.values()
-
     debugImplementation librariesDebug.values()
-
     api glideDependencies.values()
-
     kapt librariesKapt.values()
     kapt annotationProcessorsDependencies.values()
-
     testImplementation testLibraries.values()
-
     androidTestImplementation androidTestLibraries.values()
-
     kaptAndroidTest annotationProcessorsDependencies.dagger_compiler
     kaptAndroidTest annotationProcessorsDependencies.dagger_android_processor
-
 }
