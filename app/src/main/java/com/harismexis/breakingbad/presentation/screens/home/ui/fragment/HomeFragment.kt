@@ -16,11 +16,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentHomeBinding
-import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.framework.event.EventObserver
 import com.harismexis.breakingbad.framework.util.mapNewMexicoIntent
 import com.harismexis.breakingbad.framework.util.ui.hideKeyboard
 import com.harismexis.breakingbad.framework.util.ui.showSnackBar
+import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorAdapter
@@ -58,11 +58,7 @@ class HomeFragment : BaseFragment(),
     private fun setupSwipeToRefresh() {
         binding?.homeSwipeRefresh?.setOnRefreshListener {
             binding?.homeSwipeRefresh?.isRefreshing = true
-            viewModel.refresh { canRefresh ->
-                if (!canRefresh) {
-                    binding?.homeSwipeRefresh?.isRefreshing = false
-                }
-            }
+            viewModel.fetchActors()
         }
     }
 
@@ -81,7 +77,7 @@ class HomeFragment : BaseFragment(),
 
     override fun onViewCreated() {
         observeLiveData()
-        viewModel.fetchInitialActors()
+        viewModel.fetchActors()
     }
 
     private fun setupToolbar() {

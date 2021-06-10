@@ -1,7 +1,6 @@
 package com.harismexis.breakingbad.home
 
 import com.harismexis.breakingbad.home.setup.HomeViewModelTestSetup
-import com.nhaarman.mockitokotlin2.verifyZeroInteractions
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -29,11 +28,10 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
     @Test
     fun internetOn_when_viewModelBinds_then_remoteActorsCallDone_actorsStored_liveDataUpdated() {
         // given
-        mockInternetActive(true)
         mockRemoteActorsCallReturnsAllItemsValid()
 
         // when
-        subject.fetchInitialActors()
+        subject.fetchActors()
 
         // then
         verify_remoteActorsCallDone_actorsStored_liveDataUpdated()
@@ -42,11 +40,10 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
     @Test
     fun internetOff_when_viewModelBinds_then_localActorsFetched_liveDataUpdated() {
         // given
-        mockInternetActive(false)
         mockLocalActorsCallReturnsAllItemsValid()
 
         // when
-        subject.fetchInitialActors()
+        subject.fetchActors()
 
         // then
         verifyInternetChecked()
@@ -57,57 +54,27 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
     }
 
     @Test
-    fun internetOn_when_viewModelRefreshes_then_remoteActorsRefreshed() {
-        // given
-        mockInternetActive(true)
-        mockRemoteActorsCallReturnsAllItemsValid()
-
-        // when
-        subject.refresh {}
-
-        // then
-        verify_remoteActorsCallDone_actorsStored_liveDataUpdated()
-    }
-
-    @Test
-    fun internetOff_when_viewModelRefreshes_then_nothingHappens() {
-        // given
-        mockInternetActive(false)
-
-        // when
-        subject.refresh {}
-
-        // then
-        verifyInternetChecked()
-        verifyZeroInteractions(mockActorRemote)
-        verifyZeroInteractions(mockActorLocal)
-        verifyActorsLiveDataNotChanged()
-    }
-
-    @Test
     fun remoteCallThrowsError_when_viewModelBinds_nothingHappens() {
         // given
-        mockInternetActive(true)
         mockRemoteActorsCallThrowsError()
 
         // when
-        subject.fetchInitialActors()
+        subject.fetchActors()
 
         // then
         verifyInternetChecked()
         verifyRemoteActorsCallDone()
-        verifyLocalActorsCallNotDone()
+        verifyLocalActorsCallDone()
         verifyActorsLiveDataChangedWithError()
     }
 
     @Test
     fun localCallThrowsError_when_viewModelBinds_nothingHappens() {
         // given
-        mockInternetActive(false)
         mockLocalActorsCallThrowsError()
 
         // when
-        subject.fetchInitialActors()
+        subject.fetchActors()
 
         // then
         verifyInternetChecked()

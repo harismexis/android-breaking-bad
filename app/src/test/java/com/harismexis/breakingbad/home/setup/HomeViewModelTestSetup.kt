@@ -4,7 +4,6 @@ import androidx.lifecycle.Observer
 import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.model.repository.ActorsLocalRepository
 import com.harismexis.breakingbad.model.repository.ActorsRemoteRepository
-import com.harismexis.breakingbad.framework.util.network.ConnectivityMonitorSimple
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 import com.harismexis.breakingbad.setup.UnitTestSetup
@@ -22,8 +21,8 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     @Mock
     protected lateinit var mockActorLocal: ActorsLocalRepository
 
-    @Mock
-    protected lateinit var mockConnectivity: ConnectivityMonitorSimple
+//    @Mock
+//    protected lateinit var mockConnectivity: ConnectivityMonitorSimple
     @Mock
     lateinit var mockObserver: Observer<ActorsResult>
 
@@ -39,17 +38,17 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     }
 
     override fun initialiseClassUnderTest() {
-        subject = HomeViewModel(mockActorRemote, mockActorLocal, mockConnectivity)
+        subject = HomeViewModel(mockActorRemote, mockActorLocal)
     }
 
     // Internet
 
-    protected fun mockInternetActive(active: Boolean) {
-        Mockito.`when`(mockConnectivity.isOnline()).thenReturn(active)
-    }
+//    protected fun mockInternetActive(active: Boolean) {
+//        //Mockito.`when`(mockConnectivity.isOnline()).thenReturn(active)
+//    }
 
     protected fun verifyInternetChecked() {
-        verify(mockConnectivity, Mockito.times(1)).isOnline()
+        //verify(mockConnectivity, Mockito.times(1)).isOnline()
     }
 
     // Remote Call
