@@ -41,16 +41,6 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
         subject = HomeViewModel(mockActorRemote, mockActorLocal)
     }
 
-    // Internet
-
-//    protected fun mockInternetActive(active: Boolean) {
-//        //Mockito.`when`(mockConnectivity.isOnline()).thenReturn(active)
-//    }
-
-    protected fun verifyInternetChecked() {
-        //verify(mockConnectivity, Mockito.times(1)).isOnline()
-    }
-
     // Remote Call
 
     protected fun mockRemoteActorsCallReturnsAllItemsValid() {

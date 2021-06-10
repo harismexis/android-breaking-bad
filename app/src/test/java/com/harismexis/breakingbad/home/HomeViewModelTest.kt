@@ -46,7 +46,6 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         subject.fetchActors()
 
         // then
-        verifyInternetChecked()
         verifyRemoteActorsCallNotDone()
         verifyLocalActorsCallDone()
         verifyActorsNotStored()
@@ -62,7 +61,6 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         subject.fetchActors()
 
         // then
-        verifyInternetChecked()
         verifyRemoteActorsCallDone()
         verifyLocalActorsCallDone()
         verifyActorsLiveDataChangedWithError()
@@ -77,14 +75,12 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         subject.fetchActors()
 
         // then
-        verifyInternetChecked()
         verifyRemoteActorsCallNotDone()
         verifyLocalActorsCallDone()
         verifyActorsLiveDataChangedWithError()
     }
 
     private fun verify_remoteActorsCallDone_actorsStored_liveDataUpdated() {
-        verifyInternetChecked()
         verifyRemoteActorsCallDone()
         verifyLocalActorsCallNotDone()
         verifyActorsLiveDataChangedWithSuccess()
