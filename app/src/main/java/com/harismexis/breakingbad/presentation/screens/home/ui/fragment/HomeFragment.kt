@@ -108,7 +108,6 @@ class HomeFragment : BaseFragment(),
         })
 
         viewModel.showErrorMessage.observe(viewLifecycleOwner, EventObserver {
-            // requireContext().showToast(it)
             binding?.homeCoordinator?.showSnackBar(it)
         })
     }
