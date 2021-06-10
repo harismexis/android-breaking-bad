@@ -1,8 +1,7 @@
 ### Technologies:
 
-- The project is written in Kotlin, MVVM and JetPack components i.e. Navigation, Coroutines, 
-LiveData, Room, ViewModel.
-- Some libraries have been used i.e. Retrofit, Glide, Dagger, Mockito-kotlin.
+- Kotlin, MVVM, JetPack, Navigation, Coroutines, LiveData, Room, ViewModel, Retrofit, Glide, Dagger, 
+Mockito-kotlin, MockK
 - For emitting / observing events (eg. show error message) I use Event & EventObserver as described here:
 https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150
 - Video playback is implemented using the library PierfrancescoSoffritti/android-youtube-player:
@@ -10,7 +9,7 @@ https://github.com/PierfrancescoSoffritti/android-youtube-player
 
 ### Description:
 
-The Home Screen shows a list of Breaking Bad Actors with image and brief information for each one. 
+Home Screen shows a list of Breaking Bad Actors with image and brief information for each one. 
 If internet is not available the actors will be retrieved from local storage (Room). Home screen 
 also supports searching actors by name. There is a BottomNavigationView which navigates to Quotes, 
 Deaths and Episodes screens. There is also a Player screen for loading breaking bad youtube videos.
