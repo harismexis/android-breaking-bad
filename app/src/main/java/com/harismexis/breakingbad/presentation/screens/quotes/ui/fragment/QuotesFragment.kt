@@ -8,10 +8,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentQuotesBinding
-import com.harismexis.breakingbad.model.domain.Quote
 import com.harismexis.breakingbad.framework.event.EventObserver
 import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast
+import com.harismexis.breakingbad.model.domain.Quote
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.result.QuotesResult
 import com.harismexis.breakingbad.presentation.screens.quotes.ui.adapter.QuoteAdapter
@@ -40,7 +40,7 @@ class QuotesFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        seriesName = arguments?.getString(ARG_SERIES_NAME)
+        viewModel.seriesName = arguments?.getString(ARG_SERIES_NAME)
     }
 
     override fun initialiseViewBinding(
@@ -57,17 +57,13 @@ class QuotesFragment : BaseFragment() {
 
     override fun onViewCreated() {
         observeLiveData()
-        viewModel.fetchQuotes(seriesName)
+        viewModel.fetchQuotes()
     }
 
     private fun setupSwipeToRefresh() {
         binding?.swipeRefresh?.setOnRefreshListener {
             binding?.swipeRefresh?.isRefreshing = true
-            viewModel.refresh { canRefresh ->
-                if (!canRefresh) {
-                    binding?.swipeRefresh?.isRefreshing = false
-                }
-            }
+            viewModel.fetchQuotes()
         }
     }
 
@@ -85,7 +81,8 @@ class QuotesFragment : BaseFragment() {
         viewModel.quotes.observe(viewLifecycleOwner, {
             when (it) {
                 is QuotesResult.Success -> populate(it.items)
-                is QuotesResult.Error -> {}
+                is QuotesResult.Error -> {
+                }
             }
         })
 

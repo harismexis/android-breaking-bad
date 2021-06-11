@@ -5,20 +5,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.model.repository.QuotesLocalRepository
-import com.harismexis.breakingbad.model.repository.QuotesRemoteRepository
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
-import com.harismexis.breakingbad.framework.util.functional.Action1
-import com.harismexis.breakingbad.framework.util.network.ConnectivityMonitorSimple
+import com.harismexis.breakingbad.model.repository.QuotesLocalRepository
+import com.harismexis.breakingbad.model.repository.QuotesRemoteRepository
 import com.harismexis.breakingbad.presentation.result.QuotesResult
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class QuotesViewModel @Inject constructor(
     private val quoteRemote: QuotesRemoteRepository,
-    private val quoteLocal: QuotesLocalRepository,
-    private val connectivity: ConnectivityMonitorSimple,
+    private val quoteLocal: QuotesLocalRepository
 ) : ViewModel() {
 
     private val TAG = QuotesViewModel::class.qualifiedName
@@ -31,23 +28,10 @@ class QuotesViewModel @Inject constructor(
     val showErrorMessage : LiveData<Event<String>>
         get() = mShowErrorMessage
 
-    private var seriesName: String? = null
+    var seriesName: String? = null
 
-    fun fetchQuotes(seriesName: String?) {
-        this.seriesName = seriesName
-        if (connectivity.isOnline()) {
-            fetchRemoteQuotes(seriesName)
-        } else {
-            fetchLocalQuotes(seriesName)
-        }
-    }
-
-    fun refresh(callback: Action1<Boolean>) {
-        val canRefresh = connectivity.isOnline()
-        callback.call(canRefresh)
-        if (canRefresh) {
-            fetchRemoteQuotes(seriesName)
-        }
+    fun fetchQuotes() {
+        fetchRemoteQuotes(seriesName)
     }
 
     private fun fetchRemoteQuotes(seriesName: String?) {
@@ -60,6 +44,7 @@ class QuotesViewModel @Inject constructor(
                 Log.d(TAG, e.getErrorMessage())
                 mQuotes.value = QuotesResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
+                fetchLocalQuotes(seriesName)
             }
         }
     }
