@@ -10,11 +10,11 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentDeathsBinding
-import com.harismexis.breakingbad.model.domain.Death
-import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.framework.event.EventObserver
 import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast
+import com.harismexis.breakingbad.model.domain.Death
+import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.result.DeathsResult
 import com.harismexis.breakingbad.presentation.screens.deaths.ui.adapter.DeathAdapter
 import com.harismexis.breakingbad.presentation.screens.deaths.viewmodel.DeathsViewModel
@@ -52,11 +52,7 @@ class DeathsFragment : BaseFragment() {
     private fun setupSwipeToRefresh() {
         binding?.swipeRefresh?.setOnRefreshListener {
             binding?.swipeRefresh?.isRefreshing = true
-            viewModel.refresh { canRefresh ->
-                if (!canRefresh) {
-                    binding?.swipeRefresh?.isRefreshing = false
-                }
-            }
+            viewModel.fetchDeaths()
         }
     }
 

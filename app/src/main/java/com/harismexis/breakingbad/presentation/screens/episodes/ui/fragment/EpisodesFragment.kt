@@ -8,10 +8,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentEpisodesBinding
-import com.harismexis.breakingbad.model.domain.Episode
 import com.harismexis.breakingbad.framework.event.EventObserver
 import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast
+import com.harismexis.breakingbad.model.domain.Episode
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.result.EpisodesResult
 import com.harismexis.breakingbad.presentation.screens.episodes.ui.adapter.EpisodeAdapter
@@ -40,7 +40,7 @@ class EpisodesFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        seriesName = arguments?.getString(ARG_SERIES_NAME)
+        viewModel.seriesName = arguments?.getString(ARG_SERIES_NAME)
     }
 
     override fun onCreateView() {
@@ -58,11 +58,7 @@ class EpisodesFragment : BaseFragment() {
     private fun setupSwipeToRefresh() {
         binding?.swipeRefresh?.setOnRefreshListener {
             binding?.swipeRefresh?.isRefreshing = true
-            viewModel.refresh { canRefresh ->
-                if (!canRefresh) {
-                    binding?.swipeRefresh?.isRefreshing = false
-                }
-            }
+            viewModel.fetchEpisodes()
         }
     }
 
@@ -78,7 +74,7 @@ class EpisodesFragment : BaseFragment() {
 
     override fun onViewCreated() {
         observeLiveData()
-        viewModel.fetchEpisodes(seriesName)
+        viewModel.fetchEpisodes()
     }
 
     private fun observeLiveData() {
