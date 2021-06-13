@@ -37,7 +37,7 @@
     <dimen name="vh_quote_padding_vertical">20dp</dimen>
     <dimen name="vh_quote_padding_horizontal">16dp</dimen>
     <dimen name="vh_quote_txt_margin_horizontal">10dp</dimen>
-    <dimen name="vh_quote_txt_meta_margin_top">10dp</dimen>
+    <dimen name="vh_quote_txt_meta_margin_top">12dp</dimen>
 
     <!-- vh death -->
     <dimen name="vh_death_label_margin_top">16dp</dimen>

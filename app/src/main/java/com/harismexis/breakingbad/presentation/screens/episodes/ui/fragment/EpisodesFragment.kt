@@ -36,7 +36,6 @@ class EpisodesFragment : BaseFragment() {
     private var binding: FragmentEpisodesBinding? = null
     private lateinit var adapter: EpisodeAdapter
     private var uiModels: MutableList<Episode> = mutableListOf()
-    private var seriesName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

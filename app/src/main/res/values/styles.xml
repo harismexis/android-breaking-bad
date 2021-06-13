@@ -96,4 +96,10 @@
         <item name="color">@color/white</item>
     </style>
 
+    <!-- quote -->
+    <style name="VhQuoteTitle" parent="VhItemTitle">
+        <item name="android:fontFamily">@font/ubuntu_italic</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

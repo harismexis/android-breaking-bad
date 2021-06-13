@@ -23,7 +23,6 @@ class QuotesFragment : BaseFragment() {
     private var binding: FragmentQuotesBinding? = null
     private lateinit var adapter: QuoteAdapter
     private var uiModels: MutableList<Quote> = mutableListOf()
-    private var seriesName: String? = null
 
     companion object {
 
