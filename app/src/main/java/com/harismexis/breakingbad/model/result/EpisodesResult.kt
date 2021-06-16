@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.presentation.result
+package com.harismexis.breakingbad.model.result
 
 import com.harismexis.breakingbad.model.domain.Episode
 

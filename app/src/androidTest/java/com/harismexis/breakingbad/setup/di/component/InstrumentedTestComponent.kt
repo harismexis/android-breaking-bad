@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.setup.di.component
 
-import com.harismexis.breakingbad.framework.di.ui.FragmentBindingsModule
+import com.harismexis.breakingbad.framework.di.FragmentBindingsModule
 import com.harismexis.breakingbad.setup.application.InstrumentedApplication
 import com.harismexis.breakingbad.setup.di.module.InstrumentedApplicationModule
 import com.harismexis.breakingbad.setup.viewmodel.factory.InstrumentedViewModelModule

@@ -20,7 +20,7 @@ import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID
-import com.harismexis.breakingbad.presentation.result.ActorsResult
+import com.harismexis.breakingbad.model.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
 import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
 import com.harismexis.breakingbad.setup.testutil.RecyclerCountAssertion

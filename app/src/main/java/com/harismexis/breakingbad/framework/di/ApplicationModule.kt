@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.di.application
+package com.harismexis.breakingbad.framework.di
 
 import android.content.Context
 import com.harismexis.breakingbad.framework.application.MainApplication

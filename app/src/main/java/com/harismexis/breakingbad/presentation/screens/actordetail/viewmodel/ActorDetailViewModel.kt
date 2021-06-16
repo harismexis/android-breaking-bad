@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.harismexis.breakingbad.framework.datasource.database.repository.ActorsLocalRepository
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
-import com.harismexis.breakingbad.presentation.result.ActorDetailResult
+import com.harismexis.breakingbad.model.result.ActorDetailResult
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

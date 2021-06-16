@@ -13,7 +13,7 @@ import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.model.domain.Quote
 import com.harismexis.breakingbad.presentation.base.BaseFragment
-import com.harismexis.breakingbad.presentation.result.QuotesResult
+import com.harismexis.breakingbad.model.result.QuotesResult
 import com.harismexis.breakingbad.presentation.screens.quotes.ui.adapter.QuoteAdapter
 import com.harismexis.breakingbad.presentation.screens.quotes.viewmodel.QuotesViewModel
 

@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.di.application
+package com.harismexis.breakingbad.framework.di
 
 import com.harismexis.breakingbad.framework.datasource.database.dao.BreakingBadLocalDao
 import com.harismexis.breakingbad.framework.datasource.database.repository.ActorsLocalRepository

@@ -15,7 +15,7 @@ import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.model.domain.Death
 import com.harismexis.breakingbad.presentation.base.BaseFragment
-import com.harismexis.breakingbad.presentation.result.DeathsResult
+import com.harismexis.breakingbad.model.result.DeathsResult
 import com.harismexis.breakingbad.presentation.screens.deaths.ui.adapter.DeathAdapter
 import com.harismexis.breakingbad.presentation.screens.deaths.viewmodel.DeathsViewModel
 

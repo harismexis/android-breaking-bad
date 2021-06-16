@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.divider
+package com.harismexis.breakingbad.presentation.widget
 
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable

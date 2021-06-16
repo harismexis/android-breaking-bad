@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.di.ui
+package com.harismexis.breakingbad.framework.di
 
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.actordetail.ui.fragment.ActorDetailFragment

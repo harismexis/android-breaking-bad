@@ -18,7 +18,7 @@ import com.harismexis.breakingbad.framework.extensions.populateWithGlide
 import com.harismexis.breakingbad.framework.extensions.setTextOrUnknown
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.presentation.base.BaseFragment
-import com.harismexis.breakingbad.presentation.result.ActorDetailResult
+import com.harismexis.breakingbad.model.result.ActorDetailResult
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 
 class ActorDetailFragment : BaseFragment() {

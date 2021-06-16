@@ -10,8 +10,8 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.model.domain.Actor.Companion.occupationString
-import com.harismexis.breakingbad.presentation.result.ActorDetailResult
-import com.harismexis.breakingbad.presentation.result.ActorsResult
+import com.harismexis.breakingbad.model.result.ActorDetailResult
+import com.harismexis.breakingbad.model.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
 import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
 import com.harismexis.breakingbad.setup.testutil.clickRecyclerAt

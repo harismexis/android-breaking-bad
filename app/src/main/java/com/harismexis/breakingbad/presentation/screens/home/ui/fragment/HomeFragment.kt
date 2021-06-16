@@ -22,7 +22,7 @@ import com.harismexis.breakingbad.framework.util.ui.hideKeyboard
 import com.harismexis.breakingbad.framework.util.ui.showSnackBar
 import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.presentation.base.BaseFragment
-import com.harismexis.breakingbad.presentation.result.ActorsResult
+import com.harismexis.breakingbad.model.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorAdapter
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel

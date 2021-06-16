@@ -9,7 +9,7 @@ import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.model.repository.QuotesLocal
 import com.harismexis.breakingbad.model.repository.QuotesRemote
-import com.harismexis.breakingbad.presentation.result.QuotesResult
+import com.harismexis.breakingbad.model.result.QuotesResult
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

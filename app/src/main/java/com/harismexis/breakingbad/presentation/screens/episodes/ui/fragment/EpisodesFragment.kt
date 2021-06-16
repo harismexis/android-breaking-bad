@@ -13,7 +13,7 @@ import com.harismexis.breakingbad.framework.extensions.setDivider
 import com.harismexis.breakingbad.framework.extensions.showToast
 import com.harismexis.breakingbad.model.domain.Episode
 import com.harismexis.breakingbad.presentation.base.BaseFragment
-import com.harismexis.breakingbad.presentation.result.EpisodesResult
+import com.harismexis.breakingbad.model.result.EpisodesResult
 import com.harismexis.breakingbad.presentation.screens.episodes.ui.adapter.EpisodeAdapter
 import com.harismexis.breakingbad.presentation.screens.episodes.viewmodel.EpisodesViewModel
 
