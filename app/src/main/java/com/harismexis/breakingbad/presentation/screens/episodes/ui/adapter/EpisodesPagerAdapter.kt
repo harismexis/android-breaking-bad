@@ -2,15 +2,15 @@ package com.harismexis.breakingbad.presentation.screens.episodes.ui.adapter
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.harismexis.breakingbad.presentation.base.BasePagerAdapter
 import com.harismexis.breakingbad.presentation.screens.episodes.ui.fragment.EpisodesFragment
 
 class EpisodesPagerAdapter(
     activity: AppCompatActivity,
-    private val itemsCount: Int
-) : FragmentStateAdapter(activity) {
+    itemsCount: Int
+) : BasePagerAdapter(activity, itemsCount) {
 
-    private val series = arrayOf("Breaking Bad", "Better Call Saul")
+    // private val series = arrayOf("Breaking Bad", "Better Call Saul")
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
@@ -19,8 +19,8 @@ class EpisodesPagerAdapter(
         }
     }
 
-    override fun getItemCount(): Int {
-        return itemsCount
-    }
+//    override fun getItemCount(): Int {
+//        return itemsCount
+//    }
 
 }
