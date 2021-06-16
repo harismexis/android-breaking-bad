@@ -10,8 +10,6 @@ class QuotesPagerAdapter(
     itemsCount: Int
 ) : BasePagerAdapter(activity, itemsCount) {
 
-    // private val series = arrayOf("Breaking Bad", "Better Call Saul")
-
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> QuotesFragment.newInstance(series[0])

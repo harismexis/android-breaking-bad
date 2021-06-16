@@ -10,17 +10,11 @@ class EpisodesPagerAdapter(
     itemsCount: Int
 ) : BasePagerAdapter(activity, itemsCount) {
 
-    // private val series = arrayOf("Breaking Bad", "Better Call Saul")
-
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> EpisodesFragment.newInstance(series[0])
             else -> EpisodesFragment.newInstance(series[1])
         }
     }
-
-//    override fun getItemCount(): Int {
-//        return itemsCount
-//    }
 
 }
