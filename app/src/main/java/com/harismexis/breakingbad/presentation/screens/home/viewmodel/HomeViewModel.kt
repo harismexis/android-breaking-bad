@@ -7,15 +7,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
-import com.harismexis.breakingbad.model.repository.ActorsLocalRepository
-import com.harismexis.breakingbad.model.repository.ActorsRemoteRepository
+import com.harismexis.breakingbad.model.repository.ActorsLocal
+import com.harismexis.breakingbad.model.repository.ActorsRemote
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
-    private val actorRemote: ActorsRemoteRepository,
-    private val actorLocal: ActorsLocalRepository
+    private val actorRemote: ActorsRemote,
+    private val actorLocal: ActorsLocal
 ) : ViewModel() {
 
     private val TAG = HomeViewModel::class.qualifiedName

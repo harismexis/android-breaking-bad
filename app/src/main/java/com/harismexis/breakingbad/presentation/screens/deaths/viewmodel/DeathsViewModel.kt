@@ -7,15 +7,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
-import com.harismexis.breakingbad.model.repository.DeathsLocalRepository
-import com.harismexis.breakingbad.model.repository.DeathsRemoteRepository
+import com.harismexis.breakingbad.model.repository.DeathsLocal
+import com.harismexis.breakingbad.model.repository.DeathsRemote
 import com.harismexis.breakingbad.presentation.result.DeathsResult
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DeathsViewModel @Inject constructor(
-    private val deathRemote: DeathsRemoteRepository,
-    private val deathLocal: DeathsLocalRepository
+    private val deathRemote: DeathsRemote,
+    private val deathLocal: DeathsLocal
 ) : ViewModel() {
 
     private val TAG = DeathsViewModel::class.qualifiedName

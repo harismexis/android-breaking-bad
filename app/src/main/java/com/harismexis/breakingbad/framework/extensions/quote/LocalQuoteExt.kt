@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.framework.extensions.quote
 
 import com.harismexis.breakingbad.model.domain.Quote
-import com.harismexis.breakingbad.model.datasource.database.table.LocalQuote
+import com.harismexis.breakingbad.framework.datasource.database.table.LocalQuote
 
 fun List<LocalQuote?>?.toItems(): List<Quote> {
     val items = mutableListOf<Quote>()

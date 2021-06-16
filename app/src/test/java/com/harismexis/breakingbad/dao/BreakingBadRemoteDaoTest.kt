@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.dao
 
-import com.harismexis.breakingbad.model.datasource.network.api.BreakingBadApi
-import com.harismexis.breakingbad.model.datasource.network.dao.BreakingBadRemoteDao
+import com.harismexis.breakingbad.framework.datasource.network.api.BreakingBadApi
+import com.harismexis.breakingbad.framework.datasource.network.dao.BreakingBadRemoteDao
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.FILE_EMPTY_JSON
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.FILE_FIVE_ACTORS_ALL_IDS_INVALID
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID

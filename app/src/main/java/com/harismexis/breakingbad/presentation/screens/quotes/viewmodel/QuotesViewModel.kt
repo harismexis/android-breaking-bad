@@ -7,15 +7,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
-import com.harismexis.breakingbad.model.repository.QuotesLocalRepository
-import com.harismexis.breakingbad.model.repository.QuotesRemoteRepository
+import com.harismexis.breakingbad.model.repository.QuotesLocal
+import com.harismexis.breakingbad.model.repository.QuotesRemote
 import com.harismexis.breakingbad.presentation.result.QuotesResult
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class QuotesViewModel @Inject constructor(
-    private val quoteRemote: QuotesRemoteRepository,
-    private val quoteLocal: QuotesLocalRepository
+    private val quoteRemote: QuotesRemote,
+    private val quoteLocal: QuotesLocal
 ) : ViewModel() {
 
     private val TAG = QuotesViewModel::class.qualifiedName

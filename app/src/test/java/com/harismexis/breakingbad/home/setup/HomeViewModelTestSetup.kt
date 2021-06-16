@@ -1,9 +1,9 @@
 package com.harismexis.breakingbad.home.setup
 
 import androidx.lifecycle.Observer
+import com.harismexis.breakingbad.framework.datasource.database.repository.ActorsLocalRepository
+import com.harismexis.breakingbad.framework.datasource.network.repository.ActorsRemoteRepository
 import com.harismexis.breakingbad.model.domain.Actor
-import com.harismexis.breakingbad.model.repository.ActorsLocalRepository
-import com.harismexis.breakingbad.model.repository.ActorsRemoteRepository
 import com.harismexis.breakingbad.presentation.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 import com.harismexis.breakingbad.setup.UnitTestSetup
@@ -20,9 +20,6 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected lateinit var mockActorRemote: ActorsRemoteRepository
     @Mock
     protected lateinit var mockActorLocal: ActorsLocalRepository
-
-//    @Mock
-//    protected lateinit var mockConnectivity: ConnectivityMonitorSimple
     @Mock
     lateinit var mockObserver: Observer<ActorsResult>
 
