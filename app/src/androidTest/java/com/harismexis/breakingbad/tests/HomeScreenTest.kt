@@ -2,6 +2,7 @@ package com.harismexis.breakingbad.tests
 
 import android.view.Gravity
 import androidx.annotation.IdRes
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.launchActivity
 import androidx.test.espresso.Espresso.onView
@@ -14,19 +15,19 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.model.domain.Actor
+import com.harismexis.breakingbad.model.result.ActorsResult
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_NO_DATA
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY
 import com.harismexis.breakingbad.parser.MockActorsParser.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID
-import com.harismexis.breakingbad.model.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
 import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
 import com.harismexis.breakingbad.setup.testutil.RecyclerCountAssertion
 import com.harismexis.breakingbad.setup.testutil.SearchViewActionExtension
 import com.harismexis.breakingbad.setup.testutil.verifyRecyclerItemAt
-import com.harismexis.breakingbad.setup.viewmodel.MockHomeVmProvider
+import com.harismexis.breakingbad.setup.viewmodel.factory.mockHomeViewModel
 import io.mockk.every
 import org.junit.Assert
 import org.junit.Test
@@ -41,9 +42,9 @@ class HomeScreenTest : InstrumentedTestSetup() {
         const val SALA = "sala"
     }
 
-    private val mockViewModel = MockHomeVmProvider.mockHomeViewModel
     private lateinit var mockActors: List<Actor>
     private lateinit var actorsSuccess: ActorsResult.Success
+    var fakeActorsResult = MutableLiveData<ActorsResult>()
 
     @Test
     fun actorsFeedHasAllItemsValid_listHasExpectedItems() {
@@ -189,19 +190,19 @@ class HomeScreenTest : InstrumentedTestSetup() {
     private fun mockInitialResults(mockData: List<Actor>) {
         mockActors = mockData
         actorsSuccess = ActorsResult.Success(mockActors)
-        every { mockViewModel.fetchActors() } answers {
-            MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
+        every { mockHomeViewModel.fetchActors() } answers {
+            fakeActorsResult.value = actorsSuccess
         }
-        every { mockViewModel.actorsResult } returns MockHomeVmProvider.fakeActorsResult
+        every { mockHomeViewModel.actorsResult } returns fakeActorsResult
     }
 
     private fun mockSearchResults(actorName: String, mockData: List<Actor>) {
         mockActors = mockData
         actorsSuccess = ActorsResult.Success(mockActors)
-        every { mockViewModel.updateSearchQuery(actorName) } answers {
-            MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
+        every { mockHomeViewModel.updateSearchQuery(actorName) } answers {
+            fakeActorsResult.value = actorsSuccess
         }
-        every { mockViewModel.actorsResult } returns MockHomeVmProvider.fakeActorsResult
+        every { mockHomeViewModel.actorsResult } returns fakeActorsResult
     }
 
     private fun verifyRecycler(expectedNumberOfItems: Int) {

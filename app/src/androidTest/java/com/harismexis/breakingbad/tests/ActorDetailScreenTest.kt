@@ -2,6 +2,7 @@ package com.harismexis.breakingbad.tests
 
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
+import androidx.lifecycle.MutableLiveData
 import androidx.test.core.app.launchActivity
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -16,8 +17,8 @@ import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActi
 import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
 import com.harismexis.breakingbad.setup.testutil.clickRecyclerAt
 import com.harismexis.breakingbad.setup.testutil.getExpectedText
-import com.harismexis.breakingbad.setup.viewmodel.MockActorDetailVmProvider
-import com.harismexis.breakingbad.setup.viewmodel.MockHomeVmProvider
+import com.harismexis.breakingbad.setup.viewmodel.factory.mockActorDetailViewModel
+import com.harismexis.breakingbad.setup.viewmodel.factory.mockHomeViewModel
 import io.mockk.every
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -25,20 +26,21 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class ActorDetailScreenTest : InstrumentedTestSetup() {
 
-    private val mockHomeViewModel = MockHomeVmProvider.mockHomeViewModel
     private var mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
     private var actorsSuccess = ActorsResult.Success(mockActors)
     private var clickIndexOnSearchResultList = 0
 
-    private val mockDetailViewModel = MockActorDetailVmProvider.mockActorDetailViewModel
     private var mockActor = mockActors[0]
     private var mockActorId = mockActor.actorId
     private lateinit var actorDetailSuccess: ActorDetailResult.Success
 
+    var fakeActorsResult = MutableLiveData<ActorsResult>()
+    var fakeActorDetailResult = MutableLiveData<ActorDetailResult>()
+
     init {
-        every { mockHomeViewModel.actorsResult } returns MockHomeVmProvider.fakeActorsResult
-        every { mockDetailViewModel.retrieveActorById(mockActorId) } answers {
-            MockActorDetailVmProvider.fakeActorDetailResult.value = actorDetailSuccess
+        every { mockHomeViewModel.actorsResult } returns fakeActorsResult
+        every { mockActorDetailViewModel.retrieveActorById(mockActorId) } answers {
+            fakeActorDetailResult.value = actorDetailSuccess
         }
     }
 
@@ -58,14 +60,14 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
     private fun mockInitialResultsInHomeScreen() {
         actorsSuccess = ActorsResult.Success(mockActors)
         every { mockHomeViewModel.fetchActors() } answers {
-            MockHomeVmProvider.fakeActorsResult.value = actorsSuccess
+            fakeActorsResult.value = actorsSuccess
         }
-        every { mockHomeViewModel.actorsResult } returns MockHomeVmProvider.fakeActorsResult
+        every { mockHomeViewModel.actorsResult } returns fakeActorsResult
     }
 
     private fun mockActorDetailResultSuccess() {
         actorDetailSuccess = ActorDetailResult.Success(mockActor)
-        every { mockDetailViewModel.actorDetailResult } returns MockActorDetailVmProvider.fakeActorDetailResult
+        every { mockActorDetailViewModel.actorDetailResult } returns fakeActorDetailResult
     }
 
     private fun openHomeAndClickListItemToOpenActorDetails() {
