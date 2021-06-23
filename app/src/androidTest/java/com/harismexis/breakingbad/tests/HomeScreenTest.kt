@@ -44,7 +44,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
 
     private lateinit var mockActors: List<Actor>
     private lateinit var actorsSuccess: ActorsResult.Success
-    var fakeActorsResult = MutableLiveData<ActorsResult>()
+    private val mockActorsResult = MutableLiveData<ActorsResult>()
 
     @Test
     fun actorsFeedHasAllItemsValid_listHasExpectedItems() {
@@ -191,18 +191,18 @@ class HomeScreenTest : InstrumentedTestSetup() {
         mockActors = mockData
         actorsSuccess = ActorsResult.Success(mockActors)
         every { mockHomeViewModel.fetchActors() } answers {
-            fakeActorsResult.value = actorsSuccess
+            mockActorsResult.value = actorsSuccess
         }
-        every { mockHomeViewModel.actorsResult } returns fakeActorsResult
+        every { mockHomeViewModel.actorsResult } returns mockActorsResult
     }
 
     private fun mockSearchResults(actorName: String, mockData: List<Actor>) {
         mockActors = mockData
         actorsSuccess = ActorsResult.Success(mockActors)
         every { mockHomeViewModel.updateSearchQuery(actorName) } answers {
-            fakeActorsResult.value = actorsSuccess
+            mockActorsResult.value = actorsSuccess
         }
-        every { mockHomeViewModel.actorsResult } returns fakeActorsResult
+        every { mockHomeViewModel.actorsResult } returns mockActorsResult
     }
 
     private fun verifyRecycler(expectedNumberOfItems: Int) {

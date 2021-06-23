@@ -34,13 +34,13 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
     private var mockActorId = mockActor.actorId
     private lateinit var actorDetailSuccess: ActorDetailResult.Success
 
-    var fakeActorsResult = MutableLiveData<ActorsResult>()
-    var fakeActorDetailResult = MutableLiveData<ActorDetailResult>()
+    private val mockActorsResult = MutableLiveData<ActorsResult>()
+    private val mockActorDetailResult = MutableLiveData<ActorDetailResult>()
 
     init {
-        every { mockHomeViewModel.actorsResult } returns fakeActorsResult
+        every { mockHomeViewModel.actorsResult } returns mockActorsResult
         every { mockActorDetailViewModel.retrieveActorById(mockActorId) } answers {
-            fakeActorDetailResult.value = actorDetailSuccess
+            mockActorDetailResult.value = actorDetailSuccess
         }
     }
 
@@ -60,14 +60,14 @@ class ActorDetailScreenTest : InstrumentedTestSetup() {
     private fun mockInitialResultsInHomeScreen() {
         actorsSuccess = ActorsResult.Success(mockActors)
         every { mockHomeViewModel.fetchActors() } answers {
-            fakeActorsResult.value = actorsSuccess
+            mockActorsResult.value = actorsSuccess
         }
-        every { mockHomeViewModel.actorsResult } returns fakeActorsResult
+        every { mockHomeViewModel.actorsResult } returns mockActorsResult
     }
 
     private fun mockActorDetailResultSuccess() {
         actorDetailSuccess = ActorDetailResult.Success(mockActor)
-        every { mockActorDetailViewModel.actorDetailResult } returns fakeActorDetailResult
+        every { mockActorDetailViewModel.actorDetailResult } returns mockActorDetailResult
     }
 
     private fun openHomeAndClickListItemToOpenActorDetails() {
