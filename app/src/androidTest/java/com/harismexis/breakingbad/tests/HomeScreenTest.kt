@@ -16,12 +16,12 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.model.result.ActorsResult
-import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID
-import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.EXPECTED_NUM_ACTORS_WHEN_NO_DATA
-import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA
-import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER
-import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY
-import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID
+import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_ALL_IDS_VALID
+import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_NO_DATA
+import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA
+import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER
+import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SOME_EMPTY
+import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SOME_IDS_INVALID
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
 import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
 import com.harismexis.breakingbad.setup.testutil.RecyclerCountAssertion
@@ -55,7 +55,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         val scenario = launchActivity<MainActivity>()
 
         // then
-        verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID)
+        verifyRecycler(NUM_ACTORS_WHEN_ALL_IDS_VALID)
     }
 
     @Test
@@ -67,7 +67,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         val scenario = launchActivity<MainActivity>()
 
         // then
-        verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID)
+        verifyRecycler(NUM_ACTORS_WHEN_SOME_IDS_INVALID)
     }
 
     @Test
@@ -79,7 +79,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         val scenario = launchActivity<MainActivity>()
 
         // then
-        verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY)
+        verifyRecycler(NUM_ACTORS_WHEN_SOME_EMPTY)
     }
 
     @Test
@@ -91,7 +91,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         val scenario = launchActivity<MainActivity>()
 
         // then
-        verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_NO_DATA)
+        verifyRecycler(NUM_ACTORS_WHEN_NO_DATA)
     }
 
     @Test
@@ -103,7 +103,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         val scenario = launchActivity<MainActivity>()
 
         // then
-        verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_NO_DATA)
+        verifyRecycler(NUM_ACTORS_WHEN_NO_DATA)
     }
 
     @Test
@@ -115,7 +115,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         // when
         val scenario = launchActivity<MainActivity>()
         // then
-        verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID)
+        verifyRecycler(NUM_ACTORS_WHEN_ALL_IDS_VALID)
 
         // Search by actor name "walter" and check results
 
@@ -124,7 +124,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         // when
         onView(withId(R.id.searchView)).perform(SearchViewActionExtension.submitQuery(WALTER))
         // then
-        verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER)
+        verifyRecycler(NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER)
 
         // Search by actor name "sala" and check results
 
@@ -133,7 +133,7 @@ class HomeScreenTest : InstrumentedTestSetup() {
         // when
         onView(withId(R.id.searchView)).perform(SearchViewActionExtension.submitQuery(SALA))
         // then
-        verifyRecycler(EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA)
+        verifyRecycler(NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA)
     }
 
     @Test

@@ -14,12 +14,12 @@ class MockActorsProvider(private val reader: BaseFileReader) {
 
     companion object {
 
-        const val EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID = 5
-        const val EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID = 2
-        const val EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY = 3
-        const val EXPECTED_NUM_ACTORS_WHEN_NO_DATA = 0
-        const val EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER = 2
-        const val EXPECTED_NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA = 4
+        const val NUM_ACTORS_WHEN_ALL_IDS_VALID = 5
+        const val NUM_ACTORS_WHEN_SOME_IDS_INVALID = 2
+        const val NUM_ACTORS_WHEN_SOME_EMPTY = 3
+        const val NUM_ACTORS_WHEN_NO_DATA = 0
+        const val NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER = 2
+        const val NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA = 4
 
         const val FILE_FIVE_VALID_ACTORS =
             "remote-5-valid-actors.json"

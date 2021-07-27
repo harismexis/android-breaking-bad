@@ -7,9 +7,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.harismexis.breakingbad.framework.datasource.database.schema.BreakingBadDatabase
 import com.harismexis.breakingbad.framework.datasource.database.dao.BreakingBadLocalDao
 import com.harismexis.breakingbad.framework.datasource.database.table.LocalActor
-import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID
-import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.EXPECTED_NUM_ACTORS_WHEN_NO_DATA
-import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID
+import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_ALL_IDS_VALID
+import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_NO_DATA
+import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SOME_IDS_INVALID
 import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -51,7 +51,7 @@ class BreakingBadLocalDaoTest: InstrumentedTestSetup() {
         val retrievedLocalItems = dao.getAllActors()
 
         // then
-        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID)
+        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, NUM_ACTORS_WHEN_ALL_IDS_VALID)
     }
 
     @Test
@@ -65,7 +65,7 @@ class BreakingBadLocalDaoTest: InstrumentedTestSetup() {
         val retrievedLocalItems = dao.getAllActors()
 
         // then
-        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID)
+        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, NUM_ACTORS_WHEN_SOME_IDS_INVALID)
     }
 
     @Test
@@ -79,7 +79,7 @@ class BreakingBadLocalDaoTest: InstrumentedTestSetup() {
         val retrievedLocalItems = dao.getAllActors()
 
         // then
-        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, EXPECTED_NUM_ACTORS_WHEN_NO_DATA)
+        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, NUM_ACTORS_WHEN_NO_DATA)
     }
 
     private fun verifyActualAgainstExpected(
