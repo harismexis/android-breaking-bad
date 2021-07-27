@@ -1,9 +1,9 @@
 package com.harismexis.breakingbad.setup.testutil
 
 import androidx.test.platform.app.InstrumentationRegistry
-import com.harismexis.breakingbad.parser.BaseFileParser
+import com.harismexis.breakingbad.parser.BaseFileReader
 
-class InstrumentedFileParser: BaseFileParser() {
+class InstrumentedFileReader: BaseFileReader() {
 
     override fun getFileAsString(filePath: String): String =
         InstrumentationRegistry.getInstrumentation().context.classLoader

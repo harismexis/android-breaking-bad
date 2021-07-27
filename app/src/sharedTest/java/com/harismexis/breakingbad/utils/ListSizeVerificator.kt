@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.utils
 
-import com.harismexis.breakingbad.parser.MockActorsParser
+import com.harismexis.breakingbad.parser.MockActorsProvider
 import org.junit.Assert
 
 fun <T, P> verifyListsHaveSameSize(
@@ -18,17 +18,17 @@ fun <T> verifyListSize(
 }
 
 fun <T> verifyListSizeWhenAllIdsValid(items: List<T>) {
-    verifyListSize(MockActorsParser.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID, items)
+    verifyListSize(MockActorsProvider.EXPECTED_NUM_ACTORS_WHEN_ALL_IDS_VALID, items)
 }
 
 fun <T> verifyListSizeWhenSomeIdsAbsent(items: List<T>) {
-    verifyListSize(MockActorsParser.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID, items)
+    verifyListSize(MockActorsProvider.EXPECTED_NUM_ACTORS_WHEN_SOME_IDS_INVALID, items)
 }
 
 fun <T> verifyListSizeWhenSomeItemsEmpty(items: List<T>) {
-    verifyListSize(MockActorsParser.EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY, items)
+    verifyListSize(MockActorsProvider.EXPECTED_NUM_ACTORS_WHEN_SOME_EMPTY, items)
 }
 
 fun <T> verifyListSizeForNoData(items: List<T>) {
-    verifyListSize(MockActorsParser.EXPECTED_NUM_ACTORS_WHEN_NO_DATA, items)
+    verifyListSize(MockActorsProvider.EXPECTED_NUM_ACTORS_WHEN_NO_DATA, items)
 }

@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.parser
 
-abstract class BaseFileParser {
+abstract class BaseFileReader {
 
     abstract fun getFileAsString(filePath: String): String
 

@@ -2,11 +2,11 @@ package com.harismexis.breakingbad.dao
 
 import com.harismexis.breakingbad.framework.datasource.network.api.BreakingBadApi
 import com.harismexis.breakingbad.framework.datasource.network.dao.BreakingBadRemoteDao
-import com.harismexis.breakingbad.parser.MockActorsParser.Companion.FILE_EMPTY_JSON
-import com.harismexis.breakingbad.parser.MockActorsParser.Companion.FILE_FIVE_ACTORS_ALL_IDS_INVALID
-import com.harismexis.breakingbad.parser.MockActorsParser.Companion.FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID
-import com.harismexis.breakingbad.parser.MockActorsParser.Companion.FILE_FIVE_ACTORS_BUT_TWO_EMPTY
-import com.harismexis.breakingbad.parser.MockActorsParser.Companion.FILE_FIVE_VALID_ACTORS
+import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.FILE_EMPTY_JSON
+import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.FILE_FIVE_ACTORS_ALL_IDS_INVALID
+import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID
+import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.FILE_FIVE_ACTORS_BUT_TWO_EMPTY
+import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.FILE_FIVE_VALID_ACTORS
 import com.harismexis.breakingbad.setup.UnitTestSetup
 import com.harismexis.breakingbad.testutil.enqueueResponse
 import junit.framework.Assert.assertEquals

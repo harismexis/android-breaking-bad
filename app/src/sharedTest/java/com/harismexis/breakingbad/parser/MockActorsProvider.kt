@@ -2,15 +2,15 @@ package com.harismexis.breakingbad.parser
 
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.framework.datasource.database.table.LocalActor
 import com.harismexis.breakingbad.framework.datasource.network.model.RemoteActor
 import com.harismexis.breakingbad.framework.extensions.actor.toItems
 import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
+import com.harismexis.breakingbad.model.domain.Actor
 import java.lang.reflect.Type
 import java.util.*
 
-class MockActorsParser(private val parser: BaseFileParser) {
+class MockActorsProvider(private val reader: BaseFileReader) {
 
     companion object {
 
@@ -103,25 +103,25 @@ class MockActorsParser(private val parser: BaseFileParser) {
 
     // raw json string
     private fun getMockDataAllIdsValid(): String =
-        parser.getFileAsString(FILE_FIVE_VALID_ACTORS)
+        reader.getFileAsString(FILE_FIVE_VALID_ACTORS)
 
     private fun getMockDataSomeIdsInvalid(): String =
-        parser.getFileAsString(FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID)
+        reader.getFileAsString(FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID)
 
     private fun getMockDataSomeItemsEmpty(): String =
-        parser.getFileAsString(FILE_FIVE_ACTORS_BUT_TWO_EMPTY)
+        reader.getFileAsString(FILE_FIVE_ACTORS_BUT_TWO_EMPTY)
 
     private fun getMockDataAllIdsInvalid(): String =
-        parser.getFileAsString(FILE_FIVE_ACTORS_ALL_IDS_INVALID)
+        reader.getFileAsString(FILE_FIVE_ACTORS_ALL_IDS_INVALID)
 
     private fun getMockDataEmptyJsonArray(): String =
-        parser.getFileAsString(FILE_EMPTY_JSON)
+        reader.getFileAsString(FILE_EMPTY_JSON)
 
     private fun getMockDataSearchByNameLikeWalter(): String =
-        parser.getFileAsString(FILE_SEARCH_ACTORS_BY_NAME_LIKE_WALTER)
+        reader.getFileAsString(FILE_SEARCH_ACTORS_BY_NAME_LIKE_WALTER)
 
     private fun getMockDataSearchByNameLikeSala(): String =
-        parser.getFileAsString(FILE_SEARCH_ACTORS_BY_NAME_LIKE_SALA)
+        reader.getFileAsString(FILE_SEARCH_ACTORS_BY_NAME_LIKE_SALA)
 
     // utils
     private fun getMockRemoteActors(
