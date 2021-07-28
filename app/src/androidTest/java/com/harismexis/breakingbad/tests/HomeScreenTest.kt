@@ -23,7 +23,7 @@ import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS
 import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SOME_EMPTY
 import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SOME_IDS_INVALID
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
-import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
+import com.harismexis.breakingbad.setup.base.InstrumentedSetup
 import com.harismexis.breakingbad.setup.testutil.RecyclerCountAssertion
 import com.harismexis.breakingbad.setup.testutil.SearchViewActionExtension
 import com.harismexis.breakingbad.setup.testutil.verifyRecyclerItemAt
@@ -33,9 +33,8 @@ import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
 @RunWith(AndroidJUnit4::class)
-class HomeScreenTest : InstrumentedTestSetup() {
+class HomeScreenTest : InstrumentedSetup() {
 
     companion object {
         const val WALTER = "walter"

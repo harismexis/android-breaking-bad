@@ -14,7 +14,7 @@ import com.harismexis.breakingbad.model.domain.Actor.Companion.occupationString
 import com.harismexis.breakingbad.model.result.ActorDetailResult
 import com.harismexis.breakingbad.model.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
-import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
+import com.harismexis.breakingbad.setup.base.InstrumentedSetup
 import com.harismexis.breakingbad.setup.testutil.clickRecyclerAt
 import com.harismexis.breakingbad.setup.testutil.getExpectedText
 import com.harismexis.breakingbad.setup.viewmodel.factory.mockActorDetailViewModel
@@ -24,7 +24,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class ActorDetailScreenTest : InstrumentedTestSetup() {
+class ActorDetailScreenTest : InstrumentedSetup() {
 
     private var mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
     private var actorsSuccess = ActorsResult.Success(mockActors)

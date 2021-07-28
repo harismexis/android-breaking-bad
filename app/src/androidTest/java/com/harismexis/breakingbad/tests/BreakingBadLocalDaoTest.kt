@@ -4,13 +4,13 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.harismexis.breakingbad.framework.datasource.database.schema.BreakingBadDatabase
 import com.harismexis.breakingbad.framework.datasource.database.dao.BreakingBadLocalDao
+import com.harismexis.breakingbad.framework.datasource.database.schema.BreakingBadDatabase
 import com.harismexis.breakingbad.framework.datasource.database.table.LocalActor
 import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_ALL_IDS_VALID
 import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_NO_DATA
 import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SOME_IDS_INVALID
-import com.harismexis.breakingbad.setup.base.InstrumentedTestSetup
+import com.harismexis.breakingbad.setup.base.InstrumentedSetup
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert
@@ -20,7 +20,7 @@ import org.junit.runner.RunWith
 import java.io.IOException
 
 @RunWith(AndroidJUnit4::class)
-class BreakingBadLocalDaoTest: InstrumentedTestSetup() {
+class BreakingBadLocalDaoTest: InstrumentedSetup() {
 
     private lateinit var dao: BreakingBadLocalDao
     private lateinit var database: BreakingBadDatabase
