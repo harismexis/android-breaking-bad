@@ -5,7 +5,7 @@ import com.harismexis.breakingbad.setup.testutil.InstrumentedFileReader
 
 open class InstrumentedSetup {
 
-    protected val fileParser = InstrumentedFileReader()
-    protected val actorsParser = MockActorsProvider(fileParser)
+    protected val fileReader = InstrumentedFileReader()
+    protected val mockActorsProvider = MockActorsProvider(fileReader)
 
 }

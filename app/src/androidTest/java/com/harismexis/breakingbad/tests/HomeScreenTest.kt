@@ -48,7 +48,7 @@ class HomeScreenTest : InstrumentedSetup() {
     @Test
     fun actorsFeedHasAllItemsValid_listHasExpectedItems() {
         // given
-        mockInitialResults(actorsParser.getMockActorsWhenJsonHasAllItemsValid())
+        mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid())
 
         // when
         val scenario = launchActivity<MainActivity>()
@@ -60,7 +60,7 @@ class HomeScreenTest : InstrumentedSetup() {
     @Test
     fun actorsFeedHasSomeInvalidIds_listHasExpectedItems() {
         // given
-        mockInitialResults(actorsParser.getMockActorsWhenJsonHasSomeInvalidIds())
+        mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasSomeInvalidIds())
 
         // when
         val scenario = launchActivity<MainActivity>()
@@ -72,7 +72,7 @@ class HomeScreenTest : InstrumentedSetup() {
     @Test
     fun actorsFeedHasSomeEmptyActorJsonItems_listHasExpectedItems() {
         // given
-        mockInitialResults(actorsParser.getMockActorsWhenJsonHasSomeEmptyItems())
+        mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasSomeEmptyItems())
 
         // when
         val scenario = launchActivity<MainActivity>()
@@ -84,7 +84,7 @@ class HomeScreenTest : InstrumentedSetup() {
     @Test
     fun actorsFeedHasAllIdsInvalid_listHasNoItems() {
         // given
-        mockInitialResults(actorsParser.getMockActorsWhenJsonHasAllIdsInvalid())
+        mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasAllIdsInvalid())
 
         // when
         val scenario = launchActivity<MainActivity>()
@@ -96,7 +96,7 @@ class HomeScreenTest : InstrumentedSetup() {
     @Test
     fun actorsFeedIsEmptyJson_listHasNoItems() {
         // given
-        mockInitialResults(actorsParser.getMockActorsWhenJsonIsEmpty())
+        mockInitialResults(mockActorsProvider.getMockActorsWhenJsonIsEmpty())
 
         // when
         val scenario = launchActivity<MainActivity>()
@@ -110,7 +110,7 @@ class HomeScreenTest : InstrumentedSetup() {
         // Test Initial Results
 
         // given
-        mockInitialResults(actorsParser.getMockActorsWhenJsonHasAllItemsValid())
+        mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid())
         // when
         val scenario = launchActivity<MainActivity>()
         // then
@@ -119,7 +119,7 @@ class HomeScreenTest : InstrumentedSetup() {
         // Search by actor name "walter" and check results
 
         // given
-        mockSearchResults(WALTER, actorsParser.getMockActorsSearchByNameLikeWalter())
+        mockSearchResults(WALTER, mockActorsProvider.getMockActorsSearchByNameLikeWalter())
         // when
         onView(withId(R.id.searchView)).perform(SearchViewActionExtension.submitQuery(WALTER))
         // then
@@ -128,7 +128,7 @@ class HomeScreenTest : InstrumentedSetup() {
         // Search by actor name "sala" and check results
 
         // given
-        mockSearchResults(SALA, actorsParser.getMockActorsSearchByNameLikeSala())
+        mockSearchResults(SALA, mockActorsProvider.getMockActorsSearchByNameLikeSala())
         // when
         onView(withId(R.id.searchView)).perform(SearchViewActionExtension.submitQuery(SALA))
         // then
@@ -139,7 +139,7 @@ class HomeScreenTest : InstrumentedSetup() {
     fun openNavigationDrawer_showsDrawer() {
 
         // given
-        mockInitialResults(actorsParser.getMockActorsWhenJsonHasAllItemsValid())
+        mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid())
 
         // when
         val scenario = launchActivity<MainActivity>()
@@ -170,7 +170,7 @@ class HomeScreenTest : InstrumentedSetup() {
     fun bottomNavigationView_HasExpectedItems() {
 
         // given
-        mockInitialResults(actorsParser.getMockActorsWhenJsonHasAllItemsValid())
+        mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid())
 
         // when
         val scenario = launchActivity<MainActivity>()

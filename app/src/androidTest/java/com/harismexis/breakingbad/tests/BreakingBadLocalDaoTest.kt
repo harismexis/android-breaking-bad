@@ -44,7 +44,7 @@ class BreakingBadLocalDaoTest: InstrumentedSetup() {
     @Throws(Exception::class)
     fun savingItemsFromRemoteFeedWithAllItemsValid_then_expectedItemsRetrieved() = runBlocking {
         // given
-        val localItems = actorsParser.getMockLocalActorsWhenJsonHasAllItemsValid()
+        val localItems = mockActorsProvider.getMockLocalActorsWhenJsonHasAllItemsValid()
 
         // when
         dao.insertActors(localItems)
@@ -58,7 +58,7 @@ class BreakingBadLocalDaoTest: InstrumentedSetup() {
     @Throws(Exception::class)
     fun savingItemsFromRemoteFeedWithSomeIdsAbsent_then_expectedItemsRetrieved() = runBlocking {
         // given
-        val localItems = actorsParser.getMockLocalActorsWhenJsonHasSomeInvalidIds()
+        val localItems = mockActorsProvider.getMockLocalActorsWhenJsonHasSomeInvalidIds()
 
         // when
         dao.insertActors(localItems)
@@ -72,7 +72,7 @@ class BreakingBadLocalDaoTest: InstrumentedSetup() {
     @Throws(Exception::class)
     fun savingItemsFromFeedWithAllIdsAbsent_then_noItemsRetrieved() = runBlocking {
         // given
-        val localItems = actorsParser.getMockLocalActorsWhenJsonHasAllIdsInvalid()
+        val localItems = mockActorsProvider.getMockLocalActorsWhenJsonHasAllIdsInvalid()
 
         // when
         dao.insertActors(localItems)

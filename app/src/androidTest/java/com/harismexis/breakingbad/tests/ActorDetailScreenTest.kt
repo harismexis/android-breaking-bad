@@ -26,7 +26,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class ActorDetailScreenTest : InstrumentedSetup() {
 
-    private var mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
+    private var mockActors = mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid()
     private var actorsSuccess = ActorsResult.Success(mockActors)
     private var clickIndexOnSearchResultList = 0
 

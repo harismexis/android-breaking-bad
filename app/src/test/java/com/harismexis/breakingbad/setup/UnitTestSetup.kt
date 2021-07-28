@@ -7,8 +7,8 @@ import org.mockito.MockitoAnnotations
 
 abstract class UnitTestSetup : BaseTestSetup() {
 
-    protected val fileParser = UnitTestFileReader()
-    protected val actorsParser = MockActorsProvider(fileParser)
+    protected val fileReader = UnitTestFileReader()
+    protected val mockActorsProvider = MockActorsProvider(fileReader)
 
     open fun initialise() {
         MockitoAnnotations.initMocks(this)

@@ -66,7 +66,7 @@ class BreakingBadRemoteDaoTest : UnitTestSetup() {
 
     @Test
     fun whenJsonHasAllIdsValid_actorsItemsAreCorrect() {
-        val expected = actorsParser.getMockRemoteActorsWhenJsonHasAllIdsValid()
+        val expected = mockActorsProvider.getMockRemoteActorsWhenJsonHasAllIdsValid()
         enqueueResponseStatus200(FILE_FIVE_VALID_ACTORS)
         runBlocking {
             val actual = subject.getActors()
@@ -76,7 +76,7 @@ class BreakingBadRemoteDaoTest : UnitTestSetup() {
 
     @Test
     fun whenJsonHasSomeInvalidIds_actorsItemsAreCorrect() {
-        val expected = actorsParser.getMockRemoteActorsWhenJsonHasSomeInvalidIds()
+        val expected = mockActorsProvider.getMockRemoteActorsWhenJsonHasSomeInvalidIds()
         enqueueResponseStatus200(FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID)
         runBlocking {
             val actual = subject.getActors()
@@ -86,7 +86,7 @@ class BreakingBadRemoteDaoTest : UnitTestSetup() {
 
     @Test
     fun whenJsonHasSomeEmptyItems_actorsItemsAreCorrect() {
-        val expected = actorsParser.getMockRemoteActorsWhenJsonHasSomeEmptyItems()
+        val expected = mockActorsProvider.getMockRemoteActorsWhenJsonHasSomeEmptyItems()
         enqueueResponseStatus200(FILE_FIVE_ACTORS_BUT_TWO_EMPTY)
         runBlocking {
             val actual = subject.getActors()
@@ -96,7 +96,7 @@ class BreakingBadRemoteDaoTest : UnitTestSetup() {
 
     @Test
     fun whenJsonHasAllIdsInvalid_actorsItemsAreEmpty() {
-        val expected = actorsParser.getMockRemoteActorsWhenJsonHasAllIdsInvalid()
+        val expected = mockActorsProvider.getMockRemoteActorsWhenJsonHasAllIdsInvalid()
         enqueueResponseStatus200(FILE_FIVE_ACTORS_ALL_IDS_INVALID)
         runBlocking {
             val actual = subject.getActors()
@@ -106,7 +106,7 @@ class BreakingBadRemoteDaoTest : UnitTestSetup() {
 
     @Test
     fun whenJsonIsEmpty_actorsItemsAreEmpty() {
-        val expected = actorsParser.getMockRemoteActorsWhenJsonIsEmpty()
+        val expected = mockActorsProvider.getMockRemoteActorsWhenJsonIsEmpty()
         enqueueResponseStatus200(FILE_EMPTY_JSON)
         runBlocking {
             val actual = subject.getActors()

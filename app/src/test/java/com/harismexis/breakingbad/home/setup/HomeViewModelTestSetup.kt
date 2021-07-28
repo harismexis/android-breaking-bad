@@ -23,7 +23,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     @Mock
     lateinit var mockObserver: Observer<ActorsResult>
 
-    private val mockActors = actorsParser.getMockActorsWhenJsonHasAllItemsValid()
+    private val mockActors = mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid()
     private val mockActorsResultSuccess = ActorsResult.Success(mockActors)
     private val error = IllegalStateException(ERROR_MESSAGE)
     private val mockActorsResultError = ActorsResult.Error(error)
