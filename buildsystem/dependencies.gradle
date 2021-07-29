@@ -88,26 +88,23 @@ ext {
     ]
 
     androidTestLibraries = [
-            core_testing           : "androidx.arch.core:core-testing:$arch_core",
             test_core_ktx          : "androidx.test:core-ktx:$androidx_test",
-            runner                 : "androidx.test:runner:$androidx_test",
-            rules                  : "androidx.test:rules:$androidx_test",
-            orchestrator           : "androidx.test:orchestrator:$androidx_test",
             junit                  : "androidx.test.ext:junit:$androidx_junit",
-            truth                  : "androidx.test.ext:truth:$androidx_test",
             espresso_core          : "androidx.test.espresso:espresso-core:$espresso",
             espresso_contrib       : "androidx.test.espresso:espresso-contrib:$espresso",
-            espresso_intents       : "androidx.test.espresso:espresso-intents:$espresso",
-            espresso_accessibility : "androidx.test.espresso:espresso-accessibility:$espresso",
-            espresso_web           : "androidx.test.espresso:espresso-web:$espresso",
-            idling_concurrent      : "androidx.test.espresso.idling:idling-concurrent:$espresso",
-            espresso_idling        : "androidx.test.espresso:espresso-idling-resource:$espresso",
-            work_testing           : "androidx.work:work-testing:$work",
-            coroutines_test        : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_android",
-            mockito_android        : "org.mockito:mockito-android:$mockito",
-            mockito_core           : "org.mockito:mockito-core:$mockito",
             mockk_android          : "io.mockk:mockk-android:$mockk_android",
-            nav_testing            : "androidx.navigation:navigation-testing:$nav_version",
+            // core_testing           : "androidx.arch.core:core-testing:$arch_core",
+            // truth                  : "androidx.test.ext:truth:$androidx_test",
+            // runner                 : "androidx.test:runner:$androidx_test",
+            // rules                  : "androidx.test:rules:$androidx_test",
+            // orchestrator           : "androidx.test:orchestrator:$androidx_test",
+            // espresso_intents       : "androidx.test.espresso:espresso-intents:$espresso",
+            // espresso_accessibility : "androidx.test.espresso:espresso-accessibility:$espresso",
+            // espresso_web           : "androidx.test.espresso:espresso-web:$espresso",
+            // idling_concurrent      : "androidx.test.espresso.idling:idling-concurrent:$espresso",
+            // espresso_idling        : "androidx.test.espresso:espresso-idling-resource:$espresso",
+            // coroutines_test        : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_android",
+            // nav_testing            : "androidx.navigation:navigation-testing:$nav_version",
     ]
 
     daggerDependancies = [
