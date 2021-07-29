@@ -22,7 +22,8 @@ ext {
     def room = '2.3.0'
     def dagger_2 = '2.38'
     def gson = '2.8.7'
-    def retrofit_gson = '2.9.0'
+    // Can use 2.7.X to avoid retrofit illegal reflective access warning
+    // caused from mockwebserver
     def retrofit = '2.9.0'
     def glide = '4.12.0'
     def androidx_test = '1.4.0'
@@ -57,7 +58,7 @@ ext {
             coroutines         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_android",
             coroutines_android : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android",
             gson               : "com.google.code.gson:gson:$gson",
-            retrofit_gson      : "com.squareup.retrofit2:converter-gson:$retrofit_gson",
+            retrofit_gson      : "com.squareup.retrofit2:converter-gson:$retrofit",
             retrofit           : "com.squareup.retrofit2:retrofit:$retrofit",
             room               : "androidx.room:room-ktx:$room",
             swiperefreshlayout : "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout",
