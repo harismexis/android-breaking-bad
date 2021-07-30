@@ -5,7 +5,7 @@ import com.harismexis.breakingbad.framework.datasource.database.repository.Actor
 import com.harismexis.breakingbad.framework.datasource.database.repository.DeathsLocalRepository
 import com.harismexis.breakingbad.framework.datasource.database.repository.EpisodesLocalRepository
 import com.harismexis.breakingbad.framework.datasource.database.repository.QuotesLocalRepository
-import com.harismexis.breakingbad.framework.datasource.network.dao.BreakingBadRemoteDao
+import com.harismexis.breakingbad.framework.datasource.network.api.BreakingBadApi
 import com.harismexis.breakingbad.framework.datasource.network.repository.ActorsRemoteRepository
 import com.harismexis.breakingbad.framework.datasource.network.repository.DeathsRemoteRepository
 import com.harismexis.breakingbad.framework.datasource.network.repository.EpisodesRemoteRepository
@@ -18,8 +18,8 @@ import dagger.Provides
 class RepositoryModule {
 
     @Provides
-    fun provideActorsRemote(dao: BreakingBadRemoteDao): ActorsRemote {
-        return ActorsRemoteRepository(dao)
+    fun provideActorsRemote(api: BreakingBadApi): ActorsRemote {
+        return ActorsRemoteRepository(api)
     }
 
     @Provides
@@ -28,8 +28,8 @@ class RepositoryModule {
     }
 
     @Provides
-    fun provideQuotesRemote(dao: BreakingBadRemoteDao): QuotesRemote {
-        return QuotesRemoteRepository(dao)
+    fun provideQuotesRemote(api: BreakingBadApi): QuotesRemote {
+        return QuotesRemoteRepository(api)
     }
 
     @Provides
@@ -38,8 +38,8 @@ class RepositoryModule {
     }
 
     @Provides
-    fun provideEpisodesRemote(dao: BreakingBadRemoteDao): EpisodesRemote {
-        return EpisodesRemoteRepository(dao)
+    fun provideEpisodesRemote(api: BreakingBadApi): EpisodesRemote {
+        return EpisodesRemoteRepository(api)
     }
 
     @Provides
@@ -48,8 +48,8 @@ class RepositoryModule {
     }
 
     @Provides
-    fun provideDeathsRemote(dao: BreakingBadRemoteDao): DeathsRemote {
-        return DeathsRemoteRepository(dao)
+    fun provideDeathsRemote(api: BreakingBadApi): DeathsRemote {
+        return DeathsRemoteRepository(api)
     }
 
     @Provides
