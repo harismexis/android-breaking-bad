@@ -5,10 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.framework.event.Event
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
-import com.harismexis.breakingbad.model.repository.ActorsLocal
-import com.harismexis.breakingbad.model.repository.ActorsRemote
+import com.harismexis.breakingbad.framework.util.event.Event
+import com.harismexis.breakingbad.model.repository.actor.ActorsLocal
+import com.harismexis.breakingbad.model.repository.actor.ActorsRemote
 import com.harismexis.breakingbad.model.result.ActorsResult
 import kotlinx.coroutines.launch
 import javax.inject.Inject

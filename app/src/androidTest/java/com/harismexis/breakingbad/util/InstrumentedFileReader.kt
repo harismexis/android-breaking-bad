@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.util
 
 import androidx.test.platform.app.InstrumentationRegistry
-import com.harismexis.breakingbad.parser.BaseFileReader
+import com.harismexis.breakingbad.reader.BaseFileReader
 
 class InstrumentedFileReader: BaseFileReader() {
 

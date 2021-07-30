@@ -5,7 +5,7 @@ import com.harismexis.breakingbad.framework.data.database.table.toItem
 import com.harismexis.breakingbad.framework.data.database.table.toItems
 import com.harismexis.breakingbad.framework.data.database.table.toLocalItems
 import com.harismexis.breakingbad.model.domain.Actor
-import com.harismexis.breakingbad.model.repository.ActorsLocal
+import com.harismexis.breakingbad.model.repository.actor.ActorsLocal
 import javax.inject.Inject
 import javax.inject.Singleton
 

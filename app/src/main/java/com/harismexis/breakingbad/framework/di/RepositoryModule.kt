@@ -10,7 +10,14 @@ import com.harismexis.breakingbad.framework.data.network.repository.ActorsRemote
 import com.harismexis.breakingbad.framework.data.network.repository.DeathsRemoteRepository
 import com.harismexis.breakingbad.framework.data.network.repository.EpisodesRemoteRepository
 import com.harismexis.breakingbad.framework.data.network.repository.QuotesRemoteRepository
-import com.harismexis.breakingbad.model.repository.*
+import com.harismexis.breakingbad.model.repository.actor.ActorsLocal
+import com.harismexis.breakingbad.model.repository.actor.ActorsRemote
+import com.harismexis.breakingbad.model.repository.death.DeathsLocal
+import com.harismexis.breakingbad.model.repository.death.DeathsRemote
+import com.harismexis.breakingbad.model.repository.episode.EpisodesLocal
+import com.harismexis.breakingbad.model.repository.episode.EpisodesRemote
+import com.harismexis.breakingbad.model.repository.quote.QuotesLocal
+import com.harismexis.breakingbad.model.repository.quote.QuotesRemote
 import dagger.Module
 import dagger.Provides
 

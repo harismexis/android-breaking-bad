@@ -3,7 +3,7 @@ package com.harismexis.breakingbad.framework.data.network.repository
 import com.harismexis.breakingbad.framework.data.network.api.BreakingBadApi
 import com.harismexis.breakingbad.framework.data.network.model.toItems
 import com.harismexis.breakingbad.model.domain.Quote
-import com.harismexis.breakingbad.model.repository.QuotesRemote
+import com.harismexis.breakingbad.model.repository.quote.QuotesRemote
 import javax.inject.Inject
 import javax.inject.Singleton
 

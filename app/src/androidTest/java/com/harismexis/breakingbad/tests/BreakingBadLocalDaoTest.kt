@@ -8,9 +8,9 @@ import com.harismexis.breakingbad.base.BaseInstrumentedTest
 import com.harismexis.breakingbad.framework.data.database.dao.BreakingBadLocalDao
 import com.harismexis.breakingbad.framework.data.database.schema.BreakingBadDatabase
 import com.harismexis.breakingbad.framework.data.database.table.LocalActor
-import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_ALL_IDS_VALID
-import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_NO_DATA
-import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SOME_IDS_INVALID
+import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_ALL_IDS_VALID
+import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_NO_DATA
+import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SOME_IDS_INVALID
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert

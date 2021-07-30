@@ -73,11 +73,6 @@ ext {
             fragment_testing : "androidx.fragment:fragment-testing:$fragment_version",
     ]
 
-    mockkDependencies = [
-            mockk         : "io.mockk:mockk:$mockk",
-            mockk_android : "io.mockk:mockk-android:$mockk_android",
-    ]
-
     testLibraries = [
             junit           : "androidx.test.ext:junit:$androidx_junit",
             coroutines_test : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_android",
@@ -117,13 +112,6 @@ ext {
             dagger_compiler          : "com.google.dagger:dagger-compiler:$dagger_2",
             dagger_android_processor : "com.google.dagger:dagger-android-processor:$dagger_2",
             glide_compiler           : "com.github.bumptech.glide:compiler:$glide",
-    ]
-
-    rxJavaDependencies = [
-            retrofit_adapter : "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_adapter_rxjava2",
-            rxjava           : "io.reactivex.rxjava2:rxjava:$rxjava2",
-            rxandroid        : "io.reactivex.rxjava2:rxandroid:$rxandroid",
-            rxrelay          : "com.jakewharton.rxrelay2:rxrelay:$rx_relay",
     ]
 
     glideDependencies = [
