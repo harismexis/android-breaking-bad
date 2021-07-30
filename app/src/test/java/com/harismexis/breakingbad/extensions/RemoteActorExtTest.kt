@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.extensions
 
-import com.harismexis.breakingbad.framework.extensions.actor.toItems
+import com.harismexis.breakingbad.framework.data.network.model.toItems
 import com.harismexis.breakingbad.setup.UnitTestSetup
 import com.harismexis.breakingbad.utils.*
 import org.junit.Test

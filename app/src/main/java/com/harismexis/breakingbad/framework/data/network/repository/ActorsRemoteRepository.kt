@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.framework.data.network.repository
 
 import com.harismexis.breakingbad.framework.data.network.api.BreakingBadApi
-import com.harismexis.breakingbad.framework.extensions.actor.toItems
+import com.harismexis.breakingbad.framework.data.network.model.toItems
 import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.model.repository.ActorsRemote
 import javax.inject.Inject
