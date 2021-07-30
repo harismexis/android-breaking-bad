@@ -13,9 +13,9 @@ import com.harismexis.breakingbad.framework.util.ui.hideSystemUI
 import com.harismexis.breakingbad.framework.util.ui.showSystemUI
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.Video
-import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.getFirstVideoId
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoItemViewHolder
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideosDialog
+import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.getFirstVideoId
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
@@ -83,8 +83,7 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
         binding?.let {
             val controller = it.youTubeView.getPlayerUiController()
             controller.showMenuButton(true)
-            val menu = controller.getMenu()
-            menu?.addItem(MenuItem(getString(R.string.videos))
+            controller.getMenu()?.addItem(MenuItem(getString(R.string.videos))
             { showVideosDialog() })
         }
     }
