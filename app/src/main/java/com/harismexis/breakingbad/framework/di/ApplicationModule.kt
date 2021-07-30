@@ -5,11 +5,13 @@ import com.harismexis.breakingbad.framework.datasource.database.dao.BreakingBadL
 import com.harismexis.breakingbad.framework.datasource.database.schema.BreakingBadDatabase
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class ApplicationModule {
 
     @Provides
+    @Singleton
     fun provideLocalDao(app: MainApplication): BreakingBadLocalDao {
         return BreakingBadDatabase.getDatabase(app.applicationContext).getDao()
     }
