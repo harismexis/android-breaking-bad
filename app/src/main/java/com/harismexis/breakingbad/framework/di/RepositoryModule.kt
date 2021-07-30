@@ -1,15 +1,15 @@
 package com.harismexis.breakingbad.framework.di
 
-import com.harismexis.breakingbad.framework.datasource.database.dao.BreakingBadLocalDao
-import com.harismexis.breakingbad.framework.datasource.database.repository.ActorsLocalRepository
-import com.harismexis.breakingbad.framework.datasource.database.repository.DeathsLocalRepository
-import com.harismexis.breakingbad.framework.datasource.database.repository.EpisodesLocalRepository
-import com.harismexis.breakingbad.framework.datasource.database.repository.QuotesLocalRepository
-import com.harismexis.breakingbad.framework.datasource.network.api.BreakingBadApi
-import com.harismexis.breakingbad.framework.datasource.network.repository.ActorsRemoteRepository
-import com.harismexis.breakingbad.framework.datasource.network.repository.DeathsRemoteRepository
-import com.harismexis.breakingbad.framework.datasource.network.repository.EpisodesRemoteRepository
-import com.harismexis.breakingbad.framework.datasource.network.repository.QuotesRemoteRepository
+import com.harismexis.breakingbad.framework.data.database.dao.BreakingBadLocalDao
+import com.harismexis.breakingbad.framework.data.database.repository.ActorsLocalRepository
+import com.harismexis.breakingbad.framework.data.database.repository.DeathsLocalRepository
+import com.harismexis.breakingbad.framework.data.database.repository.EpisodesLocalRepository
+import com.harismexis.breakingbad.framework.data.database.repository.QuotesLocalRepository
+import com.harismexis.breakingbad.framework.data.network.api.BreakingBadApi
+import com.harismexis.breakingbad.framework.data.network.repository.ActorsRemoteRepository
+import com.harismexis.breakingbad.framework.data.network.repository.DeathsRemoteRepository
+import com.harismexis.breakingbad.framework.data.network.repository.EpisodesRemoteRepository
+import com.harismexis.breakingbad.framework.data.network.repository.QuotesRemoteRepository
 import com.harismexis.breakingbad.model.repository.*
 import dagger.Module
 import dagger.Provides

@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.framework.datasource.database.repository.ActorsLocalRepository
+import com.harismexis.breakingbad.framework.data.database.repository.ActorsLocalRepository
 import com.harismexis.breakingbad.framework.extensions.getErrorMessage
 import com.harismexis.breakingbad.model.result.ActorDetailResult
 import kotlinx.coroutines.launch

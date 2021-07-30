@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.actordetail.setup
 
 import androidx.lifecycle.Observer
-import com.harismexis.breakingbad.framework.datasource.database.repository.ActorsLocalRepository
+import com.harismexis.breakingbad.framework.data.database.repository.ActorsLocalRepository
 import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.model.result.ActorDetailResult
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel

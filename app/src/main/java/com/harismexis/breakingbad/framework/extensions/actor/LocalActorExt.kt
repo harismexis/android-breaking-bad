@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.framework.extensions.actor
 
 import com.harismexis.breakingbad.model.domain.Actor
-import com.harismexis.breakingbad.framework.datasource.database.table.LocalActor
+import com.harismexis.breakingbad.framework.data.database.table.LocalActor
 
 fun List<LocalActor?>?.toItems(): List<Actor> {
     val items = mutableListOf<Actor>()

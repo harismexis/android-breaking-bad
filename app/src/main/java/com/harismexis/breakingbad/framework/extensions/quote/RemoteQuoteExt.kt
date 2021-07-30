@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.framework.extensions.quote
 
 import com.harismexis.breakingbad.model.domain.Quote
-import com.harismexis.breakingbad.framework.datasource.network.model.RemoteQuote
+import com.harismexis.breakingbad.framework.data.network.model.RemoteQuote
 
 fun List<RemoteQuote?>?.toItems(): List<Quote> {
     val items = mutableListOf<Quote>()
