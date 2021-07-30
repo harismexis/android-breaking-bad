@@ -1,8 +1,8 @@
-package com.harismexis.breakingbad.setup.di.component
+package com.harismexis.breakingbad.config.di
 
+import com.harismexis.breakingbad.config.application.InstrumentedApplication
+import com.harismexis.breakingbad.config.factory.InstrumentedViewModelModule
 import com.harismexis.breakingbad.framework.di.FragmentBindingsModule
-import com.harismexis.breakingbad.setup.application.InstrumentedApplication
-import com.harismexis.breakingbad.setup.viewmodel.factory.InstrumentedViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

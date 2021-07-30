@@ -10,21 +10,21 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.harismexis.breakingbad.R
+import com.harismexis.breakingbad.base.BaseInstrumentedTest
+import com.harismexis.breakingbad.config.factory.mockActorDetailViewModel
+import com.harismexis.breakingbad.config.factory.mockHomeViewModel
 import com.harismexis.breakingbad.model.domain.Actor.Companion.occupationString
 import com.harismexis.breakingbad.model.result.ActorDetailResult
 import com.harismexis.breakingbad.model.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
-import com.harismexis.breakingbad.setup.base.InstrumentedSetup
-import com.harismexis.breakingbad.setup.testutil.clickRecyclerAt
-import com.harismexis.breakingbad.setup.testutil.getExpectedText
-import com.harismexis.breakingbad.setup.viewmodel.factory.mockActorDetailViewModel
-import com.harismexis.breakingbad.setup.viewmodel.factory.mockHomeViewModel
+import com.harismexis.breakingbad.util.clickRecyclerAt
+import com.harismexis.breakingbad.util.getExpectedText
 import io.mockk.every
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class ActorDetailScreenTest : InstrumentedSetup() {
+class ActorDetailScreenTest : BaseInstrumentedTest() {
 
     private var mockActors = mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid()
     private var actorsSuccess = ActorsResult.Success(mockActors)

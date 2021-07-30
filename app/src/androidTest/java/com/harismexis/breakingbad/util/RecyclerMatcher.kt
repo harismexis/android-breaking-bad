@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.setup.testutil
+package com.harismexis.breakingbad.util
 
 import android.content.res.Resources
 import android.content.res.Resources.NotFoundException

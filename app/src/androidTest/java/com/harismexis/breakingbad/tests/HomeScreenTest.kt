@@ -14,6 +14,8 @@ import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.harismexis.breakingbad.R
+import com.harismexis.breakingbad.base.BaseInstrumentedTest
+import com.harismexis.breakingbad.config.factory.mockHomeViewModel
 import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.model.result.ActorsResult
 import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_ALL_IDS_VALID
@@ -23,18 +25,16 @@ import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS
 import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SOME_EMPTY
 import com.harismexis.breakingbad.parser.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SOME_IDS_INVALID
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
-import com.harismexis.breakingbad.setup.base.InstrumentedSetup
-import com.harismexis.breakingbad.setup.testutil.RecyclerCountAssertion
-import com.harismexis.breakingbad.setup.testutil.SearchViewActionExtension
-import com.harismexis.breakingbad.setup.testutil.verifyRecyclerItemAt
-import com.harismexis.breakingbad.setup.viewmodel.factory.mockHomeViewModel
+import com.harismexis.breakingbad.util.RecyclerCountAssertion
+import com.harismexis.breakingbad.util.SearchViewActionExtension
+import com.harismexis.breakingbad.util.verifyRecyclerItemAt
 import io.mockk.every
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class HomeScreenTest : InstrumentedSetup() {
+class HomeScreenTest : BaseInstrumentedTest() {
 
     companion object {
         const val WALTER = "walter"

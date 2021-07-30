@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.setup.testutil
+package com.harismexis.breakingbad.util
 
 import androidx.annotation.StringRes
 import androidx.test.platform.app.InstrumentationRegistry

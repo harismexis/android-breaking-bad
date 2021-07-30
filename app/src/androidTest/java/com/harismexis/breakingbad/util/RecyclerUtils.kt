@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.setup.testutil
+package com.harismexis.breakingbad.util
 
 import androidx.annotation.IdRes
 import androidx.recyclerview.widget.RecyclerView
