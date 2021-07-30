@@ -37,7 +37,7 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
 
     override fun onCreateView() {
         addBackNavigation()
-        initFullScreen()
+        initFullScreenBtn()
         initPlayerMenu()
     }
 
@@ -94,7 +94,7 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
             .show(childFragmentManager, TAG_VIDEOS_DIALOG)
     }
 
-    private fun initFullScreen() {
+    private fun initFullScreenBtn() {
         binding?.let {
             it.youTubeView.getPlayerUiController()
                 .setFullScreenButtonClickListener {
@@ -115,9 +115,9 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
         return binding?.root
     }
 
-    override fun onVideoClicked(video: Video, position: Int) {
-        currentVideoId = video.id
-        videoPlayer?.loadVideo(video.id, 0f)
+    override fun onVideoClicked(item: Video, position: Int) {
+        currentVideoId = item.id
+        videoPlayer?.loadVideo(item.id, 0f)
     }
 
 }
