@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.viewmodelfactory
+package com.harismexis.breakingbad.presentation.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

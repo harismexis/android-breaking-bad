@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.framework.di
 
 import com.harismexis.breakingbad.framework.application.MainApplication
-import com.harismexis.breakingbad.framework.viewmodelfactory.ViewModelModule
+import com.harismexis.breakingbad.presentation.factory.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

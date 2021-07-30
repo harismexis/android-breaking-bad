@@ -1,7 +1,5 @@
 package com.harismexis.breakingbad.model.domain
 
-import java.io.Serializable
-
 data class Death(
     val death_id: Int,
     val death: String?,
@@ -11,4 +9,4 @@ data class Death(
     val season: Int?,
     val episode: Int?,
     val number_of_deaths: Int?
-) : Serializable
+)

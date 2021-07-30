@@ -1,6 +1,4 @@
-package com.harismexis.breakingbad.presentation.screens.player
-
-import com.harismexis.breakingbad.presentation.screens.player.videosdialog.Video
+package com.harismexis.breakingbad.presentation.screens.player.ui.dialog
 
 fun getFirstVideoId(): String {
     return getVideosList()[0].id

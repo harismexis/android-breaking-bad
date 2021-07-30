@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.presentation.screens.player.videosdialog
+package com.harismexis.breakingbad.presentation.screens.player.ui.dialog
 
 import android.app.Dialog
 import android.os.Bundle
@@ -8,7 +8,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.databinding.DialogVideosBinding
-import com.harismexis.breakingbad.presentation.screens.player.getVideosList
 
 class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListener {
 

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/default_background_color"
-    tools:context=".presentation.screens.player.PlayerFragment">
+    tools:context=".presentation.screens.player.ui.fragment.PlayerFragment">
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/youTube_view"

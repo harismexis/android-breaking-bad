@@ -44,7 +44,7 @@
 
     <fragment
         android:id="@+id/player_dest"
-        android:name="com.harismexis.breakingbad.presentation.screens.player.PlayerFragment"
+        android:name="com.harismexis.breakingbad.presentation.screens.player.ui.fragment.PlayerFragment"
         tools:layout="@layout/fragment_player">
 
     </fragment>

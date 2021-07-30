@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.presentation.screens.player.videosdialog
+package com.harismexis.breakingbad.presentation.screens.player.ui.dialog
 
 data class VideoItem(
     var videoId: String,

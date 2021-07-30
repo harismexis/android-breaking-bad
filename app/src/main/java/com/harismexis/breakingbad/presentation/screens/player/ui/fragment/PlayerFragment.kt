@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.presentation.screens.player
+package com.harismexis.breakingbad.presentation.screens.player.ui.fragment
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,9 +12,10 @@ import com.harismexis.breakingbad.databinding.FragmentPlayerBinding
 import com.harismexis.breakingbad.framework.util.ui.hideSystemUI
 import com.harismexis.breakingbad.framework.util.ui.showSystemUI
 import com.harismexis.breakingbad.presentation.base.BaseFragment
-import com.harismexis.breakingbad.presentation.screens.player.videosdialog.Video
-import com.harismexis.breakingbad.presentation.screens.player.videosdialog.VideoItemViewHolder
-import com.harismexis.breakingbad.presentation.screens.player.videosdialog.VideosDialog
+import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.Video
+import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.getFirstVideoId
+import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoItemViewHolder
+import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideosDialog
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
