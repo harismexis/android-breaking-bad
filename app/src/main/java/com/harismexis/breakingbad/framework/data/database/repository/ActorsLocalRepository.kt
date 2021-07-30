@@ -1,9 +1,9 @@
 package com.harismexis.breakingbad.framework.data.database.repository
 
 import com.harismexis.breakingbad.framework.data.database.dao.BreakingBadLocalDao
-import com.harismexis.breakingbad.framework.extensions.actor.toItem
-import com.harismexis.breakingbad.framework.extensions.actor.toItems
-import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
+import com.harismexis.breakingbad.framework.data.database.table.toItem
+import com.harismexis.breakingbad.framework.data.database.table.toItems
+import com.harismexis.breakingbad.framework.data.database.table.toLocalItems
 import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.model.repository.ActorsLocal
 import javax.inject.Inject

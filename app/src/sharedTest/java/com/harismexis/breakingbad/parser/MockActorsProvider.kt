@@ -3,9 +3,9 @@ package com.harismexis.breakingbad.parser
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import com.harismexis.breakingbad.framework.data.database.table.LocalActor
+import com.harismexis.breakingbad.framework.data.database.table.toLocalItems
 import com.harismexis.breakingbad.framework.data.network.model.RemoteActor
 import com.harismexis.breakingbad.framework.data.network.model.toItems
-import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
 import com.harismexis.breakingbad.model.domain.Actor
 import java.lang.reflect.Type
 import java.util.*

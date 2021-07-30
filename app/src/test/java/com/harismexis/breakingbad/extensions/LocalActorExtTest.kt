@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.extensions
 
-import com.harismexis.breakingbad.framework.extensions.actor.toItems
-import com.harismexis.breakingbad.framework.extensions.actor.toLocalItems
+import com.harismexis.breakingbad.framework.data.database.table.toItems
+import com.harismexis.breakingbad.framework.data.database.table.toLocalItems
 import com.harismexis.breakingbad.setup.UnitTestSetup
 import com.harismexis.breakingbad.utils.ActorLocalVerificator
 import com.harismexis.breakingbad.utils.verifyListSizeWhenAllIdsValid

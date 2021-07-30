@@ -1,8 +1,8 @@
 package com.harismexis.breakingbad.framework.data.database.repository
 
 import com.harismexis.breakingbad.framework.data.database.dao.BreakingBadLocalDao
-import com.harismexis.breakingbad.framework.extensions.death.toItems
-import com.harismexis.breakingbad.framework.extensions.death.toLocalItems
+import com.harismexis.breakingbad.framework.data.database.table.toItems
+import com.harismexis.breakingbad.framework.data.database.table.toLocalItems
 import com.harismexis.breakingbad.model.domain.Death
 import com.harismexis.breakingbad.model.repository.DeathsLocal
 import javax.inject.Inject
