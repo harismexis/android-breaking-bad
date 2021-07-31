@@ -18,9 +18,9 @@ import com.harismexis.breakingbad.BuildConfig
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentHomeBinding
 import com.harismexis.breakingbad.framework.util.event.EventObserver
+import com.harismexis.breakingbad.framework.util.extensions.hideKeyboard
+import com.harismexis.breakingbad.framework.util.extensions.showSnackBar
 import com.harismexis.breakingbad.framework.util.mapNewMexicoIntent
-import com.harismexis.breakingbad.framework.util.ui.hideKeyboard
-import com.harismexis.breakingbad.framework.util.ui.showSnackBar
 import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.model.result.ActorsResult
 import com.harismexis.breakingbad.presentation.base.BaseFragment

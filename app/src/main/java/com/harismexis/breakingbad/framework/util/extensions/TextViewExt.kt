@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.extensions
+package com.harismexis.breakingbad.framework.util.extensions
 
 import android.widget.TextView
 import com.harismexis.breakingbad.R

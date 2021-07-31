@@ -9,8 +9,8 @@ import androidx.annotation.NonNull
 import androidx.navigation.fragment.findNavController
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentPlayerBinding
-import com.harismexis.breakingbad.framework.util.ui.hideSystemUI
-import com.harismexis.breakingbad.framework.util.ui.showSystemUI
+import com.harismexis.breakingbad.framework.util.extensions.hideSystemUI
+import com.harismexis.breakingbad.framework.util.extensions.showSystemUI
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.Video
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoItemViewHolder

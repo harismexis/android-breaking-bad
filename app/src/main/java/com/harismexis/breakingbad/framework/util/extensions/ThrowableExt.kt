@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.extensions
+package com.harismexis.breakingbad.framework.util.extensions
 
 fun Throwable.getErrorMessage(): String {
     var errorMsg = "$this, null error message"

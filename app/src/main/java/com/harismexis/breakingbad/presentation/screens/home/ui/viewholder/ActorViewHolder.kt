@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.presentation.screens.home.ui.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
-import com.harismexis.breakingbad.framework.extensions.populateWithGlide
+import com.harismexis.breakingbad.framework.util.extensions.populateWithGlide
 import com.harismexis.breakingbad.databinding.VhActorItemBinding
 import com.harismexis.breakingbad.model.domain.Actor
 

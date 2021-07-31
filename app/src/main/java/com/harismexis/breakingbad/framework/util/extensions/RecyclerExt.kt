@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.extensions
+package com.harismexis.breakingbad.framework.util.extensions
 
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat

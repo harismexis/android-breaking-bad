@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentQuotesBinding
 import com.harismexis.breakingbad.framework.util.event.EventObserver
-import com.harismexis.breakingbad.framework.extensions.setDivider
-import com.harismexis.breakingbad.framework.extensions.showToast
+import com.harismexis.breakingbad.framework.util.extensions.setDivider
+import com.harismexis.breakingbad.framework.util.extensions.showToast
 import com.harismexis.breakingbad.model.domain.Quote
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.model.result.QuotesResult

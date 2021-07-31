@@ -14,9 +14,9 @@ import com.harismexis.breakingbad.databinding.FragmentActorDetailBinding
 import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.model.domain.Actor.Companion.occupationString
 import com.harismexis.breakingbad.framework.util.ui.getLinkSpanned
-import com.harismexis.breakingbad.framework.extensions.populateWithGlide
-import com.harismexis.breakingbad.framework.extensions.setTextOrUnknown
-import com.harismexis.breakingbad.framework.extensions.showToast
+import com.harismexis.breakingbad.framework.util.extensions.populateWithGlide
+import com.harismexis.breakingbad.framework.util.extensions.setTextOrUnknown
+import com.harismexis.breakingbad.framework.util.extensions.showToast
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.model.result.ActorDetailResult
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel

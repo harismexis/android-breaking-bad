@@ -10,7 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.ActivityMainBinding
-import com.harismexis.breakingbad.framework.util.ui.makeStatusBarDark
+import com.harismexis.breakingbad.framework.util.extensions.makeStatusBarDark
 
 class MainActivity : AppCompatActivity() {
 
