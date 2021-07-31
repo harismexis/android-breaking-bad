@@ -1,8 +1,8 @@
 package com.harismexis.breakingbad.tests.extensions
 
+import com.harismexis.breakingbad.base.BaseUnitTest
 import com.harismexis.breakingbad.framework.data.database.table.toItems
 import com.harismexis.breakingbad.framework.data.database.table.toLocalItems
-import com.harismexis.breakingbad.setup.BaseUnitTest
 import com.harismexis.breakingbad.util.ActorLocalVerificator
 import com.harismexis.breakingbad.util.verifyListSizeWhenAllIdsValid
 import com.harismexis.breakingbad.util.verifyListsHaveSameSize
@@ -43,10 +43,6 @@ class LocalActorExtTest : BaseUnitTest() {
         verifyListSizeWhenAllIdsValid(localItems)
         verifyListSizeWhenAllIdsValid(items)
         verificator.verifyActorsAgainstLocalActors(items, localItems)
-    }
-
-    override fun initialiseClassUnderTest() {
-        // do nothing
     }
 
 }

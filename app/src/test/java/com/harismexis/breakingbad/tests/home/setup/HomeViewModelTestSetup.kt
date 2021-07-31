@@ -1,12 +1,12 @@
 package com.harismexis.breakingbad.tests.home.setup
 
 import androidx.lifecycle.Observer
+import com.harismexis.breakingbad.base.BaseUnitTest
 import com.harismexis.breakingbad.framework.data.database.repository.ActorsLocalRepository
 import com.harismexis.breakingbad.framework.data.network.repository.ActorsRemoteRepository
 import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.model.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
-import com.harismexis.breakingbad.setup.BaseUnitTest
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.verifyZeroInteractions
@@ -22,19 +22,17 @@ abstract class HomeViewModelTestSetup : BaseUnitTest() {
     protected lateinit var mockActorLocal: ActorsLocalRepository
     @Mock
     lateinit var mockObserver: Observer<ActorsResult>
-
     private val mockActors = mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid()
     private val mockActorsResultSuccess = ActorsResult.Success(mockActors)
     private val error = IllegalStateException(ERROR_MESSAGE)
     private val mockActorsResultError = ActorsResult.Error(error)
-
     protected lateinit var subject: HomeViewModel
 
     companion object {
         const val ERROR_MESSAGE = "error"
     }
 
-    override fun initialiseClassUnderTest() {
+    protected fun initSubject() {
         subject = HomeViewModel(mockActorRemote, mockActorLocal)
     }
 
@@ -105,7 +103,7 @@ abstract class HomeViewModelTestSetup : BaseUnitTest() {
 
     // LiveData
 
-    protected fun observeActorsLiveData() {
+    protected fun observeLiveData() {
         subject.actorsResult.observeForever(mockObserver)
     }
 

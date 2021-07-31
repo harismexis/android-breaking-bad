@@ -10,14 +10,11 @@ import org.junit.runners.JUnit4
 @RunWith(JUnit4::class)
 class HomeViewModelTest : HomeViewModelTestSetup() {
 
-    init {
-        initialise()
-    }
-
     @Before
     fun doBefore() {
-        initialiseClassUnderTest()
-        observeActorsLiveData()
+        initMocks()
+        initSubject()
+        observeLiveData()
     }
 
     @After

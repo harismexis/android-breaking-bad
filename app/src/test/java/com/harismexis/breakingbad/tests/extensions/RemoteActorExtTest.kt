@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.tests.extensions
 
+import com.harismexis.breakingbad.base.BaseUnitTest
 import com.harismexis.breakingbad.framework.data.network.model.toItems
-import com.harismexis.breakingbad.setup.BaseUnitTest
 import com.harismexis.breakingbad.util.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -75,10 +75,6 @@ class RemoteActorExtTest : BaseUnitTest() {
 
         // then
         verifyListSizeForNoData(items)
-    }
-
-    override fun initialiseClassUnderTest() {
-        // Do nothing
     }
 
 }

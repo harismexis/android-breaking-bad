@@ -1,5 +1,6 @@
-package com.harismexis.breakingbad.tests.dao
+package com.harismexis.breakingbad.tests.repository
 
+import com.harismexis.breakingbad.base.BaseUnitTest
 import com.harismexis.breakingbad.framework.data.network.api.BreakingBadApi
 import com.harismexis.breakingbad.framework.data.network.repository.ActorsRemoteRepository
 import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.FILE_EMPTY_JSON
@@ -7,7 +8,6 @@ import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.FILE_FIVE_A
 import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.FILE_FIVE_ACTORS_BUT_THREE_IDS_INVALID
 import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.FILE_FIVE_ACTORS_BUT_TWO_EMPTY
 import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.FILE_FIVE_VALID_ACTORS
-import com.harismexis.breakingbad.setup.BaseUnitTest
 import com.harismexis.breakingbad.util.enqueueResponse
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
@@ -42,16 +42,9 @@ class ActorsRemoteRepositoryTest : BaseUnitTest() {
         .build()
         .create(BreakingBadApi::class.java)
 
-    init {
-        initialise()
-    }
-
     @Before
     fun doBefore() {
-        initialiseClassUnderTest()
-    }
-
-    override fun initialiseClassUnderTest() {
+        initMocks()
         subject = ActorsRemoteRepository(api)
     }
 

@@ -10,19 +10,16 @@ import org.junit.runners.JUnit4
 @RunWith(JUnit4::class)
 class ActorDetailViewModelTest : ActorDetailViewModelTestSetup() {
 
-    init {
-        initialise()
-    }
-
     @Before
     fun doBefore() {
-        initialiseClassUnderTest()
-        observeActorDetailLiveData()
+        initMocks()
+        initSubject()
+        observeLiveData()
     }
 
     @After
     fun doAfter() {
-        stopObservingLiveData()
+        stopObserveLiveData()
     }
 
     @Test
