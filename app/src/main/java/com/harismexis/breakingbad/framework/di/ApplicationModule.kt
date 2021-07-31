@@ -2,7 +2,7 @@ package com.harismexis.breakingbad.framework.di
 
 import com.harismexis.breakingbad.framework.application.MainApplication
 import com.harismexis.breakingbad.framework.data.database.dao.BreakingBadLocalDao
-import com.harismexis.breakingbad.framework.data.database.schema.BreakingBadDatabase
+import com.harismexis.breakingbad.framework.data.database.db.BreakingBadDatabase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

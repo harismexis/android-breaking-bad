@@ -136,7 +136,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
     }
 
     @Test
-    fun openNavigationDrawer_showsDrawer() {
+    fun navigationDrawer_showsExpectedItems() {
 
         // given
         mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid())
@@ -167,7 +167,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
     }
 
     @Test
-    fun bottomNavigationView_HasExpectedItems() {
+    fun bottomNavigationView_showsExpectedItems() {
 
         // given
         mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid())

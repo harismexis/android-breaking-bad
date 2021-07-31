@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.data.database.schema
+package com.harismexis.breakingbad.framework.data.database.db
 
 import android.content.Context
 import androidx.room.Database

@@ -6,7 +6,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.harismexis.breakingbad.base.BaseInstrumentedTest
 import com.harismexis.breakingbad.framework.data.database.dao.BreakingBadLocalDao
-import com.harismexis.breakingbad.framework.data.database.schema.BreakingBadDatabase
+import com.harismexis.breakingbad.framework.data.database.db.BreakingBadDatabase
 import com.harismexis.breakingbad.framework.data.database.table.LocalActor
 import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_ALL_IDS_VALID
 import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_NO_DATA

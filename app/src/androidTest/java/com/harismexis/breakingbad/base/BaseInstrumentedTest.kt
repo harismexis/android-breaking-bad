@@ -1,9 +1,11 @@
 package com.harismexis.breakingbad.base
 
-import com.harismexis.breakingbad.mocks.MockActorsProvider
+import com.harismexis.breakingbad.reader.BaseFileReader
 import com.harismexis.breakingbad.util.InstrumentedFileReader
 
-open class BaseInstrumentedTest {
+open class BaseInstrumentedTest: BaseTest() {
 
-    protected val mockActorsProvider = MockActorsProvider(InstrumentedFileReader())
+    override fun getBaseFileReader(): BaseFileReader {
+        return InstrumentedFileReader()
+    }
 }

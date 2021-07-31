@@ -13,7 +13,7 @@ import com.harismexis.breakingbad.databinding.ActorDetailViewBinding
 import com.harismexis.breakingbad.databinding.FragmentActorDetailBinding
 import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.model.domain.Actor.Companion.occupationString
-import com.harismexis.breakingbad.framework.extensions.getLinkSpanned
+import com.harismexis.breakingbad.framework.util.ui.getLinkSpanned
 import com.harismexis.breakingbad.framework.extensions.populateWithGlide
 import com.harismexis.breakingbad.framework.extensions.setTextOrUnknown
 import com.harismexis.breakingbad.framework.extensions.showToast
