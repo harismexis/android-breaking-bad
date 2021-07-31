@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidBreakingBad">
 
-        <activity android:name=".presentation.screens.home.ui.activity.MainActivity"
+        <activity android:name="com.harismexis.breakingbad.presentation.screens.activity.MainActivity"
             android:theme="@style/MainActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

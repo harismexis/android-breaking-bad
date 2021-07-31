@@ -11,8 +11,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/home_coordinator"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".presentation.screens.home.ui.fragment.HomeFragment">
+        android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="wrap_content"

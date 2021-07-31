@@ -24,7 +24,7 @@ import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_
 import com.harismexis.breakingbad.mocks.mockHomeViewModel
 import com.harismexis.breakingbad.core.domain.Actor
 import com.harismexis.breakingbad.core.result.ActorsResult
-import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
+import com.harismexis.breakingbad.presentation.screens.activity.MainActivity
 import com.harismexis.breakingbad.util.RecyclerCountAssertion
 import com.harismexis.breakingbad.util.SearchViewActionExtension
 import com.harismexis.breakingbad.util.verifyRecyclerItemAt

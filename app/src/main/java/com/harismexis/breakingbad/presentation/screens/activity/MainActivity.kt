@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.presentation.screens.home.ui.activity
+package com.harismexis.breakingbad.presentation.screens.activity
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle
