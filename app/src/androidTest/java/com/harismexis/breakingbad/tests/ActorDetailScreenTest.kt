@@ -11,8 +11,8 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.base.BaseInstrumentedTest
-import com.harismexis.breakingbad.config.factory.mockActorDetailViewModel
-import com.harismexis.breakingbad.config.factory.mockHomeViewModel
+import com.harismexis.breakingbad.mocks.mockActorDetailViewModel
+import com.harismexis.breakingbad.mocks.mockHomeViewModel
 import com.harismexis.breakingbad.model.domain.Actor.Companion.occupationString
 import com.harismexis.breakingbad.model.result.ActorDetailResult
 import com.harismexis.breakingbad.model.result.ActorsResult
