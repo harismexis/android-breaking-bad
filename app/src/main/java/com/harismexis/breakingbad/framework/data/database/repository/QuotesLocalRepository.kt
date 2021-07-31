@@ -3,8 +3,8 @@ package com.harismexis.breakingbad.framework.data.database.repository
 import com.harismexis.breakingbad.framework.data.database.dao.BreakingBadLocalDao
 import com.harismexis.breakingbad.framework.data.database.table.toItems
 import com.harismexis.breakingbad.framework.data.database.table.toLocalItems
-import com.harismexis.breakingbad.model.domain.Quote
-import com.harismexis.breakingbad.model.repository.quote.QuotesLocal
+import com.harismexis.breakingbad.core.domain.Quote
+import com.harismexis.breakingbad.core.repository.quote.QuotesLocal
 import javax.inject.Inject
 import javax.inject.Singleton
 

@@ -1,6 +1,6 @@
-package com.harismexis.breakingbad.model.repository.quote
+package com.harismexis.breakingbad.core.repository.quote
 
-import com.harismexis.breakingbad.model.domain.Quote
+import com.harismexis.breakingbad.core.domain.Quote
 
 interface QuotesLocal {
 

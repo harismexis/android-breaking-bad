@@ -13,9 +13,9 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.base.BaseInstrumentedTest
 import com.harismexis.breakingbad.mocks.mockActorDetailViewModel
 import com.harismexis.breakingbad.mocks.mockHomeViewModel
-import com.harismexis.breakingbad.model.domain.Actor.Companion.occupationString
-import com.harismexis.breakingbad.model.result.ActorDetailResult
-import com.harismexis.breakingbad.model.result.ActorsResult
+import com.harismexis.breakingbad.core.domain.Actor.Companion.occupationString
+import com.harismexis.breakingbad.core.result.ActorDetailResult
+import com.harismexis.breakingbad.core.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.ui.activity.MainActivity
 import com.harismexis.breakingbad.util.clickRecyclerAt
 import com.harismexis.breakingbad.util.getExpectedText

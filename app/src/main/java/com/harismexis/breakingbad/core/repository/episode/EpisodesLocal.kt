@@ -1,6 +1,6 @@
-package com.harismexis.breakingbad.model.repository.episode
+package com.harismexis.breakingbad.core.repository.episode
 
-import com.harismexis.breakingbad.model.domain.Episode
+import com.harismexis.breakingbad.core.domain.Episode
 
 interface EpisodesLocal {
 

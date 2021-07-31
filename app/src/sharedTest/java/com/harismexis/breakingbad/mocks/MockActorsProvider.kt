@@ -2,11 +2,11 @@ package com.harismexis.breakingbad.mocks
 
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import com.harismexis.breakingbad.core.domain.Actor
 import com.harismexis.breakingbad.framework.data.database.table.LocalActor
 import com.harismexis.breakingbad.framework.data.database.table.toLocalItems
 import com.harismexis.breakingbad.framework.data.network.model.RemoteActor
 import com.harismexis.breakingbad.framework.data.network.model.toItems
-import com.harismexis.breakingbad.model.domain.Actor
 import com.harismexis.breakingbad.reader.BaseFileReader
 import java.lang.reflect.Type
 import java.util.*

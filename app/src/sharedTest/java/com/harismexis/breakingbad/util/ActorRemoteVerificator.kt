@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.util
 
 import com.harismexis.breakingbad.framework.data.network.model.RemoteActor
-import com.harismexis.breakingbad.model.domain.Actor
+import com.harismexis.breakingbad.core.domain.Actor
 import org.junit.Assert
 
 class ActorRemoteVerificator {

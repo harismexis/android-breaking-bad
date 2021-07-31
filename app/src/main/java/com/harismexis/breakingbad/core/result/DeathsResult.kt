@@ -1,6 +1,6 @@
-package com.harismexis.breakingbad.model.result
+package com.harismexis.breakingbad.core.result
 
-import com.harismexis.breakingbad.model.domain.Death
+import com.harismexis.breakingbad.core.domain.Death
 
 sealed class DeathsResult {
     data class Success(val items: List<Death>): DeathsResult()

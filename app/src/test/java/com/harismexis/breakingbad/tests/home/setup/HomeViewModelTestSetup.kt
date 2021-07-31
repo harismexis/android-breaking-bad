@@ -4,8 +4,8 @@ import androidx.lifecycle.Observer
 import com.harismexis.breakingbad.base.BaseUnitTest
 import com.harismexis.breakingbad.framework.data.database.repository.ActorsLocalRepository
 import com.harismexis.breakingbad.framework.data.network.repository.ActorsRemoteRepository
-import com.harismexis.breakingbad.model.domain.Actor
-import com.harismexis.breakingbad.model.result.ActorsResult
+import com.harismexis.breakingbad.core.domain.Actor
+import com.harismexis.breakingbad.core.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify

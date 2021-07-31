@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.framework.data.network.model
 
 import com.google.gson.annotations.SerializedName
-import com.harismexis.breakingbad.model.domain.Death
+import com.harismexis.breakingbad.core.domain.Death
 
 data class RemoteDeath(
     @SerializedName("death_id")

@@ -3,7 +3,7 @@ package com.harismexis.breakingbad.framework.data.database.table
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.harismexis.breakingbad.model.domain.Episode
+import com.harismexis.breakingbad.core.domain.Episode
 
 @Entity(tableName = "episode_table")
 data class LocalEpisode(

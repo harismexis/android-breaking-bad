@@ -1,6 +1,6 @@
-package com.harismexis.breakingbad.model.repository.death
+package com.harismexis.breakingbad.core.repository.death
 
-import com.harismexis.breakingbad.model.domain.Death
+import com.harismexis.breakingbad.core.domain.Death
 
 interface DeathsLocal {
 

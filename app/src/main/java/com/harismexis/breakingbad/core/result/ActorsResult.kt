@@ -1,6 +1,6 @@
-package com.harismexis.breakingbad.model.result
+package com.harismexis.breakingbad.core.result
 
-import com.harismexis.breakingbad.model.domain.Actor
+import com.harismexis.breakingbad.core.domain.Actor
 
 sealed class ActorsResult {
     data class Success(val items: List<Actor>): ActorsResult()

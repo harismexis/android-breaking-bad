@@ -3,7 +3,7 @@ package com.harismexis.breakingbad.framework.data.database.table
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.harismexis.breakingbad.model.domain.Actor
+import com.harismexis.breakingbad.core.domain.Actor
 
 @Entity(tableName = "breaking_bad_actor_table")
 data class LocalActor(

@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.framework.data.network.model
 
 import com.google.gson.annotations.SerializedName
-import com.harismexis.breakingbad.model.domain.Quote
+import com.harismexis.breakingbad.core.domain.Quote
 
 data class RemoteQuote(
     @SerializedName("quote_id")

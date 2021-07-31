@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.framework.data.network.model
 
 import com.google.gson.annotations.SerializedName
-import com.harismexis.breakingbad.model.domain.Episode
+import com.harismexis.breakingbad.core.domain.Episode
 
 data class RemoteEpisode(
     @SerializedName("episode_id")

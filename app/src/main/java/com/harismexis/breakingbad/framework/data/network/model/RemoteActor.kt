@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.framework.data.network.model
 
 import com.google.gson.annotations.SerializedName
-import com.harismexis.breakingbad.model.domain.Actor
+import com.harismexis.breakingbad.core.domain.Actor
 
 data class RemoteActor(
     @SerializedName("char_id")

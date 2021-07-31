@@ -3,7 +3,7 @@ package com.harismexis.breakingbad.framework.data.database.table
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.harismexis.breakingbad.model.domain.Death
+import com.harismexis.breakingbad.core.domain.Death
 
 @Entity(tableName = "death_table")
 data class LocalDeath(
