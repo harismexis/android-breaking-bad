@@ -26,26 +26,29 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = host.navController
         appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupBottomNavMenu(navController)
+        setupBottomNav(navController)
         setupDestinationListener(navController)
     }
 
-    private fun setupBottomNavMenu(navController: NavController) {
-        binding.bottomNavView.setupWithNavController(navController)
-        binding.bottomNavView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.quotes_dest -> {
-                    navController.navigate(R.id.quotes_dest)
+    private fun setupBottomNav(navController: NavController) {
+        binding.bottomNavView.apply() {
+            setupWithNavController(navController)
+            setOnItemSelectedListener { item ->
+                when (item.itemId) {
+                    R.id.quotes_dest -> {
+                        navController.navigate(R.id.quotes_dest)
+                    }
+                    R.id.deaths_dest -> {
+                        navController.navigate(R.id.deaths_dest)
+                    }
+                    R.id.episodes_dest -> {
+                        navController.navigate(R.id.episodes_dest)
+                    }
                 }
-                R.id.deaths_dest -> {
-                    navController.navigate(R.id.deaths_dest)
-                }
-                R.id.episodes_dest -> {
-                    navController.navigate(R.id.episodes_dest)
-                }
+                true
             }
-            true
         }
+
     }
 
     private fun setupDestinationListener(navController: NavController) {
