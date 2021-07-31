@@ -30,20 +30,12 @@ ext {
     def espresso = '3.3.0'
     def androidx_junit = '1.1.3'
     def arch_core = '2.1.0'
-    def work = '2.2.0'
     def truth = '1.0'
     def mockito_kotlin = '2.2.0'
-    def mockito = '3.3.0'
-    def mockk = '1.12.0'
     def mockk_android = '1.12.0'
     def mock_webserver = '4.9.1'
-    def retrofit2_adapter_rxjava2 = '2.6.0'
-    def rxjava2 = '2.2.12'
-    def rxandroid = '2.1.1'
-    def rx_relay = '2.1.1'
-    def soffritti_youtube_player = '10.0.5'
+    def soffritti_player = '10.0.5'
     def kotest_assertions_core = '4.6.1'
-    // def google_truth = '0.42'
 
     libraries = [
             kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin",
@@ -65,7 +57,7 @@ ext {
     ]
 
     librariesKapt = [
-            room: "androidx.room:room-compiler:$room",
+            room : "androidx.room:room-compiler:$room",
     ]
 
     librariesDebug = [
@@ -129,7 +121,7 @@ ext {
     ]
 
     soffrittiYouTubePlayer = [
-            player : "com.pierfrancescosoffritti.androidyoutubeplayer:core:$soffritti_youtube_player",
+            player : "com.pierfrancescosoffritti.androidyoutubeplayer:core:$soffritti_player",
     ]
 
 }
