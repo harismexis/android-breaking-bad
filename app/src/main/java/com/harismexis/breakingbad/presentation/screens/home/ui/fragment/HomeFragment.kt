@@ -14,6 +14,7 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
+import com.harismexis.breakingbad.BuildConfig
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentHomeBinding
 import com.harismexis.breakingbad.framework.util.event.EventObserver
@@ -21,8 +22,8 @@ import com.harismexis.breakingbad.framework.util.mapNewMexicoIntent
 import com.harismexis.breakingbad.framework.util.ui.hideKeyboard
 import com.harismexis.breakingbad.framework.util.ui.showSnackBar
 import com.harismexis.breakingbad.model.domain.Actor
-import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.model.result.ActorsResult
+import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorAdapter
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
@@ -36,10 +37,6 @@ class HomeFragment : BaseFragment(),
     private var binding: FragmentHomeBinding? = null
     private lateinit var adapter: ActorAdapter
     private var uiModels: MutableList<Actor> = mutableListOf()
-
-    companion object {
-        const val BREAKING_BAD_API_WEBSITE = "https://breakingbadapi.com/"
-    }
 
     override fun initialiseViewBinding(
         inflater: LayoutInflater,
@@ -113,9 +110,11 @@ class HomeFragment : BaseFragment(),
     }
 
     private fun populate(models: List<Actor>) {
-        binding?.homeSwipeRefresh?.isRefreshing = false
-        binding?.loadingProgressBar?.visibility = View.GONE
-        binding?.homeList?.visibility = View.VISIBLE
+        binding?.let {
+            it.homeSwipeRefresh.isRefreshing = false
+            it.loadingProgressBar.visibility = View.GONE
+            it.homeList.visibility = View.VISIBLE
+        }
         uiModels.clear()
         uiModels.addAll(models)
         adapter.notifyDataSetChanged()
@@ -160,7 +159,7 @@ class HomeFragment : BaseFragment(),
             R.id.doc_dest -> {
                 val browserIntent = Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse(BREAKING_BAD_API_WEBSITE)
+                    Uri.parse(BuildConfig.BREAKING_BAD_API_WEBSITE_URL)
                 )
                 startActivity(browserIntent)
             }

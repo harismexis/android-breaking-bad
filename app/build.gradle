@@ -19,6 +19,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "com.harismexis.breakingbad.config.runner.InstrumentedRunner"
         buildConfigField "String", "BREAKING_BAD_API_BASE_URL", commonValues.BREAKING_BAD_API_BASE_URL
+        buildConfigField "String", "BREAKING_BAD_API_WEBSITE_URL", commonValues.BREAKING_BAD_API_WEBSITE_URL
     }
 
     buildTypes {

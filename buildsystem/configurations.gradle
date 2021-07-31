@@ -1,7 +1,8 @@
 ext {
 
     common = [
-            BREAKING_BAD_API_BASE_URL : '\"' + "https://www.breakingbadapi.com/api/" + '\"'
+            BREAKING_BAD_API_BASE_URL : '\"' + "https://www.breakingbadapi.com/api/" + '\"',
+            BREAKING_BAD_API_WEBSITE_URL : '\"' + "https://breakingbadapi.com/" + '\"'
     ]
 
 }
