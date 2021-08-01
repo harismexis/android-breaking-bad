@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_name"
+        android:id="@+id/txt_title"
         style="@style/VhBaseTitle"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/imgView"
-        app:layout_constraintTop_toBottomOf="@+id/txt_name"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title"
         tools:text="Metadata" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

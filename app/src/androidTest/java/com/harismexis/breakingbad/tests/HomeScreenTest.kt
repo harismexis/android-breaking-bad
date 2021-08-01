@@ -15,6 +15,8 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.base.BaseInstrumentedTest
+import com.harismexis.breakingbad.core.domain.Actor
+import com.harismexis.breakingbad.core.result.ActorsResult
 import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_ALL_IDS_VALID
 import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_NO_DATA
 import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA
@@ -22,8 +24,6 @@ import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_
 import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SOME_EMPTY
 import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SOME_IDS_INVALID
 import com.harismexis.breakingbad.mocks.mockHomeViewModel
-import com.harismexis.breakingbad.core.domain.Actor
-import com.harismexis.breakingbad.core.result.ActorsResult
 import com.harismexis.breakingbad.presentation.screens.activity.MainActivity
 import com.harismexis.breakingbad.util.RecyclerCountAssertion
 import com.harismexis.breakingbad.util.SearchViewActionExtension
@@ -218,8 +218,8 @@ class HomeScreenTest : BaseInstrumentedTest() {
     private fun verifyRecyclerData() {
         mockActors.forEachIndexed { index, actor ->
             onView(withId(R.id.home_list)).perform(scrollToPosition<RecyclerView.ViewHolder>(index))
-            verifyRecyclerValue(index, R.id.txt_name, actor.name)
-            verifyRecyclerValue(index, R.id.txt_meta, actor.nickname)
+            verifyRecyclerValue(index, R.id.txt_title, actor.nickname)
+            verifyRecyclerValue(index, R.id.txt_meta, actor.name)
         }
     }
 

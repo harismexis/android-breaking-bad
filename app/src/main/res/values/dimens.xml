@@ -17,12 +17,12 @@
 
     <!-- vh actor item -->
     <dimen name="vh_actor_img_width">140dp</dimen>
-    <dimen name="vh_actor_img_height">170dp</dimen>
+    <dimen name="vh_actor_img_height">190dp</dimen>
     <dimen name="vh_actor_padding_vertical">8dp</dimen>
     <dimen name="vh_actor_padding_horizontal">16dp</dimen>
 
     <!-- actor detail -->
-    <dimen name="actor_detail_img_height">580dp</dimen>
+    <dimen name="actor_detail_img_height">620dp</dimen>
     <dimen name="actor_detail_title_text_size">20sp</dimen>
     <dimen name="actor_detail_label_text_size">16sp</dimen>
     <dimen name="actor_detail_meta_text_size">16sp</dimen>

@@ -11,11 +11,11 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.base.BaseInstrumentedTest
-import com.harismexis.breakingbad.mocks.mockActorDetailViewModel
-import com.harismexis.breakingbad.mocks.mockHomeViewModel
 import com.harismexis.breakingbad.core.domain.Actor.Companion.occupationString
 import com.harismexis.breakingbad.core.result.ActorDetailResult
 import com.harismexis.breakingbad.core.result.ActorsResult
+import com.harismexis.breakingbad.mocks.mockActorDetailViewModel
+import com.harismexis.breakingbad.mocks.mockHomeViewModel
 import com.harismexis.breakingbad.presentation.screens.activity.MainActivity
 import com.harismexis.breakingbad.util.clickRecyclerAt
 import com.harismexis.breakingbad.util.getExpectedText
@@ -76,7 +76,7 @@ class ActorDetailScreenTest : BaseInstrumentedTest() {
     }
 
     private fun verifyActorDetailsAreTheExpected() {
-        verifyValue(R.id.txt_nickname, mockActor.nickname)
+        verifyValue(R.id.txt_name, mockActor.name)
 
         verifyLabel(R.id.txt_portrayed_label, R.string.label_portrayed)
         verifyValue(R.id.txt_portrayed, mockActor.portrayed)

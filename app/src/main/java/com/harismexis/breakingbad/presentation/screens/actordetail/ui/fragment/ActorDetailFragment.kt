@@ -91,12 +91,12 @@ class ActorDetailFragment : BaseFragment() {
 
     private fun populate(actor: Actor) {
         binding?.let {
-            it.toolbarTitle.text = actor.name
+            it.toolbarTitle.text = actor.nickname
             it.toolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
         }
         detailBinding?.let {
             requireContext().populateWithGlide(it.img, actor.img)
-            it.txtNickname.setTextOrUnknown(actor.nickname)
+            it.txtName.setTextOrUnknown(actor.name)
             it.txtPortrayed.setTextOrUnknown(actor.portrayed)
             it.txtOccupation.setTextOrUnknown(actor.occupationString())
             it.txtBirthday.setTextOrUnknown(actor.birthday)

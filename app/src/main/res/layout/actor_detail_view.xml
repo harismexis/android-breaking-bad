@@ -14,8 +14,8 @@
         android:scaleType="centerCrop" />
 
     <TextView
-        android:id="@+id/txt_nickname"
-        style="@style/ItemDetailTitle"
+        android:id="@+id/txt_name"
+        style="@style/ItemDetailMeta"
         android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
         tools:text="Nickname" />
 
