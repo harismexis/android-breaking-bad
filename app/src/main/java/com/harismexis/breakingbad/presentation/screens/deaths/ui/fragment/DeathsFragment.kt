@@ -47,10 +47,10 @@ class DeathsFragment : BaseFragment() {
     private fun initialiseRecycler() {
         adapter = DeathAdapter(deaths)
         adapter.setHasStableIds(true)
-        binding?.let {
-            it.list.layoutManager = LinearLayoutManager(this.context)
-            it.list.adapter = adapter
-            it.list.setDivider(R.drawable.divider)
+        binding?.list?.let {
+            it.layoutManager = LinearLayoutManager(requireContext())
+            it.adapter = adapter
+            it.setDivider(R.drawable.divider)
         }
     }
 

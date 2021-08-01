@@ -23,7 +23,7 @@ import com.harismexis.breakingbad.databinding.FragmentHomeBinding
 import com.harismexis.breakingbad.framework.util.event.EventObserver
 import com.harismexis.breakingbad.framework.util.extensions.hideKeyboard
 import com.harismexis.breakingbad.framework.util.extensions.showSnackBar
-import com.harismexis.breakingbad.framework.util.mapNewMexicoIntent
+import com.harismexis.breakingbad.framework.util.googleMapsNewMexicoIntent
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorAdapter
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
@@ -56,7 +56,7 @@ class HomeFragment : BaseFragment(),
         adapter = ActorAdapter(actors, this)
         adapter.setHasStableIds(true)
         binding?.homeList?.let {
-            it.layoutManager = LinearLayoutManager(this.context)
+            it.layoutManager = LinearLayoutManager(requireContext())
             it.adapter = adapter
         }
     }
@@ -156,7 +156,7 @@ class HomeFragment : BaseFragment(),
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.map_dest -> {
-                startActivity(mapNewMexicoIntent())
+                startActivity(googleMapsNewMexicoIntent())
             }
             R.id.doc_dest -> {
                 val browserIntent = Intent(
