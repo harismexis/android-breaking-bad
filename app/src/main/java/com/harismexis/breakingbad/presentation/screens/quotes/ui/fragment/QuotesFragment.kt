@@ -6,14 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.harismexis.breakingbad.R
+import com.harismexis.breakingbad.core.domain.Quote
+import com.harismexis.breakingbad.core.result.QuotesResult
 import com.harismexis.breakingbad.databinding.FragmentQuotesBinding
 import com.harismexis.breakingbad.framework.util.event.EventObserver
 import com.harismexis.breakingbad.framework.util.extensions.setDivider
 import com.harismexis.breakingbad.framework.util.extensions.showToast
-import com.harismexis.breakingbad.core.domain.Quote
 import com.harismexis.breakingbad.presentation.base.BaseFragment
-import com.harismexis.breakingbad.core.result.QuotesResult
 import com.harismexis.breakingbad.presentation.screens.quotes.ui.adapter.QuoteAdapter
 import com.harismexis.breakingbad.presentation.screens.quotes.viewmodel.QuotesViewModel
 
@@ -50,20 +51,17 @@ class QuotesFragment : BaseFragment() {
     }
 
     override fun onCreateView() {
-        setupSwipeToRefresh()
+        setupSwipeToRefresh() { viewModel.updateQuotes() }
         initialiseRecycler()
     }
 
     override fun onViewCreated() {
         observeLiveData()
-        viewModel.fetchQuotes()
+        viewModel.updateQuotes()
     }
 
-    private fun setupSwipeToRefresh() {
-        binding?.swipeRefresh?.setOnRefreshListener {
-            binding?.swipeRefresh?.isRefreshing = true
-            viewModel.fetchQuotes()
-        }
+    override fun getSwipeRefreshLayout(): SwipeRefreshLayout? {
+        return binding?.swipeRefresh
     }
 
     private fun initialiseRecycler() {

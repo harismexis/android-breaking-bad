@@ -59,7 +59,7 @@ class ActorDetailScreenTest : BaseInstrumentedTest() {
 
     private fun mockInitialResultsInHomeScreen() {
         actorsSuccess = ActorsResult.Success(mockActors)
-        every { mockHomeViewModel.fetchActors() } answers {
+        every { mockHomeViewModel.updateActors() } answers {
             mockActorsResult.value = actorsSuccess
         }
         every { mockHomeViewModel.actorsResult } returns mockActorsResult

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.annotation.NonNull
 import androidx.navigation.fragment.findNavController
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.databinding.FragmentPlayerBinding
 import com.harismexis.breakingbad.framework.util.extensions.hideSystemUI
@@ -120,5 +121,7 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
         currentVideoId = item.id
         videoPlayer?.loadVideo(item.id, 0f)
     }
+
+    override fun getSwipeRefreshLayout(): SwipeRefreshLayout? = null
 
 }

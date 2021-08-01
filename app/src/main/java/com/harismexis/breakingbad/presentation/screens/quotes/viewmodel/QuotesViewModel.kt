@@ -5,11 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.framework.util.event.Event
-import com.harismexis.breakingbad.framework.util.extensions.getErrorMessage
 import com.harismexis.breakingbad.core.repository.quote.QuotesLocal
 import com.harismexis.breakingbad.core.repository.quote.QuotesRemote
 import com.harismexis.breakingbad.core.result.QuotesResult
+import com.harismexis.breakingbad.framework.util.event.Event
+import com.harismexis.breakingbad.framework.util.extensions.getErrorMessage
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,11 +30,11 @@ class QuotesViewModel @Inject constructor(
 
     var seriesName: String? = null
 
-    fun fetchQuotes() {
-        fetchRemoteQuotes(seriesName)
+    fun updateQuotes() {
+        fetchQuotes(seriesName)
     }
 
-    private fun fetchRemoteQuotes(seriesName: String?) {
+    private fun fetchQuotes(seriesName: String?) {
         viewModelScope.launch {
             try {
                 val items = quoteRemote.getQuotes(seriesName)
@@ -44,12 +44,12 @@ class QuotesViewModel @Inject constructor(
                 Log.d(TAG, e.getErrorMessage())
                 mQuotes.value = QuotesResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
-                fetchLocalQuotes(seriesName)
+                fetchCachedQuotes(seriesName)
             }
         }
     }
 
-    private fun fetchLocalQuotes(seriesName: String?) {
+    private fun fetchCachedQuotes(seriesName: String?) {
         viewModelScope.launch {
             try {
                 val items = quoteLocal.getQuotesBySeries(seriesName)

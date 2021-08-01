@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -52,5 +53,16 @@ abstract class BaseFragment : Fragment() {
     abstract fun onViewCreated()
 
     abstract fun onCreateView()
+
+    abstract fun getSwipeRefreshLayout(): SwipeRefreshLayout?
+
+    protected fun setupSwipeToRefresh(doOnRefresh: () -> Unit) {
+        getSwipeRefreshLayout()?.let {
+            it.setOnRefreshListener {
+                it.isRefreshing = true
+                doOnRefresh()
+            }
+        }
+    }
 
 }

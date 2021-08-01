@@ -5,11 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.framework.util.event.Event
-import com.harismexis.breakingbad.framework.util.extensions.getErrorMessage
 import com.harismexis.breakingbad.core.repository.episode.EpisodesLocal
 import com.harismexis.breakingbad.core.repository.episode.EpisodesRemote
 import com.harismexis.breakingbad.core.result.EpisodesResult
+import com.harismexis.breakingbad.framework.util.event.Event
+import com.harismexis.breakingbad.framework.util.extensions.getErrorMessage
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,11 +30,11 @@ class EpisodesViewModel @Inject constructor(
 
     var seriesName: String? = null
 
-    fun fetchEpisodes() {
-        fetchRemoteEpisodes(seriesName)
+    fun updateEpisodes() {
+        fetchEpisodes(seriesName)
     }
 
-    private fun fetchRemoteEpisodes(seriesName: String?) {
+    private fun fetchEpisodes(seriesName: String?) {
         viewModelScope.launch {
             try {
                 val items = episodesRemote.getEpisodes(seriesName)

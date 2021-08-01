@@ -28,7 +28,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         mockRemoteActorsCallReturnsAllItemsValid()
 
         // when
-        subject.fetchActors()
+        subject.updateActors()
 
         // then
         verify_remoteActorsCallDone_actorsStored_liveDataUpdated()
@@ -40,7 +40,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         mockLocalActorsCallReturnsAllItemsValid()
 
         // when
-        subject.fetchActors()
+        subject.updateActors()
 
         // then
         verifyRemoteActorsCallNotDone()
@@ -55,7 +55,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         mockRemoteActorsCallThrowsError()
 
         // when
-        subject.fetchActors()
+        subject.updateActors()
 
         // then
         verifyRemoteActorsCallDone()
@@ -69,7 +69,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         mockLocalActorsCallThrowsError()
 
         // when
-        subject.fetchActors()
+        subject.updateActors()
 
         // then
         verifyRemoteActorsCallNotDone()

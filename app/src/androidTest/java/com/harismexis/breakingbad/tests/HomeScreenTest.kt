@@ -189,7 +189,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
     private fun mockInitialResults(mockData: List<Actor>) {
         mockActors = mockData
         actorsSuccess = ActorsResult.Success(mockActors)
-        every { mockHomeViewModel.fetchActors() } answers {
+        every { mockHomeViewModel.updateActors() } answers {
             mockActorsResult.value = actorsSuccess
         }
         every { mockHomeViewModel.actorsResult } returns mockActorsResult

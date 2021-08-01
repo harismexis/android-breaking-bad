@@ -6,14 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.harismexis.breakingbad.R
+import com.harismexis.breakingbad.core.domain.Episode
+import com.harismexis.breakingbad.core.result.EpisodesResult
 import com.harismexis.breakingbad.databinding.FragmentEpisodesBinding
 import com.harismexis.breakingbad.framework.util.event.EventObserver
 import com.harismexis.breakingbad.framework.util.extensions.setDivider
 import com.harismexis.breakingbad.framework.util.extensions.showToast
-import com.harismexis.breakingbad.core.domain.Episode
 import com.harismexis.breakingbad.presentation.base.BaseFragment
-import com.harismexis.breakingbad.core.result.EpisodesResult
 import com.harismexis.breakingbad.presentation.screens.episodes.ui.adapter.EpisodeAdapter
 import com.harismexis.breakingbad.presentation.screens.episodes.viewmodel.EpisodesViewModel
 
@@ -43,7 +44,7 @@ class EpisodesFragment : BaseFragment() {
     }
 
     override fun onCreateView() {
-        setupSwipeToRefresh()
+        setupSwipeToRefresh() { viewModel.updateEpisodes() }
         initialiseRecycler()
     }
 
@@ -54,11 +55,8 @@ class EpisodesFragment : BaseFragment() {
         binding = FragmentEpisodesBinding.inflate(inflater, container, false)
     }
 
-    private fun setupSwipeToRefresh() {
-        binding?.swipeRefresh?.setOnRefreshListener {
-            binding?.swipeRefresh?.isRefreshing = true
-            viewModel.fetchEpisodes()
-        }
+    override fun getSwipeRefreshLayout(): SwipeRefreshLayout? {
+        return binding?.swipeRefresh
     }
 
     private fun initialiseRecycler() {
@@ -73,7 +71,7 @@ class EpisodesFragment : BaseFragment() {
 
     override fun onViewCreated() {
         observeLiveData()
-        viewModel.fetchEpisodes()
+        viewModel.updateEpisodes()
     }
 
     private fun observeLiveData() {

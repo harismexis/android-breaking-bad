@@ -8,17 +8,18 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.harismexis.breakingbad.R
-import com.harismexis.breakingbad.databinding.ActorDetailViewBinding
-import com.harismexis.breakingbad.databinding.FragmentActorDetailBinding
 import com.harismexis.breakingbad.core.domain.Actor
 import com.harismexis.breakingbad.core.domain.Actor.Companion.occupationString
-import com.harismexis.breakingbad.framework.util.ui.getLinkSpanned
+import com.harismexis.breakingbad.core.result.ActorDetailResult
+import com.harismexis.breakingbad.databinding.ActorDetailViewBinding
+import com.harismexis.breakingbad.databinding.FragmentActorDetailBinding
 import com.harismexis.breakingbad.framework.util.extensions.populateWithGlide
 import com.harismexis.breakingbad.framework.util.extensions.setTextOrUnknown
 import com.harismexis.breakingbad.framework.util.extensions.showToast
+import com.harismexis.breakingbad.framework.util.ui.getLinkSpanned
 import com.harismexis.breakingbad.presentation.base.BaseFragment
-import com.harismexis.breakingbad.core.result.ActorDetailResult
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 
 class ActorDetailFragment : BaseFragment() {
@@ -109,5 +110,7 @@ class ActorDetailFragment : BaseFragment() {
             )
         }
     }
+
+    override fun getSwipeRefreshLayout(): SwipeRefreshLayout? = null
 
 }

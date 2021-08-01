@@ -13,6 +13,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.navigation.NavigationView
 import com.harismexis.breakingbad.BuildConfig
 import com.harismexis.breakingbad.R
@@ -46,16 +47,9 @@ class HomeFragment : BaseFragment(),
     }
 
     override fun onCreateView() {
-        setupSwipeToRefresh()
+        setupSwipeToRefresh() { viewModel.updateActors() }
         initialiseRecycler()
         initialiseSearchView()
-    }
-
-    private fun setupSwipeToRefresh() {
-        binding?.homeSwipeRefresh?.setOnRefreshListener {
-            binding?.homeSwipeRefresh?.isRefreshing = true
-            viewModel.fetchActors()
-        }
     }
 
     private fun initialiseRecycler() {
@@ -74,7 +68,7 @@ class HomeFragment : BaseFragment(),
     override fun onViewCreated() {
         setupToolbar()
         observeLiveData()
-        viewModel.fetchActors()
+        viewModel.updateActors()
     }
 
     private fun setupToolbar() {
@@ -113,7 +107,7 @@ class HomeFragment : BaseFragment(),
 
     private fun populate(models: List<Actor>) {
         binding?.let {
-            it.homeSwipeRefresh.isRefreshing = false
+            it.swipeRefresh.isRefreshing = false
             it.loadingProgressBar.visibility = View.GONE
             it.homeList.visibility = View.VISIBLE
         }
@@ -123,8 +117,10 @@ class HomeFragment : BaseFragment(),
     }
 
     private fun populateError(error: Exception) {
-        binding?.homeSwipeRefresh?.isRefreshing = false
-        binding?.loadingProgressBar?.visibility = View.GONE
+        binding?.let {
+            it.swipeRefresh.isRefreshing = false
+            it.loadingProgressBar.visibility = View.GONE
+        }
     }
 
     override fun onActorClick(
@@ -147,6 +143,10 @@ class HomeFragment : BaseFragment(),
     }
 
     override fun getRootView() = binding?.root
+
+    override fun getSwipeRefreshLayout(): SwipeRefreshLayout? {
+        return binding?.swipeRefresh
+    }
 
     override fun onDestroyView() {
         binding = null

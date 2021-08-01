@@ -5,11 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.framework.util.extensions.getErrorMessage
-import com.harismexis.breakingbad.framework.util.event.Event
 import com.harismexis.breakingbad.core.repository.actor.ActorsLocal
 import com.harismexis.breakingbad.core.repository.actor.ActorsRemote
 import com.harismexis.breakingbad.core.result.ActorsResult
+import com.harismexis.breakingbad.framework.util.event.Event
+import com.harismexis.breakingbad.framework.util.extensions.getErrorMessage
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,16 +30,16 @@ class HomeViewModel @Inject constructor(
 
     private var searchQuery: String? = null
 
-    fun fetchActors() {
-        fetchRemoteActors(searchQuery)
-    }
-
     fun updateSearchQuery(query: String?) {
         searchQuery = query
-        fetchRemoteActors(query)
+        updateActors()
     }
 
-    private fun fetchRemoteActors(name: String? = null) {
+    fun updateActors() {
+        fetchActors(searchQuery)
+    }
+
+    private fun fetchActors(name: String? = null) {
         viewModelScope.launch {
             try {
                 val items = actorRemote.getActors(name)
@@ -49,12 +49,12 @@ class HomeViewModel @Inject constructor(
                 Log.d(TAG, e.getErrorMessage())
                 mActorsResult.value = ActorsResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
-                fetchLocalActors()
+                fetchCachedActors()
             }
         }
     }
 
-    private fun fetchLocalActors() {
+    private fun fetchCachedActors() {
         viewModelScope.launch {
             try {
                 val items = actorLocal.getActors()

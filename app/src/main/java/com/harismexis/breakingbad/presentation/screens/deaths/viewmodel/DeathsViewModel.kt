@@ -5,11 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.breakingbad.framework.util.event.Event
-import com.harismexis.breakingbad.framework.util.extensions.getErrorMessage
 import com.harismexis.breakingbad.core.repository.death.DeathsLocal
 import com.harismexis.breakingbad.core.repository.death.DeathsRemote
 import com.harismexis.breakingbad.core.result.DeathsResult
+import com.harismexis.breakingbad.framework.util.event.Event
+import com.harismexis.breakingbad.framework.util.extensions.getErrorMessage
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,11 +28,11 @@ class DeathsViewModel @Inject constructor(
     val showErrorMessage: LiveData<Event<String>>
         get() = mShowErrorMessage
 
-    fun fetchDeaths() {
-        fetchRemoteDeaths()
+    fun updateDeaths() {
+        fetchDeaths()
     }
 
-    private fun fetchRemoteDeaths() {
+    private fun fetchDeaths() {
         viewModelScope.launch {
             try {
                 val items = deathRemote.getDeaths()
