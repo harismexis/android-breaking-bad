@@ -2,9 +2,9 @@ package com.harismexis.breakingbad.tests.actordetail.setup
 
 import androidx.lifecycle.Observer
 import com.harismexis.breakingbad.base.BaseUnitTest
-import com.harismexis.breakingbad.framework.data.database.repository.ActorsLocalRepository
 import com.harismexis.breakingbad.core.domain.Actor
 import com.harismexis.breakingbad.core.result.ActorDetailResult
+import com.harismexis.breakingbad.framework.data.database.repository.ActorsLocalRepository
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify
@@ -18,10 +18,12 @@ abstract class ActorDetailViewModelTestSetup : BaseUnitTest() {
     protected lateinit var mockActorLocal: ActorsLocalRepository
     @Mock
     lateinit var mockObserver: Observer<ActorDetailResult>
+
     private lateinit var mockActor: Actor
     protected var mockActorId: Int = 0
     private lateinit var mockActorDetailSuccess: ActorDetailResult
     private lateinit var mockActorDetailError: ActorDetailResult
+
     protected lateinit var subject: ActorDetailViewModel
 
     companion object {
@@ -38,7 +40,7 @@ abstract class ActorDetailViewModelTestSetup : BaseUnitTest() {
 
     // Local Call
 
-    protected fun mockLocalActorCall() {
+    protected fun mockLocalActorCallSuccess() {
         mockLocalActorCall(mockActorId, mockActor)
     }
 
@@ -51,7 +53,7 @@ abstract class ActorDetailViewModelTestSetup : BaseUnitTest() {
         }
     }
 
-    protected fun mockLocalActorCallThrowsError() {
+    protected fun mockLocalActorCallFailed() {
         runBlocking {
             Mockito.`when`(mockActorLocal.getActor(any()))
                 .thenThrow(IllegalStateException(ERROR_MESSAGE))
@@ -66,11 +68,11 @@ abstract class ActorDetailViewModelTestSetup : BaseUnitTest() {
 
     // LiveData
 
-    protected fun verifyLiveDataChangedWithSuccess() {
+    protected fun verifyLiveDataEmitSuccess() {
         verifyLiveDataChanged(mockActorDetailSuccess)
     }
 
-    protected fun verifyLiveDataChangedWithError() {
+    protected fun verifyLiveDataEmitError() {
         verifyLiveDataChanged(mockActorDetailError)
     }
 

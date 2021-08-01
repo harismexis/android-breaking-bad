@@ -23,29 +23,29 @@ class ActorDetailViewModelTest : ActorDetailViewModelTestSetup() {
     }
 
     @Test
-    fun retrievingLocalActor_localActorRetrievedAndLiveDataUpdated() {
+    fun getCachedActorSuccess_liveDataEmitSuccess() {
         // given
-        mockLocalActorCall()
+        mockLocalActorCallSuccess()
 
         // when
         subject.retrieveActorById(mockActorId)
 
         // then
         verifyLocalActorCallDone()
-        verifyLiveDataChangedWithSuccess()
+        verifyLiveDataEmitSuccess()
     }
 
     @Test
-    fun retrievingLocalActorThrowsError_nothingHappens() {
+    fun getCachedActorFailed_liveDataEmitError() {
         // given
-        mockLocalActorCallThrowsError()
+        mockLocalActorCallFailed()
 
         // when
         subject.retrieveActorById(mockActorId)
 
         // then
         verifyLocalActorCallDone()
-        verifyLiveDataChangedWithError()
+        verifyLiveDataEmitError()
     }
 
 }
