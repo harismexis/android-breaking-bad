@@ -31,21 +31,15 @@
                     android:layout_height="wrap_content"
                     app:popupTheme="@style/AppTheme.PopupOverlay">
 
-                    <TextView
-                        android:id="@+id/toolbar_title"
-                        style="@style/ToolbarText"
-                        android:layout_gravity="start"
-                        tools:text="Toolbar title" />
-
                     <com.harismexis.breakingbad.presentation.widget.CustomSearchView
                         android:id="@+id/searchView"
-                        style="@style/SearchViewIconStyle"
-                        android:layout_width="wrap_content"
+                        style="@style/SearchViewStyle"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:focusable="false"
                         android:iconifiedByDefault="false"
                         android:queryHint="Search"
-                        app:theme="@style/SearchViewTextStyle" />
+                        app:theme="@style/SearchViewTheme" />
 
                 </androidx.appcompat.widget.Toolbar>
 
