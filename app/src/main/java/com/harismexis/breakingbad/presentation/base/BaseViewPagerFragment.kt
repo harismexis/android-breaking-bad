@@ -12,11 +12,11 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.harismexis.breakingbad.R
-import com.harismexis.breakingbad.databinding.FragmentViewPagerContainerBinding
+import com.harismexis.breakingbad.databinding.FragmentBaseViewPagerBinding
 
 abstract class BaseViewPagerFragment : Fragment() {
 
-    private var binding: FragmentViewPagerContainerBinding? = null
+    private var binding: FragmentBaseViewPagerBinding? = null
     private var tabNames = arrayOf("Breaking Bad", "Better Call Saul")
 
     override fun onCreateView(
@@ -24,7 +24,7 @@ abstract class BaseViewPagerFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentViewPagerContainerBinding.inflate(inflater, container, false)
+        binding = FragmentBaseViewPagerBinding.inflate(inflater, container, false)
         setupToolbar()
         setupViewPager()
         return binding?.root
@@ -51,6 +51,7 @@ abstract class BaseViewPagerFragment : Fragment() {
         val appBarConf = AppBarConfiguration(navController.graph)
         binding?.let {
             it.toolbar.setupWithNavController(navController, appBarConf)
+            // Setting icon in xml not working, still shows the default
             it.toolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
             it.toolbarTitle.text = getToolbarTitle()
         }

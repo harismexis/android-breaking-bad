@@ -16,13 +16,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import com.harismexis.breakingbad.BuildConfig
 import com.harismexis.breakingbad.R
+import com.harismexis.breakingbad.core.domain.Actor
+import com.harismexis.breakingbad.core.result.ActorsResult
 import com.harismexis.breakingbad.databinding.FragmentHomeBinding
 import com.harismexis.breakingbad.framework.util.event.EventObserver
 import com.harismexis.breakingbad.framework.util.extensions.hideKeyboard
 import com.harismexis.breakingbad.framework.util.extensions.showSnackBar
 import com.harismexis.breakingbad.framework.util.mapNewMexicoIntent
-import com.harismexis.breakingbad.core.domain.Actor
-import com.harismexis.breakingbad.core.result.ActorsResult
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorAdapter
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
@@ -46,7 +46,6 @@ class HomeFragment : BaseFragment(),
     }
 
     override fun onCreateView() {
-        setupToolbar()
         setupSwipeToRefresh()
         initialiseRecycler()
         initialiseSearchView()
@@ -73,6 +72,7 @@ class HomeFragment : BaseFragment(),
     }
 
     override fun onViewCreated() {
+        setupToolbar()
         observeLiveData()
         viewModel.fetchActors()
     }
@@ -91,8 +91,10 @@ class HomeFragment : BaseFragment(),
                     true
                 }
             }
-            navView.setupWithNavController(navController)
-            navView.setNavigationItemSelectedListener(this@HomeFragment)
+            navView.apply {
+                setupWithNavController(navController)
+                setNavigationItemSelectedListener(this@HomeFragment)
+            }
         }
     }
 

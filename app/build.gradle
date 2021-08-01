@@ -2,7 +2,11 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'androidx.navigation.safeargs.kotlin'
+    /*
+    https://stackoverflow.com/questions/67609911/android-studio-build-error-in-navigation-component-action-is-not-abstract-and-d
+    */
+    // id 'androidx.navigation.safeargs.kotlin'
+    id 'androidx.navigation.safeargs'
 }
 
 def commonValues = rootProject.ext.common
