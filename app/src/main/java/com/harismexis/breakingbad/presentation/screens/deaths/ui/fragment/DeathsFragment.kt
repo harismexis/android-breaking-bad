@@ -26,7 +26,7 @@ class DeathsFragment : BaseFragment() {
     private val viewModel: DeathsViewModel by viewModels { viewModelFactory }
     private var binding: FragmentDeathsBinding? = null
     private lateinit var adapter: DeathAdapter
-    private var deaths: MutableList<Death> = mutableListOf()
+    private val deaths = mutableListOf<Death>()
 
     override fun initialiseViewBinding(
         inflater: LayoutInflater,

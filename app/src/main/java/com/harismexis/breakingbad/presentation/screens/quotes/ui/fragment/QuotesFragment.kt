@@ -23,10 +23,9 @@ class QuotesFragment : BaseFragment() {
     private val viewModel: QuotesViewModel by viewModels { viewModelFactory }
     private var binding: FragmentQuotesBinding? = null
     private lateinit var adapter: QuoteAdapter
-    private var uiModels: MutableList<Quote> = mutableListOf()
+    private val quotes = mutableListOf<Quote>()
 
     companion object {
-
         private const val ARG_SERIES_NAME = "series_name"
 
         fun newInstance(seriesName: String): QuotesFragment {
@@ -65,7 +64,7 @@ class QuotesFragment : BaseFragment() {
     }
 
     private fun initialiseRecycler() {
-        adapter = QuoteAdapter(uiModels)
+        adapter = QuoteAdapter(quotes)
         adapter.setHasStableIds(true)
         binding?.let {
             it.list.layoutManager = LinearLayoutManager(this.context)
@@ -94,8 +93,8 @@ class QuotesFragment : BaseFragment() {
             it.progressBar.visibility = View.GONE
             it.list.visibility = View.VISIBLE
         }
-        uiModels.clear()
-        uiModels.addAll(models)
+        quotes.clear()
+        quotes.addAll(models)
         adapter.notifyDataSetChanged()
     }
 

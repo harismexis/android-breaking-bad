@@ -37,7 +37,7 @@ class HomeFragment : BaseFragment(),
     private val viewModel: HomeViewModel by viewModels { viewModelFactory }
     private var binding: FragmentHomeBinding? = null
     private lateinit var adapter: ActorAdapter
-    private var uiModels: MutableList<Actor> = mutableListOf()
+    private val actors = mutableListOf<Actor>()
 
     override fun initialiseViewBinding(
         inflater: LayoutInflater,
@@ -53,7 +53,7 @@ class HomeFragment : BaseFragment(),
     }
 
     private fun initialiseRecycler() {
-        adapter = ActorAdapter(uiModels, this)
+        adapter = ActorAdapter(actors, this)
         adapter.setHasStableIds(true)
         binding?.homeList?.let {
             it.layoutManager = LinearLayoutManager(this.context)
@@ -111,8 +111,8 @@ class HomeFragment : BaseFragment(),
             it.loadingProgressBar.visibility = View.GONE
             it.homeList.visibility = View.VISIBLE
         }
-        uiModels.clear()
-        uiModels.addAll(models)
+        actors.clear()
+        actors.addAll(models)
         adapter.notifyDataSetChanged()
     }
 

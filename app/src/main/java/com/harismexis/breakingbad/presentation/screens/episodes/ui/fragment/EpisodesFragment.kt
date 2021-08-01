@@ -21,7 +21,6 @@ import com.harismexis.breakingbad.presentation.screens.episodes.viewmodel.Episod
 class EpisodesFragment : BaseFragment() {
 
     companion object {
-
         private const val ARG_SERIES_NAME = "series_name"
 
         fun newInstance(seriesName: String): EpisodesFragment {
@@ -36,7 +35,7 @@ class EpisodesFragment : BaseFragment() {
     private val viewModel: EpisodesViewModel by viewModels { viewModelFactory }
     private var binding: FragmentEpisodesBinding? = null
     private lateinit var adapter: EpisodeAdapter
-    private var uiModels: MutableList<Episode> = mutableListOf()
+    private val episodes = mutableListOf<Episode>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +59,7 @@ class EpisodesFragment : BaseFragment() {
     }
 
     private fun initialiseRecycler() {
-        adapter = EpisodeAdapter(uiModels)
+        adapter = EpisodeAdapter(episodes)
         adapter.setHasStableIds(true)
         binding?.let {
             it.list.layoutManager = LinearLayoutManager(this.context)
@@ -94,8 +93,8 @@ class EpisodesFragment : BaseFragment() {
             it.progressBar.visibility = View.GONE
             it.list.visibility = View.VISIBLE
         }
-        uiModels.clear()
-        uiModels.addAll(models)
+        episodes.clear()
+        episodes.addAll(models)
         adapter.notifyDataSetChanged()
     }
 
