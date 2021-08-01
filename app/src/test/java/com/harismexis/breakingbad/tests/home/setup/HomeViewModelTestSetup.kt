@@ -2,10 +2,10 @@ package com.harismexis.breakingbad.tests.home.setup
 
 import androidx.lifecycle.Observer
 import com.harismexis.breakingbad.base.BaseUnitTest
-import com.harismexis.breakingbad.framework.data.database.repository.ActorsLocalRepository
-import com.harismexis.breakingbad.framework.data.network.repository.ActorsRemoteRepository
 import com.harismexis.breakingbad.core.domain.Actor
 import com.harismexis.breakingbad.core.result.ActorsResult
+import com.harismexis.breakingbad.framework.data.database.repository.ActorsLocalRepository
+import com.harismexis.breakingbad.framework.data.network.repository.ActorsRemoteRepository
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify
@@ -22,10 +22,12 @@ abstract class HomeViewModelTestSetup : BaseUnitTest() {
     protected lateinit var mockActorLocal: ActorsLocalRepository
     @Mock
     lateinit var mockObserver: Observer<ActorsResult>
+
     private val mockActors = mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid()
     private val mockActorsResultSuccess = ActorsResult.Success(mockActors)
     private val error = IllegalStateException(ERROR_MESSAGE)
     private val mockActorsResultError = ActorsResult.Error(error)
+
     protected lateinit var subject: HomeViewModel
 
     companion object {
@@ -38,7 +40,7 @@ abstract class HomeViewModelTestSetup : BaseUnitTest() {
 
     // Remote Call
 
-    protected fun mockRemoteActorsCallReturnsAllItemsValid() {
+    protected fun mockRemoteActorsCallSuccess() {
         mockRemoteActorsCall(mockActors)
     }
 
@@ -51,9 +53,9 @@ abstract class HomeViewModelTestSetup : BaseUnitTest() {
         }
     }
 
-    protected fun mockRemoteActorsCallThrowsError(actorName: String? = null) {
+    protected fun mockRemoteActorsCallFailed() {
         runBlocking {
-            Mockito.`when`(mockActorRemote.getActors(actorName))
+            Mockito.`when`(mockActorRemote.getActors(any()))
                 .thenThrow(error)
         }
     }
@@ -64,15 +66,9 @@ abstract class HomeViewModelTestSetup : BaseUnitTest() {
         }
     }
 
-    protected fun verifyRemoteActorsCallNotDone() {
-        runBlocking {
-            verify(mockActorRemote, Mockito.never()).getActors(any())
-        }
-    }
-
     // Local Call
 
-    protected fun mockLocalActorsCallReturnsAllItemsValid() {
+    protected fun mockLocalActorsCallSuccess() {
         mockLocalActorsCall(mockActors)
     }
 
@@ -82,7 +78,7 @@ abstract class HomeViewModelTestSetup : BaseUnitTest() {
         }
     }
 
-    protected fun mockLocalActorsCallThrowsError() {
+    protected fun mockLocalActorsCallFailed() {
         runBlocking {
             Mockito.`when`(mockActorLocal.getActors())
                 .thenThrow(error)
@@ -107,15 +103,15 @@ abstract class HomeViewModelTestSetup : BaseUnitTest() {
         subject.actorsResult.observeForever(mockObserver)
     }
 
-    protected fun stopObservingLiveData() {
+    protected fun stopObserveLiveData() {
         subject.actorsResult.removeObserver(mockObserver)
     }
 
-    protected fun verifyActorsLiveDataChangedWithSuccess() {
+    protected fun verifyLiveDataEmitSuccess() {
         verifyActorsLiveDataChanged(mockActorsResultSuccess)
     }
 
-    protected fun verifyActorsLiveDataChangedWithError() {
+    protected fun verifyLiveDataEmitError() {
         verifyActorsLiveDataChanged(mockActorsResultError)
     }
 

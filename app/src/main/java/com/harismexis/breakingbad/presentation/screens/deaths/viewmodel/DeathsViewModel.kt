@@ -40,23 +40,20 @@ class DeathsViewModel @Inject constructor(
                 deathLocal.insertDeaths(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mDeaths.value = DeathsResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
                 fetchLocalDeaths()
             }
         }
     }
 
-    private fun fetchLocalDeaths() {
-        viewModelScope.launch {
-            try {
-                val items = deathLocal.getDeaths()
-                mDeaths.value = DeathsResult.Success(items)
-            } catch (e: Exception) {
-                Log.d(TAG, e.getErrorMessage())
-                mDeaths.value = DeathsResult.Error(e)
-                mShowErrorMessage.value = Event(e.getErrorMessage())
-            }
+    private suspend fun fetchLocalDeaths() {
+        try {
+            val items = deathLocal.getDeaths()
+            mDeaths.value = DeathsResult.Success(items)
+        } catch (e: Exception) {
+            Log.d(TAG, e.getErrorMessage())
+            mDeaths.value = DeathsResult.Error(e)
+            mShowErrorMessage.value = Event(e.getErrorMessage())
         }
     }
 

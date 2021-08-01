@@ -25,7 +25,7 @@ class QuotesViewModel @Inject constructor(
         get() = mQuotes
 
     private val mShowErrorMessage = MutableLiveData<Event<String>>()
-    val showErrorMessage : LiveData<Event<String>>
+    val showErrorMessage: LiveData<Event<String>>
         get() = mShowErrorMessage
 
     var seriesName: String? = null
@@ -42,24 +42,22 @@ class QuotesViewModel @Inject constructor(
                 quoteLocal.insertQuotes(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mQuotes.value = QuotesResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
                 fetchCachedQuotes(seriesName)
             }
         }
     }
 
-    private fun fetchCachedQuotes(seriesName: String?) {
-        viewModelScope.launch {
-            try {
-                val items = quoteLocal.getQuotesBySeries(seriesName)
-                mQuotes.value = QuotesResult.Success(items)
-            } catch (e: Exception) {
-                Log.d(TAG, e.getErrorMessage())
-                mQuotes.value = QuotesResult.Error(e)
-                mShowErrorMessage.value = Event(e.getErrorMessage())
-            }
+    private suspend fun fetchCachedQuotes(seriesName: String?) {
+        try {
+            val items = quoteLocal.getQuotesBySeries(seriesName)
+            mQuotes.value = QuotesResult.Success(items)
+        } catch (e: Exception) {
+            Log.d(TAG, e.getErrorMessage())
+            mQuotes.value = QuotesResult.Error(e)
+            mShowErrorMessage.value = Event(e.getErrorMessage())
         }
+
     }
 
 }

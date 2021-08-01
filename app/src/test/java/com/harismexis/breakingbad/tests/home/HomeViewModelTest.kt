@@ -19,69 +19,53 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
 
     @After
     fun doAfter() {
-        stopObservingLiveData()
+        stopObserveLiveData()
     }
 
     @Test
-    fun internetOn_when_viewModelBinds_then_remoteActorsCallDone_actorsStored_liveDataUpdated() {
+    fun remoteActorsSuccess_actorsStored_liveDataEmitSuccess() {
         // given
-        mockRemoteActorsCallReturnsAllItemsValid()
+        mockRemoteActorsCallSuccess()
 
         // when
         subject.updateActors()
 
         // then
-        verify_remoteActorsCallDone_actorsStored_liveDataUpdated()
-    }
-
-    @Test
-    fun internetOff_when_viewModelBinds_then_localActorsFetched_liveDataUpdated() {
-        // given
-        mockLocalActorsCallReturnsAllItemsValid()
-
-        // when
-        subject.updateActors()
-
-        // then
-        verifyRemoteActorsCallNotDone()
-        verifyLocalActorsCallDone()
-        verifyActorsNotStored()
-        verifyActorsLiveDataChangedWithSuccess()
-    }
-
-    @Test
-    fun remoteCallThrowsError_when_viewModelBinds_nothingHappens() {
-        // given
-        mockRemoteActorsCallThrowsError()
-
-        // when
-        subject.updateActors()
-
-        // then
-        verifyRemoteActorsCallDone()
-        verifyLocalActorsCallDone()
-        verifyActorsLiveDataChangedWithError()
-    }
-
-    @Test
-    fun localCallThrowsError_when_viewModelBinds_nothingHappens() {
-        // given
-        mockLocalActorsCallThrowsError()
-
-        // when
-        subject.updateActors()
-
-        // then
-        verifyRemoteActorsCallNotDone()
-        verifyLocalActorsCallDone()
-        verifyActorsLiveDataChangedWithError()
-    }
-
-    private fun verify_remoteActorsCallDone_actorsStored_liveDataUpdated() {
         verifyRemoteActorsCallDone()
         verifyLocalActorsCallNotDone()
-        verifyActorsLiveDataChangedWithSuccess()
         verifyActorsStored()
+        verifyLiveDataEmitSuccess()
+    }
+
+    @Test
+    fun remoteActorsErrorAndCachedActorsSuccess_liveDataEmitSuccess() {
+        // given
+        mockRemoteActorsCallFailed()
+        mockLocalActorsCallSuccess()
+
+        // when
+        subject.updateActors()
+
+        // then
+        verifyRemoteActorsCallDone()
+        verifyLocalActorsCallDone()
+        verifyActorsNotStored()
+        verifyLiveDataEmitSuccess()
+    }
+
+    @Test
+    fun remoteAndLocalActorsError_liveDataEmitError() {
+        // given
+        mockRemoteActorsCallFailed()
+        mockLocalActorsCallFailed()
+
+        // when
+        subject.updateActors()
+
+        // then
+        verifyRemoteActorsCallDone()
+        verifyLocalActorsCallDone()
+        verifyLiveDataEmitError()
     }
 
 }

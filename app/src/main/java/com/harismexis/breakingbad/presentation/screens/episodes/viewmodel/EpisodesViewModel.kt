@@ -42,23 +42,20 @@ class EpisodesViewModel @Inject constructor(
                 episodesLocal.insertEpisodes(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mEpisodes.value = EpisodesResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
                 fetchLocalEpisodes()
             }
         }
     }
 
-    private fun fetchLocalEpisodes() {
-        viewModelScope.launch {
-            try {
-                val items = episodesLocal.getEpisodes()
-                mEpisodes.value = EpisodesResult.Success(items)
-            } catch (e: Exception) {
-                Log.d(TAG, e.getErrorMessage())
-                mEpisodes.value = EpisodesResult.Error(e)
-                mShowErrorMessage.value = Event(e.getErrorMessage())
-            }
+    private suspend fun fetchLocalEpisodes() {
+        try {
+            val items = episodesLocal.getEpisodes()
+            mEpisodes.value = EpisodesResult.Success(items)
+        } catch (e: Exception) {
+            Log.d(TAG, e.getErrorMessage())
+            mEpisodes.value = EpisodesResult.Error(e)
+            mShowErrorMessage.value = Event(e.getErrorMessage())
         }
     }
 

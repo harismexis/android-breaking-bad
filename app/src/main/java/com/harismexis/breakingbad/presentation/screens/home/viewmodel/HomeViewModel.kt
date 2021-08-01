@@ -47,24 +47,20 @@ class HomeViewModel @Inject constructor(
                 actorLocal.updateActors(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mActorsResult.value = ActorsResult.Error(e)
                 mShowErrorMessage.value = Event(e.getErrorMessage())
                 fetchCachedActors()
             }
         }
     }
 
-    private fun fetchCachedActors() {
-        viewModelScope.launch {
-            try {
-                val items = actorLocal.getActors()
-                mActorsResult.value = ActorsResult.Success(items)
-            } catch (e: Exception) {
-                Log.d(TAG, e.getErrorMessage())
-                mActorsResult.value = ActorsResult.Error(e)
-                mShowErrorMessage.value = Event(e.getErrorMessage())
-            }
+    private suspend fun fetchCachedActors() {
+        try {
+            val items = actorLocal.getActors()
+            mActorsResult.value = ActorsResult.Success(items)
+        } catch (e: Exception) {
+            Log.d(TAG, e.getErrorMessage())
+            mActorsResult.value = ActorsResult.Error(e)
+            mShowErrorMessage.value = Event(e.getErrorMessage())
         }
     }
-
 }
