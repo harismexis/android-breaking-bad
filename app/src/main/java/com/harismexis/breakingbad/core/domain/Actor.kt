@@ -9,7 +9,7 @@ data class Actor(
     val status: String?,
     val nickname: String?,
     val portrayed: String?,
-    val category: String?,
+    val category: String?
 ) {
 
     companion object {

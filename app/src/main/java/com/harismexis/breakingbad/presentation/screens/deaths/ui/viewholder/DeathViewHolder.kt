@@ -1,8 +1,8 @@
 package com.harismexis.breakingbad.presentation.screens.deaths.ui.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
-import com.harismexis.breakingbad.databinding.VhDeathItemBinding
 import com.harismexis.breakingbad.core.domain.Death
+import com.harismexis.breakingbad.databinding.VhDeathItemBinding
 
 class DeathViewHolder(
     private val binding: VhDeathItemBinding
@@ -18,7 +18,7 @@ class DeathViewHolder(
     }
 
     fun unbind() {
-        // Release resources, unsubscribe etc
+        // Release resources
     }
 
 }

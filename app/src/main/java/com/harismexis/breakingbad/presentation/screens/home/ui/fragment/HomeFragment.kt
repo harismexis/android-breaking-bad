@@ -109,11 +109,21 @@ class HomeFragment : BaseFragment(),
         binding?.let {
             it.swipeRefresh.isRefreshing = false
             it.loadingProgressBar.visibility = View.GONE
-            it.homeList.visibility = View.VISIBLE
+            //it.homeList.visibility = View.VISIBLE
         }
         actors.clear()
         actors.addAll(models)
         adapter.notifyDataSetChanged()
+
+        binding?.let {
+            if (actors.isEmpty()) {
+                it.homeList.visibility = View.GONE
+                it.noResults.visibility = View.VISIBLE
+            } else {
+                it.homeList.visibility = View.VISIBLE
+                it.noResults.visibility = View.GONE
+            }
+        }
     }
 
     private fun populateError(error: Exception) {
