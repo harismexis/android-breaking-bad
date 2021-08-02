@@ -17,14 +17,14 @@ import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.Video
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoItemViewHolder
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideosDialog
-import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.getFirstVideoIdFromCatalog
+import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.getFunnyMomentsVideoId
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
 
 class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListener {
 
-    private var defaultVideoId = getFirstVideoIdFromCatalog()
+    private var defaultVideoId = getFunnyMomentsVideoId()
     private var videoId = defaultVideoId
     private var binding: FragmentPlayerBinding? = null
     private var videoPlayer: YouTubePlayer? = null

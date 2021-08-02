@@ -1,6 +1,17 @@
 package com.harismexis.breakingbad.framework.di
 
-import com.harismexis.breakingbad.framework.data.database.dao.BreakingBadLocalDao
+import com.harismexis.breakingbad.core.repository.actor.ActorsLocal
+import com.harismexis.breakingbad.core.repository.actor.ActorsRemote
+import com.harismexis.breakingbad.core.repository.death.DeathsLocal
+import com.harismexis.breakingbad.core.repository.death.DeathsRemote
+import com.harismexis.breakingbad.core.repository.episode.EpisodesLocal
+import com.harismexis.breakingbad.core.repository.episode.EpisodesRemote
+import com.harismexis.breakingbad.core.repository.quote.QuotesLocal
+import com.harismexis.breakingbad.core.repository.quote.QuotesRemote
+import com.harismexis.breakingbad.framework.data.database.dao.ActorsDao
+import com.harismexis.breakingbad.framework.data.database.dao.DeathsDao
+import com.harismexis.breakingbad.framework.data.database.dao.EpisodesDao
+import com.harismexis.breakingbad.framework.data.database.dao.QuotesDao
 import com.harismexis.breakingbad.framework.data.database.repository.ActorsLocalRepository
 import com.harismexis.breakingbad.framework.data.database.repository.DeathsLocalRepository
 import com.harismexis.breakingbad.framework.data.database.repository.EpisodesLocalRepository
@@ -10,14 +21,6 @@ import com.harismexis.breakingbad.framework.data.network.repository.ActorsRemote
 import com.harismexis.breakingbad.framework.data.network.repository.DeathsRemoteRepository
 import com.harismexis.breakingbad.framework.data.network.repository.EpisodesRemoteRepository
 import com.harismexis.breakingbad.framework.data.network.repository.QuotesRemoteRepository
-import com.harismexis.breakingbad.core.repository.actor.ActorsLocal
-import com.harismexis.breakingbad.core.repository.actor.ActorsRemote
-import com.harismexis.breakingbad.core.repository.death.DeathsLocal
-import com.harismexis.breakingbad.core.repository.death.DeathsRemote
-import com.harismexis.breakingbad.core.repository.episode.EpisodesLocal
-import com.harismexis.breakingbad.core.repository.episode.EpisodesRemote
-import com.harismexis.breakingbad.core.repository.quote.QuotesLocal
-import com.harismexis.breakingbad.core.repository.quote.QuotesRemote
 import dagger.Module
 import dagger.Provides
 
@@ -30,18 +33,8 @@ class RepositoryModule {
     }
 
     @Provides
-    fun provideActorsLocal(dao: BreakingBadLocalDao): ActorsLocal {
-        return ActorsLocalRepository(dao)
-    }
-
-    @Provides
     fun provideQuotesRemote(api: BreakingBadApi): QuotesRemote {
         return QuotesRemoteRepository(api)
-    }
-
-    @Provides
-    fun provideQuotesLocal(dao: BreakingBadLocalDao): QuotesLocal {
-        return QuotesLocalRepository(dao)
     }
 
     @Provides
@@ -50,17 +43,27 @@ class RepositoryModule {
     }
 
     @Provides
-    fun provideEpisodesLocal(dao: BreakingBadLocalDao): EpisodesLocal {
-        return EpisodesLocalRepository(dao)
-    }
-
-    @Provides
     fun provideDeathsRemote(api: BreakingBadApi): DeathsRemote {
         return DeathsRemoteRepository(api)
     }
 
     @Provides
-    fun provideDeathsLocal(dao: BreakingBadLocalDao): DeathsLocal {
+    fun provideActorsLocal(dao: ActorsDao): ActorsLocal {
+        return ActorsLocalRepository(dao)
+    }
+
+    @Provides
+    fun provideQuotesLocal(dao: QuotesDao): QuotesLocal {
+        return QuotesLocalRepository(dao)
+    }
+
+    @Provides
+    fun provideEpisodesLocal(dao: EpisodesDao): EpisodesLocal {
+        return EpisodesLocalRepository(dao)
+    }
+
+    @Provides
+    fun provideDeathsLocal(dao: DeathsDao): DeathsLocal {
         return DeathsLocalRepository(dao)
     }
 

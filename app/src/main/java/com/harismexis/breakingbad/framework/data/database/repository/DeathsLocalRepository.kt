@@ -1,24 +1,25 @@
 package com.harismexis.breakingbad.framework.data.database.repository
 
-import com.harismexis.breakingbad.framework.data.database.dao.BreakingBadLocalDao
-import com.harismexis.breakingbad.framework.data.database.table.toItems
-import com.harismexis.breakingbad.framework.data.database.table.toLocalItems
 import com.harismexis.breakingbad.core.domain.Death
 import com.harismexis.breakingbad.core.repository.death.DeathsLocal
+import com.harismexis.breakingbad.framework.data.database.dao.DeathsDao
+import com.harismexis.breakingbad.framework.data.database.table.toItems
+import com.harismexis.breakingbad.framework.data.database.table.toLocalItems
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class DeathsLocalRepository @Inject constructor(
-    private val dao: BreakingBadLocalDao
+    private val dao: DeathsDao
 ): DeathsLocal {
 
     override suspend fun insertDeaths(items: List<Death>) {
-        dao.insertDeaths(items.toLocalItems())
+        dao.delete()
+        dao.insert(items.toLocalItems())
     }
 
     override suspend fun getDeaths(): List<Death> {
-        return dao.getAllDeaths().toItems()
+        return dao.getAll().toItems()
     }
 
 }

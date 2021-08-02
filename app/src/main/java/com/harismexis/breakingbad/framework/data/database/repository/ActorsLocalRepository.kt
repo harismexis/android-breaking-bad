@@ -1,26 +1,26 @@
 package com.harismexis.breakingbad.framework.data.database.repository
 
-import com.harismexis.breakingbad.framework.data.database.dao.BreakingBadLocalDao
+import com.harismexis.breakingbad.core.domain.Actor
+import com.harismexis.breakingbad.core.repository.actor.ActorsLocal
+import com.harismexis.breakingbad.framework.data.database.dao.ActorsDao
 import com.harismexis.breakingbad.framework.data.database.table.toItem
 import com.harismexis.breakingbad.framework.data.database.table.toItems
 import com.harismexis.breakingbad.framework.data.database.table.toLocalItems
-import com.harismexis.breakingbad.core.domain.Actor
-import com.harismexis.breakingbad.core.repository.actor.ActorsLocal
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class ActorsLocalRepository @Inject constructor(
-    private val dao: BreakingBadLocalDao
+    private val dao: ActorsDao
 ): ActorsLocal {
 
     override suspend fun updateActors(items: List<Actor>) {
-        dao.deleteAllActors()
-        dao.insertActors(items.toLocalItems())
+        dao.delete()
+        dao.insert(items.toLocalItems())
     }
 
     override suspend fun getActor(itemId: Int): Actor? {
-        val localItem = dao.getActorById(itemId)
+        val localItem = dao.getById(itemId)
         localItem?.let {
             return it.toItem()
         }
@@ -28,7 +28,7 @@ class ActorsLocalRepository @Inject constructor(
     }
 
     override suspend fun getActors(): List<Actor> {
-        return dao.getAllActors().toItems()
+        return dao.getAll().toItems()
     }
 
 }

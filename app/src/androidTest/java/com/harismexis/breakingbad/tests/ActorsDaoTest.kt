@@ -5,7 +5,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.harismexis.breakingbad.base.BaseInstrumentedTest
-import com.harismexis.breakingbad.framework.data.database.dao.BreakingBadLocalDao
+import com.harismexis.breakingbad.framework.data.database.dao.ActorsDao
 import com.harismexis.breakingbad.framework.data.database.db.BreakingBadDatabase
 import com.harismexis.breakingbad.framework.data.database.table.LocalActor
 import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_ALL_IDS_VALID
@@ -20,9 +20,9 @@ import org.junit.runner.RunWith
 import java.io.IOException
 
 @RunWith(AndroidJUnit4::class)
-class BreakingBadLocalDaoTest: BaseInstrumentedTest() {
+class ActorsDaoTest: BaseInstrumentedTest() {
 
-    private lateinit var dao: BreakingBadLocalDao
+    private lateinit var dao: ActorsDao
     private lateinit var database: BreakingBadDatabase
 
     @Before
@@ -31,7 +31,7 @@ class BreakingBadLocalDaoTest: BaseInstrumentedTest() {
         database = Room.inMemoryDatabaseBuilder(context, BreakingBadDatabase::class.java)
             .allowMainThreadQueries()
             .build()
-        dao = database.getDao()
+        dao = database.getActorsDao()
     }
 
     @After
@@ -47,8 +47,8 @@ class BreakingBadLocalDaoTest: BaseInstrumentedTest() {
         val itemsToSave = mockActorsProvider.getMockLocalActorsWhenJsonHasAllItemsValid()
 
         // when
-        dao.insertActors(itemsToSave)
-        val savedItems = dao.getAllActors()
+        dao.insert(itemsToSave)
+        val savedItems = dao.getAll()
 
         // then
         verifyLists(savedItems!!, itemsToSave, NUM_ACTORS_WHEN_ALL_IDS_VALID)
@@ -61,8 +61,8 @@ class BreakingBadLocalDaoTest: BaseInstrumentedTest() {
         val itemsToSave = mockActorsProvider.getMockLocalActorsWhenJsonHasSomeInvalidIds()
 
         // when
-        dao.insertActors(itemsToSave)
-        val savedItems = dao.getAllActors()
+        dao.insert(itemsToSave)
+        val savedItems = dao.getAll()
 
         // then
         verifyLists(savedItems!!, itemsToSave, NUM_ACTORS_WHEN_SOME_IDS_INVALID)
@@ -75,8 +75,8 @@ class BreakingBadLocalDaoTest: BaseInstrumentedTest() {
         val itemsToSave = mockActorsProvider.getMockLocalActorsWhenJsonHasAllIdsInvalid()
 
         // when
-        dao.insertActors(itemsToSave)
-        val savedItems = dao.getAllActors()
+        dao.insert(itemsToSave)
+        val savedItems = dao.getAll()
 
         // then
         verifyLists(savedItems!!, itemsToSave, NUM_ACTORS_WHEN_NO_DATA)

@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.presentation.screens.player.ui.dialog
 
-fun getFirstVideoIdFromCatalog(): String {
+fun getFunnyMomentsVideoId(): String {
     return getVideosList()[0].id
 }
 

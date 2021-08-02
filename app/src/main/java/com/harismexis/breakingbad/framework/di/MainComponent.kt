@@ -14,9 +14,9 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         FragmentBindingsModule::class,
         ViewModelModule::class,
-        ApplicationModule::class,
         BreakingBadApiModule::class,
-        RepositoryModule::class
+        RepositoryModule::class,
+        RoomDaoModule::class
     ]
 )
 interface MainComponent : AndroidInjector<MainApplication> {
