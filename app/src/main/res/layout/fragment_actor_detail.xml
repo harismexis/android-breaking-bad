@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_background_color"
+    android:background="@color/default_bg_color"
     tools:context=".presentation.screens.actordetail.ui.fragment.ActorDetailFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="wrap_content"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/default_background_color"
+        android:background="@color/default_bg_color"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout

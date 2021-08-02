@@ -29,7 +29,7 @@ fun Activity.showSystemUI() {
 }
 
 fun Activity.makeStatusBarDark() {
-    makeStatusBarDark(R.color.default_background_color)
+    makeStatusBarDark(R.color.default_bg_color)
 }
 
 fun Activity.makeStatusBarDark(@ColorRes color: Int) {

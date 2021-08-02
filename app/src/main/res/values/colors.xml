@@ -33,8 +33,8 @@
 
     <!-- End Palette -->
 
-    <color name="default_background_color">@color/black</color>
-    <color name="default_text_color">@color/white</color>
+    <color name="default_bg_color">@color/black</color>
+    <color name="default_txt_color">@color/white</color>
     <color name="txt_color_light">@color/white_one</color>
     <color name="txt_color_warm">@color/grey_four</color>
     <color name="txt_color_dark">@color/black</color>

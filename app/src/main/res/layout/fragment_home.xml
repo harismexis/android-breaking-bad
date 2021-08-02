@@ -5,7 +5,7 @@
     android:id="@+id/home_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_background_color"
+    android:background="@color/default_bg_color"
     tools:context=".presentation.screens.home.ui.fragment.HomeFragment">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
