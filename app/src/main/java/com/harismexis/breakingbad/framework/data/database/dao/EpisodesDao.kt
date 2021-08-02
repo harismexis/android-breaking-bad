@@ -12,10 +12,10 @@ interface EpisodesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(items: List<LocalEpisode>)
 
-    @Query("SELECT * FROM episode_table")
+    @Query("SELECT * FROM episodes_table")
     suspend fun getAll(): List<LocalEpisode?>?
 
-    @Query("DELETE FROM episode_table")
+    @Query("DELETE FROM episodes_table")
     suspend fun delete()
 
 }

@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.harismexis.breakingbad.core.domain.Actor
 
-@Entity(tableName = "breaking_bad_actor_table")
+@Entity(tableName = "actors_table")
 data class LocalActor(
     @PrimaryKey @ColumnInfo(name = "char_id") val actorId: Int,
     @ColumnInfo(name = "name") val name: String?,

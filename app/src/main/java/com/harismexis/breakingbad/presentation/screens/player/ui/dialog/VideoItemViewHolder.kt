@@ -2,6 +2,7 @@ package com.harismexis.breakingbad.presentation.screens.player.ui.dialog
 
 import androidx.recyclerview.widget.RecyclerView
 import com.harismexis.breakingbad.R
+import com.harismexis.breakingbad.core.domain.Video
 import com.harismexis.breakingbad.databinding.VhVideoItemBinding
 import com.harismexis.breakingbad.framework.util.extensions.getColorCompat
 

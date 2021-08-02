@@ -12,13 +12,13 @@ interface QuotesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(items: List<LocalQuote>)
 
-    @Query("SELECT * FROM quote_table")
+    @Query("SELECT * FROM quotes_table")
     suspend fun getAll(): List<LocalQuote?>?
 
-    @Query("SELECT * FROM quote_table WHERE series = :seriesName")
+    @Query("SELECT * FROM quotes_table WHERE series = :seriesName")
     suspend fun getBySeries(seriesName: String?): List<LocalQuote?>?
 
-    @Query("DELETE FROM quote_table")
+    @Query("DELETE FROM quotes_table")
     suspend fun delete()
 
 }

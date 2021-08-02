@@ -1,10 +1,20 @@
-package com.harismexis.breakingbad.presentation.screens.player.ui.dialog
+package com.harismexis.breakingbad.core.domain
 
-fun getFunnyMomentsVideoId(): String {
-    return getVideosList()[0].id
+data class Video(
+    val id: String,
+    val title: String,
+    val season: Int?,
+    val episode: Int?,
+    var isPlaying: Boolean = false
+) {
+    constructor(id: String, title: String) : this(id, title, null, null)
 }
 
-fun getVideosList(): List<Video> {
+fun getFunnyMomentsVideoId(): String {
+    return getVideosCatalog()[0].id
+}
+
+fun getVideosCatalog(): List<Video> {
     val videos = ArrayList<Video>()
     videos.add(
         Video(

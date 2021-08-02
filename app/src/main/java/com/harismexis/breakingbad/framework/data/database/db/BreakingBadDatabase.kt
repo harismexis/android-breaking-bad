@@ -6,7 +6,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.harismexis.breakingbad.core.domain.Actor
 import com.harismexis.breakingbad.framework.data.database.converter.Converter
 import com.harismexis.breakingbad.framework.data.database.dao.*
 import com.harismexis.breakingbad.framework.data.database.table.*
@@ -19,7 +18,8 @@ import kotlinx.coroutines.launch
         LocalActor::class,
         LocalQuote::class,
         LocalDeath::class,
-        LocalEpisode::class
+        LocalEpisode::class,
+        LocalVideo::class
     ],
     version = 1,
     exportSchema = false
@@ -43,7 +43,7 @@ abstract class BreakingBadDatabase : RoomDatabase() {
                     DATABASE_FILE_NAME
                 )
                     .fallbackToDestructiveMigration()
-                    .addCallback(WordDatabaseCallback(scope))
+                    .addCallback(DatabaseCallback(scope))
                     .build()
                 this.instance = instance
                 instance
@@ -51,38 +51,20 @@ abstract class BreakingBadDatabase : RoomDatabase() {
         }
     }
 
-    private class WordDatabaseCallback(
+    private class DatabaseCallback(
         private val scope: CoroutineScope
     ) : RoomDatabase.Callback() {
-        /**
-         * Override the onCreate method to populate the database.
-         */
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
-            // If you want to keep the data through app restarts,
-            // comment out the following line.
             instance?.let { database ->
                 scope.launch(Dispatchers.IO) {
-                    val list = mutableListOf<LocalActor>()
-                    val actor = Actor(
-                        1,
-                        "haris",
-                        "12/4/56",
-                        mutableListOf(),
-                        "",
-                        "alive",
-                        "freak",
-                        "john cage",
-                        "breaking bad"
-                    ).toLocalItem()
-                    list.add(actor)
-                    //instance?.getActorsDao()?.insert(list)
+                    // TODO: Insert videos
+                    // val list = mutableListOf<LocalVideo>()
+                    // instance?.getVideosDao().insert(list)
                 }
             }
         }
     }
-
-   // abstract fun getDao(): BreakingBadLocalDao
 
     abstract fun getActorsDao(): ActorsDao
 

@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.harismexis.breakingbad.core.domain.Episode
 
-@Entity(tableName = "episode_table")
+@Entity(tableName = "episodes_table")
 data class LocalEpisode(
     @PrimaryKey @ColumnInfo(name = "episode_id") val episode_id: Int,
     @ColumnInfo(name = "title") val title: String?,

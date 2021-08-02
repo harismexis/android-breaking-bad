@@ -7,6 +7,8 @@ import android.view.Window
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.harismexis.breakingbad.core.domain.Video
+import com.harismexis.breakingbad.core.domain.getVideosCatalog
 import com.harismexis.breakingbad.databinding.DialogVideosBinding
 
 class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListener {
@@ -17,7 +19,6 @@ class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListene
     var itemClick: VideoItemViewHolder.VideoItemClickListener? = null
 
     companion object {
-
         private const val ARG_CURRENT_VIDEO_ID = "current_video_id"
 
         fun newInstance(
@@ -45,16 +46,14 @@ class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListene
 
     private fun setupRecycler() {
         videos.clear()
-        videos.addAll(getVideosList())
-
+        videos.addAll(getVideosCatalog())
         val selectedId = arguments?.getString(ARG_CURRENT_VIDEO_ID, videos[0].id)
         val current = videos.indexOfFirst { it.id == selectedId }
         videos[current].isPlaying = true
-
         adapter = VideosAdapter(videos, this)
         adapter.setHasStableIds(true)
         binding?.list?.let {
-            it.layoutManager = LinearLayoutManager(this.context)
+            it.layoutManager = LinearLayoutManager(requireContext())
             it.adapter = adapter
             adapter.notifyDataSetChanged()
             it.scrollToPosition(current)

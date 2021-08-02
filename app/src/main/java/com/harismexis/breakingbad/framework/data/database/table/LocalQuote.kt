@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.harismexis.breakingbad.core.domain.Quote
 
-@Entity(tableName = "quote_table")
+@Entity(tableName = "quotes_table")
 data class LocalQuote(
     @PrimaryKey @ColumnInfo(name = "quote_id") val quote_id: Int,
     @ColumnInfo(name = "quote") val quote: String?,

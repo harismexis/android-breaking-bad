@@ -10,13 +10,6 @@ import javax.inject.Singleton
 @Module
 class RoomDaoModule {
 
-//    @Provides
-//    @Singleton
-//    fun provideLocalDao(app: MainApplication): BreakingBadLocalDao {
-//        return BreakingBadDatabase.getDatabase(app.applicationContext, app.appScope)
-//            .getDao()
-//    }
-
     @Provides
     @Singleton
     fun provideActorsDao(app: MainApplication): ActorsDao {

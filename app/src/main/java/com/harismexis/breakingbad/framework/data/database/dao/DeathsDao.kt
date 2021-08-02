@@ -12,10 +12,10 @@ interface DeathsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(items: List<LocalDeath>)
 
-    @Query("SELECT * FROM death_table")
+    @Query("SELECT * FROM deaths_table")
     suspend fun getAll(): List<LocalDeath?>?
 
-    @Query("DELETE FROM death_table")
+    @Query("DELETE FROM deaths_table")
     suspend fun delete()
 
 }

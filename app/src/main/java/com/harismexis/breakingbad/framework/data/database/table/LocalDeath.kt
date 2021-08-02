@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.harismexis.breakingbad.core.domain.Death
 
-@Entity(tableName = "death_table")
+@Entity(tableName = "deaths_table")
 data class LocalDeath(
     @PrimaryKey @ColumnInfo(name = "death_id") val death_id: Int,
     @ColumnInfo(name = "death") val death: String?,

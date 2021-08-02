@@ -10,14 +10,14 @@ import androidx.annotation.NonNull
 import androidx.navigation.fragment.findNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.harismexis.breakingbad.R
+import com.harismexis.breakingbad.core.domain.Video
+import com.harismexis.breakingbad.core.domain.getFunnyMomentsVideoId
 import com.harismexis.breakingbad.databinding.FragmentPlayerBinding
 import com.harismexis.breakingbad.framework.util.extensions.hideSystemUI
 import com.harismexis.breakingbad.framework.util.extensions.showSystemUI
 import com.harismexis.breakingbad.presentation.base.BaseFragment
-import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.Video
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoItemViewHolder
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideosDialog
-import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.getFunnyMomentsVideoId
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem

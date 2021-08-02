@@ -12,13 +12,13 @@ interface ActorsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(items: List<LocalActor>)
 
-    @Query("SELECT * FROM breaking_bad_actor_table WHERE char_id = :itemId")
+    @Query("SELECT * FROM actors_table WHERE char_id = :itemId")
     suspend fun getById(itemId: Int): LocalActor?
 
-    @Query("SELECT * FROM breaking_bad_actor_table")
+    @Query("SELECT * FROM actors_table")
     suspend fun getAll(): List<LocalActor?>?
 
-    @Query("DELETE FROM breaking_bad_actor_table")
+    @Query("DELETE FROM actors_table")
     suspend fun delete()
 
 }
