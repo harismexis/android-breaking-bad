@@ -109,20 +109,14 @@ class HomeFragment : BaseFragment(),
         binding?.let {
             it.swipeRefresh.isRefreshing = false
             it.loadingProgressBar.visibility = View.GONE
-            //it.homeList.visibility = View.VISIBLE
-        }
-        actors.clear()
-        actors.addAll(models)
-        adapter.notifyDataSetChanged()
-
-        binding?.let {
-            if (actors.isEmpty()) {
-                it.homeList.visibility = View.GONE
-                it.noResults.visibility = View.VISIBLE
-            } else {
-                it.homeList.visibility = View.VISIBLE
-                it.noResults.visibility = View.GONE
-            }
+            val hasItems = models.isNotEmpty()
+            val recyclerVisib = if (hasItems) View.VISIBLE else View.GONE
+            val emptyViewVisib = if (hasItems) View.GONE else View.VISIBLE
+            it.homeList.visibility = recyclerVisib
+            it.noResults.visibility = emptyViewVisib
+            actors.clear()
+            actors.addAll(models)
+            adapter.notifyDataSetChanged()
         }
     }
 
