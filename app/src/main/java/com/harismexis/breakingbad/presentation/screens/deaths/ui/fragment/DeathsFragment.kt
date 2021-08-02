@@ -16,7 +16,7 @@ import com.harismexis.breakingbad.core.result.DeathsResult
 import com.harismexis.breakingbad.databinding.FragmentDeathsBinding
 import com.harismexis.breakingbad.framework.util.event.EventObserver
 import com.harismexis.breakingbad.framework.util.extensions.setDivider
-import com.harismexis.breakingbad.framework.util.extensions.showToast
+import com.harismexis.breakingbad.framework.util.extensions.showSnackBar
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.deaths.ui.adapter.DeathAdapter
 import com.harismexis.breakingbad.presentation.screens.deaths.viewmodel.DeathsViewModel
@@ -90,7 +90,7 @@ class DeathsFragment : BaseFragment() {
         })
 
         viewModel.showErrorMessage.observe(viewLifecycleOwner, EventObserver {
-            requireContext().showToast(it)
+            binding?.root?.showSnackBar(it)
         })
     }
 

@@ -13,7 +13,7 @@ import com.harismexis.breakingbad.core.result.QuotesResult
 import com.harismexis.breakingbad.databinding.FragmentQuotesBinding
 import com.harismexis.breakingbad.framework.util.event.EventObserver
 import com.harismexis.breakingbad.framework.util.extensions.setDivider
-import com.harismexis.breakingbad.framework.util.extensions.showToast
+import com.harismexis.breakingbad.framework.util.extensions.showSnackBar
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.quotes.ui.adapter.QuoteAdapter
 import com.harismexis.breakingbad.presentation.screens.quotes.viewmodel.QuotesViewModel
@@ -83,7 +83,7 @@ class QuotesFragment : BaseFragment() {
         })
 
         viewModel.showErrorMessage.observe(viewLifecycleOwner, EventObserver {
-            requireContext().showToast(it)
+            binding?.root?.showSnackBar(it)
         })
     }
 
