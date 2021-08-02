@@ -42,7 +42,7 @@ class BreakingBadLocalDaoTest: BaseInstrumentedTest() {
 
     @Test
     @Throws(Exception::class)
-    fun savingItemsFromRemoteFeedWithAllItemsValid_then_expectedItemsRetrieved() = runBlocking {
+    fun saveItemsFromResponseWithAllItemsValid_expectedItemsSaved() = runBlocking {
         // given
         val itemsToSave = mockActorsProvider.getMockLocalActorsWhenJsonHasAllItemsValid()
 
@@ -51,12 +51,12 @@ class BreakingBadLocalDaoTest: BaseInstrumentedTest() {
         val savedItems = dao.getAllActors()
 
         // then
-        verifyActualAgainstExpected(savedItems!!, itemsToSave, NUM_ACTORS_WHEN_ALL_IDS_VALID)
+        verifyLists(savedItems!!, itemsToSave, NUM_ACTORS_WHEN_ALL_IDS_VALID)
     }
 
     @Test
     @Throws(Exception::class)
-    fun savingItemsFromRemoteFeedWithSomeIdsAbsent_then_expectedItemsRetrieved() = runBlocking {
+    fun saveItemsFromResponseWithSomeIdsAbsent_expectedItemsSaved() = runBlocking {
         // given
         val itemsToSave = mockActorsProvider.getMockLocalActorsWhenJsonHasSomeInvalidIds()
 
@@ -65,12 +65,12 @@ class BreakingBadLocalDaoTest: BaseInstrumentedTest() {
         val savedItems = dao.getAllActors()
 
         // then
-        verifyActualAgainstExpected(savedItems!!, itemsToSave, NUM_ACTORS_WHEN_SOME_IDS_INVALID)
+        verifyLists(savedItems!!, itemsToSave, NUM_ACTORS_WHEN_SOME_IDS_INVALID)
     }
 
     @Test
     @Throws(Exception::class)
-    fun savingItemsFromFeedWithAllIdsAbsent_then_noItemsRetrieved() = runBlocking {
+    fun saveItemsFromResponseWithAllIdsAbsent_noItemSaved() = runBlocking {
         // given
         val itemsToSave = mockActorsProvider.getMockLocalActorsWhenJsonHasAllIdsInvalid()
 
@@ -79,10 +79,10 @@ class BreakingBadLocalDaoTest: BaseInstrumentedTest() {
         val savedItems = dao.getAllActors()
 
         // then
-        verifyActualAgainstExpected(savedItems!!, itemsToSave, NUM_ACTORS_WHEN_NO_DATA)
+        verifyLists(savedItems!!, itemsToSave, NUM_ACTORS_WHEN_NO_DATA)
     }
 
-    private fun verifyActualAgainstExpected(
+    private fun verifyLists(
         actual: List<LocalActor?>,
         expected: List<LocalActor>,
         expectedNumberOfItems: Int
