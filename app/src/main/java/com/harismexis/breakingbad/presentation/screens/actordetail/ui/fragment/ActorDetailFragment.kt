@@ -13,7 +13,7 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.core.domain.Actor
 import com.harismexis.breakingbad.core.domain.Actor.Companion.occupationString
 import com.harismexis.breakingbad.core.result.ActorDetailResult
-import com.harismexis.breakingbad.databinding.ActorDetailViewBinding
+import com.harismexis.breakingbad.databinding.ActorDetailBinding
 import com.harismexis.breakingbad.databinding.FragmentActorDetailBinding
 import com.harismexis.breakingbad.framework.util.extensions.populateWithGlide
 import com.harismexis.breakingbad.framework.util.extensions.setTextOrUnknown
@@ -25,7 +25,7 @@ import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.Act
 class ActorDetailFragment : BaseFragment() {
 
     private var binding: FragmentActorDetailBinding? = null
-    private var detailBinding: ActorDetailViewBinding? = null
+    private var detailBinding: ActorDetailBinding? = null
     private val viewModel: ActorDetailViewModel by viewModels { viewModelFactory }
 
     companion object {
@@ -62,7 +62,7 @@ class ActorDetailFragment : BaseFragment() {
         container: ViewGroup?
     ) {
         binding = FragmentActorDetailBinding.inflate(inflater, container, false)
-        detailBinding = binding?.itemDetailContainer
+        detailBinding = binding?.itemDetail
     }
 
     override fun getRootView() = binding?.root
