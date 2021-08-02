@@ -5,7 +5,7 @@
     <item
         android:id="@+id/player_dest"
         android:icon="@drawable/ic_ondemand_video_white_24dp"
-        android:title="@string/player"
+        android:title="@string/watch_funny"
         app:showAsAction="always" />
 
 </menu>

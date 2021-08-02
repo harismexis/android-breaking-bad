@@ -1,5 +1,6 @@
 package com.harismexis.breakingbad.presentation.screens.player.ui.fragment
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,20 +17,29 @@ import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.Video
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoItemViewHolder
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideosDialog
-import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.getFirstVideoId
+import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.getFirstVideoIdFromCatalog
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
 
 class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListener {
 
-    private var currentVideoId = getFirstVideoId()
+    private var defaultVideoId = getFirstVideoIdFromCatalog()
+    private var videoId = defaultVideoId
     private var binding: FragmentPlayerBinding? = null
     private var videoPlayer: YouTubePlayer? = null
     private var isFullScreen: Boolean = false
 
     companion object {
         const val TAG_VIDEOS_DIALOG = "videos_dialog"
+        const val ARG_VIDEO_ID = "arg_video_id"
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            videoId = it.getString(ARG_VIDEO_ID, defaultVideoId)
+        }
     }
 
     override fun initialiseViewBinding(inflater: LayoutInflater, container: ViewGroup?) {
@@ -43,7 +53,7 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
     }
 
     override fun onViewCreated() {
-        initPlayerAndStartPlayback(currentVideoId)
+        initPlayerAndStartPlayback(videoId)
     }
 
     private fun initPlayerAndStartPlayback(videoId: String) {
@@ -92,7 +102,7 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
 
     private fun showVideosDialog() {
         binding?.youTubeView?.getPlayerUiController()?.getMenu()?.dismiss()
-        VideosDialog.newInstance(currentVideoId, this)
+        VideosDialog.newInstance(videoId, this)
             .show(childFragmentManager, TAG_VIDEOS_DIALOG)
     }
 
@@ -118,7 +128,7 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
     }
 
     override fun onVideoClicked(item: Video, position: Int) {
-        currentVideoId = item.id
+        videoId = item.id
         videoPlayer?.loadVideo(item.id, 0f)
     }
 

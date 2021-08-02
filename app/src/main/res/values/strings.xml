@@ -17,6 +17,9 @@
     <string name="map">Map</string>
     <string name="api">API</string>
 
+    <string name="watch_deaths">Deaths</string>
+    <string name="watch_funny">Funny moments</string>
+
     <!-- vh actor -->
     <string name="content_description_character_image">Actor Image</string>
 

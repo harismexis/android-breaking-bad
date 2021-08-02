@@ -1,12 +1,12 @@
 package com.harismexis.breakingbad.presentation.screens.deaths.ui.fragment
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -20,6 +20,7 @@ import com.harismexis.breakingbad.framework.util.extensions.showSnackBar
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.deaths.ui.adapter.DeathAdapter
 import com.harismexis.breakingbad.presentation.screens.deaths.viewmodel.DeathsViewModel
+import com.harismexis.breakingbad.presentation.screens.player.ui.fragment.PlayerFragment
 
 class DeathsFragment : BaseFragment() {
 
@@ -67,17 +68,20 @@ class DeathsFragment : BaseFragment() {
             toolbar.apply {
                 setupWithNavController(navController, appBarConf)
                 inflateMenu(R.menu.menu_deaths)
-                // Without listener it's not working, but it should(?)
-                // as we call setupWithNavController
-                setOnMenuItemClickListener { item ->
-                    item.onNavDestinationSelected(findNavController())
+                setOnMenuItemClickListener {
+                    watchBreakingBadDeaths()
                     true
                 }
-                // Setting icon in xml not working, still shows the default
                 setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
                 toolbarTitle.text = getString(R.string.screen_deaths_label)
             }
         }
+    }
+
+    private fun watchBreakingBadDeaths() {
+        val args = Bundle()
+        args.putString(PlayerFragment.ARG_VIDEO_ID, "zzyudpED6sg")
+        findNavController().navigate(R.id.player_dest, args)
     }
 
     private fun observeLiveData() {

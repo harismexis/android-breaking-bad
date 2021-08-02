@@ -47,6 +47,10 @@
         android:name="com.harismexis.breakingbad.presentation.screens.player.ui.fragment.PlayerFragment"
         tools:layout="@layout/fragment_player">
 
+        <argument
+            android:name="videoId"
+            app:argType="string" />
+
     </fragment>
 
 </navigation>

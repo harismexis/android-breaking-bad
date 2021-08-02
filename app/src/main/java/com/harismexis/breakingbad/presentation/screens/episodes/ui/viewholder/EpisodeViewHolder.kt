@@ -17,7 +17,6 @@ class EpisodeViewHolder(
         binding.txtSeason.text = item.season
         binding.txtAirDate.text = item.air_date
         binding.txtActors.text = item.charactersString()
-        // binding.txtSeries.text = item.series
     }
 
     fun unbind() {
