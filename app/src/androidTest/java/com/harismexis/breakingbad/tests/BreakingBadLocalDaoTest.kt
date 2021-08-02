@@ -44,42 +44,42 @@ class BreakingBadLocalDaoTest: BaseInstrumentedTest() {
     @Throws(Exception::class)
     fun savingItemsFromRemoteFeedWithAllItemsValid_then_expectedItemsRetrieved() = runBlocking {
         // given
-        val localItems = mockActorsProvider.getMockLocalActorsWhenJsonHasAllItemsValid()
+        val itemsToSave = mockActorsProvider.getMockLocalActorsWhenJsonHasAllItemsValid()
 
         // when
-        dao.insertActors(localItems)
-        val retrievedLocalItems = dao.getAllActors()
+        dao.insertActors(itemsToSave)
+        val savedItems = dao.getAllActors()
 
         // then
-        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, NUM_ACTORS_WHEN_ALL_IDS_VALID)
+        verifyActualAgainstExpected(savedItems!!, itemsToSave, NUM_ACTORS_WHEN_ALL_IDS_VALID)
     }
 
     @Test
     @Throws(Exception::class)
     fun savingItemsFromRemoteFeedWithSomeIdsAbsent_then_expectedItemsRetrieved() = runBlocking {
         // given
-        val localItems = mockActorsProvider.getMockLocalActorsWhenJsonHasSomeInvalidIds()
+        val itemsToSave = mockActorsProvider.getMockLocalActorsWhenJsonHasSomeInvalidIds()
 
         // when
-        dao.insertActors(localItems)
-        val retrievedLocalItems = dao.getAllActors()
+        dao.insertActors(itemsToSave)
+        val savedItems = dao.getAllActors()
 
         // then
-        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, NUM_ACTORS_WHEN_SOME_IDS_INVALID)
+        verifyActualAgainstExpected(savedItems!!, itemsToSave, NUM_ACTORS_WHEN_SOME_IDS_INVALID)
     }
 
     @Test
     @Throws(Exception::class)
     fun savingItemsFromFeedWithAllIdsAbsent_then_noItemsRetrieved() = runBlocking {
         // given
-        val localItems = mockActorsProvider.getMockLocalActorsWhenJsonHasAllIdsInvalid()
+        val itemsToSave = mockActorsProvider.getMockLocalActorsWhenJsonHasAllIdsInvalid()
 
         // when
-        dao.insertActors(localItems)
-        val retrievedLocalItems = dao.getAllActors()
+        dao.insertActors(itemsToSave)
+        val savedItems = dao.getAllActors()
 
         // then
-        verifyActualAgainstExpected(retrievedLocalItems!!, localItems, NUM_ACTORS_WHEN_NO_DATA)
+        verifyActualAgainstExpected(savedItems!!, itemsToSave, NUM_ACTORS_WHEN_NO_DATA)
     }
 
     private fun verifyActualAgainstExpected(
