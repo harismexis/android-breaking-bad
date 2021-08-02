@@ -45,28 +45,4 @@
         app:layout_constraintStart_toEndOf="@+id/txt_author_label"
         tools:text="Author" />
 
-    <TextView
-        android:id="@+id/txt_series_label"
-        style="@style/VhBaseMeta"
-        android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
-        android:text="@string/label_quote_in_series"
-        android:textColor="@color/light_green_six"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_author_label"
-        tools:text="Series" />
-
-    <TextView
-        android:id="@+id/txt_series"
-        style="@style/VhBaseMeta"
-        android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_series_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toEndOf="@+id/txt_series_label"
-        tools:text="Series" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

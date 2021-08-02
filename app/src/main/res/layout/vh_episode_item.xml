@@ -80,28 +80,4 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_air_date_label"
         tools:text="Actors" />
 
-    <TextView
-        android:id="@+id/txt_series_label"
-        style="@style/VhBaseMeta"
-        android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
-        android:text="@string/label_series"
-        android:textColor="@color/light_green_six"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_actors"
-        tools:text="Series label" />
-
-    <TextView
-        android:id="@+id/txt_series"
-        style="@style/VhBaseMeta"
-        android:layout_marginTop="@dimen/vh_item_txt_meta_margin_top"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toEndOf="@+id/txt_series_label"
-        app:layout_constraintTop_toBottomOf="@+id/txt_actors"
-        tools:text="Series" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
