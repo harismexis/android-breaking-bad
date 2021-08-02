@@ -75,5 +75,4 @@ abstract class BreakingBadDatabase : RoomDatabase() {
     abstract fun getDeathsDao(): DeathsDao
 
     abstract fun getVideosDao(): VideosDao
-
 }

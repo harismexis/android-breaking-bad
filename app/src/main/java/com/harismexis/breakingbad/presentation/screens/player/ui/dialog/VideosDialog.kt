@@ -38,7 +38,7 @@ class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListene
         binding = DialogVideosBinding.inflate(LayoutInflater.from(requireContext()))
         val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
         builder.setView(binding?.root)
-        setupCloseIcon()
+        setupExitIcon()
         setupRecycler()
         dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
         return builder.create()
@@ -60,7 +60,7 @@ class VideosDialog : DialogFragment(), VideoItemViewHolder.VideoItemClickListene
         }
     }
 
-    private fun setupCloseIcon() {
+    private fun setupExitIcon() {
         binding?.let {
             it.iconExit.setOnClickListener { dismiss() }
         }
