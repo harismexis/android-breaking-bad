@@ -29,7 +29,7 @@
     <dimen name="actor_detail_title_margin_top">4dp</dimen>
     <dimen name="actor_detail_txt_label_margin_top">32dp</dimen>
     <dimen name="actor_detail_txt_meta_margin_top">10dp</dimen>
-    <dimen name="actor_detail_txtv_margin_horizontal">18dp</dimen>
+    <dimen name="actor_detail_info_padding_horizontal">18dp</dimen>
     <dimen name="actor_detail_root_padding">2dp</dimen>
     <dimen name="actor_detail_padding_bottom">20dp</dimen>
 

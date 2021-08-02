@@ -53,22 +53,17 @@
 
     <!-- item detail -->
 
-    <style name="DetailTxtv" parent="BaseTxtv">
-        <item name="android:layout_marginStart">@dimen/actor_detail_txtv_margin_horizontal</item>
-        <item name="android:layout_marginEnd">@dimen/actor_detail_txtv_margin_horizontal</item>
-    </style>
-
-    <style name="ItemDetailTitle" parent="DetailTxtv">
+    <style name="ItemDetailTitle" parent="BaseTxtv">
         <item name="android:textSize">@dimen/actor_detail_title_text_size</item>
         <item name="android:fontFamily">@font/ubuntu_bold</item>
     </style>
 
-    <style name="ItemDetailLabel" parent="DetailTxtv">
+    <style name="ItemDetailLabel" parent="BaseTxtv">
         <item name="android:textSize">@dimen/actor_detail_label_text_size</item>
         <item name="android:textColor">@color/light_green_six</item>
     </style>
 
-    <style name="ItemDetailMeta" parent="DetailTxtv">
+    <style name="ItemDetailMeta" parent="BaseTxtv">
         <item name="android:textSize">@dimen/actor_detail_meta_text_size</item>
     </style>
 

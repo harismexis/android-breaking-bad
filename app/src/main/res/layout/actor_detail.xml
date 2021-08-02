@@ -13,81 +13,90 @@
         android:contentDescription="@string/cd_item_detail_image"
         android:scaleType="centerCrop" />
 
-    <TextView
-        android:id="@+id/txt_name"
-        style="@style/ItemDetailMeta"
-        android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
-        tools:text="Nickname" />
+    <LinearLayout
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/actor_detail_info_padding_horizontal">
 
-    <TextView
-        android:id="@+id/txt_portrayed_label"
-        style="@style/ItemDetailLabel"
-        android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
-        android:text="@string/label_portrayed"
-        tools:text="Portrayed label" />
+        <TextView
+            android:id="@+id/txt_name"
+            style="@style/ItemDetailMeta"
+            android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
+            tools:text="Nickname" />
 
-    <TextView
-        android:id="@+id/txt_portrayed"
-        style="@style/ItemDetailMeta"
-        android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
-        tools:text="Portrayed" />
+        <TextView
+            android:id="@+id/txt_portrayed_label"
+            style="@style/ItemDetailLabel"
+            android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
+            android:text="@string/label_portrayed"
+            tools:text="Portrayed label" />
 
-    <TextView
-        android:id="@+id/txt_occupation_label"
-        style="@style/ItemDetailLabel"
-        android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
-        android:text="@string/label_occupation"
-        tools:text="Occupation label" />
+        <TextView
+            android:id="@+id/txt_portrayed"
+            style="@style/ItemDetailMeta"
+            android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
+            tools:text="Portrayed" />
 
-    <TextView
-        android:id="@+id/txt_occupation"
-        style="@style/ItemDetailMeta"
-        android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
-        tools:text="Occupation" />
+        <TextView
+            android:id="@+id/txt_occupation_label"
+            style="@style/ItemDetailLabel"
+            android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
+            android:text="@string/label_occupation"
+            tools:text="Occupation label" />
 
-    <TextView
-        android:id="@+id/txt_birthday_label"
-        style="@style/ItemDetailLabel"
-        android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
-        android:text="@string/label_birthday"
-        tools:text="Birthday label" />
+        <TextView
+            android:id="@+id/txt_occupation"
+            style="@style/ItemDetailMeta"
+            android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
+            tools:text="Occupation" />
 
-    <TextView
-        android:id="@+id/txt_birthday"
-        style="@style/ItemDetailMeta"
-        android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
-        tools:text="Birthday" />
+        <TextView
+            android:id="@+id/txt_birthday_label"
+            style="@style/ItemDetailLabel"
+            android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
+            android:text="@string/label_birthday"
+            tools:text="Birthday label" />
 
-    <TextView
-        android:id="@+id/txt_status_label"
-        style="@style/ItemDetailLabel"
-        android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
-        android:text="@string/label_status"
-        tools:text="Status label" />
+        <TextView
+            android:id="@+id/txt_birthday"
+            style="@style/ItemDetailMeta"
+            android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
+            tools:text="Birthday" />
 
-    <TextView
-        android:id="@+id/txt_status"
-        style="@style/ItemDetailMeta"
-        android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
-        tools:text="Status" />
+        <TextView
+            android:id="@+id/txt_status_label"
+            style="@style/ItemDetailLabel"
+            android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
+            android:text="@string/label_status"
+            tools:text="Status label" />
 
-    <TextView
-        android:id="@+id/txt_category_label"
-        style="@style/ItemDetailLabel"
-        android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
-        android:text="@string/label_category"
-        tools:text="Category label" />
+        <TextView
+            android:id="@+id/txt_status"
+            style="@style/ItemDetailMeta"
+            android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
+            tools:text="Status" />
 
-    <TextView
-        android:id="@+id/txt_category"
-        style="@style/ItemDetailMeta"
-        android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
-        tools:text="Category" />
+        <TextView
+            android:id="@+id/txt_category_label"
+            style="@style/ItemDetailLabel"
+            android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
+            android:text="@string/label_category"
+            tools:text="Category label" />
 
-    <TextView
-        android:id="@+id/txt_img_url"
-        style="@style/ItemDetailMeta"
-        android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
-        tools:text="Image url" />
+        <TextView
+            android:id="@+id/txt_category"
+            style="@style/ItemDetailMeta"
+            android:layout_marginTop="@dimen/actor_detail_txt_meta_margin_top"
+            tools:text="Category" />
+
+        <TextView
+            android:id="@+id/txt_img_url"
+            style="@style/ItemDetailMeta"
+            android:layout_marginTop="@dimen/actor_detail_txt_label_margin_top"
+            tools:text="Image url" />
+
+    </LinearLayout>
 
 </LinearLayout>
