@@ -30,33 +30,36 @@ class HomeViewModel @Inject constructor(
 
     private var searchQuery: String? = null
 
-    fun updateSearchQuery(query: String?) {
+    fun searchActors(query: String?) {
         searchQuery = query
-        updateActors()
-    }
-
-    fun updateActors() {
-        fetchActors(searchQuery)
-    }
-
-    private fun fetchActors(name: String? = null) {
         viewModelScope.launch {
-            try {
-                val items = actorRemote.getActors(name)
-                mActorsResult.value = ActorsResult.Success(items)
-                actorLocal.save(items)
-            } catch (e: Exception) {
-                Log.d(TAG, e.getErrorMessage())
-                mShowErrorMessage.value = Event(e.getErrorMessage())
-                fetchCachedActors()
-            }
+            searchActors()
         }
     }
 
-    private suspend fun fetchCachedActors() {
+    fun updateActors() {
+        viewModelScope.launch {
+            updateActorsFromRemote()
+            searchActors()
+        }
+    }
+
+    private suspend fun updateActorsFromRemote() {
         try {
-            val items = actorLocal.getActors()
-            mActorsResult.value = ActorsResult.Success(items)
+            val items = actorRemote.getActors()
+            actorLocal.save(items)
+        } catch (e: Exception) {
+            Log.d(TAG, e.getErrorMessage())
+            mShowErrorMessage.value = Event(e.getErrorMessage())
+        }
+    }
+
+    private suspend fun searchActors() {
+        try {
+            val actors =
+                if (!searchQuery.isNullOrBlank()) actorLocal.searchActors(searchQuery)
+                else actorLocal.getActors()
+            mActorsResult.value = ActorsResult.Success(actors)
         } catch (e: Exception) {
             Log.d(TAG, e.getErrorMessage())
             mActorsResult.value = ActorsResult.Error(e)

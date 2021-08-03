@@ -26,13 +26,14 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
     fun remoteActorsSuccess_actorsStored_liveDataEmitSuccess() {
         // given
         mockRemoteActorsCallSuccess()
+        mockLocalActorsCallSuccess()
 
         // when
         subject.updateActors()
 
         // then
         verifyRemoteActorsCallDone()
-        verifyLocalActorsCallNotDone()
+        verifyLocalActorsCallDone()
         verifyActorsStored()
         verifyLiveDataEmitSuccess()
     }

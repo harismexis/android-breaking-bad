@@ -10,4 +10,6 @@ interface ActorsLocal  {
 
     suspend fun getActors(): List<Actor>
 
+    suspend fun searchActors(query: String?): List<Actor>
+
 }

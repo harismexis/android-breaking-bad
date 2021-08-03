@@ -31,4 +31,8 @@ class ActorsLocalRepository @Inject constructor(
         return dao.getAll().toItems()
     }
 
+    override suspend fun searchActors(query: String?): List<Actor> {
+        return dao.searchActors(query).toItems()
+    }
+
 }

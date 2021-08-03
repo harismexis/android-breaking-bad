@@ -198,7 +198,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
     private fun mockSearchResults(actorName: String, mockData: List<Actor>) {
         mockActors = mockData
         actorsSuccess = ActorsResult.Success(mockActors)
-        every { mockHomeViewModel.updateSearchQuery(actorName) } answers {
+        every { mockHomeViewModel.searchActors(actorName) } answers {
             mockActorsResult.value = actorsSuccess
         }
         every { mockHomeViewModel.actorsResult } returns mockActorsResult

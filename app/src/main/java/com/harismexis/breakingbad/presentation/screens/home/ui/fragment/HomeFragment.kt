@@ -138,7 +138,7 @@ class HomeFragment : BaseFragment(),
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         requireActivity().hideKeyboard()
-        viewModel.updateSearchQuery(query)
+        viewModel.searchActors(query)
         return false
     }
 

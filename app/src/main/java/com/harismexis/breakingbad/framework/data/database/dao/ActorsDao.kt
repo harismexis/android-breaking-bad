@@ -15,6 +15,9 @@ interface ActorsDao {
     @Query("SELECT * FROM actors_table WHERE id = :actorId")
     suspend fun getActorById(actorId: Int): LocalActor?
 
+    @Query("SELECT * FROM actors_table WHERE name LIKE '%' || :query || '%' OR nickname LIKE '%' || :query || '%'")
+    suspend fun searchActors(query: String?): List<LocalActor?>?
+
     @Query("SELECT * FROM actors_table")
     suspend fun getAll(): List<LocalActor?>?
 
