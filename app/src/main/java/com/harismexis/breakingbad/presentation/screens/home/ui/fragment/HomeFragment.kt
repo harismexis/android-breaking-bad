@@ -36,8 +36,6 @@ class HomeFragment : BaseFragment(),
 
     private val viewModel: HomeViewModel by viewModels { viewModelFactory }
     private var binding: FragmentHomeBinding? = null
-    // private val actors = mutableListOf<Actor>()
-    // private lateinit var adapter: ActorAdapter
     private lateinit var adapter: ActorListAdapter
 
     override fun initialiseViewBinding(
@@ -54,8 +52,6 @@ class HomeFragment : BaseFragment(),
     }
 
     private fun initialiseRecycler() {
-        // adapter = ActorAdapter(actors, this)
-        // adapter.setHasStableIds(true)
         adapter = ActorListAdapter(this)
         binding?.homeList?.let {
             it.layoutManager = LinearLayoutManager(requireContext())
@@ -116,9 +112,6 @@ class HomeFragment : BaseFragment(),
             val emptyViewVisib = if (hasItems) View.GONE else View.VISIBLE
             it.homeList.visibility = recyclerVisib
             it.noResults.visibility = emptyViewVisib
-//            actors.clear()
-//            actors.addAll(models)
-//            adapter.notifyDataSetChanged()
             adapter.submitList(items)
         }
     }
