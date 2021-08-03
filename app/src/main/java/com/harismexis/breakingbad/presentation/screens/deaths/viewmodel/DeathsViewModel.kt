@@ -37,7 +37,7 @@ class DeathsViewModel @Inject constructor(
             try {
                 val items = deathRemote.getDeaths()
                 mDeaths.value = DeathsResult.Success(items)
-                deathLocal.insertDeaths(items)
+                deathLocal.save(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mShowErrorMessage.value = Event(e.getErrorMessage())

@@ -131,13 +131,13 @@ abstract class HomeViewModelTestSetup : BaseUnitTest() {
 
     private fun verifyActorsStored(items: List<Actor>) {
         runBlocking {
-            verify(mockActorLocal, Mockito.times(1)).updateActors(items)
+            verify(mockActorLocal, Mockito.times(1)).save(items)
         }
     }
 
     protected fun verifyActorsNotStored() {
         runBlocking {
-            verify(mockActorLocal, Mockito.never()).updateActors(any())
+            verify(mockActorLocal, Mockito.never()).save(any())
         }
     }
 

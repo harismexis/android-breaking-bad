@@ -39,7 +39,7 @@ class EpisodesViewModel @Inject constructor(
             try {
                 val items = episodesRemote.getEpisodes(seriesName)
                 mEpisodes.value = EpisodesResult.Success(items)
-                episodesLocal.insertEpisodes(items)
+                episodesLocal.save(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mShowErrorMessage.value = Event(e.getErrorMessage())

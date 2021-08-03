@@ -39,7 +39,7 @@ class QuotesViewModel @Inject constructor(
             try {
                 val items = quoteRemote.getQuotes(seriesName)
                 mQuotes.value = QuotesResult.Success(items)
-                quoteLocal.insertQuotes(items)
+                quoteLocal.save(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mShowErrorMessage.value = Event(e.getErrorMessage())

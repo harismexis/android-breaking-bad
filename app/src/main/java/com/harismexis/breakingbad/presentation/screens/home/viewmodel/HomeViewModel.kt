@@ -44,7 +44,7 @@ class HomeViewModel @Inject constructor(
             try {
                 val items = actorRemote.getActors(name)
                 mActorsResult.value = ActorsResult.Success(items)
-                actorLocal.updateActors(items)
+                actorLocal.save(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mShowErrorMessage.value = Event(e.getErrorMessage())

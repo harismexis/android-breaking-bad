@@ -4,8 +4,7 @@ import com.harismexis.breakingbad.core.domain.Episode
 
 interface EpisodesLocal {
 
-    suspend fun insertEpisodes(items: List<Episode>)
+    suspend fun save(items: List<Episode>)
 
     suspend fun getEpisodes(): List<Episode>
-
 }

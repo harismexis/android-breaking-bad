@@ -6,5 +6,4 @@ import com.harismexis.breakingbad.core.domain.Death
 interface DeathsRemote {
 
     suspend fun getDeaths(): List<Death>
-
 }

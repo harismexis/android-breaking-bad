@@ -13,7 +13,7 @@ class EpisodesLocalRepository @Inject constructor(
     private val dao: EpisodesDao
 ) : EpisodesLocal {
 
-    override suspend fun insertEpisodes(items: List<Episode>) {
+    override suspend fun save(items: List<Episode>) {
         dao.delete()
         dao.insert(items.toLocalItems())
     }

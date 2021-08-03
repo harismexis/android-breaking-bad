@@ -14,7 +14,7 @@ class ActorsLocalRepository @Inject constructor(
     private val dao: ActorsDao
 ): ActorsLocal {
 
-    override suspend fun updateActors(items: List<Actor>) {
+    override suspend fun save(items: List<Actor>) {
         dao.delete()
         dao.insert(items.toLocalItems())
     }

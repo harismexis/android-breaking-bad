@@ -4,7 +4,7 @@ import com.harismexis.breakingbad.core.domain.Actor
 
 interface ActorsLocal  {
 
-    suspend fun updateActors(items: List<Actor>)
+    suspend fun save(items: List<Actor>)
 
     suspend fun getActor(itemId: Int): Actor?
 

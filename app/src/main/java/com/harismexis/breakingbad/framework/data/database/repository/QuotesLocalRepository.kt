@@ -13,7 +13,7 @@ class QuotesLocalRepository @Inject constructor(
     private val dao: QuotesDao
 ) : QuotesLocal {
 
-    override suspend fun insertQuotes(items: List<Quote>) {
+    override suspend fun save(items: List<Quote>) {
         dao.delete()
         dao.insert(items.toLocalItems())
     }
