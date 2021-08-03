@@ -3,12 +3,12 @@ package com.harismexis.breakingbad.presentation.screens.deaths.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.harismexis.breakingbad.databinding.VhDeathItemBinding
 import com.harismexis.breakingbad.core.domain.Death
+import com.harismexis.breakingbad.databinding.VhDeathItemBinding
 import com.harismexis.breakingbad.presentation.screens.deaths.ui.viewholder.DeathViewHolder
 
 class DeathAdapter(
-    private val models: List<Death>
+    private val items: List<Death>
 ) : RecyclerView.Adapter<DeathViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -28,11 +28,11 @@ class DeathAdapter(
         viewHolder: DeathViewHolder,
         position: Int
     ) {
-        viewHolder.bind(models[position], position)
+        viewHolder.bind(items[position], position)
     }
 
     override fun getItemCount(): Int {
-        return models.size
+        return items.size
     }
 
     override fun getItemId(position: Int): Long {

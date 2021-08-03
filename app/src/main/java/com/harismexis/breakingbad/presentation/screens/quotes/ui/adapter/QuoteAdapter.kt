@@ -3,12 +3,12 @@ package com.harismexis.breakingbad.presentation.screens.quotes.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.harismexis.breakingbad.databinding.VhQuoteItemBinding
 import com.harismexis.breakingbad.core.domain.Quote
+import com.harismexis.breakingbad.databinding.VhQuoteItemBinding
 import com.harismexis.breakingbad.presentation.screens.quotes.ui.viewholder.QuoteViewHolder
 
 class QuoteAdapter(
-    private val models: List<Quote>
+    private val items: List<Quote>
 ) : RecyclerView.Adapter<QuoteViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -28,11 +28,11 @@ class QuoteAdapter(
         viewHolder: QuoteViewHolder,
         position: Int
     ) {
-        viewHolder.bind(models[position], position)
+        viewHolder.bind(items[position], position)
     }
 
     override fun getItemCount(): Int {
-        return models.size
+        return items.size
     }
 
     override fun getItemId(position: Int): Long {

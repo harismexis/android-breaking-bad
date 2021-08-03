@@ -23,7 +23,7 @@ class QuotesLocalRepository @Inject constructor(
     }
 
     override suspend fun getQuotesBySeries(seriesName: String?): List<Quote> {
-        return dao.getBySeries(seriesName).toItems()
+        return dao.getQuotesBySeries(seriesName).toItems()
     }
 
 }

@@ -13,7 +13,7 @@ interface ActorsDao {
     suspend fun insert(items: List<LocalActor>)
 
     @Query("SELECT * FROM actors_table WHERE id = :actorId")
-    suspend fun getById(actorId: Int): LocalActor?
+    suspend fun getActorById(actorId: Int): LocalActor?
 
     @Query("SELECT * FROM actors_table")
     suspend fun getAll(): List<LocalActor?>?

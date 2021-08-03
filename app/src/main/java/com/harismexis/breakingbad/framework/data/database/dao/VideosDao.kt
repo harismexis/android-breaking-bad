@@ -13,7 +13,7 @@ interface VideosDao {
     suspend fun insert(items: List<LocalVideo>)
 
     @Query("SELECT * FROM videos_table WHERE id = :itemId")
-    suspend fun getById(itemId: Int): LocalVideo?
+    suspend fun getVideoById(itemId: Int): LocalVideo?
 
     @Query("SELECT * FROM videos_table")
     suspend fun getAll(): List<LocalVideo?>?

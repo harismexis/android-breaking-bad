@@ -20,7 +20,7 @@ class ActorsLocalRepository @Inject constructor(
     }
 
     override suspend fun getActor(itemId: Int): Actor? {
-        val localItem = dao.getById(itemId)
+        val localItem = dao.getActorById(itemId)
         localItem?.let {
             return it.toItem()
         }

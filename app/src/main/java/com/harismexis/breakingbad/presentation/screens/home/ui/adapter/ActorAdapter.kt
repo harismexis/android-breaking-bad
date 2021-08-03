@@ -3,12 +3,12 @@ package com.harismexis.breakingbad.presentation.screens.home.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
-import com.harismexis.breakingbad.databinding.VhActorItemBinding
 import com.harismexis.breakingbad.core.domain.Actor
+import com.harismexis.breakingbad.databinding.VhActorItemBinding
+import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 
 class ActorAdapter(
-    private val models: List<Actor>,
+    private val items: List<Actor>,
     private val clickListener: ActorViewHolder.ActorClickListener
 ) : RecyclerView.Adapter<ActorViewHolder>() {
 
@@ -30,11 +30,11 @@ class ActorAdapter(
         viewHolder: ActorViewHolder,
         position: Int
     ) {
-        viewHolder.bind(models[position], position)
+        viewHolder.bind(items[position], position)
     }
 
     override fun getItemCount(): Int {
-        return models.size
+        return items.size
     }
 
     override fun getItemId(position: Int): Long {

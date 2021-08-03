@@ -16,7 +16,7 @@ interface QuotesDao {
     suspend fun getAll(): List<LocalQuote?>?
 
     @Query("SELECT * FROM quotes_table WHERE series = :seriesName")
-    suspend fun getBySeries(seriesName: String?): List<LocalQuote?>?
+    suspend fun getQuotesBySeries(seriesName: String?): List<LocalQuote?>?
 
     @Query("DELETE FROM quotes_table")
     suspend fun delete()
