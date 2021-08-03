@@ -48,23 +48,18 @@ class MainActivity : AppCompatActivity() {
                 true
             }
         }
-
     }
 
     private fun setupDestinationListener(navController: NavController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.home_dest) {
-                binding.bottomNavView.visibility = View.VISIBLE
-            } else {
-                binding.bottomNavView.visibility = View.GONE
-            }
+            binding.bottomNavView.visibility =
+                if (destination.id == R.id.home_dest) View.VISIBLE
+                else View.GONE
 
-            requestedOrientation = if (destination.id == R.id.player_dest) {
-                ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
-            } else {
-                ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
-            }
-
+            requestedOrientation =
+                if (destination.id == R.id.player_dest)
+                    ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+                else ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
         }
     }
 

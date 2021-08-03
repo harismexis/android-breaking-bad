@@ -7,6 +7,7 @@ import com.harismexis.breakingbad.core.domain.Actor
 import com.harismexis.breakingbad.databinding.VhActorItemBinding
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 
+// TODO: Remove, not used
 class ActorAdapter(
     private val items: List<Actor>,
     private val clickListener: ActorViewHolder.ActorClickListener
