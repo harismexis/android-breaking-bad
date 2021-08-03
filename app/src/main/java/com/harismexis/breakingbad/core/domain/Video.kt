@@ -10,11 +10,10 @@ data class Video(
     constructor(id: String, title: String) : this(id, title, null, null)
 }
 
-fun getFunnyMomentsVideoId(): String {
-    return getVideosCatalog()[0].id
-}
+val videosCatalog by lazy { getVideos() }
+val breakingBadBlooperReel by lazy { videosCatalog[0].id }
 
-fun getVideosCatalog(): List<Video> {
+private fun getVideos(): List<Video> {
     val videos = ArrayList<Video>()
     videos.add(
         Video(

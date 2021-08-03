@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.core.domain.Video
-import com.harismexis.breakingbad.core.domain.getFunnyMomentsVideoId
+import com.harismexis.breakingbad.core.domain.breakingBadBlooperReel
 import com.harismexis.breakingbad.databinding.FragmentPlayerBinding
 import com.harismexis.breakingbad.framework.util.extensions.hideSystemUI
 import com.harismexis.breakingbad.framework.util.extensions.showSystemUI
@@ -24,8 +24,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
 
 class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListener {
 
-    private var defaultVideoId = getFunnyMomentsVideoId()
-    private var videoId = defaultVideoId
+    private lateinit var videoId: String
     private var binding: FragmentPlayerBinding? = null
     private var videoPlayer: YouTubePlayer? = null
     private var isFullScreen: Boolean = false
@@ -38,7 +37,7 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            videoId = it.getString(ARG_VIDEO_ID, defaultVideoId)
+            videoId = it.getString(ARG_VIDEO_ID, breakingBadBlooperReel)
         }
     }
 
