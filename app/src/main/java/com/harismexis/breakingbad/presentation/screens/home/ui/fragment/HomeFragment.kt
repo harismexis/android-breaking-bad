@@ -25,7 +25,7 @@ import com.harismexis.breakingbad.framework.util.extensions.hideKeyboard
 import com.harismexis.breakingbad.framework.util.extensions.showSnackBar
 import com.harismexis.breakingbad.framework.util.googleMapsNewMexicoIntent
 import com.harismexis.breakingbad.presentation.base.BaseFragment
-import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorAdapter
+import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorListAdapter
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 
@@ -36,8 +36,9 @@ class HomeFragment : BaseFragment(),
 
     private val viewModel: HomeViewModel by viewModels { viewModelFactory }
     private var binding: FragmentHomeBinding? = null
-    private lateinit var adapter: ActorAdapter
-    private val actors = mutableListOf<Actor>()
+    // private val actors = mutableListOf<Actor>()
+    // private lateinit var adapter: ActorAdapter
+    private lateinit var adapter: ActorListAdapter
 
     override fun initialiseViewBinding(
         inflater: LayoutInflater,
@@ -53,8 +54,9 @@ class HomeFragment : BaseFragment(),
     }
 
     private fun initialiseRecycler() {
-        adapter = ActorAdapter(actors, this)
-        adapter.setHasStableIds(true)
+        // adapter = ActorAdapter(actors, this)
+        // adapter.setHasStableIds(true)
+        adapter = ActorListAdapter(this)
         binding?.homeList?.let {
             it.layoutManager = LinearLayoutManager(requireContext())
             it.adapter = adapter
@@ -105,18 +107,19 @@ class HomeFragment : BaseFragment(),
         })
     }
 
-    private fun populate(models: List<Actor>) {
+    private fun populate(items: List<Actor>) {
         binding?.let {
             it.swipeRefresh.isRefreshing = false
             it.loadingProgressBar.visibility = View.GONE
-            val hasItems = models.isNotEmpty()
+            val hasItems = items.isNotEmpty()
             val recyclerVisib = if (hasItems) View.VISIBLE else View.GONE
             val emptyViewVisib = if (hasItems) View.GONE else View.VISIBLE
             it.homeList.visibility = recyclerVisib
             it.noResults.visibility = emptyViewVisib
-            actors.clear()
-            actors.addAll(models)
-            adapter.notifyDataSetChanged()
+//            actors.clear()
+//            actors.addAll(models)
+//            adapter.notifyDataSetChanged()
+            adapter.submitList(items)
         }
     }
 
