@@ -5,7 +5,7 @@ import com.harismexis.breakingbad.core.domain.Actor
 
 data class RemoteActor(
     @SerializedName("char_id")
-    val actorId: Int?,
+    val id: Int?,
     val name: String?,
     val birthday: String?,
     var occupation: List<String>?,
@@ -19,9 +19,9 @@ data class RemoteActor(
 fun List<RemoteActor?>?.toItems(): List<Actor> {
     val items = mutableListOf<Actor>()
     if (this == null) return items.toList()
-    val filteredList = this.filter { it?.actorId != null }
+    val filteredList = this.filter { it?.id != null }
     items.addAll(filteredList.map {
-        it !!.toItem(it.actorId !!)
+        it !!.toItem(it.id !!)
     })
     return items.toList()
 }

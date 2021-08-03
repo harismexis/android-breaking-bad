@@ -31,7 +31,7 @@ class ActorDetailScreenTest : BaseInstrumentedTest() {
     private var clickIndexOnSearchResultList = 0
 
     private var mockActor = mockActors[0]
-    private var mockActorId = mockActor.actorId
+    private var mockActorId = mockActor.id
     private lateinit var actorDetailSuccess: ActorDetailResult.Success
 
     private val mockActorsResult = MutableLiveData<ActorsResult>()

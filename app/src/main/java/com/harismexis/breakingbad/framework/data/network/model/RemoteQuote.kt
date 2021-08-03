@@ -5,7 +5,7 @@ import com.harismexis.breakingbad.core.domain.Quote
 
 data class RemoteQuote(
     @SerializedName("quote_id")
-    val quoteId: Int?,
+    val id: Int?,
     val quote: String?,
     val author: String?,
     val series: String?
@@ -14,9 +14,9 @@ data class RemoteQuote(
 fun List<RemoteQuote?>?.toItems(): List<Quote> {
     val items = mutableListOf<Quote>()
     if (this == null) return items.toList()
-    val filteredList = this.filter { it?.quoteId != null }
+    val filteredList = this.filter { it?.id != null }
     items.addAll(filteredList.map {
-        it!!.toItem(it.quoteId!!)
+        it!!.toItem(it.id!!)
     })
     return items.toList()
 }

@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.util
 
-import com.harismexis.breakingbad.framework.data.database.table.LocalActor
 import com.harismexis.breakingbad.core.domain.Actor
+import com.harismexis.breakingbad.framework.data.database.table.LocalActor
 import org.junit.Assert
 
 class ActorLocalVerificator {
@@ -21,7 +21,7 @@ class ActorLocalVerificator {
         actual: Actor,
         localActor: LocalActor
     ) {
-        Assert.assertEquals(localActor.actorId, actual.actorId)
+        Assert.assertEquals(localActor.id, actual.id)
         Assert.assertEquals(localActor.name, actual.name)
         Assert.assertEquals(localActor.birthday, actual.birthday)
         Assert.assertEquals(localActor.img, actual.img)
@@ -46,7 +46,7 @@ class ActorLocalVerificator {
         actual: LocalActor,
         actor: Actor
     ) {
-        Assert.assertEquals(actor.actorId, actual.actorId)
+        Assert.assertEquals(actor.id, actual.id)
         Assert.assertEquals(actor.name, actual.name)
         Assert.assertEquals(actor.birthday, actual.birthday)
         Assert.assertEquals(actor.img, actual.img)

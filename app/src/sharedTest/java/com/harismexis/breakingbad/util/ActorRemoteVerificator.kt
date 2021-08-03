@@ -13,8 +13,8 @@ class ActorRemoteVerificator {
         remoteActors.forEachIndexed lit@{ _, remoteActor ->
             if (remoteActor == null) return@lit
             actual.forEachIndexed { _, actor ->
-                remoteActor.actorId?.let {
-                    if (it == actor.actorId) {
+                remoteActor.id?.let {
+                    if (it == actor.id) {
                         verifyActorAgainstRemoteActor(actor, remoteActor)
                         return@lit
                     }
@@ -27,7 +27,7 @@ class ActorRemoteVerificator {
         actual: Actor,
         remoteActor: RemoteActor
     ) {
-        Assert.assertEquals(remoteActor.actorId, actual.actorId)
+        Assert.assertEquals(remoteActor.id, actual.id)
         Assert.assertEquals(remoteActor.name, actual.name)
         Assert.assertEquals(remoteActor.birthday, actual.birthday)
         Assert.assertEquals(remoteActor.img, actual.img)

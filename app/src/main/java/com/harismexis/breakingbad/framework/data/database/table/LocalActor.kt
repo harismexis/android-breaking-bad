@@ -7,7 +7,7 @@ import com.harismexis.breakingbad.core.domain.Actor
 
 @Entity(tableName = "actors_table")
 data class LocalActor(
-    @PrimaryKey @ColumnInfo(name = "char_id") val actorId: Int,
+    @PrimaryKey @ColumnInfo(name = "id") val id: Int,
     @ColumnInfo(name = "name") val name: String?,
     @ColumnInfo(name = "birthday") val birthday: String?,
     @ColumnInfo(name = "occupation") val occupation: List<String>?,
@@ -30,7 +30,7 @@ fun List<LocalActor?>?.toItems(): List<Actor> {
 
 fun LocalActor.toItem(): Actor {
     return Actor(
-        this.actorId,
+        this.id,
         this.name,
         this.birthday,
         this.occupation,
@@ -54,7 +54,7 @@ fun List<Actor?>?.toLocalItems(): List<LocalActor> {
 
 fun Actor.toLocalItem(): LocalActor {
     return LocalActor(
-        this.actorId,
+        this.id,
         this.name,
         this.birthday,
         this.occupation,

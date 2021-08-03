@@ -5,7 +5,7 @@ import com.harismexis.breakingbad.core.domain.Episode
 
 data class RemoteEpisode(
     @SerializedName("episode_id")
-    val episodeId: Int?,
+    val id: Int?,
     val title: String?,
     val season: String?,
     @SerializedName("air_date")
@@ -18,9 +18,9 @@ data class RemoteEpisode(
 fun List<RemoteEpisode?>?.toItems(): List<Episode> {
     val items = mutableListOf<Episode>()
     if (this == null) return items.toList()
-    val filteredList = this.filter { it?.episodeId != null }
+    val filteredList = this.filter { it?.id != null }
     items.addAll(filteredList.map {
-        it!!.toItem(it.episodeId!!)
+        it!!.toItem(it.id!!)
     })
     return items.toList()
 }

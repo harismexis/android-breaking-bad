@@ -5,7 +5,7 @@ import com.harismexis.breakingbad.core.domain.Death
 
 data class RemoteDeath(
     @SerializedName("death_id")
-    val deathId: Int?,
+    val id: Int?,
     val death: String?,
     val cause: String?,
     val responsible: String?,
@@ -20,9 +20,9 @@ data class RemoteDeath(
 fun List<RemoteDeath?>?.toItems(): List<Death> {
     val items = mutableListOf<Death>()
     if (this == null) return items.toList()
-    val filteredList = this.filter { it?.deathId != null }
+    val filteredList = this.filter { it?.id != null }
     items.addAll(filteredList.map {
-        it!!.toItem(it.deathId!!)
+        it!!.toItem(it.id!!)
     })
     return items.toList()
 }

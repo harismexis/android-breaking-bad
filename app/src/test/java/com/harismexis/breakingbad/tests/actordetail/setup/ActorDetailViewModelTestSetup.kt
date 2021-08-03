@@ -32,7 +32,7 @@ abstract class ActorDetailViewModelTestSetup : BaseUnitTest() {
 
     protected fun initSubject() {
         mockActor = mockActorsProvider.getMockActor()
-        mockActorId = mockActor.actorId
+        mockActorId = mockActor.id
         subject = ActorDetailViewModel(mockActorLocal)
         mockActorDetailSuccess = ActorDetailResult.Success(mockActor)
         mockActorDetailError = ActorDetailResult.Error(ERROR_MESSAGE)
