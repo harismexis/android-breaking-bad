@@ -100,7 +100,7 @@ class VideoPickerDialog : DialogFragment(), VideoViewHolder.VideoItemClickListen
             videos.clear()
             videos.addAll(items)
             val selectedId = arguments?.getString(ARG_CURRENT_VIDEO_ID, videos[0].id)
-            val current = videos.indexOfFirst { it.id == selectedId }
+            val current = videos.indexOfFirst { video -> video.id == selectedId }
             videos[current].isPlaying = true
             adapter.notifyDataSetChanged()
             it.list.scrollToPosition(current)
