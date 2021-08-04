@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.harismexis.breakingbad.core.repository.video.VideosLocal
 import com.harismexis.breakingbad.core.result.VideosResult
-import com.harismexis.breakingbad.framework.util.extensions.getErrorMessage
+import com.harismexis.breakingbad.core.util.getErrorMessage
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

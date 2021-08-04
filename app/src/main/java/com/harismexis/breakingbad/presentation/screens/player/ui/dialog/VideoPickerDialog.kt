@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.core.domain.Video
 import com.harismexis.breakingbad.core.result.VideosResult
 import com.harismexis.breakingbad.databinding.DialogVideosBinding
+import com.harismexis.breakingbad.framework.util.extensions.makeFullScreen
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -52,11 +53,7 @@ class VideoPickerDialog : DialogFragment(), VideoViewHolder.VideoItemClickListen
 
     override fun onStart() {
         super.onStart()
-        dialog?.let {
-            val width = ViewGroup.LayoutParams.MATCH_PARENT
-            val height = ViewGroup.LayoutParams.MATCH_PARENT
-            it.window!!.setLayout(width, height)
-        }
+        dialog.makeFullScreen()
     }
 
     /**
