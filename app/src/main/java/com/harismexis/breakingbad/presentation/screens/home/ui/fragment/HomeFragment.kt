@@ -91,14 +91,14 @@ class HomeFragment : BaseFragment(),
     }
 
     private fun observeLiveData() {
-        viewModel.actorsResult.observe(viewLifecycleOwner, {
+        viewModel.actors.observe(viewLifecycleOwner, {
             when (it) {
                 is ActorsResult.Success -> populate(it.items)
                 is ActorsResult.Error -> populateError(it.error)
             }
         })
 
-        viewModel.showErrorMessage.observe(viewLifecycleOwner, EventObserver {
+        viewModel.showErrorMsg.observe(viewLifecycleOwner, EventObserver {
             binding?.homeCoordinator?.showSnackBar(it)
         })
     }

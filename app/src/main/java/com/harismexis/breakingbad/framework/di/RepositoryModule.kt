@@ -8,14 +8,9 @@ import com.harismexis.breakingbad.core.repository.episode.EpisodesLocal
 import com.harismexis.breakingbad.core.repository.episode.EpisodesRemote
 import com.harismexis.breakingbad.core.repository.quote.QuotesLocal
 import com.harismexis.breakingbad.core.repository.quote.QuotesRemote
-import com.harismexis.breakingbad.framework.data.database.dao.ActorsDao
-import com.harismexis.breakingbad.framework.data.database.dao.DeathsDao
-import com.harismexis.breakingbad.framework.data.database.dao.EpisodesDao
-import com.harismexis.breakingbad.framework.data.database.dao.QuotesDao
-import com.harismexis.breakingbad.framework.data.database.repository.ActorsLocalRepository
-import com.harismexis.breakingbad.framework.data.database.repository.DeathsLocalRepository
-import com.harismexis.breakingbad.framework.data.database.repository.EpisodesLocalRepository
-import com.harismexis.breakingbad.framework.data.database.repository.QuotesLocalRepository
+import com.harismexis.breakingbad.core.repository.video.VideosLocal
+import com.harismexis.breakingbad.framework.data.database.dao.*
+import com.harismexis.breakingbad.framework.data.database.repository.*
 import com.harismexis.breakingbad.framework.data.network.api.BreakingBadApi
 import com.harismexis.breakingbad.framework.data.network.repository.ActorsRemoteRepository
 import com.harismexis.breakingbad.framework.data.network.repository.DeathsRemoteRepository
@@ -65,6 +60,11 @@ class RepositoryModule {
     @Provides
     fun provideDeathsLocal(dao: DeathsDao): DeathsLocal {
         return DeathsLocalRepository(dao)
+    }
+
+    @Provides
+    fun provideVideosLocal(dao: VideosDao): VideosLocal {
+        return VideosLocalRepository(dao)
     }
 
 }

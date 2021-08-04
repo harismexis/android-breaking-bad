@@ -24,9 +24,9 @@ class EpisodesViewModel @Inject constructor(
     val episodes: LiveData<EpisodesResult>
         get() = mEpisodes
 
-    private val mShowErrorMessage = MutableLiveData<Event<String>>()
-    val showErrorMessage: LiveData<Event<String>>
-        get() = mShowErrorMessage
+    private val mShowErrorMsg = MutableLiveData<Event<String>>()
+    val showErrorMsg: LiveData<Event<String>>
+        get() = mShowErrorMsg
 
     var seriesName: String? = null
 
@@ -42,7 +42,7 @@ class EpisodesViewModel @Inject constructor(
                 episodesLocal.save(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mShowErrorMessage.value = Event(e.getErrorMessage())
+                mShowErrorMsg.value = Event(e.getErrorMessage())
                 fetchLocalEpisodes()
             }
         }
@@ -55,7 +55,7 @@ class EpisodesViewModel @Inject constructor(
         } catch (e: Exception) {
             Log.d(TAG, e.getErrorMessage())
             mEpisodes.value = EpisodesResult.Error(e)
-            mShowErrorMessage.value = Event(e.getErrorMessage())
+            mShowErrorMsg.value = Event(e.getErrorMessage())
         }
     }
 

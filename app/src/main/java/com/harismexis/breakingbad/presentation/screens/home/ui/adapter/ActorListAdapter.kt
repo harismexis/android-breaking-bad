@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.harismexis.breakingbad.core.domain.Actor
-import com.harismexis.breakingbad.databinding.VhActorItemBinding
+import com.harismexis.breakingbad.databinding.VhActorBinding
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 
 class ActorListAdapter(
@@ -30,7 +30,7 @@ class ActorListAdapter(
         viewType: Int
     ): ActorViewHolder {
         return ActorViewHolder(
-            VhActorItemBinding.inflate(
+            VhActorBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

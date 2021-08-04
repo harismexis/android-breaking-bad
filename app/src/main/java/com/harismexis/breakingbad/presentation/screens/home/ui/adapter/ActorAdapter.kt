@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.harismexis.breakingbad.core.domain.Actor
-import com.harismexis.breakingbad.databinding.VhActorItemBinding
+import com.harismexis.breakingbad.databinding.VhActorBinding
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 
 // TODO: Remove, not used
@@ -18,7 +18,7 @@ class ActorAdapter(
         viewType: Int
     ): ActorViewHolder {
         return ActorViewHolder(
-            VhActorItemBinding.inflate(
+            VhActorBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

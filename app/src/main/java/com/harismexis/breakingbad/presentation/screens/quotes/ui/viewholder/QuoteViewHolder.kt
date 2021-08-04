@@ -2,10 +2,10 @@ package com.harismexis.breakingbad.presentation.screens.quotes.ui.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.harismexis.breakingbad.core.domain.Quote
-import com.harismexis.breakingbad.databinding.VhQuoteItemBinding
+import com.harismexis.breakingbad.databinding.VhQuoteBinding
 
 class QuoteViewHolder(
-    private val binding: VhQuoteItemBinding
+    private val binding: VhQuoteBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(

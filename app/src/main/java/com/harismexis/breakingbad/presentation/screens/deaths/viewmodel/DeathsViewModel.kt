@@ -24,9 +24,9 @@ class DeathsViewModel @Inject constructor(
     val deaths: LiveData<DeathsResult>
         get() = mDeaths
 
-    private val mShowErrorMessage = MutableLiveData<Event<String>>()
-    val showErrorMessage: LiveData<Event<String>>
-        get() = mShowErrorMessage
+    private val mShowErrorMsg = MutableLiveData<Event<String>>()
+    val showErrorMsg: LiveData<Event<String>>
+        get() = mShowErrorMsg
 
     fun updateDeaths() {
         fetchDeaths()
@@ -40,7 +40,7 @@ class DeathsViewModel @Inject constructor(
                 deathLocal.save(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mShowErrorMessage.value = Event(e.getErrorMessage())
+                mShowErrorMsg.value = Event(e.getErrorMessage())
                 fetchLocalDeaths()
             }
         }
@@ -53,7 +53,7 @@ class DeathsViewModel @Inject constructor(
         } catch (e: Exception) {
             Log.d(TAG, e.getErrorMessage())
             mDeaths.value = DeathsResult.Error(e)
-            mShowErrorMessage.value = Event(e.getErrorMessage())
+            mShowErrorMsg.value = Event(e.getErrorMessage())
         }
     }
 

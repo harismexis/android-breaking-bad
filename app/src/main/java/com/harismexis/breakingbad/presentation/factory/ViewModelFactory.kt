@@ -6,6 +6,7 @@ import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.Act
 import com.harismexis.breakingbad.presentation.screens.deaths.viewmodel.DeathsViewModel
 import com.harismexis.breakingbad.presentation.screens.episodes.viewmodel.EpisodesViewModel
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
+import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoPickerViewModel
 import com.harismexis.breakingbad.presentation.screens.quotes.viewmodel.QuotesViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -63,4 +64,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(EpisodesViewModel::class)
     internal abstract fun episodesViewModel(viewModel: EpisodesViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(VideoPickerViewModel::class)
+    internal abstract fun videosViewModel(viewModel: VideoPickerViewModel): ViewModel
 }

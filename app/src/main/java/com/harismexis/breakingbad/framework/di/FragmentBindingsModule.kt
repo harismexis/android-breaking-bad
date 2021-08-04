@@ -5,6 +5,7 @@ import com.harismexis.breakingbad.presentation.screens.actordetail.ui.fragment.A
 import com.harismexis.breakingbad.presentation.screens.deaths.ui.fragment.DeathsFragment
 import com.harismexis.breakingbad.presentation.screens.episodes.ui.fragment.EpisodesFragment
 import com.harismexis.breakingbad.presentation.screens.home.ui.fragment.HomeFragment
+import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoPickerDialog
 import com.harismexis.breakingbad.presentation.screens.player.ui.fragment.PlayerFragment
 import com.harismexis.breakingbad.presentation.screens.quotes.ui.fragment.QuotesFragment
 
@@ -34,5 +35,8 @@ abstract class FragmentBindingsModule {
 
     @ContributesAndroidInjector
     abstract fun playerFragment(): PlayerFragment
+
+    @ContributesAndroidInjector
+    abstract fun videoPickerDialog(): VideoPickerDialog
 
 }

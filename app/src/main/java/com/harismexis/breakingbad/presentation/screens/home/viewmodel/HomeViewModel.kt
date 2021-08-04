@@ -20,13 +20,13 @@ class HomeViewModel @Inject constructor(
 
     private val TAG = HomeViewModel::class.qualifiedName
 
-    private val mActorsResult = MutableLiveData<ActorsResult>()
-    val actorsResult: LiveData<ActorsResult>
-        get() = mActorsResult
+    private val mActors = MutableLiveData<ActorsResult>()
+    val actors: LiveData<ActorsResult>
+        get() = mActors
 
-    private val mShowErrorMessage = MutableLiveData<Event<String>>()
-    val showErrorMessage: LiveData<Event<String>>
-        get() = mShowErrorMessage
+    private val mShowErrorMsg = MutableLiveData<Event<String>>()
+    val showErrorMsg: LiveData<Event<String>>
+        get() = mShowErrorMsg
 
     private var searchQuery: String? = null
 
@@ -50,7 +50,7 @@ class HomeViewModel @Inject constructor(
             actorLocal.save(items)
         } catch (e: Exception) {
             Log.d(TAG, e.getErrorMessage())
-            mShowErrorMessage.value = Event(e.getErrorMessage())
+            mShowErrorMsg.value = Event(e.getErrorMessage())
         }
     }
 
@@ -59,11 +59,11 @@ class HomeViewModel @Inject constructor(
             val actors =
                 if (!searchQuery.isNullOrBlank()) actorLocal.searchActors(searchQuery)
                 else actorLocal.getActors()
-            mActorsResult.value = ActorsResult.Success(actors)
+            mActors.value = ActorsResult.Success(actors)
         } catch (e: Exception) {
             Log.d(TAG, e.getErrorMessage())
-            mActorsResult.value = ActorsResult.Error(e)
-            mShowErrorMessage.value = Event(e.getErrorMessage())
+            mActors.value = ActorsResult.Error(e)
+            mShowErrorMsg.value = Event(e.getErrorMessage())
         }
     }
 }

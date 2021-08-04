@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.harismexis.breakingbad.core.domain.Episode
-import com.harismexis.breakingbad.databinding.VhEpisodeItemBinding
+import com.harismexis.breakingbad.databinding.VhEpisodeBinding
 import com.harismexis.breakingbad.presentation.screens.episodes.ui.viewholder.EpisodeViewHolder
 
 class EpisodeAdapter(
@@ -16,7 +16,7 @@ class EpisodeAdapter(
         viewType: Int
     ): EpisodeViewHolder {
         return EpisodeViewHolder(
-            VhEpisodeItemBinding.inflate(
+            VhEpisodeBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

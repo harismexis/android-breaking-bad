@@ -16,13 +16,13 @@ import com.harismexis.breakingbad.databinding.FragmentPlayerBinding
 import com.harismexis.breakingbad.framework.util.extensions.hideSystemUI
 import com.harismexis.breakingbad.framework.util.extensions.showSystemUI
 import com.harismexis.breakingbad.presentation.base.BaseFragment
-import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoItemViewHolder
-import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideosDialog
+import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoViewHolder
+import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoPickerDialog
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
 
-class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListener {
+class PlayerFragment : BaseFragment(), VideoViewHolder.VideoItemClickListener {
 
     private lateinit var videoId: String
     private var binding: FragmentPlayerBinding? = null
@@ -101,7 +101,7 @@ class PlayerFragment : BaseFragment(), VideoItemViewHolder.VideoItemClickListene
 
     private fun showVideosDialog() {
         binding?.youTubeView?.getPlayerUiController()?.getMenu()?.dismiss()
-        VideosDialog.newInstance(videoId, this)
+        VideoPickerDialog.newInstance(videoId, this)
             .show(childFragmentManager, TAG_VIDEOS_DIALOG)
     }
 

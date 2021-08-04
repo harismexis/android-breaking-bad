@@ -38,7 +38,7 @@ class ActorDetailScreenTest : BaseInstrumentedTest() {
     private val mockActorDetailResult = MutableLiveData<ActorDetailResult>()
 
     init {
-        every { mockHomeViewModel.actorsResult } returns mockActorsResult
+        every { mockHomeViewModel.actors } returns mockActorsResult
         every { mockActorDetailViewModel.retrieveActorById(mockActorId) } answers {
             mockActorDetailResult.value = actorDetailSuccess
         }
@@ -62,7 +62,7 @@ class ActorDetailScreenTest : BaseInstrumentedTest() {
         every { mockHomeViewModel.updateActors() } answers {
             mockActorsResult.value = actorsSuccess
         }
-        every { mockHomeViewModel.actorsResult } returns mockActorsResult
+        every { mockHomeViewModel.actors } returns mockActorsResult
     }
 
     private fun mockActorDetailResultSuccess() {

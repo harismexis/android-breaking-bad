@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.harismexis.breakingbad.core.domain.Quote
-import com.harismexis.breakingbad.databinding.VhQuoteItemBinding
+import com.harismexis.breakingbad.databinding.VhQuoteBinding
 import com.harismexis.breakingbad.presentation.screens.quotes.ui.viewholder.QuoteViewHolder
 
 class QuoteAdapter(
@@ -16,7 +16,7 @@ class QuoteAdapter(
         viewType: Int
     ): QuoteViewHolder {
         return QuoteViewHolder(
-            VhQuoteItemBinding.inflate(
+            VhQuoteBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

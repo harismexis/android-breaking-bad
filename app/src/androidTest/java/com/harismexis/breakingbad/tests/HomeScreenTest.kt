@@ -192,7 +192,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         every { mockHomeViewModel.updateActors() } answers {
             mockActorsResult.value = actorsSuccess
         }
-        every { mockHomeViewModel.actorsResult } returns mockActorsResult
+        every { mockHomeViewModel.actors } returns mockActorsResult
     }
 
     private fun mockSearchResults(actorName: String, mockData: List<Actor>) {
@@ -201,7 +201,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         every { mockHomeViewModel.searchActors(actorName) } answers {
             mockActorsResult.value = actorsSuccess
         }
-        every { mockHomeViewModel.actorsResult } returns mockActorsResult
+        every { mockHomeViewModel.actors } returns mockActorsResult
     }
 
     private fun verifyRecycler(

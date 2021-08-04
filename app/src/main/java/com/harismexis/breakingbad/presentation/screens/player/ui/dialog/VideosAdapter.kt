@@ -4,19 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.harismexis.breakingbad.core.domain.Video
-import com.harismexis.breakingbad.databinding.VhVideoItemBinding
+import com.harismexis.breakingbad.databinding.VhVideoBinding
 
 class VideosAdapter(
     private val items: List<Video>,
-    private val itemClick: VideoItemViewHolder.VideoItemClickListener?
-) : RecyclerView.Adapter<VideoItemViewHolder>() {
+    private val itemClick: VideoViewHolder.VideoItemClickListener?
+) : RecyclerView.Adapter<VideoViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): VideoItemViewHolder {
-        return VideoItemViewHolder(
-            VhVideoItemBinding.inflate(
+    ): VideoViewHolder {
+        return VideoViewHolder(
+            VhVideoBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -26,7 +26,7 @@ class VideosAdapter(
     }
 
     override fun onBindViewHolder(
-        viewHolder: VideoItemViewHolder,
+        viewHolder: VideoViewHolder,
         position: Int
     ) {
         viewHolder.bind(items[position], position)

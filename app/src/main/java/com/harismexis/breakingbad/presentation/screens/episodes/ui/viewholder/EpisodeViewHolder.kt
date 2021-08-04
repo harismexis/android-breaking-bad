@@ -3,10 +3,10 @@ package com.harismexis.breakingbad.presentation.screens.episodes.ui.viewholder
 import androidx.recyclerview.widget.RecyclerView
 import com.harismexis.breakingbad.core.domain.Episode
 import com.harismexis.breakingbad.core.domain.Episode.Companion.charactersString
-import com.harismexis.breakingbad.databinding.VhEpisodeItemBinding
+import com.harismexis.breakingbad.databinding.VhEpisodeBinding
 
 class EpisodeViewHolder(
-    private val binding: VhEpisodeItemBinding
+    private val binding: VhEpisodeBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(

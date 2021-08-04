@@ -93,7 +93,7 @@ class DeathsFragment : BaseFragment() {
             }
         })
 
-        viewModel.showErrorMessage.observe(viewLifecycleOwner, EventObserver {
+        viewModel.showErrorMsg.observe(viewLifecycleOwner, EventObserver {
             binding?.root?.showSnackBar(it)
         })
     }
