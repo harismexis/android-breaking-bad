@@ -18,7 +18,9 @@ class QuotesViewModel @Inject constructor(
     private val quoteLocal: QuotesLocal
 ) : ViewModel() {
 
-    private val TAG = QuotesViewModel::class.qualifiedName
+    companion object {
+        val TAG = QuotesViewModel::class.qualifiedName
+    }
 
     private val mQuotes = MutableLiveData<QuotesResult>()
     val quotes: LiveData<QuotesResult>

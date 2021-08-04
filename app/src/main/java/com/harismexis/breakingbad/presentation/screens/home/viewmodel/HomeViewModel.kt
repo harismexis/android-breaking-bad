@@ -18,7 +18,9 @@ class HomeViewModel @Inject constructor(
     private val actorLocal: ActorsLocal
 ) : ViewModel() {
 
-    private val TAG = HomeViewModel::class.qualifiedName
+    companion object {
+        val TAG = HomeViewModel::class.qualifiedName
+    }
 
     private val mActors = MutableLiveData<ActorsResult>()
     val actors: LiveData<ActorsResult>

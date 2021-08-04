@@ -18,7 +18,9 @@ class DeathsViewModel @Inject constructor(
     private val deathLocal: DeathsLocal
 ) : ViewModel() {
 
-    private val TAG = DeathsViewModel::class.qualifiedName
+    companion object {
+        val TAG = DeathsViewModel::class.qualifiedName
+    }
 
     private val mDeaths = MutableLiveData<DeathsResult>()
     val deaths: LiveData<DeathsResult>

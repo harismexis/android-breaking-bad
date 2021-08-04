@@ -18,7 +18,9 @@ class EpisodesViewModel @Inject constructor(
     private val episodesLocal: EpisodesLocal
 ) : ViewModel() {
 
-    private val TAG = EpisodesViewModel::class.qualifiedName
+    companion object {
+        val TAG = EpisodesViewModel::class.qualifiedName
+    }
 
     private val mEpisodes = MutableLiveData<EpisodesResult>()
     val episodes: LiveData<EpisodesResult>
