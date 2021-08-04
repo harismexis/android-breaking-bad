@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_bg_color"
+    android:background="@color/black_six"
     android:orientation="vertical"
     tools:context=".presentation.screens.player.ui.dialog.VideoPickerDialog">
 

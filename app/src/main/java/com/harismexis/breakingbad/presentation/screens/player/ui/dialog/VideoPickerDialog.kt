@@ -51,6 +51,15 @@ class VideoPickerDialog : DialogFragment(), VideoViewHolder.VideoItemClickListen
         super.onAttach(context)
     }
 
+    override fun onStart() {
+        super.onStart()
+        dialog?.let {
+            val width = ViewGroup.LayoutParams.MATCH_PARENT
+            val height = ViewGroup.LayoutParams.MATCH_PARENT
+            it.window!!.setLayout(width, height)
+        }
+    }
+
     /**
     - Remember:
     This method will be called after onCreate(Bundle) and before
@@ -92,40 +101,28 @@ class VideoPickerDialog : DialogFragment(), VideoViewHolder.VideoItemClickListen
 
     private fun populate(items: List<Video>) {
         binding?.let {
-            // it.swipeRefresh.isRefreshing = false
-            // it.loadingProgressBar.visibility = View.GONE
-            // val hasItems = items.isNotEmpty()
-            // val recyclerVisib = if (hasItems) View.VISIBLE else View.GONE
-            // val emptyViewVisib = if (hasItems) View.GONE else View.VISIBLE
-            // it.homeList.visibility = recyclerVisib
-            // it.noResults.visibility = emptyViewVisib
-            // adapter.submitList(items)
             videos.clear()
             videos.addAll(items)
+            val selectedId = arguments?.getString(ARG_CURRENT_VIDEO_ID, videos[0].id)
+            val current = videos.indexOfFirst { it.id == selectedId }
+            videos[current].isPlaying = true
             adapter.notifyDataSetChanged()
+            it.list.scrollToPosition(current)
         }
     }
 
     private fun populateError(error: Exception) {
         binding?.let {
-            // it.swipeRefresh.isRefreshing = false
-            // it.loadingProgressBar.visibility = View.GONE
         }
     }
 
     private fun setupRecycler() {
-        // videos.clear()
-        // videos.addAll(videosCatalog)
-        // val selectedId = arguments?.getString(ARG_CURRENT_VIDEO_ID, videos[0].id)
-        // val current = videos.indexOfFirst { it.id == selectedId }
-        // videos[current].isPlaying = true
         adapter = VideosAdapter(videos, this)
         adapter.setHasStableIds(true)
         binding?.list?.let {
             it.layoutManager = LinearLayoutManager(requireContext())
             it.adapter = adapter
             adapter.notifyDataSetChanged()
-            // it.scrollToPosition(current)
         }
     }
 
