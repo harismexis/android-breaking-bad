@@ -22,12 +22,11 @@ class VideoPickerDialog : DialogFragment(), VideoViewHolder.VideoItemClickListen
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    val viewModel: VideoPickerViewModel by viewModels { viewModelFactory }
+    private val viewModel: VideoPickerViewModel by viewModels { viewModelFactory }
     private var binding: DialogVideosBinding? = null
     private lateinit var adapter: VideosAdapter
     private var videos: MutableList<Video> = mutableListOf()
-    var itemClick: VideoViewHolder.VideoItemClickListener? = null
-
+    private var itemClick: VideoViewHolder.VideoItemClickListener? = null
     private var dialogView: View? = null
 
     companion object {

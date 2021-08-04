@@ -12,10 +12,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class VideoPickerViewModel @Inject constructor(
-    val videosLocal: VideosLocal
+    private val videosLocal: VideosLocal
 ) : ViewModel() {
 
-    private val TAG = VideoPickerViewModel::class.qualifiedName
+    companion object {
+        val TAG = VideoPickerViewModel::class.qualifiedName
+    }
 
     private val mVideos = MutableLiveData<VideosResult>()
     val videos: LiveData<VideosResult>
