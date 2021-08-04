@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.harismexis.breakingbad.core.domain.videosCatalog
 import com.harismexis.breakingbad.framework.data.database.converter.Converter
 import com.harismexis.breakingbad.framework.data.database.dao.*
 import com.harismexis.breakingbad.framework.data.database.table.*
@@ -56,11 +57,9 @@ abstract class BreakingBadDatabase : RoomDatabase() {
     ) : RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
-            instance?.let { database ->
+            instance?.let { _ ->
                 scope.launch(Dispatchers.IO) {
-                    // TODO: Insert videos
-                    // val list = mutableListOf<LocalVideo>()
-                    // instance?.getVideosDao().insert(list)
+                    instance?.getVideosDao()?.insert(videosCatalog.toLocalItems())
                 }
             }
         }
