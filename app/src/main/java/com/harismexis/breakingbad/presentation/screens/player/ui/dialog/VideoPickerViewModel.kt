@@ -23,10 +23,6 @@ class VideoPickerViewModel @Inject constructor(
     val videos: LiveData<VideosResult>
         get() = mVideos
 
-//    private val mShowErrorMessage = MutableLiveData<Event<String>>()
-//    val showErrorMessage: LiveData<Event<String>>
-//        get() = mShowErrorMessage
-
     fun updateVideos() {
         viewModelScope.launch {
             try {
@@ -35,7 +31,6 @@ class VideoPickerViewModel @Inject constructor(
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mVideos.value = VideosResult.Error(e)
-                // mShowErrorMessage.value = Event(e.getErrorMessage())
             }
         }
     }

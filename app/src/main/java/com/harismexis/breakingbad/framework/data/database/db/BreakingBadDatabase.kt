@@ -59,6 +59,7 @@ abstract class BreakingBadDatabase : RoomDatabase() {
             super.onCreate(db)
             instance?.let { _ ->
                 scope.launch(Dispatchers.IO) {
+                    // TODO: Read videos from local json and remove catalog
                     instance?.getVideosDao()?.insert(videosCatalog.toLocalItems())
                 }
             }
