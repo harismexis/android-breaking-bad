@@ -1,15 +1,12 @@
 package com.harismexis.breakingbad.mocks
 
-import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
 import com.harismexis.breakingbad.core.domain.Actor
 import com.harismexis.breakingbad.framework.data.database.table.LocalActor
 import com.harismexis.breakingbad.framework.data.database.table.toLocalItems
 import com.harismexis.breakingbad.framework.data.network.model.RemoteActor
 import com.harismexis.breakingbad.framework.data.network.model.toItems
 import com.harismexis.breakingbad.reader.BaseFileReader
-import java.lang.reflect.Type
-import java.util.*
+import com.harismexis.breakingbad.util.jsonToObject
 
 class MockActorsProvider(private val reader: BaseFileReader) {
 
@@ -128,13 +125,7 @@ class MockActorsProvider(private val reader: BaseFileReader) {
     private fun getMockRemoteActors(
         text: String
     ): List<RemoteActor> {
-        return convertToRemoteActors(text)
-    }
-
-    private fun convertToRemoteActors(jsonFeed: String?): List<RemoteActor> {
-        val gson = GsonBuilder().setLenient().create()
-        val type: Type = object : TypeToken<ArrayList<RemoteActor>>() {}.type
-        return gson.fromJson(jsonFeed, type)
+        return jsonToObject(text)
     }
 
 }
