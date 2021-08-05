@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.util.ui
+package com.harismexis.breakingbad.framework.util
 
 import android.text.SpannableString
 import android.text.Spanned

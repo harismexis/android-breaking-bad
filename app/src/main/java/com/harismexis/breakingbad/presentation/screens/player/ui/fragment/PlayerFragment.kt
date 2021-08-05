@@ -11,13 +11,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.core.domain.Video
-import com.harismexis.breakingbad.core.domain.breakingBadBlooperReel
 import com.harismexis.breakingbad.databinding.FragmentPlayerBinding
 import com.harismexis.breakingbad.framework.util.extensions.hideSystemUI
 import com.harismexis.breakingbad.framework.util.extensions.showSystemUI
 import com.harismexis.breakingbad.presentation.base.BaseFragment
-import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoViewHolder
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoPickerDialog
+import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoViewHolder
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
@@ -32,12 +31,13 @@ class PlayerFragment : BaseFragment(), VideoViewHolder.VideoItemClickListener {
     companion object {
         const val TAG_VIDEOS_DIALOG = "videos_dialog"
         const val ARG_VIDEO_ID = "arg_video_id"
+        const val BREAKING_BAD_BLOOPER_REEL = "QmHCn5xXHjI"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            videoId = it.getString(ARG_VIDEO_ID, breakingBadBlooperReel)
+            videoId = it.getString(ARG_VIDEO_ID, BREAKING_BAD_BLOOPER_REEL)
         }
     }
 

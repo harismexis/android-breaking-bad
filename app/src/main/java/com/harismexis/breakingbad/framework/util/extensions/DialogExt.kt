@@ -10,3 +10,11 @@ fun Dialog?.makeFullScreen() {
         it.window?.setLayout(width, height)
     }
 }
+
+fun Dialog?.makeFullScreenHeight() {
+    this?.let {
+        val width = ViewGroup.LayoutParams.WRAP_CONTENT
+        val height = ViewGroup.LayoutParams.MATCH_PARENT
+        it.window?.setLayout(width, height)
+    }
+}

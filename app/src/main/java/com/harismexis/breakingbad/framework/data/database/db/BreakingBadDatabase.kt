@@ -6,10 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.harismexis.breakingbad.core.domain.videosCatalog
 import com.harismexis.breakingbad.framework.data.database.converter.Converter
 import com.harismexis.breakingbad.framework.data.database.dao.*
 import com.harismexis.breakingbad.framework.data.database.table.*
+import com.harismexis.breakingbad.framework.util.extensions.getVideosFromRaw
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -44,7 +44,7 @@ abstract class BreakingBadDatabase : RoomDatabase() {
                     DATABASE_FILE_NAME
                 )
                     .fallbackToDestructiveMigration()
-                    .addCallback(DatabaseCallback(scope))
+                    .addCallback(DatabaseCallback(context, scope))
                     .build()
                 this.instance = instance
                 instance
@@ -53,14 +53,16 @@ abstract class BreakingBadDatabase : RoomDatabase() {
     }
 
     private class DatabaseCallback(
+        private val context: Context,
         private val scope: CoroutineScope
     ) : RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
             instance?.let { _ ->
                 scope.launch(Dispatchers.IO) {
-                    // TODO: Read videos from local json and remove catalog
-                    instance?.getVideosDao()?.insert(videosCatalog.toLocalItems())
+                    instance?.getVideosDao()?.insert(
+                        context.applicationContext.getVideosFromRaw().toLocalItems()
+                    )
                 }
             }
         }
@@ -76,3 +78,4 @@ abstract class BreakingBadDatabase : RoomDatabase() {
 
     abstract fun getVideosDao(): VideosDao
 }
+
