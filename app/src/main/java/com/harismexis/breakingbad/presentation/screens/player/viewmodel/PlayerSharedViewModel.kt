@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.presentation.screens.player.ui.dialog
+package com.harismexis.breakingbad.presentation.screens.player.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -8,20 +8,25 @@ import androidx.lifecycle.viewModelScope
 import com.harismexis.breakingbad.core.repository.video.VideosLocal
 import com.harismexis.breakingbad.core.result.VideosResult
 import com.harismexis.breakingbad.core.util.getErrorMessage
+import com.harismexis.breakingbad.framework.util.event.Event
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class VideoPickerViewModel @Inject constructor(
+class PlayerSharedViewModel @Inject constructor(
     private val videosLocal: VideosLocal
 ) : ViewModel() {
 
     companion object {
-        val TAG = VideoPickerViewModel::class.qualifiedName
+        val TAG = PlayerSharedViewModel::class.qualifiedName
     }
 
     private val mVideos = MutableLiveData<VideosResult>()
     val videos: LiveData<VideosResult>
         get() = mVideos
+
+    private val mLoadVideo = MutableLiveData<Event<String>>()
+    val loadVideo: LiveData<Event<String>>
+        get() = mLoadVideo
 
     fun updateVideos() {
         viewModelScope.launch {
@@ -33,6 +38,10 @@ class VideoPickerViewModel @Inject constructor(
                 mVideos.value = VideosResult.Error(e)
             }
         }
+    }
+
+    fun loadVideo(videoId: String) {
+        mLoadVideo.value = Event(videoId)
     }
 
 }

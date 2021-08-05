@@ -7,22 +7,24 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.annotation.NonNull
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.harismexis.breakingbad.R
-import com.harismexis.breakingbad.core.domain.Video
 import com.harismexis.breakingbad.databinding.FragmentPlayerBinding
+import com.harismexis.breakingbad.framework.util.event.EventObserver
 import com.harismexis.breakingbad.framework.util.extensions.hideSystemUI
 import com.harismexis.breakingbad.framework.util.extensions.showSystemUI
 import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoPickerDialog
-import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoViewHolder
+import com.harismexis.breakingbad.presentation.screens.player.viewmodel.PlayerSharedViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
 
-class PlayerFragment : BaseFragment(), VideoViewHolder.VideoItemClickListener {
+class PlayerFragment : BaseFragment() {
 
+    private val viewModel: PlayerSharedViewModel by activityViewModels { viewModelFactory }
     private lateinit var videoId: String
     private var binding: FragmentPlayerBinding? = null
     private var videoPlayer: YouTubePlayer? = null
@@ -52,19 +54,27 @@ class PlayerFragment : BaseFragment(), VideoViewHolder.VideoItemClickListener {
     }
 
     override fun onViewCreated() {
-        initPlayerAndStartPlayback(videoId)
+        initPlayer(videoId)
     }
 
-    private fun initPlayerAndStartPlayback(videoId: String) {
+    private fun initPlayer(videoId: String) {
         binding?.let {
             lifecycle.addObserver(it.youTubeView)
             it.youTubeView.initialize(object : AbstractYouTubePlayerListener() {
                 override fun onReady(@NonNull youTubePlayer: YouTubePlayer) {
                     videoPlayer = youTubePlayer
                     videoPlayer?.loadVideo(videoId, 0f)
+                    observeLiveData()
                 }
             })
         }
+    }
+
+    private fun observeLiveData() {
+        viewModel.loadVideo.observe(viewLifecycleOwner, EventObserver {
+            videoId = it
+            videoPlayer?.loadVideo(it, 0f)
+        })
     }
 
     private fun addBackNavigation() {
@@ -101,7 +111,7 @@ class PlayerFragment : BaseFragment(), VideoViewHolder.VideoItemClickListener {
 
     private fun showVideosDialog() {
         binding?.youTubeView?.getPlayerUiController()?.getMenu()?.dismiss()
-        VideoPickerDialog.newInstance(videoId, this)
+        VideoPickerDialog.newInstance(videoId)
             .show(childFragmentManager, TAG_VIDEOS_DIALOG)
     }
 
@@ -126,11 +136,5 @@ class PlayerFragment : BaseFragment(), VideoViewHolder.VideoItemClickListener {
         return binding?.root
     }
 
-    override fun onVideoClicked(item: Video, position: Int) {
-        videoId = item.id
-        videoPlayer?.loadVideo(item.id, 0f)
-    }
-
     override fun getSwipeRefreshLayout(): SwipeRefreshLayout? = null
-
 }

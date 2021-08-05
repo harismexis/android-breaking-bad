@@ -9,13 +9,14 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.breakingbad.core.domain.Video
 import com.harismexis.breakingbad.core.result.VideosResult
 import com.harismexis.breakingbad.databinding.DialogVideosBinding
 import com.harismexis.breakingbad.framework.util.extensions.makeFullScreenHeight
+import com.harismexis.breakingbad.presentation.screens.player.viewmodel.PlayerSharedViewModel
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -23,25 +24,22 @@ class VideoPickerDialog : DialogFragment(), VideoViewHolder.VideoItemClickListen
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel: VideoPickerViewModel by viewModels { viewModelFactory }
+    private val viewModel: PlayerSharedViewModel by activityViewModels { viewModelFactory }
     private var binding: DialogVideosBinding? = null
     private lateinit var adapter: VideosAdapter
     private var videos: MutableList<Video> = mutableListOf()
-    private var itemClick: VideoViewHolder.VideoItemClickListener? = null
     private var dialogView: View? = null
 
     companion object {
         private const val ARG_CURRENT_VIDEO_ID = "current_video_id"
 
         fun newInstance(
-            selectedVideoId: String,
-            itemClick: VideoViewHolder.VideoItemClickListener?
+            selectedVideoId: String
         ): VideoPickerDialog {
             val fragment = VideoPickerDialog()
             val args = Bundle()
             args.putString(ARG_CURRENT_VIDEO_ID, selectedVideoId)
             fragment.arguments = args
-            fragment.itemClick = itemClick
             return fragment
         }
     }
@@ -128,12 +126,12 @@ class VideoPickerDialog : DialogFragment(), VideoViewHolder.VideoItemClickListen
         }
     }
 
-    override fun onVideoClicked(item: Video, position: Int) {
+    override fun onVideoSelected(item: Video, position: Int) {
         dismiss()
         videos.forEach { it.isPlaying = false }
         videos[position].isPlaying = true
         adapter.notifyDataSetChanged()
-        itemClick?.onVideoClicked(item, position)
+        viewModel.loadVideo(item.id)
     }
 
 }

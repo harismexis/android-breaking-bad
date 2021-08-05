@@ -12,7 +12,7 @@ class VideoViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     interface VideoItemClickListener {
-        fun onVideoClicked(item: Video, position: Int)
+        fun onVideoSelected(item: Video, position: Int)
     }
 
     fun bind(
@@ -23,7 +23,7 @@ class VideoViewHolder(
         val color = if (item.isPlaying) itemView.context.getColorCompat(R.color.light_green_six)
                     else itemView.context.getColorCompat(R.color.white)
         binding.txtInfo.setTextColor(color)
-        itemView.setOnClickListener { itemClick?.onVideoClicked(item, position) }
+        itemView.setOnClickListener { itemClick?.onVideoSelected(item, position) }
     }
 
 }
