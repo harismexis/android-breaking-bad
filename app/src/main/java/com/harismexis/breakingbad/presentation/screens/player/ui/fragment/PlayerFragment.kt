@@ -15,14 +15,14 @@ import com.harismexis.breakingbad.databinding.FragmentPlayerBinding
 import com.harismexis.breakingbad.framework.util.event.EventObserver
 import com.harismexis.breakingbad.framework.util.extensions.hideSystemUI
 import com.harismexis.breakingbad.framework.util.extensions.showSystemUI
-import com.harismexis.breakingbad.presentation.base.BaseFragment
+import com.harismexis.breakingbad.presentation.base.BaseDIFragment
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoPickerDialog
 import com.harismexis.breakingbad.presentation.screens.player.viewmodel.PlayerSharedViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
 
-class PlayerFragment : BaseFragment() {
+class PlayerFragment : BaseDIFragment() {
 
     private val viewModel: PlayerSharedViewModel by activityViewModels { viewModelFactory }
     private lateinit var videoId: String

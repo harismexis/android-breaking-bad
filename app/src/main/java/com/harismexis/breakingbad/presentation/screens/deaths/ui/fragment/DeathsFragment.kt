@@ -17,12 +17,12 @@ import com.harismexis.breakingbad.databinding.FragmentDeathsBinding
 import com.harismexis.breakingbad.framework.util.event.EventObserver
 import com.harismexis.breakingbad.framework.util.extensions.setDivider
 import com.harismexis.breakingbad.framework.util.extensions.showSnackBar
-import com.harismexis.breakingbad.presentation.base.BaseFragment
+import com.harismexis.breakingbad.presentation.base.BaseDIFragment
 import com.harismexis.breakingbad.presentation.screens.deaths.ui.adapter.DeathAdapter
 import com.harismexis.breakingbad.presentation.screens.deaths.viewmodel.DeathsViewModel
 import com.harismexis.breakingbad.presentation.screens.player.ui.fragment.PlayerFragment
 
-class DeathsFragment : BaseFragment() {
+class DeathsFragment : BaseDIFragment() {
 
     private val viewModel: DeathsViewModel by viewModels { viewModelFactory }
     private var binding: FragmentDeathsBinding? = null

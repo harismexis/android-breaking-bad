@@ -24,12 +24,12 @@ import com.harismexis.breakingbad.framework.util.event.EventObserver
 import com.harismexis.breakingbad.framework.util.extensions.hideKeyboard
 import com.harismexis.breakingbad.framework.util.extensions.showSnackBar
 import com.harismexis.breakingbad.framework.util.googleMapsNewMexico
-import com.harismexis.breakingbad.presentation.base.BaseFragment
+import com.harismexis.breakingbad.presentation.base.BaseDIFragment
 import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorListAdapter
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 
-class HomeFragment : BaseFragment(),
+class HomeFragment : BaseDIFragment(),
     ActorViewHolder.ActorClickListener,
     android.widget.SearchView.OnQueryTextListener,
     NavigationView.OnNavigationItemSelectedListener {

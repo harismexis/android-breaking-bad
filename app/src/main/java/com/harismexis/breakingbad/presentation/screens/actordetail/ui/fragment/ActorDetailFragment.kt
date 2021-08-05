@@ -19,10 +19,10 @@ import com.harismexis.breakingbad.framework.util.extensions.populateWithGlide
 import com.harismexis.breakingbad.framework.util.extensions.setTextOrUnknown
 import com.harismexis.breakingbad.framework.util.extensions.showToast
 import com.harismexis.breakingbad.framework.util.getLinkSpanned
-import com.harismexis.breakingbad.presentation.base.BaseFragment
+import com.harismexis.breakingbad.presentation.base.BaseDIFragment
 import com.harismexis.breakingbad.presentation.screens.actordetail.viewmodel.ActorDetailViewModel
 
-class ActorDetailFragment : BaseFragment() {
+class ActorDetailFragment : BaseDIFragment() {
 
     private var binding: FragmentActorDetailBinding? = null
     private var detailBinding: ActorDetailBinding? = null

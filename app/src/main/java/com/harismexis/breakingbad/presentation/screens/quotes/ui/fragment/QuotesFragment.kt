@@ -14,11 +14,11 @@ import com.harismexis.breakingbad.databinding.FragmentQuotesBinding
 import com.harismexis.breakingbad.framework.util.event.EventObserver
 import com.harismexis.breakingbad.framework.util.extensions.setDivider
 import com.harismexis.breakingbad.framework.util.extensions.showSnackBar
-import com.harismexis.breakingbad.presentation.base.BaseFragment
+import com.harismexis.breakingbad.presentation.base.BaseDIFragment
 import com.harismexis.breakingbad.presentation.screens.quotes.ui.adapter.QuoteAdapter
 import com.harismexis.breakingbad.presentation.screens.quotes.viewmodel.QuotesViewModel
 
-class QuotesFragment : BaseFragment() {
+class QuotesFragment : BaseDIFragment() {
 
     private val viewModel: QuotesViewModel by viewModels { viewModelFactory }
     private var binding: FragmentQuotesBinding? = null

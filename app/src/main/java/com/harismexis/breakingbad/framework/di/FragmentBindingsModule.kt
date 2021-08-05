@@ -1,6 +1,5 @@
 package com.harismexis.breakingbad.framework.di
 
-import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.actordetail.ui.fragment.ActorDetailFragment
 import com.harismexis.breakingbad.presentation.screens.deaths.ui.fragment.DeathsFragment
 import com.harismexis.breakingbad.presentation.screens.episodes.ui.fragment.EpisodesFragment
@@ -8,15 +7,11 @@ import com.harismexis.breakingbad.presentation.screens.home.ui.fragment.HomeFrag
 import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoPickerDialog
 import com.harismexis.breakingbad.presentation.screens.player.ui.fragment.PlayerFragment
 import com.harismexis.breakingbad.presentation.screens.quotes.ui.fragment.QuotesFragment
-
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class FragmentBindingsModule {
-
-    @ContributesAndroidInjector
-    abstract fun baseFragment(): BaseFragment
 
     @ContributesAndroidInjector
     abstract fun homeFragment(): HomeFragment

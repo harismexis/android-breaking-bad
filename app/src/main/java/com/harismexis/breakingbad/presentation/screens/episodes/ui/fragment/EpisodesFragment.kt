@@ -14,11 +14,11 @@ import com.harismexis.breakingbad.databinding.FragmentEpisodesBinding
 import com.harismexis.breakingbad.framework.util.event.EventObserver
 import com.harismexis.breakingbad.framework.util.extensions.setDivider
 import com.harismexis.breakingbad.framework.util.extensions.showSnackBar
-import com.harismexis.breakingbad.presentation.base.BaseFragment
+import com.harismexis.breakingbad.presentation.base.BaseDIFragment
 import com.harismexis.breakingbad.presentation.screens.episodes.ui.adapter.EpisodeAdapter
 import com.harismexis.breakingbad.presentation.screens.episodes.viewmodel.EpisodesViewModel
 
-class EpisodesFragment : BaseFragment() {
+class EpisodesFragment : BaseDIFragment() {
 
     companion object {
         private const val ARG_SERIES_NAME = "series_name"
