@@ -4,6 +4,7 @@ import android.view.Gravity
 import androidx.annotation.IdRes
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.launchActivity
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -45,13 +46,17 @@ class HomeScreenTest : BaseInstrumentedTest() {
     private lateinit var actorsSuccess: ActorsResult.Success
     private val mockActorsResult = MutableLiveData<ActorsResult>()
 
+    private fun launchComponentUnderTest(): ActivityScenario<MainActivity> {
+        return launchActivity<MainActivity>()
+    }
+
     @Test
     fun actorsFeedHasAllItemsValid_listHasExpectedItems() {
         // given
         mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid())
 
         // when
-        val scenario = launchActivity<MainActivity>()
+        launchComponentUnderTest()
 
         // then
         verifyRecycler(NUM_ACTORS_WHEN_ALL_IDS_VALID)
@@ -63,7 +68,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasSomeInvalidIds())
 
         // when
-        val scenario = launchActivity<MainActivity>()
+        launchComponentUnderTest()
 
         // then
         verifyRecycler(NUM_ACTORS_WHEN_SOME_IDS_INVALID)
@@ -75,7 +80,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasSomeEmptyItems())
 
         // when
-        val scenario = launchActivity<MainActivity>()
+        launchComponentUnderTest()
 
         // then
         verifyRecycler(NUM_ACTORS_WHEN_SOME_EMPTY)
@@ -87,7 +92,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasAllIdsInvalid())
 
         // when
-        val scenario = launchActivity<MainActivity>()
+        launchComponentUnderTest()
 
         // then
         verifyRecyclerEmpty()
@@ -99,7 +104,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         mockInitialResults(mockActorsProvider.getMockActorsWhenJsonIsEmpty())
 
         // when
-        val scenario = launchActivity<MainActivity>()
+        launchComponentUnderTest()
 
         // then
         verifyRecyclerEmpty()
@@ -112,7 +117,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         // given
         mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid())
         // when
-        val scenario = launchActivity<MainActivity>()
+        launchComponentUnderTest()
         // then
         verifyRecycler(NUM_ACTORS_WHEN_ALL_IDS_VALID)
 
@@ -142,7 +147,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid())
 
         // when
-        val scenario = launchActivity<MainActivity>()
+        launchComponentUnderTest()
 
         // then
         onView(withId(R.id.home_drawer_layout))
@@ -173,7 +178,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         mockInitialResults(mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid())
 
         // when
-        val scenario = launchActivity<MainActivity>()
+        launchComponentUnderTest()
 
         // then
         onView(withId(R.id.bottom_nav_view))

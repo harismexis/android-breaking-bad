@@ -93,7 +93,6 @@ class PlayerFragment : BaseDIFragment() {
             backIcon.layoutParams = params
             backIcon.setImageResource(R.drawable.ic_arrow_left_white_rounded_24dp)
             backIcon.setOnClickListener {
-                // TODO: Here it navigates always to Home
                 findNavController().popBackStack()
             }
             controls.addView(backIcon)
