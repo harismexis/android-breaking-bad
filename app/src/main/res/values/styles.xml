@@ -81,7 +81,7 @@
     </style>
 
     <style name="AppToolbar">
-        <item name="android:background">@color/black_six</item>
+        <item name="android:background">@color/black</item>
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

@@ -20,7 +20,6 @@ import com.harismexis.breakingbad.presentation.screens.player.ui.dialog.VideoPic
 import com.harismexis.breakingbad.presentation.screens.player.viewmodel.PlayerSharedViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem
 
 class PlayerFragment : BaseDIFragment() {
 
@@ -49,8 +48,9 @@ class PlayerFragment : BaseDIFragment() {
 
     override fun onCreateView() {
         addBackNavigation()
+        addShowVideoPickerBtn()
         initFullScreenBtn()
-        initPlayerMenu()
+        hidePlayerMenuBtn()
     }
 
     override fun onViewCreated() {
@@ -99,16 +99,36 @@ class PlayerFragment : BaseDIFragment() {
         }
     }
 
-    private fun initPlayerMenu() {
+    private fun addShowVideoPickerBtn() {
         binding?.let {
-            val controller = it.youTubeView.getPlayerUiController()
-            controller.showMenuButton(true)
-            controller.getMenu()?.addItem(MenuItem(getString(R.string.videos))
-            { showVideosDialog() })
+            val controls = it.youTubeView.findViewById<RelativeLayout>(R.id.controls_container)
+            val backIcon = ImageView(context)
+            val params = RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+            )
+            params.marginEnd =
+                resources.getDimensionPixelSize(R.dimen.player_menu_icon_margin_end)
+            params.topMargin = resources.getDimensionPixelSize(R.dimen.player_back_icon_margin_top)
+            params.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE)
+            params.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE)
+            backIcon.layoutParams = params
+            backIcon.setImageResource(R.drawable.ic_subscriptions_white_24dp)
+            backIcon.setOnClickListener {
+                showVideoPicker()
+            }
+            controls.addView(backIcon)
         }
     }
 
-    private fun showVideosDialog() {
+    private fun hidePlayerMenuBtn() {
+        binding?.let {
+            val controller = it.youTubeView.getPlayerUiController()
+            controller.showMenuButton(false)
+        }
+    }
+
+    private fun showVideoPicker() {
         binding?.youTubeView?.getPlayerUiController()?.getMenu()?.dismiss()
         VideoPickerDialog.newInstance(videoId)
             .show(childFragmentManager, TAG_VIDEOS_DIALOG)

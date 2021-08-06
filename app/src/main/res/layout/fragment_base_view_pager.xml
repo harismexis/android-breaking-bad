@@ -39,7 +39,7 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorColor="@color/grey_nine"
+            app:tabIndicatorColor="@color/light_green_six"
             app:tabTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>

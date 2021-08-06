@@ -44,6 +44,7 @@
 
     <!-- player -->
     <dimen name="player_back_icon_margin_start">10dp</dimen>
+    <dimen name="player_menu_icon_margin_end">100dp</dimen>
     <dimen name="player_back_icon_margin_top">10dp</dimen>
 
     <!-- recycler divider -->

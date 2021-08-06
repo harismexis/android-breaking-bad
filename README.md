@@ -24,13 +24,11 @@ The project contains some Unit Tests and Instrumented Tests.
 #### Home
 ![Alt text](screenshots/home-1.png?raw=true "app screenshot")
 
-![Alt text](screenshots/home-3.png?raw=true "app screenshot")
-
-#### Actor Details
-![Alt text](screenshots/actor-detail-1.png?raw=true "app screenshot")
+#### Actor Detail
+![Alt text](screenshots/detail.png?raw=true "app screenshot")
 
 #### Episodes
-![Alt text](screenshots/episodes-tabs.png?raw=true "app screenshot")
+![Alt text](screenshots/episodes.png?raw=true "app screenshot")
 
 #### Player
 ![Alt text](screenshots/player.png?raw=true "app screenshot")
@@ -41,4 +39,4 @@ The project contains some Unit Tests and Instrumented Tests.
 ![Alt text](screenshots/quotes.png?raw=true "app screenshot")
 
 #### Deaths
-![Alt text](screenshots/deaths-bb.png?raw=true "app screenshot")
+![Alt text](screenshots/deaths.png?raw=true "app screenshot")
