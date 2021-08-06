@@ -14,7 +14,7 @@
         android:id="@+id/txt_victim_label"
         style="@style/VhBaseMeta"
         android:text="@string/label_death_victim"
-        android:textColor="@color/light_green_six"
+        android:textColor="@color/main_color"
         tools:text="Victim label" />
 
     <TextView
@@ -28,7 +28,7 @@
         style="@style/VhBaseMeta"
         android:layout_marginTop="@dimen/vh_death_label_margin_top"
         android:text="@string/label_death_cause"
-        android:textColor="@color/light_green_six"
+        android:textColor="@color/main_color"
         tools:text="Cause label" />
 
     <TextView
@@ -42,7 +42,7 @@
         style="@style/VhBaseMeta"
         android:layout_marginTop="@dimen/vh_death_label_margin_top"
         android:text="@string/label_death_responsible"
-        android:textColor="@color/light_green_six"
+        android:textColor="@color/main_color"
         tools:text="Responsible label" />
 
     <TextView

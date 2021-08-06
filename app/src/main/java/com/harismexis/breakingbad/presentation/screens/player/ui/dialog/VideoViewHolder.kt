@@ -20,7 +20,7 @@ class VideoViewHolder(
         position: Int
     ) {
         binding.txtInfo.text = item.title
-        val color = if (item.isPlaying) itemView.context.getColorCompat(R.color.light_green_six)
+        val color = if (item.isPlaying) itemView.context.getColorCompat(R.color.main_color)
                     else itemView.context.getColorCompat(R.color.white)
         binding.txtInfo.setTextColor(color)
         itemView.setOnClickListener { itemClick?.onVideoSelected(item, position) }

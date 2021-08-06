@@ -30,7 +30,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/light_green_six" />
+        android:background="@color/main_color" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"

@@ -60,7 +60,7 @@
 
     <style name="ItemDetailLabel" parent="BaseTxtv">
         <item name="android:textSize">@dimen/actor_detail_label_text_size</item>
-        <item name="android:textColor">@color/light_green_six</item>
+        <item name="android:textColor">@color/main_color</item>
     </style>
 
     <style name="ItemDetailMeta" parent="BaseTxtv">
