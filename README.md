@@ -29,16 +29,16 @@ The project contains some Unit Tests and Instrumented Tests.
 #### Actor Details
 ![Alt text](screenshots/actor-detail-1.png?raw=true "app screenshot")
 
-#### Quotes
-![Alt text](screenshots/quotes.png?raw=true "app screenshot")
-
-#### Deaths
-![Alt text](screenshots/deaths-bb.png?raw=true "app screenshot")
-
 #### Episodes
 ![Alt text](screenshots/episodes-tabs.png?raw=true "app screenshot")
 
 #### Player
 ![Alt text](screenshots/player.png?raw=true "app screenshot")
 
-![Alt text](screenshots/player-2.png?raw=true "app screenshot")
+![Alt text](screenshots/videos-2021-08-06-205042.png?raw=true "app screenshot")
+
+#### Quotes
+![Alt text](screenshots/quotes.png?raw=true "app screenshot")
+
+#### Deaths
+![Alt text](screenshots/deaths-bb.png?raw=true "app screenshot")

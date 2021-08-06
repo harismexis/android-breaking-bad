@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@drawable/bg_video_picker"
     android:orientation="vertical"
     tools:context=".presentation.screens.player.ui.dialog.VideoPickerDialog">
 
@@ -30,7 +30,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/white" />
+        android:background="@color/light_green_six" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
