@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.di
+package com.harismexis.breakingbad.framework.di.module
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

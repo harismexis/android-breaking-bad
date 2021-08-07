@@ -1,6 +1,6 @@
 package com.harismexis.breakingbad.config.application
 
-import com.harismexis.breakingbad.config.di.DaggerInstrumentedComponent
+import com.harismexis.breakingbad.config.di.component.DaggerInstrumentedComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 

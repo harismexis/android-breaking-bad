@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.di
+package com.harismexis.breakingbad.framework.di.module
 
 import com.harismexis.breakingbad.core.repository.actor.ActorsLocal
 import com.harismexis.breakingbad.core.repository.actor.ActorsRemote

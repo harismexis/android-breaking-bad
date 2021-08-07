@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.framework.di
+package com.harismexis.breakingbad.framework.di.module
 
 import com.harismexis.breakingbad.framework.application.MainApplication
 import com.harismexis.breakingbad.framework.data.database.dao.*

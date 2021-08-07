@@ -1,6 +1,10 @@
-package com.harismexis.breakingbad.framework.di
+package com.harismexis.breakingbad.framework.di.component
 
 import com.harismexis.breakingbad.framework.application.MainApplication
+import com.harismexis.breakingbad.framework.di.module.BreakingBadApiModule
+import com.harismexis.breakingbad.framework.di.module.FragmentBindingsModule
+import com.harismexis.breakingbad.framework.di.module.RepositoryModule
+import com.harismexis.breakingbad.framework.di.module.RoomModule
 import com.harismexis.breakingbad.presentation.vmfactory.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component

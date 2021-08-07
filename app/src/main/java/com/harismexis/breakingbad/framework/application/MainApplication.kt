@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.framework.application
 
-import com.harismexis.breakingbad.framework.di.DaggerMainComponent
-import com.harismexis.breakingbad.framework.di.MainComponent
+import com.harismexis.breakingbad.framework.di.component.DaggerMainComponent
+import com.harismexis.breakingbad.framework.di.component.MainComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
