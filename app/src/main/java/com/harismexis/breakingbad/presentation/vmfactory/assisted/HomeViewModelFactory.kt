@@ -10,7 +10,7 @@ class HomeViewModelFactory @Inject constructor(
     private val actorRemote: ActorsRemote,
     private val actorLocal: ActorsLocal,
 ) : ViewModelAssistedFactory<HomeViewModel> {
-    override fun create(handle: SavedStateHandle): HomeViewModel {
-        return HomeViewModel(actorRemote, actorLocal, handle)
-    }
+    override fun create(handle: SavedStateHandle): HomeViewModel =
+        HomeViewModel(actorRemote, actorLocal, handle)
+
 }

@@ -12,6 +12,5 @@ class ViewModelFactory @Inject constructor(
 ) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T =
-        viewModels[modelClass]?.get() as? T
-            ?: throw IllegalArgumentException("ViewModel not bound")
+        viewModels[modelClass]?.get() as T
 }

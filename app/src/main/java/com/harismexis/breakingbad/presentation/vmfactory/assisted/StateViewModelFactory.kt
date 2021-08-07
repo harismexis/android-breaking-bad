@@ -16,7 +16,6 @@ class StateViewModelFactory<out V : ViewModel>(
         key: String,
         modelClass: Class<T>,
         handle: SavedStateHandle
-    ): T {
-        return viewModelFactory.create(handle) as T
-    }
+    ): T = viewModelFactory.create(handle) as T
+
 }
