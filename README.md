@@ -22,7 +22,7 @@ The project contains some Unit Tests and Instrumented Tests.
 ### Screenshots
 
 #### Home
-![Alt text](screenshots/home-1.png?raw=true "app screenshot")
+![Alt text](screenshots/home.png?raw=true "app screenshot")
 
 #### Actor Detail
 ![Alt text](screenshots/detail.png?raw=true "app screenshot")
