@@ -1,5 +1,6 @@
 package com.harismexis.breakingbad.presentation.screens.home.ui.fragment
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
@@ -24,15 +25,16 @@ import com.harismexis.breakingbad.framework.util.event.EventObserver
 import com.harismexis.breakingbad.framework.util.extensions.hideKeyboard
 import com.harismexis.breakingbad.framework.util.extensions.showSnackBar
 import com.harismexis.breakingbad.framework.util.googleMapsNewMexico
-import com.harismexis.breakingbad.presentation.base.BaseDIFragment
+import com.harismexis.breakingbad.presentation.base.BaseFragment
 import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorListAdapter
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 import com.harismexis.breakingbad.presentation.vmfactory.assisted.StateViewModelFactory
 import com.harismexis.breakingbad.presentation.vmfactory.assisted.ViewModelAssistedFactory
+import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-class HomeFragment : BaseDIFragment(),
+class HomeFragment : BaseFragment(),
     ActorViewHolder.ActorClickListener,
     android.widget.SearchView.OnQueryTextListener,
     NavigationView.OnNavigationItemSelectedListener {
@@ -52,6 +54,11 @@ class HomeFragment : BaseDIFragment(),
         container: ViewGroup?
     ) {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+    }
+
+    override fun onAttach(context: Context) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
     }
 
     override fun onCreateView() {
