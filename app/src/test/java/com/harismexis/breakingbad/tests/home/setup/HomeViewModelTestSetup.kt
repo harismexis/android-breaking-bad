@@ -1,6 +1,7 @@
 package com.harismexis.breakingbad.tests.home.setup
 
 import androidx.lifecycle.Observer
+import androidx.lifecycle.SavedStateHandle
 import com.harismexis.breakingbad.base.BaseUnitTest
 import com.harismexis.breakingbad.core.domain.Actor
 import com.harismexis.breakingbad.core.result.ActorsResult
@@ -21,6 +22,8 @@ abstract class HomeViewModelTestSetup : BaseUnitTest() {
     @Mock
     protected lateinit var mockActorLocal: ActorsLocalRepository
     @Mock
+    protected lateinit var mockStateHandle: SavedStateHandle
+    @Mock
     lateinit var mockObserver: Observer<ActorsResult>
 
     private val mockActors = mockActorsProvider.getMockActorsWhenJsonHasAllItemsValid()
@@ -35,7 +38,7 @@ abstract class HomeViewModelTestSetup : BaseUnitTest() {
     }
 
     protected fun initSubject() {
-        subject = HomeViewModel(mockActorRemote, mockActorLocal)
+        subject = HomeViewModel(mockActorRemote, mockActorLocal, mockStateHandle)
     }
 
     // Remote Call

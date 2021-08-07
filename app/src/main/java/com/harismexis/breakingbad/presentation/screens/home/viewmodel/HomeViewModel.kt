@@ -1,21 +1,18 @@
 package com.harismexis.breakingbad.presentation.screens.home.viewmodel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.harismexis.breakingbad.core.repository.actor.ActorsLocal
 import com.harismexis.breakingbad.core.repository.actor.ActorsRemote
 import com.harismexis.breakingbad.core.result.ActorsResult
-import com.harismexis.breakingbad.framework.util.event.Event
 import com.harismexis.breakingbad.core.util.getErrorMessage
+import com.harismexis.breakingbad.framework.util.event.Event
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(
+class HomeViewModel (
     private val actorRemote: ActorsRemote,
-    private val actorLocal: ActorsLocal
+    private val actorLocal: ActorsLocal,
+    private val stateHandle: SavedStateHandle
 ) : ViewModel() {
 
     companion object {

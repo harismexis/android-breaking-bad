@@ -1,4 +1,4 @@
-package com.harismexis.breakingbad.presentation.factory
+package com.harismexis.breakingbad.presentation.vmfactory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -8,6 +8,8 @@ import com.harismexis.breakingbad.presentation.screens.episodes.viewmodel.Episod
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
 import com.harismexis.breakingbad.presentation.screens.player.viewmodel.PlayerSharedViewModel
 import com.harismexis.breakingbad.presentation.screens.quotes.viewmodel.QuotesViewModel
+import com.harismexis.breakingbad.presentation.vmfactory.assisted.HomeViewModelFactory
+import com.harismexis.breakingbad.presentation.vmfactory.assisted.ViewModelAssistedFactory
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -21,8 +23,10 @@ import kotlin.reflect.KClass
 class ViewModelFactory @Inject constructor(
     private val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>>
 ) : ViewModelProvider.Factory {
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T =
-        viewModels[modelClass]?.get() as T
+        viewModels[modelClass]?.get() as? T
+            ?: throw IllegalArgumentException("ViewModel not bound")
 }
 
 @Target(
@@ -38,12 +42,12 @@ internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
 abstract class ViewModelModule {
 
     @Binds
-    internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+    internal abstract fun bindHomeViewModelFactory(factory: HomeViewModelFactory)
+            : ViewModelAssistedFactory<HomeViewModel>
 
     @Binds
-    @IntoMap
-    @ViewModelKey(HomeViewModel::class)
-    internal abstract fun homeViewModel(viewModel: HomeViewModel): ViewModel
+    internal abstract fun bindViewModelFactory(factory: ViewModelFactory)
+            : ViewModelProvider.Factory
 
     @Binds
     @IntoMap

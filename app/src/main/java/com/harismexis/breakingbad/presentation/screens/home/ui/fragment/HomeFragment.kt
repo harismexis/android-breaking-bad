@@ -28,13 +28,22 @@ import com.harismexis.breakingbad.presentation.base.BaseDIFragment
 import com.harismexis.breakingbad.presentation.screens.home.ui.adapter.ActorListAdapter
 import com.harismexis.breakingbad.presentation.screens.home.ui.viewholder.ActorViewHolder
 import com.harismexis.breakingbad.presentation.screens.home.viewmodel.HomeViewModel
+import com.harismexis.breakingbad.presentation.vmfactory.assisted.StateViewModelFactory
+import com.harismexis.breakingbad.presentation.vmfactory.assisted.ViewModelAssistedFactory
+import javax.inject.Inject
 
 class HomeFragment : BaseDIFragment(),
     ActorViewHolder.ActorClickListener,
     android.widget.SearchView.OnQueryTextListener,
     NavigationView.OnNavigationItemSelectedListener {
 
-    private val viewModel: HomeViewModel by viewModels { viewModelFactory }
+    @Inject
+    internal lateinit var vmFactory: ViewModelAssistedFactory<HomeViewModel>
+
+    private val viewModel: HomeViewModel by viewModels {
+        StateViewModelFactory(vmFactory, this)
+    }
+
     private var binding: FragmentHomeBinding? = null
     private lateinit var adapter: ActorListAdapter
 

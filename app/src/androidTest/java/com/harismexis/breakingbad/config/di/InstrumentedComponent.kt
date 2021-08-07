@@ -1,7 +1,7 @@
 package com.harismexis.breakingbad.config.di
 
 import com.harismexis.breakingbad.config.application.InstrumentedApplication
-import com.harismexis.breakingbad.config.factory.InstrumentedViewModelModule
+import com.harismexis.breakingbad.config.vmfactory.InstrumentedViewModelModule
 import com.harismexis.breakingbad.framework.di.FragmentBindingsModule
 import dagger.BindsInstance
 import dagger.Component
