@@ -18,11 +18,6 @@ import com.harismexis.breakingbad.R
 import com.harismexis.breakingbad.base.BaseInstrumentedTest
 import com.harismexis.breakingbad.core.domain.Actor
 import com.harismexis.breakingbad.core.result.ActorsResult
-import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_ALL_IDS_VALID
-import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA
-import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER
-import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SOME_EMPTY
-import com.harismexis.breakingbad.mocks.MockActorsProvider.Companion.NUM_ACTORS_WHEN_SOME_IDS_INVALID
 import com.harismexis.breakingbad.mocks.mockHomeViewModel
 import com.harismexis.breakingbad.presentation.screens.activity.MainActivity
 import com.harismexis.breakingbad.util.RecyclerCountAssertion
@@ -30,7 +25,6 @@ import com.harismexis.breakingbad.util.SearchViewActionExtension
 import com.harismexis.breakingbad.util.verifyRecyclerItemAt
 import io.mockk.every
 import org.hamcrest.CoreMatchers.not
-import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -47,7 +41,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
     private val mockActorsResult = MutableLiveData<ActorsResult>()
 
     private fun launchComponentUnderTest(): ActivityScenario<MainActivity> {
-        return launchActivity<MainActivity>()
+        return launchActivity()
     }
 
     @Test
@@ -59,7 +53,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         launchComponentUnderTest()
 
         // then
-        verifyRecycler(NUM_ACTORS_WHEN_ALL_IDS_VALID)
+        verifyRecycler()
     }
 
     @Test
@@ -71,7 +65,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         launchComponentUnderTest()
 
         // then
-        verifyRecycler(NUM_ACTORS_WHEN_SOME_IDS_INVALID)
+        verifyRecycler()
     }
 
     @Test
@@ -83,7 +77,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         launchComponentUnderTest()
 
         // then
-        verifyRecycler(NUM_ACTORS_WHEN_SOME_EMPTY)
+        verifyRecycler()
     }
 
     @Test
@@ -119,7 +113,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         // when
         launchComponentUnderTest()
         // then
-        verifyRecycler(NUM_ACTORS_WHEN_ALL_IDS_VALID)
+        verifyRecycler()
 
         // Search by actor name "walter" and check results
 
@@ -128,7 +122,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         // when
         onView(withId(R.id.searchView)).perform(SearchViewActionExtension.submitQuery(WALTER))
         // then
-        verifyRecycler(NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_WALTER)
+        verifyRecycler()
 
         // Search by actor name "sala" and check results
 
@@ -137,7 +131,7 @@ class HomeScreenTest : BaseInstrumentedTest() {
         // when
         onView(withId(R.id.searchView)).perform(SearchViewActionExtension.submitQuery(SALA))
         // then
-        verifyRecycler(NUM_ACTORS_WHEN_SEARCH_BY_NAME_LIKE_SALA)
+        verifyRecycler()
     }
 
     @Test
@@ -209,38 +203,30 @@ class HomeScreenTest : BaseInstrumentedTest() {
         every { mockHomeViewModel.actors } returns mockActorsResult
     }
 
-    private fun verifyRecycler(
-        expectedNumberOfItems: Int,
-    ) {
+    private fun verifyRecycler() {
         verifyRecyclerVisibility(true)
-        verifyRecyclerData(expectedNumberOfItems)
+        verifyRecyclerData()
     }
 
     private fun verifyRecyclerEmpty() {
         verifyRecyclerVisibility(false)
-        verifyRecyclerData(0)
+        verifyRecyclerData()
     }
 
     private fun verifyRecyclerVisibility(
-        shouldBeVisible: Boolean
+        visible: Boolean
     ) {
-        if (shouldBeVisible)
-            onView(withId(R.id.home_list)).check(matches(isDisplayed()))
-        else
-            onView(withId(R.id.home_list)).check(matches(not(isDisplayed())))
+        if (visible) onView(withId(R.id.home_list)).check(matches(isDisplayed()))
+        else onView(withId(R.id.home_list)).check(matches(not(isDisplayed())))
     }
 
-    private fun verifyRecyclerData(
-        expectedNumberOfItems: Int
-    ) {
-        verifyRecyclerCount(expectedNumberOfItems)
+    private fun verifyRecyclerData() {
+        verifyRecyclerCount()
         verifyRecyclerRows()
     }
 
-    private fun verifyRecyclerCount(expectedNumberOfItems: Int) {
-        Assert.assertEquals(actorsSuccess.items.size, expectedNumberOfItems)
-        onView(withId(R.id.home_list)).check(RecyclerCountAssertion(expectedNumberOfItems))
-    }
+    private fun verifyRecyclerCount() =
+        onView(withId(R.id.home_list)).check(RecyclerCountAssertion(mockActors.size))
 
     private fun verifyRecyclerRows() {
         mockActors.forEachIndexed { index, actor ->
