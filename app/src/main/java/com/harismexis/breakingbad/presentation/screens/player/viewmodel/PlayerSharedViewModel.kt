@@ -28,6 +28,10 @@ class PlayerSharedViewModel @Inject constructor(
     val loadVideo: LiveData<Event<String>>
         get() = mLoadVideo
 
+    private val mDismissDialog = MutableLiveData<Event<Boolean>>()
+    val dismissDialog: LiveData<Event<Boolean>>
+        get() = mDismissDialog
+
     fun updateVideos() {
         viewModelScope.launch {
             try {
@@ -42,6 +46,10 @@ class PlayerSharedViewModel @Inject constructor(
 
     fun loadVideo(videoId: String) {
         mLoadVideo.value = Event(videoId)
+    }
+
+    fun onDismissDialog() {
+        mDismissDialog.value = Event(true)
     }
 
 }

@@ -2,6 +2,7 @@ package com.harismexis.breakingbad.presentation.screens.player.ui.dialog
 
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -91,6 +92,11 @@ class VideoPickerDialog : DialogFragment(), VideoViewHolder.VideoItemClickListen
                 is VideosResult.Error -> populateError(it.error)
             }
         })
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        viewModel.onDismissDialog()
     }
 
     private fun populate(items: List<Video>) {

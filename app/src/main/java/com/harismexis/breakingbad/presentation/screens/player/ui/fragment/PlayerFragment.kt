@@ -50,7 +50,6 @@ class PlayerFragment : BaseDIFragment() {
         addBackNavigation()
         addShowVideoPickerBtn()
         initFullScreenBtn()
-        hidePlayerMenuBtn()
     }
 
     override fun onViewCreated() {
@@ -74,6 +73,12 @@ class PlayerFragment : BaseDIFragment() {
         viewModel.loadVideo.observe(viewLifecycleOwner, EventObserver {
             videoId = it
             videoPlayer?.loadVideo(it, 0f)
+        })
+
+        viewModel.dismissDialog.observe(viewLifecycleOwner, EventObserver {
+            // Fixes bug of player exiting fullscreen after dismiss video picker dialog
+            // whilst the player was in full screen before showing the dialog
+            if (isFullScreen) goFullScreen()
         })
     }
 
@@ -121,15 +126,7 @@ class PlayerFragment : BaseDIFragment() {
         }
     }
 
-    private fun hidePlayerMenuBtn() {
-        binding?.let {
-            val controller = it.youTubeView.getPlayerUiController()
-            controller.showMenuButton(false)
-        }
-    }
-
     private fun showVideoPicker() {
-        binding?.youTubeView?.getPlayerUiController()?.getMenu()?.dismiss()
         VideoPickerDialog.newInstance(videoId)
             .show(childFragmentManager, TAG_VIDEOS_DIALOG)
     }
@@ -139,14 +136,18 @@ class PlayerFragment : BaseDIFragment() {
             it.youTubeView.getPlayerUiController()
                 .setFullScreenButtonClickListener {
                     isFullScreen = !isFullScreen
-                    if (isFullScreen) requireActivity().hideSystemUI()
-                    else requireActivity().showSystemUI()
+                    if (isFullScreen) goFullScreen()
+                    else exitFullScreen()
                 }
         }
     }
 
+    private fun goFullScreen() = requireActivity().hideSystemUI()
+
+    private fun exitFullScreen() = requireActivity().showSystemUI()
+
     override fun onDestroyView() {
-        if (isFullScreen) requireActivity().showSystemUI()
+        if (isFullScreen) exitFullScreen()
         binding = null
         super.onDestroyView()
     }
