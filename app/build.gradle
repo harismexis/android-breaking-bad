@@ -48,6 +48,11 @@ android {
 
     testOptions {
         unitTests.returnDefaultValues = true
+        packagingOptions {
+            jniLibs {
+                useLegacyPackaging true
+            }
+        }
     }
 
     sourceSets {

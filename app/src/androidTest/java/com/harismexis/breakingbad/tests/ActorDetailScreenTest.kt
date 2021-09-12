@@ -20,6 +20,7 @@ import com.harismexis.breakingbad.presentation.screens.activity.MainActivity
 import com.harismexis.breakingbad.util.clickRecyclerAt
 import com.harismexis.breakingbad.util.getExpectedText
 import io.mockk.every
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -37,7 +38,8 @@ class ActorDetailScreenTest : BaseInstrumentedTest() {
     private val mockActorsResult = MutableLiveData<ActorsResult>()
     private val mockActorDetailResult = MutableLiveData<ActorDetailResult>()
 
-    init {
+    @Before
+    fun doBefore() {
         every { mockHomeViewModel.actors } returns mockActorsResult
         every { mockActorDetailViewModel.retrieveActorById(mockActorId) } answers {
             mockActorDetailResult.value = actorDetailSuccess
